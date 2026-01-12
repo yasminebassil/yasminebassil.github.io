@@ -238,6 +238,16 @@
             margin-bottom: 0.5rem;
         }
 
+        .profile-pic {
+            float: right;
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 0 1.5rem 2rem;
+            border: 3px solid var(--accent-olive);
+        }
+
         .sidebar .simple-list {
             font-size: 0.9rem;
         }
@@ -325,6 +335,14 @@
                 flex-direction: column;
                 align-items: flex-start;
             }
+
+            .profile-pic {
+                float: none;
+                display: block;
+                margin: 0 auto 1.5rem;
+                width: 180px;
+                height: 180px;
+            }
         }
     </style>
 </head>
@@ -351,6 +369,8 @@
     <main>
         <div class="main-content">
             <h1>bio</h1>
+
+            <img src="img/profile.jpg" alt="Yasmine Bassil" class="profile-pic">
 
             <p>I'm a cognitive neuroscientist finishing my PhD at Emory University, where I study how aging changes the brain's navigation systems using neuroimaging and virtual reality. Over the past six years, I've been lucky enough to build something from the ground up—a navigation research arm that combines VR technology, advanced brain imaging, and reproducible science.</p>
 
