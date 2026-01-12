@@ -80,9 +80,22 @@
         }
 
         main {
-            max-width: 720px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 8rem 2rem 4rem;
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .main-content {
+            max-width: 720px;
+        }
+
+        .sidebar {
+            position: sticky;
+            top: 8rem;
         }
 
         h1 {
@@ -102,6 +115,16 @@
             margin-bottom: 1.5rem;
             letter-spacing: -0.01em;
             color: var(--accent-olive);
+        }
+
+        .sidebar h2 {
+            font-size: 1.25rem;
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
+
+        .sidebar h2:not(:first-child) {
+            margin-top: 2.5rem;
         }
 
         p {
@@ -159,6 +182,16 @@
 
         .section-item:last-child {
             border-bottom: none;
+        }
+
+        .sidebar .section-item {
+            margin-bottom: 1.25rem;
+            padding-bottom: 1.25rem;
+        }
+
+        .sidebar .section-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
         }
 
         .item-header {
@@ -249,6 +282,12 @@
 
             main {
                 padding: 6rem 1.5rem 2rem;
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .sidebar {
+                position: static;
             }
 
             h1 {
@@ -283,159 +322,163 @@
     </nav>
 
     <main>
-        <h1>bio</h1>
+        <div class="main-content">
+            <h1>bio</h1>
 
-        <p>I'm a cognitive neuroscientist finishing my PhD at Emory University, where I study how aging changes the brain's navigation systems using neuroimaging and virtual reality. Over the past six years, I've been lucky enough to build something from the ground up—a navigation research arm that combines VR technology, advanced brain imaging, and reproducible science.</p>
+            <p>I'm a cognitive neuroscientist finishing my PhD at Emory University, where I study how aging changes the brain's navigation systems using neuroimaging and virtual reality. Over the past six years, I've been lucky enough to build something from the ground up—a navigation research arm that combines VR technology, advanced brain imaging, and reproducible science.</p>
 
-        <p>I'm a proud Lebanese-American, born to a family that values connection, food, and resilience. In everything I do, I think globally and work to build inclusive, collaborative spaces in neuroscience.</p>
+            <p>I'm a proud Lebanese-American, born to a family that values connection, food, and resilience. In everything I do, I think globally and work to build inclusive, collaborative spaces in neuroscience.</p>
 
-        <p>Currently, I lead a team of 15+ researchers (undergrads, grad students, postdocs) and manage a study with 110+ participants. I've established concurrent TMS-fMRI as an institutional capability at Emory, expanding access to cutting-edge methodology for the broader Atlanta neuroscience community. I also served as Co-President of Graduates in Neuroscience, where I led a 22-member board representing 120+ PhD students.</p>
+            <p>Currently, I lead a team of 15+ researchers (undergrads, grad students, postdocs) and manage a study with 110+ participants. I've established concurrent TMS-fMRI as an institutional capability at Emory, expanding access to cutting-edge methodology for the broader Atlanta neuroscience community. I also served as Co-President of Graduates in Neuroscience, where I led a 22-member board representing 120+ PhD students.</p>
 
-        <p>Before Emory, I earned my BS in Neuroscience at Georgia Institute of Technology, where I graduated with Highest Honors as a Zell Miller Scholar. My path into research started with curiosity about how the brain creates our sense of space and has grown into a passion for building tools and teams that push the field forward.</p>
+            <p>Before Emory, I earned my BS in Neuroscience at Georgia Institute of Technology, where I graduated with Highest Honors as a Zell Miller Scholar. My path into research started with curiosity about how the brain creates our sense of space and has grown into a passion for building tools and teams that push the field forward.</p>
 
-        <p>Beyond research, I care deeply about how science is done, shared, and who gets to participate. I'm passionate about mentorship—I've directly mentored 15+ trainees who've gone on to win awards, complete honors theses, and secure competitive fellowships. I work on improving research infrastructure, from creating open-source analysis pipelines to establishing better organizational systems for graduate student communities.</p>
+            <p>Beyond research, I care deeply about how science is done, shared, and who gets to participate. I'm passionate about mentorship—I've directly mentored 15+ trainees who've gone on to win awards, complete honors theses, and secure competitive fellowships. I work on improving research infrastructure, from creating open-source analysis pipelines to establishing better organizational systems for graduate student communities.</p>
 
-        <p>Outside the lab, you'll find me making music with my band <a href="#" target="_blank">la brat</a>, exploring Atlanta's food scene (always on the hunt for the best Lebanese food), or experimenting in the kitchen.</p>
+            <p>Outside the lab, you'll find me making music with my band <a href="#" target="_blank">la brat</a>, exploring Atlanta's food scene (always on the hunt for the best Lebanese food), or experimenting in the kitchen.</p>
 
-        <a href="/Bassil_CV_2026.pdf" class="resume-link">resume</a>
+            <a href="/Bassil_CV_2026.pdf" class="resume-link">resume</a>
 
-        <h2>miscellaneous stuff</h2>
+            <h2>miscellaneous stuff</h2>
 
-        <div class="misc-item"><strong>currently reading:</strong> Braiding Sweetgrass by Robin Wall Kimmerer</div>
-        <div class="misc-item"><strong>favorite food:</strong> Manakish (Lebanese flatbread with za'atar), though I'm also deeply loyal to a good kibbeh</div>
-        <div class="misc-item"><strong>favorite dessert:</strong> Knafeh with extra cheese</div>
-        <div class="misc-item"><strong>favorite drink:</strong> Turkish coffee in the morning, mint lemonade in the summer</div>
-        <div class="misc-item"><strong>languages:</strong> Arabic (native), English (native), French (working proficiency)</div>
-        <div class="misc-item"><strong>band:</strong> Play keys and synth in la brat, an indie rock project</div>
-        <div class="misc-item"><strong>hidden talent:</strong> I can navigate any city without GPS—occupational hazard of studying spatial navigation</div>
+            <div class="misc-item"><strong>currently reading:</strong> Braiding Sweetgrass by Robin Wall Kimmerer</div>
+            <div class="misc-item"><strong>favorite food:</strong> Manakish (Lebanese flatbread with za'atar), though I'm also deeply loyal to a good kibbeh</div>
+            <div class="misc-item"><strong>favorite dessert:</strong> Knafeh with extra cheese</div>
+            <div class="misc-item"><strong>favorite drink:</strong> Turkish coffee in the morning, mint lemonade in the summer</div>
+            <div class="misc-item"><strong>languages:</strong> Arabic (native), English (native), French (working proficiency)</div>
+            <div class="misc-item"><strong>band:</strong> Play keys and synth in la brat, an indie rock project</div>
+            <div class="misc-item"><strong>hidden talent:</strong> I can navigate any city without GPS—occupational hazard of studying spatial navigation</div>
+        </div>
 
-        <h2>academic training</h2>
+        <div class="sidebar">
+            <h2>academic training</h2>
 
-        <ul class="section-list">
-            <li class="section-item">
-                <div class="item-header">
-                    <span class="item-title">PhD Candidate</span>
-                    <span class="item-date">2020 - 2026</span>
-                </div>
-                <div class="item-org">Emory University</div>
-            </li>
-            <li class="section-item">
-                <div class="item-header">
-                    <span class="item-title">Undergraduate</span>
-                    <span class="item-date">2016 - 2020</span>
-                </div>
-                <div class="item-org">Georgia Institute of Technology</div>
-            </li>
-        </ul>
+            <ul class="section-list">
+                <li class="section-item">
+                    <div class="item-header">
+                        <span class="item-title">PhD Candidate</span>
+                        <span class="item-date">2020 - 2026</span>
+                    </div>
+                    <div class="item-org">Emory University</div>
+                </li>
+                <li class="section-item">
+                    <div class="item-header">
+                        <span class="item-title">Undergraduate</span>
+                        <span class="item-date">2016 - 2020</span>
+                    </div>
+                    <div class="item-org">Georgia Institute of Technology</div>
+                </li>
+            </ul>
 
-        <h2>honors & awards (select)</h2>
+            <h2>honors & awards (select)</h2>
 
-        <ul class="section-list">
-            <li class="section-item">
-                <div class="item-header">
-                    <span class="item-title">2025 Teaching Award</span>
-                </div>
-                <div class="item-org">Emory Neuroscience Graduate Program</div>
-            </li>
-            <li class="section-item">
-                <div class="item-header">
-                    <span class="item-title">2024 Leadership Award</span>
-                </div>
-                <div class="item-org">Emory Neuroscience Graduate Program</div>
-            </li>
-            <li class="section-item">
-                <div class="item-header">
-                    <span class="item-title">2024 Trainee Professional Development Award</span>
-                </div>
-                <div class="item-org">Society for Neuroscience</div>
-            </li>
-            <li class="section-item">
-                <div class="item-header">
-                    <span class="item-title">2023 Excellence in Mentorship Award</span>
-                </div>
-                <div class="item-org">Emory Neuroscience Graduate Program</div>
-            </li>
-            <li class="section-item">
-                <div class="item-header">
-                    <span class="item-title">2022-2025 NSF Graduate Research Fellowship</span>
-                </div>
-                <div class="item-org">National Science Foundation ($170K+)</div>
-            </li>
-            <li class="section-item">
-                <div class="item-header">
-                    <span class="item-title">2021-2022 NIH T32 Training Grant</span>
-                </div>
-                <div class="item-org">National Institutes of Health ($90K+)</div>
-            </li>
-        </ul>
+            <ul class="section-list">
+                <li class="section-item">
+                    <div class="item-header">
+                        <span class="item-title">2025 Teaching Award</span>
+                    </div>
+                    <div class="item-org">Emory Neuroscience Graduate Program</div>
+                </li>
+                <li class="section-item">
+                    <div class="item-header">
+                        <span class="item-title">2024 Leadership Award</span>
+                    </div>
+                    <div class="item-org">Emory Neuroscience Graduate Program</div>
+                </li>
+                <li class="section-item">
+                    <div class="item-header">
+                        <span class="item-title">2024 Trainee Professional Development Award</span>
+                    </div>
+                    <div class="item-org">Society for Neuroscience</div>
+                </li>
+                <li class="section-item">
+                    <div class="item-header">
+                        <span class="item-title">2023 Excellence in Mentorship Award</span>
+                    </div>
+                    <div class="item-org">Emory Neuroscience Graduate Program</div>
+                </li>
+                <li class="section-item">
+                    <div class="item-header">
+                        <span class="item-title">2022-2025 NSF Graduate Research Fellowship</span>
+                    </div>
+                    <div class="item-org">National Science Foundation ($170K+)</div>
+                </li>
+                <li class="section-item">
+                    <div class="item-header">
+                        <span class="item-title">2021-2022 NIH T32 Training Grant</span>
+                    </div>
+                    <div class="item-org">National Institutes of Health ($90K+)</div>
+                </li>
+            </ul>
 
-        <h2>leadership (select)</h2>
+            <h2>leadership (select)</h2>
 
-        <ul class="section-list">
-            <li class="section-item">
-                <div class="item-header">
-                    <span class="item-title">2023 - 2025 Co-President, Graduates in Neuroscience</span>
-                </div>
-                <div class="item-org">Emory University <a href="#" class="item-link" target="_blank">[link]</a></div>
-            </li>
-            <li class="section-item">
-                <div class="item-header">
-                    <span class="item-title">2020 - 2026 Navigation Team Lead</span>
-                </div>
-                <div class="item-org">Neural Plasticity Research Lab, Emory University</div>
-            </li>
-            <li class="section-item">
-                <div class="item-header">
-                    <span class="item-title">2019 Organizing Committee Chair</span>
-                </div>
-                <div class="item-org">Brainhack ATL <a href="#" class="item-link" target="_blank">[link]</a></div>
-            </li>
-        </ul>
+            <ul class="section-list">
+                <li class="section-item">
+                    <div class="item-header">
+                        <span class="item-title">2023 - 2025 Co-President, Graduates in Neuroscience</span>
+                    </div>
+                    <div class="item-org">Emory University <a href="#" class="item-link" target="_blank">[link]</a></div>
+                </li>
+                <li class="section-item">
+                    <div class="item-header">
+                        <span class="item-title">2020 - 2026 Navigation Team Lead</span>
+                    </div>
+                    <div class="item-org">Neural Plasticity Research Lab, Emory University</div>
+                </li>
+                <li class="section-item">
+                    <div class="item-header">
+                        <span class="item-title">2019 Organizing Committee Chair</span>
+                    </div>
+                    <div class="item-org">Brainhack ATL <a href="#" class="item-link" target="_blank">[link]</a></div>
+                </li>
+            </ul>
 
-        <h2>research contributions</h2>
+            <h2>research contributions</h2>
 
-        <p><strong>Publications:</strong> 6 publications (1 under review), including first-author papers in <em>Neuropsychologia</em> and contributions to consensus guidelines in <em>Nature Protocols</em></p>
+            <p><strong>Publications:</strong> 6 publications (1 under review), including first-author papers in <em>Neuropsychologia</em> and contributions to consensus guidelines in <em>Nature Protocols</em></p>
 
-        <p><strong>Presentations:</strong> 23 poster presentations (11 self-presented), 2 platform presentations, 6 presentation awards</p>
+            <p><strong>Presentations:</strong> 23 poster presentations (11 self-presented), 2 platform presentations, 6 presentation awards</p>
 
-        <p><strong>Open-source tools:</strong> Developed immersive VR navigation task (Unity, open-sourced on GitHub); co-developed MR.Flow neuroimaging pipeline; created standardized analysis pipelines for reproducible research</p>
+            <p><strong>Open-source tools:</strong> Developed immersive VR navigation task (Unity, open-sourced on GitHub); co-developed MR.Flow neuroimaging pipeline; created standardized analysis pipelines for reproducible research</p>
 
-        <p><strong>Methodological advancement:</strong> Established concurrent TMS-fMRI capability at Emory's Center for Systems Imaging Core</p>
+            <p><strong>Methodological advancement:</strong> Established concurrent TMS-fMRI capability at Emory's Center for Systems Imaging Core</p>
 
-        <h2>mentorship impact</h2>
+            <h2>mentorship impact</h2>
 
-        <p>Directly mentored 15+ trainees (high school through doctoral level), resulting in:</p>
+            <p>Directly mentored 15+ trainees (high school through doctoral level), resulting in:</p>
 
-        <ul class="simple-list">
-            <li>5 award-winning presentations at institutional and regional conferences</li>
-            <li>2 completed Honors Theses with Highest Honors designations</li>
-            <li>2 completed Research Option Certificates with published theses</li>
-            <li>Multiple competitive fellowships (Fulbright, DAAD-Rise, Georgia Tech President's Undergraduate Research Award)</li>
-        </ul>
+            <ul class="simple-list">
+                <li>5 award-winning presentations at institutional and regional conferences</li>
+                <li>2 completed Honors Theses with Highest Honors designations</li>
+                <li>2 completed Research Option Certificates with published theses</li>
+                <li>Multiple competitive fellowships (Fulbright, DAAD-Rise, Georgia Tech President's Undergraduate Research Award)</li>
+            </ul>
 
-        <h2>teaching experience</h2>
+            <h2>teaching experience</h2>
 
-        <ul class="simple-list">
-            <li>Instructor of Record: <em>Explore Neuroscience & Behavioral Biology</em> (NBB299)</li>
-            <li>Co-Instructor: <em>Neurobiology Simulation & Analysis Lab</em> (BIO360L/NBB301L)</li>
-            <li>Program & Teaching Assistant: <em>Global Neuro & Behavior</em> (NBB402W)</li>
-            <li>Teaching Assistant: <em>Principles of Motor Learning</em> (DPT805)</li>
-        </ul>
+            <ul class="simple-list">
+                <li>Instructor of Record: <em>Explore Neuroscience & Behavioral Biology</em> (NBB299)</li>
+                <li>Co-Instructor: <em>Neurobiology Simulation & Analysis Lab</em> (BIO360L/NBB301L)</li>
+                <li>Program & Teaching Assistant: <em>Global Neuro & Behavior</em> (NBB402W)</li>
+                <li>Teaching Assistant: <em>Principles of Motor Learning</em> (DPT805)</li>
+            </ul>
 
-        <h2>selected publications</h2>
+            <h2>selected publications</h2>
 
-        <ul class="simple-list">
-            <li><strong>Bassil, Y.</strong>, Kanukolanu, A., Funderburg, E., Cui, E., Brown, T., & Borich, M. (2025). Distinct aging-related profiles of allocentric knowledge recall following navigation in an immersive, naturalistic, city-like environment. <em>PsyArXiv</em>. (under review)</li>
-            <li><strong>Bassil, Y.</strong>, Kanukolanu, A., Funderburg, E., Brown, T., & Borich, M. R. (2025). Formation of allocentric representations after exposure to a novel, naturalistic, city-like, virtual reality environment. <em>Neuropsychologia</em>, 109290.</li>
-            <li>Woolgar, A., Feredoes, E., Assem, M., <strong>Bassil, Y.</strong>, et al. (2025). Consensus guidelines for the use of concurrent TMS-fMRI in cognitive and clinical neuroscience. <em>Nature Protocols</em>, 1-17.</li>
-        </ul>
+            <ul class="simple-list">
+                <li><strong>Bassil, Y.</strong>, Kanukolanu, A., Funderburg, E., Cui, E., Brown, T., & Borich, M. (2025). Distinct aging-related profiles of allocentric knowledge recall following navigation in an immersive, naturalistic, city-like environment. <em>PsyArXiv</em>. (under review)</li>
+                <li><strong>Bassil, Y.</strong>, Kanukolanu, A., Funderburg, E., Brown, T., & Borich, M. R. (2025). Formation of allocentric representations after exposure to a novel, naturalistic, city-like, virtual reality environment. <em>Neuropsychologia</em>, 109290.</li>
+                <li>Woolgar, A., Feredoes, E., Assem, M., <strong>Bassil, Y.</strong>, et al. (2025). Consensus guidelines for the use of concurrent TMS-fMRI in cognitive and clinical neuroscience. <em>Nature Protocols</em>, 1-17.</li>
+            </ul>
 
-        <h2>speaking & press (select)</h2>
+            <h2>speaking & press (select)</h2>
 
-        <ul class="simple-list">
-            <li>2022 — Speaker, Tech Talks: Unique & Diverse Perspectives in Science, Atlanta Science Festival</li>
-            <li>2021 — Keynote Speaker, Neuroscience Research Symposium, Georgia Institute of Technology</li>
-        </ul>
+            <ul class="simple-list">
+                <li>2022 — Speaker, Tech Talks: Unique & Diverse Perspectives in Science, Atlanta Science Festival</li>
+                <li>2021 — Keynote Speaker, Neuroscience Research Symposium, Georgia Institute of Technology</li>
+            </ul>
+        </div>
     </main>
 
     <footer>
