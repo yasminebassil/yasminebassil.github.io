@@ -6,15 +6,15 @@
     <title>Bio — Yasmine Bassil</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:ital,wght@0,400;0,500;1,400&family=Noto+Sans+Arabic:wght@400;500;600&family=Aref+Ruqaa:wght@400;700&family=Tangerine:wght@400;700&family=Cairo:wght@300;400;500&family=Amiri:wght@400;700&family=Tajawal:wght@300;400;500&family=Almarai:wght@300;400;700&family=Scheherazade+New:wght@400;500;600&family=EB+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:ital,wght@0,400;0,500;1,400&family=Noto+Sans+Arabic:wght@400;500;600&family=Aref+Ruqaa:wght@400;700&family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-cream: #FAF7F2;
             --bg-cream-dark: #F0EBE3;
             --text-charcoal: #2C2825;
             --text-muted: #5C5552;
-            --accent-terracotta: #4A4544;
-            --accent-olive: #6B5B8E;
+            --accent-terracotta: #C4755B;
+            --accent-olive: #7368e1;
             --font-display: 'Cormorant Garamond', Georgia, serif;
             --font-body: 'DM Sans', -apple-system, sans-serif;
             --font-arabic: 'Noto Sans Arabic', sans-serif;
@@ -136,7 +136,7 @@
         }
 
         a {
-            color: var(--accent-olive);
+            color: var(--accent-terracotta);
             text-decoration: none;
             transition: opacity 0.2s ease;
         }
@@ -241,98 +241,31 @@
 
         .profile-container {
             float: right;
-            margin: -1.5rem 0 1rem 1.5rem;
+            margin: 4rem 0 1.5rem 2rem;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 0;
+        }
+
+        .curved-name {
+            margin-bottom: -10px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .curved-name text {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            fill: var(--text-charcoal);
+            letter-spacing: 0.1em;
         }
 
         .profile-pic {
-            width: 150px;
-            height: 150px;
+            width: 250px;
+            height: 250px;
             border-radius: 50%;
             object-fit: cover;
-            border: 1px solid #D0C9D9;
-        }
-
-        .profile-name {
-            font-family: var(--font-display);
-            font-size: 1.5rem;
-            font-weight: 500;
-            color: var(--text-charcoal);
-            margin-bottom: 1rem;
-            background-color: rgba(107, 91, 142, 0.08);
-            padding: 1rem 1.5rem;
-            border-radius: 8px;
-            max-width: 100%;
-        }
-
-        .name-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            margin-bottom: 0.75rem;
-        }
-
-        .name-english {
-            font-family: 'EB Garamond', serif;
-            font-size: 1.5rem;
-            font-weight: 500;
-        }
-
-        .name-separator {
-            color: var(--accent-olive);
-            font-size: 1.5rem;
-            padding: 0 0.75rem;
-        }
-
-        .bio-title {
-            font-family: var(--font-body);
-            font-size: 1rem;
-            font-weight: 500;
-            color: var(--accent-olive);
-            margin: 0 0 0.5rem 0;
-        }
-
-        .bio-blurb {
-            font-family: var(--font-body);
-            font-size: 0.95rem;
-            font-weight: 400;
-            color: var(--text-charcoal);
-            font-style: italic;
-            margin: 0;
-        }
-
-        .personal-note {
-            margin: 3rem 0;
-            padding: 1.5rem 2rem;
-            border-left: 4px solid var(--accent-olive);
-            background-color: rgba(107, 91, 142, 0.05);
-            border-radius: 4px;
-        }
-
-        .personal-note p {
-            margin-bottom: 1rem;
-            font-style: italic;
-            color: var(--text-charcoal);
-        }
-
-        .personal-note p:last-child {
-            margin-bottom: 0;
-        }
-
-        .profile-pronouns {
-            font-size: 1rem;
-            color: var(--text-muted);
-            font-weight: 400;
-        }
-
-        .name-arabic {
-            font-family: 'Scheherazade New', serif;
-            font-size: 1.5rem;
-            font-weight: 400;
-            color: var(--text-charcoal);
+            border: 3px solid var(--accent-olive);
         }
 
         .intro-separator {
@@ -343,28 +276,28 @@
             margin: 2rem 0;
         }
 
-        .section-header {
+        .name-row {
             display: flex;
-            align-items: center;
-            margin: 2rem 0;
-            gap: 1rem;
+            flex-direction: column;
+            margin-bottom: 1.5rem;
+            gap: 0;
         }
 
-        .section-header span {
-            font-family: var(--font-body);
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: var(--accent-olive);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            white-space: nowrap;
+        .name-english {
+            font-family: 'Tangerine', cursive;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--text-charcoal);
+            text-transform: lowercase;
+            line-height: 1;
         }
 
-        .section-header::after {
-            content: '';
-            flex: 1;
-            height: 2px;
-            background-color: var(--accent-olive);
+        .name-arabic {
+            font-family: 'Aref Ruqaa', serif;
+            font-size: 2.5rem;
+            color: var(--text-charcoal);
+            margin-top: -1.25rem;
+            margin-left: 5rem;
         }
 
         .sidebar .simple-list {
@@ -457,12 +390,17 @@
 
             .profile-container {
                 float: none;
-                margin: 0 auto 1rem;
+                margin: 0 auto 1.5rem;
             }
 
             .profile-pic {
-                width: 120px;
-                height: 120px;
+                width: 180px;
+                height: 180px;
+            }
+
+            .curved-name {
+                width: 180px;
+                height: 90px;
             }
         }
     </style>
@@ -479,7 +417,7 @@
             <li><a href="press.html">press</a></li>
             <li><a href="honors.html">honors</a></li>
             <li><a href="thoughts.html">thoughts</a></li>
-            <li><a href="music.html">creative</a></li>
+            <li><a href="music.html">music</a></li>
             <li><a href="#" class="lang-toggle">ع</a></li>
         </ul>
         <button class="mobile-nav-toggle" aria-label="Toggle navigation">
@@ -492,57 +430,30 @@
             <h1>bio</h1>
 
             <div class="profile-container">
+                <svg class="curved-name" viewBox="0 0 280 35" width="280" height="35" style="overflow: visible;">
+                    <defs>
+                        <path id="curve" d="M 10,30 A 200,200 0 0,1 270,30" fill="transparent"/>
+                    </defs>
+                    <text>
+                        <textPath href="#curve" startOffset="50%" text-anchor="middle">yasmine bassil <tspan style="opacity: 0.4">(she/her)</tspan></textPath>
+                    </text>
+                </svg>
                 <img src="img/profile.jpg" alt="Yasmine Bassil" class="profile-pic">
             </div>
 
-            <div class="profile-name">
-                <div class="name-row">
-                    <span class="name-english">yasmine bassil <span class="profile-pronouns">(she/her)</span></span>
-                    <span class="name-separator">✦</span>
-                    <span class="name-arabic">ياسمين باسيل <span class="profile-pronouns">(هي)</span></span>
-                </div>
-                <p class="bio-title">cognitive neuroscientist & scientific advocate</p>
-                <p class="bio-blurb">passionate about structure & systems. building accessible, equitable neuroscience research infrastructure on a global scale.</p>
-            </div>
+            <hr class="intro-separator">
 
-            <div class="section-header">
-                <span>Education & Training</span>
-            </div>
+            <p style="color: var(--accent-olive); font-style: italic; margin-bottom: 0.5rem;">neuroscientist passionate about building accessible, equitable research infrastructure on a global scale.</p>
 
-            <p>I've moved back and forth between the US and Lebanon throughout my life, ultimately settling in Atlanta ten years ago to pursue higher education.</p>
+            <hr class="intro-separator">
 
-            <p>Currently, I'm a cognitive neuroscientist finishing my PhD in Neuroscience at Emory University. As an <a href="https://www.nsfgrfp.org/" target="_blank">NSF Graduate Research Fellow</a>, I work in the <a href="https://npresearchlab.com" target="_blank">Neural Plasticity Research Lab</a> to study how aging changes the brain's navigation systems using neuroimaging and virtual reality.</p>
+            <p>As a Lebanese-American, I've moved back and forth between the US and Lebanon throughout my life, ultimately settling in Atlanta ten years ago to pursue higher education.</p>
 
-            <p>Over the course of my PhD, I've focused on building a new core research capacity for the lab—a novel navigation research arm that integrates clinical assessments, VR technology, neuroimaging, and neurostimulation to study spatial navigation throughout the lifespan. For more on this work, see <a href="science.html">science</a>.</p>
+            <p>Currently, I'm a cognitive neuroscientist finishing my PhD at Emory University. As an <a href="https://www.nsfgrfp.org/" target="_blank">NSF Graduate Research Fellow</a>, I work in the <a href="https://npresearchlab.com" target="_blank">Neural Plasticity Research Lab</a> to study how aging changes the brain's navigation systems using neuroimaging and virtual reality.</p>
 
-            <p>Prior to my PhD, I completed my undergraduate degree at the Georgia Institute of Technology, as well as my undergraduate thesis with Dr. Shella Keilholz in the <a href="https://sites.google.com/view/keilholz-lab/home" target="_blank">Keilholz MIND Lab</a>, analyzing resting-state brain connectivity in individuals with ADHD, PTSD, and sleep disorders.</p>
+            <p>Over the course of my PhD, I've focused on building a new core research capacity for the lab—a novel navigation research arm that integrates clinical assessments, VR technology, neuroimaging, and neurostimulation to study spatial navigation throughout the lifespan.<br>For more on this work, see <a href="science.html">science</a>.</p>
 
-            <div class="section-header">
-                <span>Interests & Passions</span>
-            </div>
-
-            <p>I'm endlessly passionate about advocating for (and with) the communities I'm part of—particularly through building accessible and inclusive systems that help others thrive. This started in my undergraduate career, during which I established infrastructure to enable students across Atlanta to access and engage in research, from establishing the Undergraduate Research Ambassadors at Georgia Tech to organizing the first-ever Brainhack ATL 2019 as an extension of Brainhack Global.</p>
-
-            <p>This continued during my graduate journey, through student advocacy initiatives as Co-President of the Graduates in Neuroscience and Co-Chair of my program's DEI Committee.</p>
-
-            <p>Overall, I've learned that advocacy without infrastructure is just intention—real change requires building the systems that allow people to access opportunities and thrive.</p>
-
-            <div class="personal-note">
-                <p>I'm passionate about how the science and the scientist are inextricably intertwined. Often, we're encouraged to separate personal and professional identities, but science is inevitably shaped by the person conducting it.</p>
-                <p>In alignment with this, this profile blends personal and professional identity into one, telling you a bit more of the holistic story of who I am.</p>
-            </div>
-
-            <div class="section-header">
-                <span>Personal</span>
-            </div>
-
-            <p>Being Lebanese is a central part of my identity, and I try to visit home (Northern Lebanon, near Batroun) to see friends and family at least once a year. I always try to find a piece of Lebanon wherever I go — whether that's cooking family recipes, scavenging local record stores for Arabic music, supporting local Arab businesses, or creating my own Lebanese community in the city that I'm in.</p>
-
-            <p>I absolutely love to cook Lebanese cuisine, but I also love to cook dishes from a variety of cuisines from around the world, and I'm constantly experimenting with what I can do in the kitchen. I'm also an avid plant enthusiast and a caretaker to 30+ indoor plants. You can often find me at the discount section of my local plant store, or exploring the city (by foot, bike, or public transit, preferably) to go to thrift stores, book stores, or specialty grocery stores (this fuels my cookbook addiction).</p>
-
-            <p>I'm a lover of all things <a href="music.html">creative</a>. If you can think of a hobby, I've probably tried it. From pottery, to carpentry, to painting, to playing music, I love creative endeavors and making something that didn't exist before. People used to tell me that I'm a "jack of all trades, master of none" when it came to my hobbies, and I always thought this was a negative thing. But people often forget the rest of the expression: "but oftentimes better than master of one" – and I do think that the flexibility and versatility of being a generalist in creative spaces has served me well so far.</p>
-
-            <p>I love all things music – playing it, listening to it, creating it, composing it. I'm currently a part of <a href="https://www.instagram.com/labratband/" target="_blank">la brat band</a>, on piano and lead vocals (and occasionally bass!), putting my classical piano and voice training to good use. We had our <a href="https://labratband.com/" target="_blank">debut show</a> last year.</p>
+            <p>My research journey began at Georgia Institute of Technology, where I completed my undergraduate degree and worked with Dr. Shella Keilholz in the <a href="https://sites.google.com/view/keilholz-lab/home" target="_blank">Keilholz MIND Lab</a>, analyzing resting-state brain connectivity in individuals with ADHD, PTSD, and sleep disorders. Without any prior knowledge about scientific research, this is where I first learned what it means to conduct research, how to pursue it, and what my role in it could be. I went on to establish the Undergraduate Research Ambassadors, founding a system as President to create access to undergraduate research opportunities across Atlanta.</p>
 
             <a href="Bassil_CV_2026.pdf" class="resume-link" target="_blank">resume</a>
 
