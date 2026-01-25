@@ -7,7 +7,7 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:ital,wght@0,400;0,500;1,400&family=Noto+Sans+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:ital,wght@0,400;0,500;1,400&family=Noto+Sans+Arabic:wght@400;500;600&family=Scheherazade+New:wght@400;500;600&display=swap" rel="stylesheet">
     
     <style>
         :root {
@@ -110,8 +110,12 @@
             max-width: 500px;
             padding: 6rem 4rem 3rem 2rem;
             margin-right: 3%;
-            background: rgba(250, 247, 242, 0.92);
+            background: transparent;
             border-radius: 8px;
+        }
+
+        .hero-name-container {
+            position: relative;
         }
 
         .hero-greeting {
@@ -122,7 +126,63 @@
             margin-bottom: 0.5rem;
         }
 
+        .tessellation {
+            width: 70px;
+            height: auto;
+            margin-bottom: 1.5rem;
+        }
+
+        .tessellation path {
+            opacity: 0;
+            animation: tile-appear 0.5s ease-out forwards;
+        }
+
+        .tessellation .flower-petal {
+            fill: none;
+            stroke: #3d6b59;
+            stroke-width: 2;
+            stroke-linecap: round;
+        }
+
+        .tessellation .stem {
+            fill: none;
+            stroke: #5c3d3d;
+            stroke-width: 2;
+        }
+
+        .tessellation .leaf {
+            fill: #5c3d3d;
+            stroke: none;
+        }
+
+        .tessellation path:nth-child(1) { animation-delay: 0.1s; }
+        .tessellation path:nth-child(2) { animation-delay: 0.2s; }
+        .tessellation path:nth-child(3) { animation-delay: 0.3s; }
+        .tessellation path:nth-child(4) { animation-delay: 0.4s; }
+        .tessellation path:nth-child(5) { animation-delay: 0.5s; }
+        .tessellation path:nth-child(6) { animation-delay: 0.6s; }
+        .tessellation path:nth-child(7) { animation-delay: 0.65s; }
+        .tessellation path:nth-child(8) { animation-delay: 0.7s; }
+        .tessellation path:nth-child(9) { animation-delay: 0.75s; }
+        .tessellation path:nth-child(10) { animation-delay: 0.8s; }
+        .tessellation path:nth-child(11) { animation-delay: 0.85s; }
+        .tessellation path:nth-child(12) { animation-delay: 0.9s; }
+        .tessellation path:nth-child(13) { animation-delay: 0.95s; }
+        .tessellation path:nth-child(14) { animation-delay: 1.0s; }
+        .tessellation path:nth-child(15) { animation-delay: 1.05s; }
+
+        @keyframes tile-appear {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 0.6;
+            }
+        }
+
         .hero-name {
+            position: relative;
+            z-index: 1;
             font-family: var(--font-display);
             font-size: 4rem;
             font-weight: 500;
@@ -161,8 +221,64 @@
             transition: color 0.3s ease;
         }
 
-        .hero-links a:hover { color: var(--accent-terracotta); }
+        .hero-links a:hover, .hero-links .email-toggle:hover { color: var(--accent-terracotta); }
         .hero-links svg { width: 18px; height: 18px; }
+
+        .email-wrapper {
+            position: relative;
+        }
+
+        .email-toggle {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            cursor: pointer;
+            color: var(--text-muted);
+            transition: color 0.3s ease;
+        }
+
+        .email-box {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-top: 0.5rem;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(107, 91, 142, 0.1);
+            border: 1px solid rgba(107, 91, 142, 0.2);
+            border-radius: 20px;
+            padding: 0.4rem 0.8rem;
+            font-size: 0.85rem;
+            color: var(--text-charcoal);
+            white-space: nowrap;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .email-box.show {
+            display: flex;
+        }
+
+        .copy-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--accent-olive);
+            padding: 0.2rem;
+            display: flex;
+            align-items: center;
+            transition: opacity 0.2s ease;
+        }
+
+        .copy-btn:hover {
+            opacity: 0.7;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
         footer {
             padding: 2rem 3rem;
@@ -231,22 +347,31 @@
     <main class="hero">
         <div class="hero-bg"></div>
         <div class="hero-content">
-            <p class="hero-greeting">مرحبا — hello</p>
+            <p class="hero-greeting">welcome — أهلا وسهلا</p>
             <h1 class="hero-name">Yasmine Bassil</h1>
             <p class="hero-title">
-                Neuroscientist studying how aging changes the brain's navigation systems. 
-                NSF Graduate Research Fellow at Emory University.
+                neuroscientist | advocate | mentor
             </p>
             <p class="hero-tagline">
-                Building inclusive, globally connected spaces for who gets to do brain research.
+                nsf graduate research fellow, emory university
             </p>
             <div class="hero-links">
-                <a href="mailto:yasmine.bassil@emory.edu">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
-                    </svg>
-                    email
-                </a>
+                <div class="email-wrapper">
+                    <span class="email-toggle" onclick="toggleEmail()">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+                        </svg>
+                        email
+                    </span>
+                    <div class="email-box" id="emailBox">
+                        <span>yasmine.bassil@emory.edu</span>
+                        <button onclick="copyEmail()" class="copy-btn" title="Copy to clipboard">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" width="14" height="14">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0013.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 01-.75.75H9a.75.75 0 01-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 01-2.25 2.25H6.75A2.25 2.25 0 014.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 011.927-.184" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
                 <a href="https://linkedin.com/in/yasminebassil" target="_blank">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
@@ -264,5 +389,19 @@
     </main>
 
     <footer>© 2025 Yasmine Bassil</footer>
+
+    <script>
+        function toggleEmail() {
+            const emailBox = document.getElementById('emailBox');
+            emailBox.classList.toggle('show');
+        }
+
+        function copyEmail() {
+            navigator.clipboard.writeText('yasmine.bassil@emory.edu');
+            const btn = document.querySelector('.copy-btn');
+            btn.title = 'Copied!';
+            setTimeout(() => { btn.title = 'Copy to clipboard'; }, 2000);
+        }
+    </script>
 </body>
 </html>
