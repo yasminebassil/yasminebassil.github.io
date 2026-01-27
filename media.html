@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Music — Yasmine Bassil</title>
+    <title>Media — Yasmine Bassil</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:ital,wght@0,400;0,500;1,400&family=Noto+Sans+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
@@ -110,7 +110,9 @@
             font-size: 1.5rem;
             font-weight: 500;
             color: var(--accent-terracotta);
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--bg-cream-dark);
         }
 
         .item {
@@ -187,12 +189,18 @@
 </style>
 </head>
 <body>
-    
+
     <nav>
         <a href="index.html" class="logo">Yasmine Bassil</a>
         <ul class="nav-links">
-            <li><a href="index.html">home</a></li><li><a href="bio.html">bio</a></li>
-            <li><a href="cv.html">cv</a></li><li><a href="science.html">science</a></li><li><a href="service.html">service</a></li><li><a href="media.html">media</a></li><li><a href="thoughts.html">thoughts</a></li><li><a href="music.html" class="active">music</a></li>
+            <li><a href="index.html">home</a></li>
+            <li><a href="bio.html">bio</a></li>
+            <li><a href="cv.html">cv</a></li>
+            <li><a href="science.html">science</a></li>
+            <li><a href="service.html">service</a></li>
+            <li><a href="media.html" class="active">media</a></li>
+            <li><a href="thoughts.html">thoughts</a></li>
+            <li><a href="music.html">music</a></li>
             <li><a href="#" class="lang-toggle">ع</a></li>
         </ul>
         <button class="mobile-nav-toggle" aria-label="Toggle navigation">
@@ -200,30 +208,69 @@
         </button>
     </nav>
     <main class="page-content">
-        
-        <h1 class="page-title">Music</h1>
+
+        <h1 class="page-title">Media</h1>
         <p class="page-intro">
-            Outside the lab, I'm a musician. Currently playing with la brat.
+            Talks, press coverage, and recognition.
         </p>
-        
+
+        <!-- Talks Section -->
         <div class="section">
+            <h2 class="section-title">Talks</h2>
             <div class="item">
-                <div class="item-title">la brat</div>
-                <div class="item-meta">Band · Atlanta, GA</div>
-                <div class="item-description">
-                    [Description of the band, genre, your role, links to music, etc.]
-                </div>
+                <div class="item-title">Neuroscience 2024</div>
+                <div class="item-meta">Chicago, IL · October 2024</div>
+                <div class="item-description">Poster presentation and co-chair of Arabs in Neuroscience Social.</div>
+            </div>
+            <div class="item">
+                <div class="item-title">International Workshop on Concurrent TMS-fMRI</div>
+                <div class="item-meta">Evia, Greece · 2023</div>
+                <div class="item-description">Presented research on [topic].</div>
             </div>
         </div>
-        
+
+        <!-- Press Section -->
         <div class="section">
-            <h2 class="section-title">Theatre</h2>
+            <h2 class="section-title">Press</h2>
             <div class="item">
-                <div class="item-title">Act 3 Productions</div>
-                <div class="item-meta">2014–2020</div>
-                <div class="item-description">
-                    Assistant Music Director and Technical Director for youth and adult theatre productions.
-                </div>
+                <div class="item-title">Tech Talks: Unique & Diverse Perspectives in Science</div>
+                <div class="item-meta">Atlanta Science Festival · 2022</div>
+                <div class="item-description">Featured speaker discussing perspectives in science.</div>
+            </div>
+            <div class="item">
+                <div class="item-title">Keynote Speaker | Neuroscience Research Symposium</div>
+                <div class="item-meta">Georgia Institute of Technology · 2021</div>
+                <div class="item-description">Keynote address at undergraduate research symposium.</div>
+            </div>
+        </div>
+
+        <!-- Honors Section -->
+        <div class="section">
+            <h2 class="section-title">Honors</h2>
+            <div class="item">
+                <div class="item-title">NSF Graduate Research Fellowship</div>
+                <div class="item-meta">2022</div>
+                <div class="item-description">Recognizes outstanding graduate students with demonstrated potential to be high-achieving scientists.</div>
+            </div>
+            <div class="item">
+                <div class="item-title">NIH T32 Training Grant</div>
+                <div class="item-meta">2021</div>
+                <div class="item-description">Supports predoctoral trainees preparing for leadership roles in biomedical research.</div>
+            </div>
+            <div class="item">
+                <div class="item-title">Teaching Award</div>
+                <div class="item-meta">Emory NGP · 2025</div>
+                <div class="item-description">Awarded for remarkable commitment to science education.</div>
+            </div>
+            <div class="item">
+                <div class="item-title">Leadership Award</div>
+                <div class="item-meta">Emory NGP · 2024</div>
+                <div class="item-description">Awarded for exhibiting exceptional leadership.</div>
+            </div>
+            <div class="item">
+                <div class="item-title">Excellence in Mentorship Award</div>
+                <div class="item-meta">Emory NGP · 2023</div>
+                <div class="item-description">Awarded for exhibiting excellence in mentorship.</div>
             </div>
         </div>
 

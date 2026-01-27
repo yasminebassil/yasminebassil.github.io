@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:ital,wght@0,400;0,500;1,400&family=Noto+Sans+Arabic:wght@400;500;600&family=Aref+Ruqaa:wght@400;700&family=Tangerine:wght@400;700&family=Cairo:wght@300;400;500&family=Amiri:wght@400;700&family=Tajawal:wght@300;400;500&family=Almarai:wght@300;400;700&family=Scheherazade+New:wght@400;500;600&family=EB+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-cream: #FAF7F2;
+            --bg-cream: #fdf8fc;
             --bg-cream-dark: #F0EBE3;
             --text-charcoal: #2C2825;
             --text-muted: #5C5552;
@@ -98,6 +98,24 @@
             position: sticky;
             top: 2rem;
             margin-top: 6rem;
+            opacity: 0.75;
+        }
+
+        .sidebar-section {
+            padding: 0.75rem;
+            margin: -0.75rem;
+            margin-top: 1.25rem;
+            border-radius: 8px;
+        }
+
+        .sidebar-section:target,
+        .sidebar-section.highlight {
+            animation: highlight 2s ease;
+        }
+
+        @keyframes highlight {
+            0% { background-color: rgba(107, 91, 142, 0.25); }
+            100% { background-color: transparent; }
         }
 
         h1 {
@@ -514,11 +532,10 @@
         <ul class="nav-links">
             <li><a href="index.html">home</a></li>
             <li><a href="bio.html" class="active">bio</a></li>
+            <li><a href="cv.html">cv</a></li>
             <li><a href="science.html">science</a></li>
-            <li><a href="talks.html">talks</a></li>
             <li><a href="service.html">service</a></li>
-            <li><a href="press.html">press</a></li>
-            <li><a href="honors.html">honors</a></li>
+            <li><a href="media.html">media</a></li>
             <li><a href="thoughts.html">thoughts</a></li>
             <li><a href="music.html">creative</a></li>
             <li><a href="#" class="lang-toggle">ع</a></li>
@@ -550,49 +567,56 @@
 
             <p class="intro-hook">Hi, and welcome! I'm <span style="font-weight: 600;">Yasmine</span>—a neuroscientist finishing my PhD at Emory, where I study aging & spatial navigation. Beyond research itself, I'm deeply invested in building systems and infrastructure that help others engage in science.</p>
 
-            <p class="intro-hook">As an Atlanta-based Lebanese scientist, plant enthusiast, amateur chef, musician, and community member, I believe science and life are better when we show up authentically as whole people — so feel free to explore a more holistic introduction below.</p>
+            <p class="intro-hook">As an Atlanta-based Lebanese scientist, plant enthusiast, amateur chef, musician, and community member, I believe science and life are better when we show up authentically as whole people — so feel free to explore a more holistic introduction of myself below.</p>
 
             <div class="section-header with-action">
                 <span>Education & Training</span>
                 <div class="section-line"></div>
-                <a href="Bassil_CV_2026.pdf" class="header-action" target="_blank">resume</a>
+                <a href="science.html" class="header-action">science</a>
             </div>
 
-            <p>I've moved back and forth between the US and Lebanon throughout my life, ultimately settling in Atlanta ten years ago to pursue higher education.</p>
+            <p>I've moved back and forth between the US and Lebanon throughout my life, ultimately settling in Atlanta ten years ago to pursue higher <a href="#education">education</a>.</p>
 
-            <p>Currently, I'm a cognitive neuroscientist finishing my PhD in Neuroscience at Emory University. As an <a href="https://www.nsfgrfp.org/" target="_blank">NSF Graduate Research Fellow</a>, I work in the <a href="https://npresearchlab.com" target="_blank">Neural Plasticity Research Lab</a> to study how aging changes the brain's navigation systems using neuroimaging and virtual reality.</p>
+            <p>Currently, I'm a cognitive neuroscientist finishing my PhD in Neuroscience at Emory University. As an <a href="https://www.nsfgrfp.org/" target="_blank">NSF Graduate Research Fellow</a>, I work in the <a href="https://npresearchlab.com" target="_blank">Neural Plasticity Research Lab</a> to study how aging changes the brain's navigation systems using neuroimaging, neurostimulation, and virtual reality.</p>
 
             <p>Over the course of my PhD, I've focused on building a new core research capacity for the lab—a novel navigation research arm that integrates clinical assessments, VR technology, neuroimaging, and neurostimulation to study spatial navigation throughout the lifespan. For more on this work, see <a href="science.html">science</a>.</p>
 
             <p>Prior to my PhD, I completed my undergraduate degree at the Georgia Institute of Technology, as well as my undergraduate thesis with Dr. Shella Keilholz in the <a href="https://sites.google.com/view/keilholz-lab/home" target="_blank">Keilholz MIND Lab</a>, analyzing resting-state brain connectivity in individuals with ADHD, PTSD, and sleep disorders.</p>
 
-            <div class="section-header">
+            <div class="section-header with-action">
                 <span>Interests & Passions</span>
+                <div class="section-line"></div>
+                <a href="service.html" class="header-action">service</a>
             </div>
 
-            <p>I'm endlessly passionate about advocating for (and with) the communities I'm part of—particularly through building accessible and inclusive systems that help others thrive. I've learned that advocacy without infrastructure is just intention. From undergraduate initiatives like the Research Ambassadors and Brainhack ATL to graduate leadership in student advocacy and DEI work, I'm committed to building systems that create real access to science.</p>
+            <p>I'm endlessly passionate about advocating for (and with) the communities I'm a part of—particularly through building accessible and inclusive systems that help others thrive.</p>
 
-            <div class="section-header">
+            <p>Whether I'm developing novel <a href="#open-source-tools">tools</a> for experimental questions, or building operational infrastructure for neuroscience <a href="#leadership">organizations</a>, I'm passionate about building robust, inclusive, and accessible neuroscience research infrastructure, no matter what role I'm in.</p>
+
+            <p>For more on leadership and advocacy, see <a href="service.html">service</a>.</p>
+
+            <div class="section-header with-action">
                 <span>Personal</span>
+                <div class="section-line"></div>
+                <a href="music.html" class="header-action">creative</a>
             </div>
 
             <div class="personal-note">
-                <p>The science and the scientist are inextricably intertwined. Often, we're encouraged to separate personal and professional identities, but science is inevitably shaped by the person conducting it.</p>
-                <p>This profile embraces that, blending personal and professional identity to show more of who I am.</p>
+                <p>The science and the scientist are inextricably intertwined. Often, we're encouraged to separate personal and professional identities, but science is inevitably shaped by the person conducting it. This profile embraces that, blending personal and professional identity to show more of who I am.</p>
             </div>
 
-            <p>Being Lebanese is a central part of my identity, and I try to visit home (Northern Lebanon, near Batroun) to see friends and family at least once a year. I always find a piece of Lebanon wherever I go—cooking family recipes, scavenging local record stores for Arabic music, or creating my own Lebanese community in whatever city I'm in.</p>
+            <p>Being Lebanese is a central part of my identity, and I try to visit home (Northern Lebanon, near Batroun) to see friends and family at least once a year. I always find a piece of Lebanon wherever I go—cooking family recipes, scavenging local record stores for Arabic music, leading the dabke line, or finding small pockets of community in whatever city I'm in.</p>
 
-            <p>I love to cook Lebanese cuisine, but I also enjoy experimenting with dishes from around the world. I'm an avid plant enthusiast and caretaker to 30+ indoor plants. You can often find me at the discount section of my local plant store, or exploring the city (by foot, bike, or public transit) to find thrift stores, bookstores, or specialty grocery stores.</p>
+            <p>I love to cook, usually experimenting with dishes from all around the world. I'm an avid plant enthusiast and caretaker to 30+ indoor plants. When I'm exploring the city (by foot, bike, or public transit, preferably), you can usually find me at the discount section of my local plant store, thrift stores, book stores, or speciality grocery stores.</p>
 
-            <p>I'm a lover of all things <a href="music.html">creative</a>. I'm currently part of <a href="https://www.instagram.com/labratband/" target="_blank">la brat band</a>, on piano and lead vocals (and occasionally bass!), putting my classical training to good use. We had our <a href="https://labratband.com/" target="_blank">debut show</a> last year.</p>
+            <p>I'm a lover of all things <a href="music.html">creative</a>. I'm currently part of <a href="https://www.instagram.com/labratband/" target="_blank">la brat band</a>, on piano and lead vocals (and occasionally bass!), putting my classical training to good use. We had our <a href="https://labratband.com/" target="_blank">debut show</a> last year. Otherwise, I love artistic endeavors in all forms, with my new favorite medium of pottery.</p>
 
             <div class="section-header">
                 <span>More</span>
             </div>
 
             <div class="misc-item"><strong>currently reading:</strong> <a href="https://charisbooksandmore.com/book/9780295752297" target="_blank">Queer World Making: Contemporary Middle Eastern Diasporic Art</a> by Andrew Gayed</div>
-            <div class="misc-item"><strong>favorite dessert:</strong> have you ever had a dessert with rose, cardamom, and pistachio and didn't it change your life</div>
+            <div class="misc-item"><strong>favorite dessert:</strong> anything with rose, cardamom, and pistachio</div>
             <div class="misc-item"><strong>favorite drink:</strong> recently had the best cocktail I've ever had — gin, bergamot liqueur, sake, matcha milk jam</div>
             <div class="misc-item"><strong>favorite ingredient to cook with:</strong> pomegranate molasses</div>
             <div class="misc-item"><strong>languages:</strong> Arabic (native), English (native), French (working proficiency)</div>
@@ -602,39 +626,41 @@
         </div>
 
         <div class="sidebar">
-            <h2>education</h2>
+            <div id="education" class="sidebar-section">
+                <h2>education</h2>
 
-            <ul class="section-list">
-                <li class="section-item">
-                    <div class="item-header">
-                        <span class="item-title">PhD Candidate</span>
-                        <span class="item-date">2020 - 2026</span>
-                    </div>
-                    <div class="item-org">Emory University</div>
-                </li>
-                <li class="section-item">
-                    <div class="item-header">
-                        <span class="item-title">BS in Neuroscience</span>
-                        <span class="item-date">2016 - 2020</span>
-                    </div>
-                    <div class="item-org">Georgia Institute of Technology</div>
-                </li>
-            </ul>
+                <ul class="section-list">
+                    <li class="section-item">
+                        <div class="item-header">
+                            <span class="item-title">PhD Candidate</span>
+                            <span class="item-date">2020 - 2026</span>
+                        </div>
+                        <div class="item-org">Emory University</div>
+                    </li>
+                    <li class="section-item">
+                        <div class="item-header">
+                            <span class="item-title">BS in Neuroscience</span>
+                            <span class="item-date">2016 - 2020</span>
+                        </div>
+                        <div class="item-org">Georgia Institute of Technology</div>
+                    </li>
+                </ul>
+            </div>
 
-            <h2>honors & awards (select)</h2>
+            <h2>honors & awards <span style="opacity: 0.5;">(select)</span></h2>
 
             <ul class="section-list">
                 <li class="section-item">
                     <div class="item-header">
                         <span class="item-title">2025 Teaching Award</span>
                     </div>
-                    <div class="item-org">Emory Neuroscience Graduate Program</div>
+                    <div class="item-org">Neuroscience Graduate Program, Emory University</div>
                 </li>
                 <li class="section-item">
                     <div class="item-header">
                         <span class="item-title">2024 Leadership Award</span>
                     </div>
-                    <div class="item-org">Emory Neuroscience Graduate Program</div>
+                    <div class="item-org">Neuroscience Graduate Program, Emory University</div>
                 </li>
                 <li class="section-item">
                     <div class="item-header">
@@ -646,11 +672,11 @@
                     <div class="item-header">
                         <span class="item-title">2023 Excellence in Mentorship Award</span>
                     </div>
-                    <div class="item-org">Emory Neuroscience Graduate Program</div>
+                    <div class="item-org">Neuroscience Graduate Program, Emory University</div>
                 </li>
             </ul>
 
-            <h2>funding</h2>
+            <h2>funding <span style="opacity: 0.5;">(select)</span></h2>
 
             <ul class="section-list">
                 <li class="section-item">
@@ -669,41 +695,68 @@
                 </li>
             </ul>
 
-            <h2>leadership (select)</h2>
+            <div id="leadership" class="sidebar-section">
+                <h2>leadership <span style="opacity: 0.5;">(select)</span></h2>
 
-            <ul class="section-list">
-                <li class="section-item">
-                    <div class="item-header">
-                        <span class="item-title">Co-President</span>
-                        <span class="item-date">2023 - 2025</span>
-                    </div>
-                    <div class="item-org"><a href="https://biomed.emory.edu/PROGRAM_SITES/NS/about-us/graduates-in-neuroscience.html" target="_blank">Graduates in Neuroscience</a>, Emory University<a href="https://www.instagram.com/emoryneurograds/" class="item-link" target="_blank">[IG]</a></div>
-                </li>
-                <li class="section-item">
-                    <div class="item-header">
-                        <span class="item-title">Co-Chair</span>
-                        <span class="item-date">2021 - 2023</span>
-                    </div>
-                    <div class="item-org">DEI Committee, Emory Neuroscience Graduate Program<br>[now <a href="https://biomed.emory.edu/PROGRAM_SITES/NS/about-us/axon.html" target="_blank">AXON Committee</a>]<a href="https://www.instagram.com/emory.axon/" class="item-link" target="_blank">[IG]</a></div>
-                </li>
-                <li class="section-item">
-                    <div class="item-header">
-                        <span class="item-title">Organizing Committee Chair</span>
-                        <span class="item-date">2019</span>
-                    </div>
-                    <div class="item-org"><a href="https://sites.gatech.edu/brainhackatl/" target="_blank">Brainhack ATL</a></div>
-                </li>
+                <ul class="section-list">
+                    <li class="section-item">
+                        <div class="item-header">
+                            <span class="item-title">Co-President</span>
+                            <span class="item-date">2023 - 2025</span>
+                        </div>
+                        <div class="item-org"><a href="https://biomed.emory.edu/PROGRAM_SITES/NS/about-us/graduates-in-neuroscience.html" target="_blank">Graduates in Neuroscience</a>, Emory University</div>
+                    </li>
+                    <li class="section-item">
+                        <div class="item-header">
+                            <span class="item-title">Executive Board, Internal Affairs</span>
+                            <span class="item-date">2024 - 2025</span>
+                        </div>
+                        <div class="item-org"><a href="https://www.arabsinneuro.org/" target="_blank">Arabs in Neuroscience</a></div>
+                    </li>
+                    <li class="section-item">
+                        <div class="item-header">
+                            <span class="item-title">Co-Chair</span>
+                            <span class="item-date">2021 - 2023</span>
+                        </div>
+                        <div class="item-org">DEI [<a href="https://biomed.emory.edu/PROGRAM_SITES/NS/about-us/axon.html" target="_blank">AXON</a>] Committee, Neuroscience Graduate Program, Emory University</div>
+                    </li>
+                    <li class="section-item">
+                        <div class="item-header">
+                            <span class="item-title">Organizing Committee Chair</span>
+                            <span class="item-date">2019</span>
+                        </div>
+                        <div class="item-org"><a href="https://sites.gatech.edu/brainhackatl/" target="_blank">Brainhack ATL</a></div>
+                    </li>
+                </ul>
+            </div>
+
+            <div id="open-source-tools" class="sidebar-section">
+                <h2>open-source tools</h2>
+
+                <ul class="simple-list">
+                    <li><a href="https://github.com/npresearchlab/navcity" target="_blank">NavCity Toolkit</a> — VR navigation task toolkit</li>
+                    <li><a href="https://github.com/npresearchlab/navcity-analysis" target="_blank">NavCity Analysis</a> — NavCity data analysis pipeline</li>
+                    <li><a href="https://gitlab.com/neurotrophy-git/mrflow" target="_blank">MR.Flow</a> — fMRI preprocessing & analysis pipeline</li>
+                </ul>
+            </div>
+
+            <h2>publications <span style="opacity: 0.5;">(select)</span></h2>
+
+            <ul class="simple-list">
+                <li><strong>Bassil, Y.</strong>, Kanukolanu, A., Funderburg, E., Brown, T., & Borich, M. R. (2025). Formation of allocentric representations after exposure to a novel, naturalistic, city-like, virtual reality environment. <em>Neuropsychologia</em>, 109290.</li>
+                <li>Woolgar, A., Feredoes, E., Assem, M., <strong>Bassil, Y.</strong>, et al. (2025). Consensus guidelines for the use of concurrent TMS-fMRI in cognitive and clinical neuroscience. <em>Nature Protocols</em>, 1-17.</li>
             </ul>
 
-            <h2>research contributions</h2>
+            <p style="font-size: 0.85rem; color: var(--text-muted);"><em>→ For all publications, see <a href="science.html">science</a>.</em></p>
 
-            <p><strong>Publications:</strong> 6 publications (1 under review), including first-author papers in <em>Neuropsychologia</em> and contributions to consensus guidelines in <em>Nature Protocols</em></p>
+            <h2>presentations <span style="opacity: 0.5;">(select)</span></h2>
 
-            <p><strong>Presentations:</strong> 23 poster presentations (11 self-presented), 2 platform presentations, 6 presentation awards</p>
+            <ul class="simple-list">
+                <li><strong>Bassil, Y.</strong> & Borich, M. (2023). "Testing circuit-based mechanisms of aging effects on human spatial navigation with TMS-fMRI." Oral presentation, International Workshop on Concurrent TMS-fMRI, Evia, Greece.</li>
+                <li>Adams, A., Tran, V. E., Costlow, A., <strong>Bassil, Y.</strong>, Kanukolanu, A., Cui, E., & Borich, M. (2024). "Interactions between navigation, balance, and higher-order cognition in the aging brain." Platform presentation, APTA CSM, Boston, MA.</li>
+            </ul>
 
-            <p><strong>Open-source tools:</strong> Developed immersive VR navigation task (Unity, open-sourced on GitHub); co-developed MR.Flow neuroimaging pipeline; created standardized analysis pipelines for reproducible research</p>
-
-            <p><strong>Methodological advancement:</strong> Established concurrent TMS-fMRI capability at Emory's Center for Systems Imaging Core</p>
+            <p style="font-size: 0.85rem; color: var(--text-muted);"><em>→ For all presentations, see <a href="science.html">science</a>.</em></p>
 
             <h2>mentorship impact</h2>
 
@@ -716,7 +769,7 @@
                 <li>Multiple competitive fellowships (Fulbright, DAAD-Rise, Georgia Tech President's Undergraduate Research Award)</li>
             </ul>
 
-            <h2>teaching experience</h2>
+            <h2>teaching <span style="opacity: 0.5;">(select)</span></h2>
 
             <ul class="simple-list">
                 <li>Instructor of Record: <em>Explore Neuroscience & Behavioral Biology</em> (NBB299)</li>
@@ -725,15 +778,7 @@
                 <li>Teaching Assistant: <em>Principles of Motor Learning</em> (DPT805)</li>
             </ul>
 
-            <h2>selected publications</h2>
-
-            <ul class="simple-list">
-                <li><strong>Bassil, Y.</strong>, Kanukolanu, A., Funderburg, E., Cui, E., Brown, T., & Borich, M. (2025). Distinct aging-related profiles of allocentric knowledge recall following navigation in an immersive, naturalistic, city-like environment. <em>PsyArXiv</em>. (under review)</li>
-                <li><strong>Bassil, Y.</strong>, Kanukolanu, A., Funderburg, E., Brown, T., & Borich, M. R. (2025). Formation of allocentric representations after exposure to a novel, naturalistic, city-like, virtual reality environment. <em>Neuropsychologia</em>, 109290.</li>
-                <li>Woolgar, A., Feredoes, E., Assem, M., <strong>Bassil, Y.</strong>, et al. (2025). Consensus guidelines for the use of concurrent TMS-fMRI in cognitive and clinical neuroscience. <em>Nature Protocols</em>, 1-17.</li>
-            </ul>
-
-            <h2>speaking & press (select)</h2>
+            <h2>press <span style="opacity: 0.5;">(select)</span></h2>
 
             <ul class="simple-list">
                 <li>2022 — Speaker, Tech Talks: Unique & Diverse Perspectives in Science, Atlanta Science Festival</li>
@@ -745,5 +790,43 @@
     <footer>
         © 2025 Yasmine Bassil
     </footer>
+
+    <script>
+        function highlightSection(target) {
+            target.classList.remove('highlight');
+            void target.offsetWidth; // trigger reflow
+            target.classList.add('highlight');
+            setTimeout(() => target.classList.remove('highlight'), 2000);
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href').slice(1);
+                const target = document.getElementById(targetId);
+                if (!target) return;
+
+                e.preventDefault();
+                history.replaceState(null, null, '#' + targetId);
+
+                const rect = target.getBoundingClientRect();
+                const isVisible = rect.top >= 0 && rect.top < window.innerHeight;
+
+                if (isVisible) {
+                    highlightSection(target);
+                } else {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                    setTimeout(() => highlightSection(target), 500);
+                }
+            });
+        });
+
+        // Handle page load with hash
+        if (window.location.hash) {
+            const target = document.getElementById(window.location.hash.slice(1));
+            if (target) {
+                setTimeout(() => highlightSection(target), 100);
+            }
+        }
+    </script>
 </body>
 </html>
