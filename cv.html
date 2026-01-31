@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:ital,wght@0,400;0,500;1,400&family=EB+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-cream: #fdf8fc;
@@ -17,27 +18,58 @@
             --accent-olive: #6B5B8E;
             --accent-purple: #766fe2;
             --font-display: 'Cormorant Garamond', Georgia, serif;
-            --font-body: 'DM Sans', -apple-system, sans-serif;
+            --font-body: 'Satoshi', -apple-system, system-ui, sans-serif;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { font-size: 16px; scroll-behavior: smooth; }
         body {
             font-family: var(--font-body);
-            background-color: var(--bg-cream);
+            background-color: var(--bg-cream-dark);
             color: var(--text-charcoal);
             line-height: 1.7;
             min-height: 100vh;
         }
 
-        nav {
+        .cv-page-wrapper {
             position: relative;
+            max-width: 850px;
+            margin: 2rem auto;
+            padding-top: 5rem;
+        }
+
+        .cv-page {
+            background: #ffffff;
+            padding: 3rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        }
+
+        nav {
+            position: fixed;
             top: 0; left: 0; right: 0;
             z-index: 100;
             padding: 1.5rem 3rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            background: linear-gradient(to bottom, var(--bg-cream) 0%, var(--bg-cream) 70%, transparent 100%);
+        }
+
+        .mobile-nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .mobile-nav-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--text-charcoal);
+            margin: 5px 0;
         }
 
         .logo {
@@ -65,10 +97,24 @@
         .nav-links a:hover { color: var(--accent-terracotta); }
         .nav-links a.active { color: var(--text-charcoal); }
 
+        .lang-toggle {
+            font-family: var(--font-arabic);
+            font-size: 1rem;
+            padding: 0.3rem 0.6rem;
+            border: 1px solid var(--bg-cream-dark);
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .lang-toggle:hover {
+            border-color: var(--accent-terracotta);
+            color: var(--accent-terracotta);
+        }
+
         main {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 2rem 2rem 4rem;
+            max-width: none;
+            margin: 0;
+            padding: 0;
         }
 
         .cv-header {
@@ -81,32 +127,78 @@
         }
 
         .cv-header-left h1 {
-            font-family: var(--font-display);
+            font-family: var(--font-body);
             font-size: 2.5rem;
-            font-weight: 600;
+            font-weight: 400;
             letter-spacing: -0.02em;
             color: var(--text-charcoal);
-            margin-bottom: 0.25rem;
+            margin-bottom: 0;
         }
 
         .cv-header-left .subtitle {
             font-size: 1.1rem;
             color: var(--accent-olive);
             font-weight: 500;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0;
+            padding-left: 0.25rem;
         }
 
-        .cv-header-left .contact {
+        .cv-header-right {
+            text-align: right;
+            align-self: flex-end;
+            margin-bottom: 0.2rem;
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.4rem 0.85rem;
+            background: linear-gradient(135deg, #4a7c59 0%, #5a8f6a 100%);
+            color: white;
+            font-size: 0.8rem;
+            font-weight: 500;
+            border-radius: 20px;
+            letter-spacing: 0.02em;
+            margin-bottom: 0.4rem;
+        }
+
+        .status-badge::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: #90EE90;
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.1); }
+        }
+
+        .seeking-dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: var(--accent-purple);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+            margin-right: 0.15rem;
+            vertical-align: middle;
+        }
+
+        .cv-header-right .contact {
             font-size: 0.9rem;
             color: var(--text-muted);
         }
 
-        .cv-header-left .contact a {
+        .cv-header-right .contact a {
             color: var(--accent-olive);
             text-decoration: none;
         }
 
-        .cv-header-left .contact a:hover {
+        .cv-header-right .contact a:hover {
             text-decoration: underline;
         }
 
@@ -122,6 +214,12 @@
             font-size: 0.95rem;
             transition: opacity 0.2s ease;
             white-space: nowrap;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translate(-50%, 0);
+            z-index: 10;
+            box-shadow: 0 2px 8px rgba(107, 91, 142, 0.25);
         }
 
         .download-btn:hover {
@@ -174,33 +272,44 @@
 
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.65rem;
             margin-bottom: 1rem;
         }
 
+        .skill-card.span-2 {
+            grid-column: span 2;
+        }
+
         .skill-card {
-            background: white;
-            border: 1px solid var(--bg-cream-dark);
-            border-radius: 8px;
+            background: var(--bg-cream);
+            border: 1px solid rgba(107, 91, 142, 0.15);
+            border-radius: 6px;
             overflow: hidden;
+            box-shadow: 0 1px 4px rgba(107, 91, 142, 0.06);
+            transition: box-shadow 0.2s ease, transform 0.2s ease;
+        }
+
+        .skill-card:hover {
+            box-shadow: 0 3px 10px rgba(107, 91, 142, 0.12);
+            transform: translateY(-1px);
         }
 
         .skill-card-header {
-            background: linear-gradient(135deg, rgba(107, 91, 142, 0.1) 0%, rgba(107, 91, 142, 0.05) 100%);
-            padding: 0.5rem 0.75rem;
-            font-size: 0.8rem;
+            background: var(--accent-olive);
+            padding: 0.3rem 0.6rem;
+            font-size: 0.65rem;
             font-weight: 600;
-            color: var(--accent-olive);
+            color: #ffffff;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            border-bottom: 1px solid var(--bg-cream-dark);
+            letter-spacing: 1px;
         }
 
         .skill-card-body {
-            padding: 0.75rem;
-            font-size: 0.9rem;
+            padding: 0.45rem 0.6rem;
+            font-size: 0.8rem;
             color: var(--text-charcoal);
+            line-height: 1.4;
         }
 
         .job-section {
@@ -399,18 +508,23 @@
             font-size: 0.9rem;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 900px) {
             nav { padding: 1rem 1.5rem; }
             .nav-links { display: none; }
-            main { padding: 1.5rem; }
+            .mobile-nav-toggle { display: block; }
+            .cv-page-wrapper { margin: 1rem; padding-top: 1.25rem; }
+            .cv-page { padding: 1.5rem; }
             .cv-header { flex-direction: column; gap: 1rem; }
             .cv-header-left h1 { font-size: 2rem; }
-            .skills-grid { grid-template-columns: 1fr; }
+            .skills-grid { grid-template-columns: repeat(2, 1fr); }
+            .skill-card.span-2 { grid-column: span 2; }
         }
 
         @media print {
             nav, .download-btn { display: none; }
-            main { max-width: none; padding: 0; }
+            body { background: white; }
+            .cv-page-wrapper { max-width: none; margin: 0; padding-top: 0; }
+            .cv-page { padding: 0; box-shadow: none; border-radius: 0; }
             .job-section, .skill-card { break-inside: avoid; }
         }
     </style>
@@ -427,14 +541,29 @@
             <li><a href="media.html">media</a></li>
             <li><a href="thoughts.html">thoughts</a></li>
             <li><a href="music.html">music</a></li>
+            <li><a href="#" class="lang-toggle">ع</a></li>
         </ul>
+        <button class="mobile-nav-toggle" aria-label="Toggle navigation">
+            <span></span><span></span><span></span>
+        </button>
     </nav>
 
     <main>
+      <div class="cv-page-wrapper">
+        <a href="Bassil_CV_2026.pdf" class="download-btn" target="_blank">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+            </svg>
+            Download PDF
+        </a>
+        <div class="cv-page">
         <div class="cv-header">
             <div class="cv-header-left">
                 <h1>Yasmine Bassil</h1>
                 <div class="subtitle">Neuroscience PhD Candidate</div>
+            </div>
+            <div class="cv-header-right">
+                <span class="status-badge" style="float: right; margin-right: -0.5rem;">open to work · open to relocation</span>
                 <div class="contact">
                     Atlanta, GA | Open to Relocation<br>
                     <a href="mailto:ybassil@emory.edu">ybassil@emory.edu</a> |
@@ -442,36 +571,38 @@
                     <a href="https://linkedin.com/in/yasminebassil">linkedin</a>
                 </div>
             </div>
-            <a href="Bassil_CV_2026.pdf" class="download-btn" target="_blank">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                </svg>
-                Download PDF
-            </a>
         </div>
 
         <div class="summary">
-            <p>Cognitive neuroscientist specialized in spatial navigation and aging. Established a novel navigation research arm, developing VR paradigms, neuroimaging pipelines, and reproducible analysis workflows. Led a 13-member team while managing a 110+ participant research program and serving as Co-President of a 120+ member neuroscience PhD student community.</p>
-            <p>Seeking to apply research leadership and technical expertise to industry and leadership roles.</p>
+            <p>Cognitive neuroscientist specialized in spatial navigation and aging, with strong computational skills. Established a novel navigation research arm — developed VR paradigms, pipeline orchestration for neuroimaging analyses, and reproducible open-source analysis workflows. Led a 13-member research team while managing a 125+ participant research program and serving as Co-President of a 120+ member neuroscience PhD student community.</p>
+            <p><span class="seeking-dot"></span> Seeking research and leadership roles in neuroscience and related fields within industry.</p>
         </div>
 
         <h2>Skills</h2>
         <div class="skills-grid">
             <div class="skill-card">
-                <div class="skill-card-header">Technical</div>
-                <div class="skill-card-body">Python, Bash/Zsh, Git, R, MATLAB, FSL</div>
+                <div class="skill-card-header">Languages</div>
+                <div class="skill-card-body">python, bash/zsh, R, MATLAB, C#</div>
             </div>
             <div class="skill-card">
-                <div class="skill-card-header">Clinical</div>
-                <div class="skill-card-body">VR, fMRI, TMS, TMS-fMRI, EEG</div>
+                <div class="skill-card-header">Software</div>
+                <div class="skill-card-body">FSL, fMRIPrep, FreeSurfer, AFNI, Unity</div>
             </div>
             <div class="skill-card">
-                <div class="skill-card-header">Research</div>
-                <div class="skill-card-body">Statistical Modeling, Grant Writing ($260K+ funded), Data Analysis & Visualization</div>
+                <div class="skill-card-header">Development Tools</div>
+                <div class="skill-card-body">Git, Docker/Singularity, Jupyter Notebooks</div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-card-header">Methods</div>
+                <div class="skill-card-body">VR, fMRI, MRI, TMS, TMS-fMRI, EEG, EMG</div>
             </div>
             <div class="skill-card">
                 <div class="skill-card-header">Leadership</div>
                 <div class="skill-card-body">Project Management, Cross-functional Team Leadership, Mentorship</div>
+            </div>
+            <div class="skill-card span-2">
+                <div class="skill-card-header">Research</div>
+                <div class="skill-card-body">Statistical Modeling, Grant Writing ($260K+ funded), Data Analysis & Visualization</div>
             </div>
             <div class="skill-card">
                 <div class="skill-card-header">Languages</div>
@@ -492,7 +623,7 @@
             <div class="job-content">
                 <h4>Research Leadership & Execution</h4>
                 <ul>
-                    <li>Led dissertation research identifying behavioral and neural mechanisms of aging-related spatial navigation deficits, using VR, fMRI, and concurrent TMS-fMRI across 110+ recruited participants.</li>
+                    <li>Led dissertation research identifying behavioral and neural mechanisms of aging-related spatial navigation deficits, using VR, fMRI, and concurrent TMS-fMRI across 120+ recruited participants.</li>
                     <li>Directed 15+ members of Navigation Team over 6 years (7 undergraduate, 6 doctoral students), establishing weekly meetings and tracking tasks & milestones across 8+ concurrent sub-studies.</li>
                     <li>Established concurrent TMS-fMRI as institutional research capability through Emory's Center for Systems Imaging Core, expanding methodology access for broader Atlanta neuro community.</li>
                 </ul>
@@ -662,6 +793,8 @@
             </div>
             <div class="item-description">Georgia Institute of Technology</div>
         </div>
+        </div>
+      </div>
     </main>
 
     <footer>© 2025 Yasmine Bassil</footer>
