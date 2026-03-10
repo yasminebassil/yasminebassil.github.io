@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RSVP Dashboard</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-cream: #fdf8fc;
+            --bg-cream-dark: #F0EBE3;
+            --text-charcoal: #2C2825;
+            --text-muted: #5C5552;
+            --accent-terracotta: #C4755B;
+            --accent-olive: #5C6B54;
+            --font-display: 'Cormorant Garamond', Georgia, serif;
+            --font-body: 'DM Sans', -apple-system, sans-serif;
+            --bg-card: #ffffff;
+            --shadow-soft: 0 2px 12px rgba(44, 40, 37, 0.06);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: var(--font-body); background: var(--bg-cream); color: var(--text-charcoal); line-height: 1.6; min-height: 100vh; }
+
+        /* Password gate */
+        .gate { position: fixed; inset: 0; background: var(--bg-cream); z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 2rem; }
+        .gate h2 { font-family: var(--font-display); font-size: 2rem; font-weight: 500; margin-bottom: 0.5rem; }
+        .gate p { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem; }
+        .gate input { padding: 0.75rem 1.25rem; font-family: var(--font-body); font-size: 1rem; color: var(--text-charcoal); background: var(--bg-card); border: 1px solid var(--bg-cream-dark); border-radius: 8px; outline: none; text-align: center; width: 240px; }
+        .gate input:focus { border-color: var(--accent-terracotta); box-shadow: 0 0 0 3px rgba(196, 117, 91, 0.1); }
+        .gate button { margin-top: 1rem; padding: 0.6rem 1.5rem; font-family: var(--font-body); font-size: 0.85rem; font-weight: 500; color: var(--bg-cream); background: var(--text-charcoal); border: none; border-radius: 8px; cursor: pointer; }
+        .gate button:hover { background: var(--accent-terracotta); }
+        .gate-error { font-size: 0.8rem; color: var(--accent-terracotta); margin-top: 0.75rem; visibility: hidden; }
+        .gate-error.show { visibility: visible; }
+
+        /* Dashboard */
+        .dashboard { max-width: 1000px; margin: 0 auto; padding: 3rem 2rem; }
+        .dashboard h1 { font-family: var(--font-display); font-size: 2.25rem; font-weight: 500; margin-bottom: 0.25rem; }
+        .dashboard .subtitle { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 2rem; }
+
+        /* Stat cards */
+        .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-bottom: 2.5rem; }
+        .stat-card { background: var(--bg-card); border-radius: 12px; padding: 1.25rem 1.5rem; box-shadow: var(--shadow-soft); }
+        .stat-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 0.25rem; }
+        .stat-value { font-family: var(--font-display); font-size: 2rem; font-weight: 600; }
+
+        /* Table */
+        .table-wrap { background: var(--bg-card); border-radius: 12px; box-shadow: var(--shadow-soft); overflow: hidden; }
+        .table-header { padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--bg-cream-dark); display: flex; justify-content: space-between; align-items: center; }
+        .table-header h2 { font-family: var(--font-display); font-size: 1.4rem; font-weight: 500; }
+        .search-input { padding: 0.5rem 1rem; font-family: var(--font-body); font-size: 0.85rem; border: 1px solid var(--bg-cream-dark); border-radius: 8px; outline: none; width: 220px; }
+        .search-input:focus { border-color: var(--accent-terracotta); }
+        table { width: 100%; border-collapse: collapse; }
+        thead th { text-align: left; padding: 0.75rem 1.5rem; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); border-bottom: 1px solid var(--bg-cream-dark); font-weight: 500; }
+        tbody td { padding: 0.75rem 1.5rem; font-size: 0.85rem; border-bottom: 1px solid var(--bg-cream-dark); }
+        tbody tr:last-child td { border-bottom: none; }
+        tbody tr:hover { background: var(--bg-cream); }
+        .pill { display: inline-block; padding: 0.2rem 0.65rem; border-radius: 12px; font-size: 0.75rem; font-weight: 500; }
+        .pill-inperson { background: rgba(92, 107, 84, 0.12); color: var(--accent-olive); }
+        .pill-virtual { background: rgba(196, 117, 91, 0.12); color: var(--accent-terracotta); }
+        .pill-skip { background: rgba(44, 40, 37, 0.08); color: var(--text-muted); }
+        .pill-event { background: rgba(92, 107, 84, 0.08); color: var(--accent-olive); margin: 0.1rem 0.2rem; }
+        .no-data { text-align: center; padding: 3rem; color: var(--text-muted); }
+        .loading { text-align: center; padding: 3rem; color: var(--text-muted); }
+        .timestamp { color: var(--text-muted); font-size: 0.8rem; }
+
+        @media (max-width: 700px) {
+            .stats { grid-template-columns: repeat(2, 1fr); }
+            .table-header { flex-direction: column; gap: 0.75rem; align-items: flex-start; }
+            .search-input { width: 100%; }
+            table { font-size: 0.8rem; }
+            thead th, tbody td { padding: 0.5rem 0.75rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="gate" id="gate">
+        <h2>Dashboard Login</h2>
+        <p>This page is private.</p>
+        <input type="password" id="gate-input" placeholder="Password" autocomplete="off">
+        <button id="gate-btn">Enter</button>
+        <div class="gate-error" id="gate-error">Incorrect password.</div>
+    </div>
+
+    <div class="dashboard" id="dashboard" style="display:none;">
+        <h1>RSVP Dashboard</h1>
+        <p class="subtitle">Real-time responses for your defense and celebrations</p>
+
+        <div class="stats" id="stats">
+            <div class="stat-card">
+                <div class="stat-label">Total RSVPs</div>
+                <div class="stat-value" id="stat-total">—</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">In Person</div>
+                <div class="stat-value" id="stat-inperson">—</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Virtual</div>
+                <div class="stat-value" id="stat-virtual">—</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Can't Make It</div>
+                <div class="stat-value" id="stat-skip">—</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Reception</div>
+                <div class="stat-value" id="stat-reception">—</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Celebration</div>
+                <div class="stat-value" id="stat-celebration">—</div>
+            </div>
+        </div>
+
+        <div class="table-wrap">
+            <div class="table-header">
+                <h2>All Responses</h2>
+                <input type="text" class="search-input" id="search" placeholder="Search by name or email...">
+            </div>
+            <div id="table-container">
+                <div class="loading">Loading RSVPs...</div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
+        import { getFirestore, collection, getDocs, query, orderBy } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyCvZj28rtAVYGZUF6p3uPZESebJJvHAtkc",
+            authDomain: "yb-defense.firebaseapp.com",
+            projectId: "yb-defense",
+            storageBucket: "yb-defense.firebasestorage.app",
+            messagingSenderId: "15104415472",
+            appId: "1:15104415472:web:c7364c4ddacde7ddc55435"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // ---- Password Gate ----
+        const PASS = 'dr-bassil-admin';
+        const gate = document.getElementById('gate');
+        const gateInput = document.getElementById('gate-input');
+        const gateBtn = document.getElementById('gate-btn');
+        const gateError = document.getElementById('gate-error');
+        const dashboard = document.getElementById('dashboard');
+
+        if (sessionStorage.getItem('dashboard-access') === 'granted') {
+            gate.style.display = 'none';
+            dashboard.style.display = '';
+            loadData();
+        }
+
+        function unlock() {
+            if (gateInput.value === PASS) {
+                sessionStorage.setItem('dashboard-access', 'granted');
+                gate.style.display = 'none';
+                dashboard.style.display = '';
+                loadData();
+            } else {
+                gateError.classList.add('show');
+                gateInput.style.borderColor = 'var(--accent-terracotta)';
+                setTimeout(() => { gateInput.style.borderColor = ''; }, 400);
+            }
+        }
+        gateBtn.addEventListener('click', unlock);
+        gateInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') unlock(); gateError.classList.remove('show'); });
+
+        // ---- Load Data ----
+        let allRsvps = [];
+
+        async function loadData() {
+            try {
+                const q = query(collection(db, 'rsvps'), orderBy('timestamp', 'desc'));
+                const snapshot = await getDocs(q);
+                allRsvps = snapshot.docs.map(doc => doc.data());
+                updateStats();
+                renderTable(allRsvps);
+            } catch (err) {
+                console.error('Error loading RSVPs:', err);
+                document.getElementById('table-container').innerHTML = '<div class="no-data">Error loading data. Check Firestore rules allow reads.</div>';
+            }
+        }
+
+        function updateStats() {
+            document.getElementById('stat-total').textContent = allRsvps.length;
+            document.getElementById('stat-inperson').textContent = allRsvps.filter(r => r.defenseMode === 'in-person').length;
+            document.getElementById('stat-virtual').textContent = allRsvps.filter(r => r.defenseMode === 'virtual').length;
+            document.getElementById('stat-skip').textContent = allRsvps.filter(r => r.defenseMode === 'skip').length;
+            document.getElementById('stat-reception').textContent = allRsvps.filter(r => r.events && r.events.includes('reception')).length;
+            document.getElementById('stat-celebration').textContent = allRsvps.filter(r => r.events && r.events.includes('celebration')).length;
+        }
+
+        function renderTable(data) {
+            const container = document.getElementById('table-container');
+            if (data.length === 0) {
+                container.innerHTML = '<div class="no-data">No RSVPs yet.</div>';
+                return;
+            }
+
+            let html = '<table><thead><tr><th>Name</th><th>Email</th><th>Defense</th><th>Events</th><th>Date</th></tr></thead><tbody>';
+            data.forEach(r => {
+                const mode = r.defenseMode || '—';
+                let modePill = '';
+                if (mode === 'in-person') modePill = '<span class="pill pill-inperson">In Person</span>';
+                else if (mode === 'virtual') modePill = '<span class="pill pill-virtual">Virtual</span>';
+                else if (mode === 'skip') modePill = '<span class="pill pill-skip">Can\'t Make It</span>';
+                else modePill = mode;
+
+                let eventPills = '—';
+                if (r.events && r.events.length > 0) {
+                    eventPills = r.events.map(e => '<span class="pill pill-event">' + e + '</span>').join(' ');
+                }
+
+                let dateStr = '—';
+                if (r.timestamp) {
+                    const d = r.timestamp.toDate ? r.timestamp.toDate() : new Date(r.timestamp);
+                    dateStr = '<span class="timestamp">' + d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) + '</span>';
+                }
+
+                html += '<tr><td>' + (r.name || '—') + '</td><td>' + (r.email || '—') + '</td><td>' + modePill + '</td><td>' + eventPills + '</td><td>' + dateStr + '</td></tr>';
+            });
+            html += '</tbody></table>';
+            container.innerHTML = html;
+        }
+
+        // ---- Search ----
+        document.getElementById('search').addEventListener('input', (e) => {
+            const term = e.target.value.toLowerCase();
+            const filtered = allRsvps.filter(r =>
+                (r.name && r.name.toLowerCase().includes(term)) ||
+                (r.email && r.email.toLowerCase().includes(term))
+            );
+            renderTable(filtered);
+        });
+    </script>
+</body>
+</html>
