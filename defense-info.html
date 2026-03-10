@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Defense Info — Yasmine Bassil</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:ital,wght@0,400;0,500;1,400&family=Noto+Sans+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-cream: #faf6f2;
+            --bg-cream-dark: #F0EBE3;
+            --text-charcoal: #2C2825;
+            --text-muted: #5C5552;
+            --accent-terracotta: #C4755B;
+            --accent-olive: #5C6B54;
+            --font-display: 'Cormorant Garamond', Georgia, serif;
+            --font-body: 'DM Sans', -apple-system, sans-serif;
+            --font-arabic: 'Noto Sans Arabic', sans-serif;
+            --bg-card: #ffffff;
+            --shadow-soft: 0 2px 12px rgba(44, 40, 37, 0.06);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { font-size: 16px; scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-cream);
+            color: var(--text-charcoal);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        /* ---- Back Link ---- */
+        .back-link {
+            position: fixed;
+            top: 1.5rem;
+            left: 2rem;
+            z-index: 100;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .back-link:hover {
+            color: var(--accent-terracotta);
+        }
+
+        /* ---- Page Header ---- */
+        .page-header {
+            text-align: center;
+            padding: 6rem 2rem 3rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .page-header h1 {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            font-weight: 500;
+            color: var(--text-charcoal);
+            margin-bottom: 0.5rem;
+        }
+
+        .page-header .subtitle {
+            font-size: 1rem;
+            color: var(--text-muted);
+        }
+
+        /* ---- Content Sections ---- */
+        .info-section {
+            max-width: 900px;
+            margin: 0 auto 3rem;
+            padding: 0 2rem;
+        }
+
+        .info-section h2 {
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            font-weight: 500;
+            color: var(--text-charcoal);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--bg-cream-dark);
+        }
+
+        .info-section p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        /* ---- Two Column Layout ---- */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        .two-col-text {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+
+        .two-col-text p {
+            margin-bottom: 1rem;
+        }
+
+        /* ---- Image Placeholders ---- */
+        .img-frame {
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            background: var(--bg-cream-dark);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            overflow: hidden;
+        }
+
+        .img-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .img-frame.map {
+            aspect-ratio: 16 / 9;
+        }
+
+        .img-caption {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-align: center;
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+
+        /* ---- Full Width Image ---- */
+        .full-img {
+            max-width: 900px;
+            margin: 0 auto 3rem;
+            padding: 0 2rem;
+        }
+
+        /* ---- Abstract Block ---- */
+        .abstract {
+            background: var(--bg-card);
+            border-radius: 8px;
+            box-shadow: var(--shadow-soft);
+            padding: 2rem 2.5rem;
+            border-left: 3px solid var(--accent-terracotta);
+            margin-bottom: 1.5rem;
+        }
+
+        .abstract p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+
+        /* ---- Committee Grid ---- */
+        .committee-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .committee-card {
+            text-align: center;
+            padding: 1.5rem 1rem;
+            background: var(--bg-card);
+            border-radius: 12px;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .committee-name {
+            font-family: var(--font-display);
+            font-size: 1.15rem;
+            font-weight: 500;
+            color: var(--text-charcoal);
+            margin-bottom: 0.25rem;
+        }
+
+        .committee-role {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent-terracotta);
+            margin-bottom: 0.35rem;
+        }
+
+        .committee-affiliation {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* ---- Info Cards (logistics) ---- */
+        .info-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .info-card {
+            background: var(--bg-card);
+            border-radius: 8px;
+            box-shadow: var(--shadow-soft);
+            padding: 1.5rem;
+        }
+
+        .info-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.15rem;
+            font-weight: 500;
+            color: var(--text-charcoal);
+            margin-bottom: 0.5rem;
+        }
+
+        .info-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 0;
+        }
+
+        /* ---- Venue Block ---- */
+        .venue-block {
+            border: 1px solid rgba(196, 117, 91, 0.3);
+            border-radius: 6px;
+            padding: 0.75rem 1.25rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            width: 100%;
+        }
+
+        .venue-block .venue-name {
+            font-family: var(--font-display);
+            font-size: 1.05rem;
+            font-weight: 500;
+            color: var(--text-charcoal);
+            margin-bottom: 0.15rem;
+        }
+
+        .venue-block .venue-detail {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* ---- Navigator Blurb ---- */
+        .navigator-blurb {
+            background: rgba(196, 117, 91, 0.06);
+            border-left: 3px solid var(--accent-terracotta);
+            border-radius: 0 8px 8px 0;
+            padding: 1.25rem 1.5rem;
+            margin-top: 1rem;
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .navigator-blurb .nav-icon {
+            flex-shrink: 0;
+            margin-top: 0.1rem;
+        }
+
+        .navigator-blurb .nav-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent-terracotta);
+            font-weight: 500;
+            margin-bottom: 0.35rem;
+        }
+
+        .navigator-blurb p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 0;
+        }
+
+        /* ---- Info Pills ---- */
+        .info-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.75rem;
+        }
+
+        .info-pill {
+            display: inline-block;
+            padding: 0.35rem 0.9rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            border: 1px solid var(--bg-cream-dark);
+            border-radius: 50px;
+            background: var(--bg-card);
+        }
+
+        /* ---- Transport Subsections ---- */
+        .transport-sub {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-charcoal);
+            margin-top: 2rem;
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.4rem;
+            border-bottom: 1px solid var(--bg-cream-dark);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .transport-sub svg {
+            color: var(--accent-terracotta);
+        }
+
+        /* ---- Pill Button ---- */
+        .pill-btn {
+            display: inline-block;
+            padding: 0.4rem 1.25rem;
+            font-family: var(--font-body);
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--accent-terracotta);
+            border: 1px solid var(--accent-terracotta);
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin-top: 0.75rem;
+        }
+
+        .pill-btn:hover {
+            background: var(--accent-terracotta);
+            color: var(--bg-cream);
+        }
+
+        /* ---- Footer ---- */
+        footer {
+            padding: 2rem 3rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* ---- Mobile ---- */
+        @media (max-width: 900px) {
+            .back-link {
+                top: 1rem;
+                left: 1.5rem;
+            }
+
+            .page-header {
+                padding: 5rem 1.5rem 2rem;
+            }
+
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .info-section {
+                padding: 0 1.5rem;
+            }
+
+            .two-col {
+                grid-template-columns: 1fr;
+            }
+
+            .committee-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .info-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .committee-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="defense.html" class="back-link">&larr; Back to Defense</a>
+
+    <!-- Header -->
+    <div class="page-header">
+        <h1>Defense Details</h1>
+        <p class="subtitle">Everything you need to know about the day</p>
+    </div>
+
+    <!-- Abstract -->
+    <section class="info-section">
+        <h2>About the Research</h2>
+        <div class="abstract">
+            <p>
+                <strong>How do we find our way around, and what changes as we get older?</strong> One of the earliest signs of aging-related cognitive decline is a shift in how people navigate their daily environments. Older adults tend to rely on memorized routes and body-based cues &mdash; such as &ldquo;turn left at the stop sign&rdquo; &mdash; rather than forming flexible, map-like mental representations of their environment. Understanding this shift could help identify early markers of cognitive decline, and that&rsquo;s what this research is all about.
+            </p>
+            <p>
+                Yasmine will be presenting her work on understanding the aging navigational system, using virtual reality, neuroimaging, and other multimodal neuroscience techniques. She welcomes you to join her as she shares what she&rsquo;s learned about how we find our way over time.
+            </p>
+        </div>
+    </section>
+
+    <!-- What to Expect -->
+    <section class="info-section">
+        <h2>What to Expect</h2>
+        <div class="two-col">
+            <div class="two-col-text">
+                <p>
+                    The defense will begin with the Director of Graduate Studies setting the agenda for the session, followed by an introduction from Yasmine&rsquo;s advisor, Dr. Michael Borich. Yasmine will then present her dissertation research in a ~45 minute presentation, followed by questions from the audience. The full public session (presentation + Q&amp;A) will last approximately one hour. All are welcome to attend.
+                </p>
+                <p>
+                    After the Q&amp;A (~1:00 PM), the audience will be asked to step out as the private defense commences between Yasmine and her committee. Afterwards, the committee will deliberate, and Yasmine will emerge once a decision has been reached.
+                </p>
+            </div>
+            <div>
+                <div class="img-frame">
+                    [Photo of HSRB or auditorium]
+                </div>
+                <p class="img-caption">HSRB-I Auditorium</p>
+                <div class="info-pills">
+                    <span class="info-pill">No dress code</span>
+                    <span class="info-pill">Non-flash photography &amp; video permitted</span>
+                    <span class="info-pill">Phones on silent</span>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Getting There -->
+    <section class="info-section">
+        <h2>Getting There</h2>
+        <div class="venue-block">
+            <div style="margin-bottom: 0.25rem;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C4755B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div class="venue-name">Health Sciences Research Building I (HSRB-I) Auditorium</div>
+            <div class="venue-detail">Emory University</div>
+            <div class="venue-detail">1760 Haygood Dr NE, Atlanta, GA 30322</div>
+        </div>
+        <div class="two-col">
+            <div>
+                <div class="img-frame map">
+                    <img src="brumley-bridge-crosswalk.png" alt="Brumley Bridge crosswalk entrance to HSRB-I">
+                </div>
+                <p class="img-caption">HSRB-I entrance at the Brumley Bridge crosswalk</p>
+            </div>
+            <div class="two-col-text">
+                <h3 style="font-family: var(--font-display); font-size: 1.35rem; font-weight: 600; color: var(--text-charcoal); margin-bottom: 0.75rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--bg-cream-dark);">Finding the HSRB-I Building</h3>
+                <p>
+                    The defense will take place in the <strong>Health Sciences Research Building I (HSRB-I)</strong>, located at 1760 Haygood Dr NE, in the <strong>Auditorium</strong>. The entrance for the auditorium is in between the two large HSRB buildings, near the Brumley Bridge, at the crosswalk (pictured to the left).
+                </p>
+            </div>
+        </div>
+        <div class="two-col" style="margin-top: 1.5rem;">
+            <div class="two-col-text">
+                <p>
+                    Take this path upwards and take the staircase or ramp (pictured to the right, circled) to arrive to the proper entrance. We will have friends outside with a sign to greet you and show you to the auditorium.
+                </p>
+                <p>
+                    Please try to arrive a few minutes early, as the building doors require keycard access to be let in. There will only be someone to let you in until 12:05PM. If you arrive later than that, we will provide a number you can text to notify someone to let you in.
+                </p>
+            </div>
+            <div>
+                <div class="img-frame map">
+                    <img src="auditorium-entrance.png" alt="HSRB-I auditorium entrance">
+                </div>
+                <p class="img-caption">HSRB-I staircase / ramp to entrance</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Transportation -->
+    <section class="info-section">
+        <h2>Transportation</h2>
+
+        <!-- Walking Directions -->
+        <div class="navigator-blurb">
+            <div class="nav-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C4755B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="13" cy="4" r="2"/>
+                    <path d="M10 10l2-1 4 4"/>
+                    <path d="M12 9l-4.5 12"/>
+                    <path d="M16 13l1.5 8"/>
+                    <path d="M6 8l2 1"/>
+                </svg>
+            </div>
+            <div style="flex: 1;">
+                <div class="nav-label">Walking Directions</div>
+                <p>
+                    If you&rsquo;re walking from main campus (or parking decks), you will walk down Haygood Dr NE in the southeast direction. You will walk down the road until you see the Emory Brumley Bridge (pictured above). Take the staircase on the <strong>left</strong> before the bridge, which will lead you to the proper entrance doors.
+                </p>
+            </div>
+            <div style="position: relative; flex-shrink: 0;">
+                <img src="navigation-path.png" alt="Navigation path to HSRB-I" style="width: 100px; height: 120px; object-fit: cover; border-radius: 6px;">
+                <svg width="24" height="24" viewBox="0 0 24 24" style="position: absolute; top: -6px; right: -6px; background: var(--bg-cream); border-radius: 50%; padding: 2px;">
+                    <circle cx="12" cy="12" r="10" fill="none" stroke="#C4755B" stroke-width="0.8" opacity="0.4"/>
+                    <polygon points="12,3 13.2,10 12,8.5 10.8,10" fill="#C4755B"/>
+                    <polygon points="12,21 13.2,14 12,15.5 10.8,14" fill="#C4755B" opacity="0.3"/>
+                    <polygon points="3,12 10,10.8 8.5,12 10,13.2" fill="#C4755B" opacity="0.3"/>
+                    <polygon points="21,12 14,10.8 15.5,12 14,13.2" fill="#C4755B" opacity="0.3"/>
+                    <text x="12" y="2.5" text-anchor="middle" font-size="3" fill="#C4755B" font-weight="600" font-family="DM Sans, sans-serif">N</text>
+                </svg>
+            </div>
+        </div>
+
+        <!-- Parking -->
+        <h3 class="transport-sub">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 17V7h4a3 3 0 0 1 0 6H9"/></svg>
+            Parking
+        </h3>
+        <p>[Parking information — visitor decks, rates, closest deck to HSRB-I, payment methods, etc.]</p>
+
+        <!-- Public Transit -->
+        <h3 class="transport-sub">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="14" rx="2"/><path d="M4 11h16"/><path d="M12 3v14"/><circle cx="8" cy="20" r="1"/><circle cx="16" cy="20" r="1"/><path d="M8 17v3"/><path d="M16 17v3"/></svg>
+            Public Transit
+        </h3>
+        <p>[MARTA directions — nearest station, bus routes, shuttle info, walking time from station, etc.]</p>
+
+        <!-- Rideshare -->
+        <h3 class="transport-sub">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+            Rideshare
+        </h3>
+        <p>[Uber/Lyft drop-off location, recommended pin address, tips, etc.]</p>
+    </section>
+
+    <!-- Virtual Attendance -->
+    <section class="info-section">
+        <h2>Joining Virtually</h2>
+        <div class="info-cards">
+            <div class="info-card">
+                <h3>Zoom Link</h3>
+                <p>[Zoom link will be added closer to the date and shared via email.]</p>
+            </div>
+            <div class="info-card">
+                <h3>Time Zone</h3>
+                <p>The defense begins at 12:00 PM Eastern Daylight Time (EDT / UTC-4).</p>
+            </div>
+            <div class="info-card">
+                <h3>What to Know</h3>
+                <p>[Any virtual etiquette notes — e.g., "Please keep your mic muted during the presentation. Questions will be opened up after the talk."]</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Committee -->
+    <section class="info-section">
+        <h2>Dissertation Committee</h2>
+        <div class="committee-grid">
+            <div class="committee-card">
+                <div class="committee-name">[Advisor Name]</div>
+                <div class="committee-role">Chair</div>
+                <div class="committee-affiliation">[Department], Emory University</div>
+            </div>
+            <div class="committee-card">
+                <div class="committee-name">[Member Name]</div>
+                <div class="committee-role">Committee Member</div>
+                <div class="committee-affiliation">[Department], Emory University</div>
+            </div>
+            <div class="committee-card">
+                <div class="committee-name">[Member Name]</div>
+                <div class="committee-role">Committee Member</div>
+                <div class="committee-affiliation">[Department], Emory University</div>
+            </div>
+            <div class="committee-card">
+                <div class="committee-name">[Member Name]</div>
+                <div class="committee-role">Committee Member</div>
+                <div class="committee-affiliation">[Department / Institution]</div>
+            </div>
+            <div class="committee-card">
+                <div class="committee-name">[Member Name]</div>
+                <div class="committee-role">Committee Member</div>
+                <div class="committee-affiliation">[Department / Institution]</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Back button -->
+    <div style="text-align: center; padding: 1rem 2rem 2rem;">
+        <a href="defense.html#rsvp" class="pill-btn">Back to RSVP &rarr;</a>
+    </div>
+
+    <footer>&copy; 2025 Yasmine Bassil</footer>
+
+</body>
+</html>

@@ -1,0 +1,1501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Defense — Yasmine Bassil</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:ital,wght@0,400;0,500;1,400&family=Noto+Sans+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-cream: #faf6f2;
+            --bg-cream-dark: #F0EBE3;
+            --text-charcoal: #2C2825;
+            --text-muted: #5C5552;
+            --accent-terracotta: #C4755B;
+            --accent-olive: #5C6B54;
+            --font-display: 'Cormorant Garamond', Georgia, serif;
+            --font-body: 'DM Sans', -apple-system, sans-serif;
+            --font-arabic: 'Noto Sans Arabic', sans-serif;
+            --bg-card: #ffffff;
+            --shadow-soft: 0 2px 12px rgba(44, 40, 37, 0.06);
+            --shadow-hover: 0 6px 24px rgba(44, 40, 37, 0.12);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { font-size: 16px; scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-cream);
+            color: var(--text-charcoal);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        /* ---- Navigation ---- */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(to bottom, var(--bg-cream) 0%, var(--bg-cream) 70%, transparent 100%);
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--text-charcoal);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.75rem;
+            align-items: center;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover { color: var(--accent-terracotta); }
+        .nav-links a.active { color: var(--text-charcoal); }
+
+        .lang-toggle {
+            font-family: var(--font-arabic);
+            font-size: 1rem;
+            padding: 0.3rem 0.6rem;
+            border: 1px solid var(--bg-cream-dark);
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .lang-toggle:hover {
+            border-color: var(--accent-terracotta);
+            color: var(--accent-terracotta);
+        }
+
+        .mobile-nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .mobile-nav-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--text-charcoal);
+            margin: 5px 0;
+        }
+
+        /* ---- Hero ---- */
+        .defense-hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 8rem 2rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .neuron-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.45;
+        }
+
+        .overline {
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .candidate-name {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            font-weight: 500;
+            color: var(--text-charcoal);
+            margin-bottom: 0.75rem;
+            line-height: 1.2;
+        }
+
+        .dissertation-title {
+            font-family: var(--font-display);
+            font-size: 1.35rem;
+            font-weight: 500;
+            color: var(--accent-terracotta);
+            max-width: 600px;
+            margin: 0 auto 1rem;
+            line-height: 1.5;
+        }
+
+        .degree-info {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .grad-cap-icon {
+            display: inline-block;
+            vertical-align: middle;
+            margin: 0 0.35rem;
+            position: relative;
+            top: -1px;
+        }
+
+        .defense-date {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--accent-terracotta);
+            margin-top: 1.5rem;
+        }
+
+        /* ---- Countdown ---- */
+        .countdown {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .countdown-unit {
+            text-align: center;
+        }
+
+        .countdown-number {
+            font-family: var(--font-display);
+            font-size: 2.25rem;
+            font-weight: 600;
+            color: var(--text-charcoal);
+            line-height: 1;
+        }
+
+        .countdown-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+        }
+
+        .countdown-past {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: var(--accent-terracotta);
+        }
+
+        /* ---- Scroll Hint ---- */
+        .scroll-hint {
+            position: absolute;
+            bottom: 2rem;
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            animation: bounce 2s ease infinite;
+            opacity: 0.6;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(8px); }
+        }
+
+        /* ---- Ornament Divider ---- */
+        .ornament {
+            text-align: center;
+            padding: 1.5rem 2rem;
+            color: var(--bg-cream-dark);
+            font-size: 0.6rem;
+            position: relative;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .ornament::before,
+        .ornament::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: calc(50% - 1.5rem);
+            height: 1px;
+            background: var(--bg-cream-dark);
+        }
+
+        .ornament::before { left: 0; }
+        .ornament::after { right: 0; }
+
+        /* ---- Section Containers ---- */
+        .defense-section {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .section-label {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 500;
+            text-align: center;
+            color: var(--text-charcoal);
+            margin-bottom: 2rem;
+        }
+
+        /* ---- Envelope ---- */
+        .envelope {
+            max-width: 500px;
+            margin: 0 auto 0.75rem;
+            position: relative;
+        }
+
+        .envelope-body {
+            background: #e8cfc4;
+            border-radius: 0 0 8px 8px;
+            padding: 1.5rem;
+            position: relative;
+            box-shadow: 0 4px 16px rgba(44, 40, 37, 0.1);
+        }
+
+        /* Inner envelope shadow / lining */
+        .envelope-body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2.5rem;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.04), transparent);
+            pointer-events: none;
+            border-radius: 0 0 8px 8px;
+        }
+
+        /* Open flap */
+        .envelope-flap {
+            position: relative;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .envelope-flap-inner {
+            width: 100%;
+            padding-bottom: 25%;
+            background: #d4b5a7;
+            clip-path: polygon(0 100%, 50% 0, 100% 100%);
+            position: relative;
+        }
+
+        .envelope-flap-text {
+            position: absolute;
+            bottom: 12%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: var(--font-display);
+            font-style: italic;
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.8);
+            white-space: nowrap;
+        }
+
+        /* ---- Note Card ---- */
+        .note-card {
+            background: var(--bg-card);
+            border-radius: 6px;
+            box-shadow: 0 1px 4px rgba(44, 40, 37, 0.08);
+            padding: 1.5rem 1.75rem;
+            position: relative;
+            border-top: 3px solid var(--accent-terracotta);
+        }
+
+        .note-card p {
+            text-align: left;
+            text-indent: 1.5rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+
+        .note-card p + p {
+            margin-top: 1rem;
+        }
+
+        .note-card strong {
+            font-weight: 500;
+            color: var(--text-charcoal);
+        }
+
+        .note-signature {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-style: italic;
+            font-weight: 500;
+            color: var(--text-charcoal);
+            text-align: center;
+            margin-top: 1.25rem;
+        }
+
+        /* ---- Pill Button ---- */
+        .pill-btn {
+            display: inline-block;
+            padding: 0.4rem 1.25rem;
+            font-family: var(--font-body);
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--accent-terracotta);
+            border: 1px solid var(--accent-terracotta);
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin-top: 0.75rem;
+        }
+
+        .pill-btn:hover {
+            background: var(--accent-terracotta);
+            color: var(--bg-cream);
+        }
+
+        /* ---- Details Section ---- */
+        .details-section > p {
+            text-align: center;
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .venue-info {
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .venue-label {
+            display: inline-block;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-muted);
+            margin-bottom: 0.35rem;
+            padding-bottom: 0.25rem;
+            border-bottom: 2px solid var(--accent-terracotta);
+        }
+
+        .venue-name {
+            font-family: var(--font-display);
+            font-size: 1.15rem;
+            color: var(--text-charcoal);
+        }
+
+        .venue-sub {
+            font-size: 1rem;
+            color: var(--text-muted);
+        }
+
+        .venue-link {
+            color: var(--accent-terracotta);
+            text-decoration: none;
+        }
+
+        .venue-link:hover {
+            text-decoration: underline;
+        }
+
+        /* ---- Timeline ---- */
+        .timeline {
+            position: relative;
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 1rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--bg-cream-dark);
+            transform: translateX(-50%);
+        }
+
+        .timeline-event {
+            display: flex;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .timeline-event:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 0.75rem;
+            width: 12px;
+            height: 12px;
+            background: var(--accent-terracotta);
+            border: 3px solid var(--bg-cream);
+            border-radius: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+        }
+
+        .timeline-content {
+            width: 44%;
+            background: var(--bg-card);
+            border-radius: 12px;
+            box-shadow: var(--shadow-soft);
+            padding: 1.5rem;
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-2px);
+        }
+
+        .timeline-event:nth-child(odd) .timeline-content {
+            margin-right: auto;
+            text-align: right;
+        }
+
+        .timeline-event:nth-child(even) .timeline-content {
+            margin-left: auto;
+            text-align: left;
+        }
+
+        .timeline-date {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--accent-terracotta);
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-title {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: var(--text-charcoal);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-detail {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .timeline-location {
+            font-size: 0.85rem;
+            color: var(--accent-olive);
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+
+        /* ---- Committee ---- */
+        .committee-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .committee-card {
+            text-align: center;
+            padding: 1.5rem 1rem;
+            background: var(--bg-card);
+            border-radius: 12px;
+            box-shadow: var(--shadow-soft);
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+        }
+
+        .committee-card:hover {
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-2px);
+        }
+
+        .committee-name {
+            font-family: var(--font-display);
+            font-size: 1.15rem;
+            font-weight: 500;
+            color: var(--text-charcoal);
+            margin-bottom: 0.25rem;
+        }
+
+        .committee-role {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent-terracotta);
+            margin-bottom: 0.35rem;
+        }
+
+        .committee-affiliation {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* ---- RSVP Form ---- */
+        .rsvp-intro {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .rsvp-form {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            color: var(--text-charcoal);
+            background: var(--bg-card);
+            border: 1px solid var(--bg-cream-dark);
+            border-radius: 8px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            outline: none;
+        }
+
+        .form-input:focus {
+            border-color: var(--accent-terracotta);
+            box-shadow: 0 0 0 3px rgba(196, 117, 91, 0.1);
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .radio-option {
+            flex: 1;
+            min-width: 130px;
+        }
+
+        .radio-option input[type="radio"] {
+            display: none;
+        }
+
+        .radio-option label {
+            display: block;
+            text-align: center;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--bg-cream-dark);
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            background: var(--bg-card);
+            transition: all 0.3s ease;
+        }
+
+        .radio-option label:hover {
+            border-color: var(--accent-terracotta);
+        }
+
+        .radio-option input[type="radio"]:checked + label {
+            border-color: var(--accent-terracotta);
+            color: var(--accent-terracotta);
+            background: rgba(196, 117, 91, 0.05);
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .checkbox-option {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            cursor: pointer;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--bg-cream-dark);
+            border-radius: 8px;
+            background: var(--bg-card);
+            transition: all 0.3s ease;
+        }
+
+        .checkbox-option:hover {
+            border-color: var(--accent-terracotta);
+        }
+
+        .checkbox-option.disabled {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        .checkbox-option input[type="checkbox"] {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            border: 1px solid var(--bg-cream-dark);
+            border-radius: 4px;
+            background: var(--bg-card);
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .checkbox-option input[type="checkbox"]:checked {
+            background: var(--accent-terracotta);
+            border-color: var(--accent-terracotta);
+        }
+
+        .checkbox-option input[type="checkbox"]:checked::after {
+            content: '';
+            position: absolute;
+            left: 6px;
+            top: 2px;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+
+        .checkbox-label {
+            font-size: 0.95rem;
+            color: var(--text-charcoal);
+        }
+
+        .checkbox-detail {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .checkbox-content-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .defense-mode-toggle {
+            display: none;
+            gap: 0.25rem;
+            flex-shrink: 0;
+        }
+
+        .defense-mode-toggle.visible {
+            display: flex;
+        }
+
+        .mode-btn {
+            padding: 0.35rem 0.75rem;
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            font-weight: 500;
+            border: 1px solid var(--bg-cream-dark);
+            border-radius: 50px;
+            background: var(--bg-card);
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .mode-btn:hover {
+            border-color: var(--accent-terracotta);
+        }
+
+        .mode-btn.active {
+            border-color: var(--accent-terracotta);
+            color: var(--accent-terracotta);
+            background: rgba(196, 117, 91, 0.05);
+        }
+
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            margin-top: 2rem;
+            font-family: var(--font-display);
+            font-size: 1.15rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            color: var(--bg-cream);
+            background: var(--text-charcoal);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: var(--accent-terracotta);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .form-feedback {
+            text-align: center;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        .form-feedback.success {
+            display: block;
+            background: rgba(92, 107, 84, 0.1);
+            color: var(--accent-olive);
+            border: 1px solid rgba(92, 107, 84, 0.2);
+        }
+
+        .form-feedback.error {
+            display: block;
+            background: rgba(196, 117, 91, 0.1);
+            color: var(--accent-terracotta);
+            border: 1px solid rgba(196, 117, 91, 0.2);
+        }
+
+        /* ---- Scroll Reveal ---- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-stagger > .reveal:nth-child(1) { transition-delay: 0.1s; }
+        .reveal-stagger > .reveal:nth-child(2) { transition-delay: 0.2s; }
+        .reveal-stagger > .reveal:nth-child(3) { transition-delay: 0.3s; }
+        .reveal-stagger > .reveal:nth-child(4) { transition-delay: 0.4s; }
+        .reveal-stagger > .reveal:nth-child(5) { transition-delay: 0.5s; }
+
+        /* ---- Footer ---- */
+        footer {
+            padding: 2rem 3rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* ---- Mobile ---- */
+        @media (max-width: 900px) {
+            nav { padding: 1rem 1.5rem; }
+            .nav-links { display: none; }
+            .mobile-nav-toggle { display: block; }
+
+            .defense-hero {
+                padding: 6rem 1.5rem 3rem;
+            }
+
+            .candidate-name {
+                font-size: 2.5rem;
+            }
+
+            .dissertation-title {
+                font-size: 1.25rem;
+            }
+
+            .countdown {
+                gap: 1rem;
+            }
+
+            .countdown-number {
+                font-size: 2rem;
+            }
+
+            .defense-section {
+                padding: 2rem 1.5rem;
+            }
+
+            .section-label {
+                font-size: 1.75rem;
+            }
+
+            /* Timeline single column */
+            .timeline::before {
+                left: 1rem;
+            }
+
+            .timeline-dot {
+                left: 1rem;
+            }
+
+            .timeline-event:nth-child(odd) .timeline-content,
+            .timeline-event:nth-child(even) .timeline-content {
+                width: calc(100% - 3rem);
+                margin-left: 3rem;
+                text-align: left;
+            }
+
+            .committee-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .radio-group {
+                flex-direction: column;
+            }
+
+            /* Mobile nav dropdown */
+            .nav-links.open {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                right: 1.5rem;
+                background: var(--bg-cream);
+                padding: 1rem 1.5rem;
+                border-radius: 8px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+                gap: 0.75rem;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .committee-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .countdown {
+                gap: 0.75rem;
+            }
+
+            .countdown-number {
+                font-size: 1.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+
+    <!-- Navigation removed — standalone page -->
+
+    <!-- Hero -->
+    <header class="defense-hero" id="hero">
+        <svg class="neuron-bg" viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <!-- Axons / dendrites (temporarily hidden) -->
+            <g stroke="var(--accent-terracotta)" fill="none" stroke-width="1.5" stroke-linecap="round" display="none">
+                <!-- Neuron cluster - left -->
+                <path d="M80,200 Q120,180 160,220"/>
+                <path d="M160,220 Q200,260 250,240"/>
+                <path d="M160,220 Q140,280 120,340"/>
+                <path d="M120,340 Q100,390 130,440"/>
+                <path d="M120,340 Q160,360 200,350"/>
+                <path d="M80,200 Q60,160 90,110"/>
+                <path d="M90,110 Q120,70 170,80"/>
+                <path d="M90,110 Q50,80 30,40"/>
+                <path d="M250,240 Q300,230 340,260"/>
+                <path d="M250,240 Q270,200 310,180"/>
+                <!-- Neuron cluster - right -->
+                <path d="M1050,150 Q1090,180 1120,160"/>
+                <path d="M1120,160 Q1160,140 1180,100"/>
+                <path d="M1120,160 Q1150,200 1130,250"/>
+                <path d="M1130,250 Q1100,300 1060,320"/>
+                <path d="M1060,320 Q1020,350 1040,410"/>
+                <path d="M1060,320 Q1100,360 1140,380"/>
+                <path d="M1050,150 Q1010,120 970,140"/>
+                <path d="M970,140 Q930,160 900,200"/>
+                <path d="M970,140 Q950,100 920,70"/>
+                <!-- Neuron cluster - bottom left -->
+                <path d="M200,600 Q240,580 280,610"/>
+                <path d="M280,610 Q320,640 370,620"/>
+                <path d="M280,610 Q260,660 230,710"/>
+                <path d="M200,600 Q160,580 140,530"/>
+                <path d="M140,530 Q120,480 80,460"/>
+                <path d="M370,620 Q410,600 440,560"/>
+                <!-- Neuron cluster - bottom right -->
+                <path d="M950,550 Q990,530 1030,560"/>
+                <path d="M1030,560 Q1070,590 1110,570"/>
+                <path d="M1030,560 Q1010,610 1040,660"/>
+                <path d="M1040,660 Q1070,710 1100,740"/>
+                <path d="M950,550 Q920,520 880,540"/>
+                <path d="M880,540 Q840,560 810,600"/>
+            </g>
+            <!-- Cell bodies (soma - temporarily hidden) -->
+            <g fill="var(--accent-terracotta)" display="none">
+                <!-- Left cluster -->
+                <circle cx="80" cy="200" r="5"/>
+                <circle cx="160" cy="220" r="6.5"/>
+                <circle cx="250" cy="240" r="4.5"/>
+                <circle cx="120" cy="340" r="5.5"/>
+                <circle cx="90" cy="110" r="4"/>
+                <circle cx="130" cy="440" r="3.5"/>
+                <circle cx="170" cy="80" r="3"/>
+                <circle cx="30" cy="40" r="3"/>
+                <circle cx="340" cy="260" r="4"/>
+                <circle cx="310" cy="180" r="3.5"/>
+                <!-- Right cluster -->
+                <circle cx="1050" cy="150" r="5"/>
+                <circle cx="1120" cy="160" r="6"/>
+                <circle cx="1130" cy="250" r="5"/>
+                <circle cx="1060" cy="320" r="5.5"/>
+                <circle cx="970" cy="140" r="4.5"/>
+                <circle cx="1180" cy="100" r="3.5"/>
+                <circle cx="1040" cy="410" r="3.5"/>
+                <circle cx="1140" cy="380" r="3"/>
+                <circle cx="900" cy="200" r="4"/>
+                <circle cx="920" cy="70" r="3.5"/>
+                <!-- Bottom left cluster -->
+                <circle cx="200" cy="600" r="5"/>
+                <circle cx="280" cy="610" r="6"/>
+                <circle cx="370" cy="620" r="4.5"/>
+                <circle cx="230" cy="710" r="3.5"/>
+                <circle cx="140" cy="530" r="4.5"/>
+                <circle cx="80" cy="460" r="3"/>
+                <circle cx="440" cy="560" r="3.5"/>
+                <!-- Bottom right cluster -->
+                <circle cx="950" cy="550" r="5"/>
+                <circle cx="1030" cy="560" r="6"/>
+                <circle cx="1110" cy="570" r="4"/>
+                <circle cx="1040" cy="660" r="4.5"/>
+                <circle cx="1100" cy="740" r="3.5"/>
+                <circle cx="880" cy="540" r="4.5"/>
+                <circle cx="810" cy="600" r="3"/>
+            </g>
+            <!-- Left half compass (clipped to show left half, facing outward) -->
+            <defs>
+                <clipPath id="clip-left-half">
+                    <rect x="-300" y="-300" width="300" height="600"/>
+                </clipPath>
+                <clipPath id="clip-right-half">
+                    <rect x="0" y="-300" width="300" height="600"/>
+                </clipPath>
+            </defs>
+            <g transform="translate(375,400) scale(0.7)" stroke="var(--accent-terracotta)" fill="var(--accent-terracotta)" opacity="0.7" clip-path="url(#clip-left-half)">
+                <circle cx="0" cy="0" r="260" fill="none" stroke-width="1.5"/>
+                <circle cx="0" cy="0" r="250" fill="none" stroke-width="0.75"/>
+                <circle cx="0" cy="0" r="140" fill="none" stroke-width="1"/>
+                <circle cx="0" cy="0" r="40" fill="none" stroke-width="1"/>
+                <circle cx="0" cy="0" r="6" fill="var(--accent-terracotta)" stroke="none"/>
+                <polygon points="0,-245 12,-60 0,-30 -12,-60" opacity="0.7"/>
+                <polygon points="0,245 12,60 0,30 -12,60" opacity="0.35"/>
+                <polygon points="-245,0 -60,12 -30,0 -60,-12" opacity="0.35"/>
+                <polygon points="-175,-175 -30,-18 -18,-30" opacity="0.5"/>
+                <polygon points="-175,175 -30,18 -18,30" opacity="0.25"/>
+                <g stroke-width="1.5" opacity="0.4">
+                    <line x1="0" y1="-260" x2="0" y2="-250"/>
+                    <line x1="0" y1="260" x2="0" y2="250"/>
+                    <line x1="-260" y1="0" x2="-250" y2="0"/>
+                    <line x1="-130" y1="-225" x2="-125" y2="-216.5"/>
+                    <line x1="-225" y1="-130" x2="-216.5" y2="-125"/>
+                    <line x1="-225" y1="130" x2="-216.5" y2="125"/>
+                    <line x1="-130" y1="225" x2="-125" y2="216.5"/>
+                </g>
+                <g font-family="var(--font-display)" font-size="26" font-weight="600" text-anchor="middle" dominant-baseline="central" opacity="0.5">
+                    <text x="0" y="-278">N</text>
+                    <text x="0" y="283">S</text>
+                    <text x="-283" y="2">W</text>
+                </g>
+            </g>
+            <!-- Right half compass (clipped to show right half, facing outward) -->
+            <g transform="translate(825,400) scale(0.7)" stroke="var(--accent-terracotta)" fill="var(--accent-terracotta)" opacity="0.7" clip-path="url(#clip-right-half)">
+                <circle cx="0" cy="0" r="260" fill="none" stroke-width="1.5"/>
+                <circle cx="0" cy="0" r="250" fill="none" stroke-width="0.75"/>
+                <circle cx="0" cy="0" r="140" fill="none" stroke-width="1"/>
+                <circle cx="0" cy="0" r="40" fill="none" stroke-width="1"/>
+                <circle cx="0" cy="0" r="6" fill="var(--accent-terracotta)" stroke="none"/>
+                <polygon points="0,-245 12,-60 0,-30 -12,-60" opacity="0.7"/>
+                <polygon points="0,245 12,60 0,30 -12,60" opacity="0.35"/>
+                <polygon points="245,0 60,12 30,0 60,-12" opacity="0.35"/>
+                <polygon points="175,-175 30,-18 18,-30" opacity="0.5"/>
+                <polygon points="175,175 30,18 18,30" opacity="0.25"/>
+                <g stroke-width="1.5" opacity="0.4">
+                    <line x1="0" y1="-260" x2="0" y2="-250"/>
+                    <line x1="0" y1="260" x2="0" y2="250"/>
+                    <line x1="260" y1="0" x2="250" y2="0"/>
+                    <line x1="130" y1="-225" x2="125" y2="-216.5"/>
+                    <line x1="225" y1="-130" x2="216.5" y2="-125"/>
+                    <line x1="225" y1="130" x2="216.5" y2="125"/>
+                    <line x1="130" y1="225" x2="125" y2="216.5"/>
+                </g>
+                <g font-family="var(--font-display)" font-size="26" font-weight="600" text-anchor="middle" dominant-baseline="central" opacity="0.5">
+                    <text x="0" y="-278">N</text>
+                    <text x="0" y="283">S</text>
+                    <text x="283" y="2">E</text>
+                </g>
+            </g>
+            <!-- Small dendritic spines (temporarily hidden) -->
+            <g fill="var(--accent-terracotta)" opacity="0.5" display="none">
+                <circle cx="110" cy="190" r="1.5"/>
+                <circle cx="200" cy="250" r="1.5"/>
+                <circle cx="140" cy="270" r="1.5"/>
+                <circle cx="105" cy="370" r="1.5"/>
+                <circle cx="70" cy="150" r="1.5"/>
+                <circle cx="1085" cy="155" r="1.5"/>
+                <circle cx="1140" cy="210" r="1.5"/>
+                <circle cx="1090" cy="280" r="1.5"/>
+                <circle cx="1000" cy="130" r="1.5"/>
+                <circle cx="240" cy="590" r="1.5"/>
+                <circle cx="330" cy="630" r="1.5"/>
+                <circle cx="170" cy="560" r="1.5"/>
+                <circle cx="990" cy="540" r="1.5"/>
+                <circle cx="1070" cy="580" r="1.5"/>
+                <circle cx="1070" cy="700" r="1.5"/>
+            </g>
+        </svg>
+        <p class="overline">You are invited to the doctoral defense of</p>
+        <h1 class="candidate-name">Yasmine Bassil</h1>
+        <p class="dissertation-title">"Navigating Aging: How We Find Our Way Over Time"</p>
+        <p class="degree-info">
+            <svg class="grad-cap-icon" width="20" height="20" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="32,4 2,22 32,40 62,22" fill="var(--accent-terracotta)" opacity="0.85"/><rect x="30" y="28" width="4" height="18" rx="1" fill="var(--accent-terracotta)" opacity="0.7"/><path d="M16 26 v12 c0 8 16 14 16 14 s16-6 16-14 v-12" stroke="var(--accent-terracotta)" stroke-width="3" fill="none" opacity="0.6"/><circle cx="52" cy="38" r="2.5" fill="var(--accent-terracotta)" opacity="0.7"/><line x1="52" y1="22" x2="52" y2="38" stroke="var(--accent-terracotta)" stroke-width="2.5" opacity="0.7"/></svg>
+            Doctor of Philosophy in Neuroscience
+            <svg class="grad-cap-icon" width="20" height="20" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="32,4 2,22 32,40 62,22" fill="var(--accent-terracotta)" opacity="0.85"/><rect x="30" y="28" width="4" height="18" rx="1" fill="var(--accent-terracotta)" opacity="0.7"/><path d="M16 26 v12 c0 8 16 14 16 14 s16-6 16-14 v-12" stroke="var(--accent-terracotta)" stroke-width="3" fill="none" opacity="0.6"/><circle cx="52" cy="38" r="2.5" fill="var(--accent-terracotta)" opacity="0.7"/><line x1="52" y1="22" x2="52" y2="38" stroke="var(--accent-terracotta)" stroke-width="2.5" opacity="0.7"/></svg><br>
+            Emory University
+        </p>
+
+        <div class="countdown" id="countdown">
+            <div class="countdown-unit">
+                <div class="countdown-number" id="countdown-days">--</div>
+                <div class="countdown-label">Days</div>
+            </div>
+            <div class="countdown-unit">
+                <div class="countdown-number" id="countdown-hours">--</div>
+                <div class="countdown-label">Hours</div>
+            </div>
+            <div class="countdown-unit">
+                <div class="countdown-number" id="countdown-minutes">--</div>
+                <div class="countdown-label">Minutes</div>
+            </div>
+            <div class="countdown-unit">
+                <div class="countdown-number" id="countdown-seconds">--</div>
+                <div class="countdown-label">Seconds</div>
+            </div>
+        </div>
+
+        <div class="defense-date">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent-terracotta)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            Friday, June 5th at 12 PM
+        </div>
+
+        <a href="#invitation" class="scroll-hint" aria-label="Scroll to details">&#8595;</a>
+    </header>
+
+    <!-- Ornament -->
+    <div class="ornament">&#10022;</div>
+
+    <!-- Details -->
+    <section class="defense-section details-section reveal" id="invitation">
+        <div class="envelope">
+            <div class="envelope-flap">
+                <div class="envelope-flap-inner">
+                    <span class="envelope-flap-text">You're Invited...</span>
+                </div>
+            </div>
+            <div class="envelope-body">
+                <div class="note-card">
+                    <p>
+                        After 6 years of dissertation research, I am excited and honored to invite you
+                        to my <strong>Neuroscience PhD Defense</strong>!
+                    </p>
+                    <p>
+                        I would love to celebrate this milestone with all
+                        who have been in community with me so far &mdash; friends, family,
+                        co-workers, study participants, teachers, mentors, community members, and anyone interested in the
+                        research being presented. Please see below for details on the defense itself and
+                        post-defense celebrations.
+                    </p>
+                    <div class="note-signature">&mdash; Yasmine</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ornament -->
+    <div class="ornament">&#10022;</div>
+
+    <!-- Details -->
+    <section class="defense-section details-section reveal" id="details">
+        <h2 class="section-label">The Details</h2>
+
+        <div class="venue-info">
+            <div class="venue-label">Defense</div>
+            <div class="venue-name">HSRB-I Auditorium &amp; <a href="https://emory.zoom.us/my/yasminebassil" class="venue-link" target="_blank">Zoom</a> (Hybrid)</div>
+            <div class="venue-sub">1760 Haygood Dr NE, Atlanta, GA 30322</div>
+            <div class="venue-sub" style="color: var(--accent-terracotta);">Friday, June 5, 2026 &middot; 12:00 &ndash; 1:00 PM EDT</div>
+            <span class="pill-btn" style="opacity: 0.4; cursor: default;">Details coming soon</span>
+        </div>
+
+        <div class="venue-info" style="margin-top: 3rem;">
+            <div class="venue-label">Reception</div>
+            <div class="venue-name">HSRB-I Caf&eacute;</div>
+            <div class="venue-sub">1760 Haygood Dr NE, Atlanta, GA 30322</div>
+            <div class="venue-sub" style="color: var(--accent-terracotta);">Friday, June 5, 2026 &middot; 1:00 &ndash; 3:30 PM</div>
+            <span class="pill-btn" style="opacity: 0.4; cursor: default;">Details coming soon</span>
+        </div>
+
+        <div class="venue-info" style="margin-top: 3rem;">
+            <div class="venue-label">Celebrating Dr. Bassil!</div>
+            <div class="venue-name">Yasmine's Backyard</div>
+            <div class="venue-sub">989 Moreland Ave SE, Atlanta, GA</div>
+            <div class="venue-sub" style="color: var(--accent-terracotta);">Saturday, June 6, 2026 &middot; 7:00 PM</div>
+            <span class="pill-btn" style="opacity: 0.4; cursor: default;">Details coming soon</span>
+        </div>
+    </section>
+
+    <!-- Ornament -->
+    <div class="ornament">&#10022;</div>
+
+    <!-- Timeline -->
+    <section class="defense-section timeline-section" id="timeline">
+        <h2 class="section-label">Schedule of Events</h2>
+
+        <div class="timeline reveal-stagger">
+            <!-- Defense -->
+            <div class="timeline-event">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content reveal">
+                    <div class="timeline-date">Friday, June 5, 2026 &middot; 12:00 PM</div>
+                    <div class="timeline-title">Doctoral Defense</div>
+                    <div class="timeline-detail">
+                        Yasmine presents and defends her dissertation research on spatial
+                        navigation and cognitive aging. Open to all &mdash; in person and via Zoom.
+                    </div>
+                    <div class="timeline-location">HSRB-I Auditorium, Emory University</div>
+                </div>
+            </div>
+
+            <!-- Reception -->
+            <div class="timeline-event">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content reveal">
+                    <div class="timeline-date">Friday, June 5, 2026 &middot; 1:00 PM</div>
+                    <div class="timeline-title">Reception</div>
+                    <div class="timeline-detail">
+                        Reception begins with refreshments while Yasmine completes her private
+                        defense. Yasmine joins around 2:00 PM to celebrate through 3:30 PM.
+                        In person only.
+                    </div>
+                    <div class="timeline-location">HSRB-I Caf&eacute;, Emory University</div>
+                </div>
+            </div>
+
+            <!-- Celebration -->
+            <div class="timeline-event">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content reveal">
+                    <div class="timeline-date">Saturday, June 6, 2026 &middot; 7:00 PM</div>
+                    <div class="timeline-title">Celebrating Dr. Bassil!</div>
+                    <div class="timeline-detail">
+                        An evening of celebrations! Food, music, dancing, and fun with friends
+                        and family. In person only.
+                    </div>
+                    <div class="timeline-location">989 Moreland Ave SE, Atlanta, GA</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ornament -->
+    <div class="ornament">&#10022;</div>
+
+    <!-- RSVP -->
+    <section class="defense-section rsvp-section" id="rsvp">
+        <h2 class="section-label">RSVP</h2>
+        <p class="rsvp-intro">Please RSVP below to let Yasmine know if you can make it.</p>
+
+        <form class="rsvp-form" id="rsvp-form" novalidate>
+            <!-- Name -->
+            <div class="form-group">
+                <label class="form-label" for="rsvp-name">Full Name</label>
+                <input class="form-input" type="text" id="rsvp-name" name="name" required
+                       placeholder="Your full name" autocomplete="name">
+            </div>
+
+            <!-- Email -->
+            <div class="form-group">
+                <label class="form-label" for="rsvp-email">Email</label>
+                <input class="form-input" type="email" id="rsvp-email" name="email" required
+                       placeholder="your.email@example.com" autocomplete="email">
+            </div>
+
+            <!-- Confirm Email -->
+            <div class="form-group">
+                <label class="form-label" for="rsvp-email-confirm">Confirm Email</label>
+                <input class="form-input" type="email" id="rsvp-email-confirm" name="email-confirm" required
+                       placeholder="Re-enter your email" autocomplete="off">
+            </div>
+
+            <!-- Step 1: Doctoral Defense -->
+            <div class="form-group">
+                <label class="form-label">Doctoral Defense &middot; Friday, June 5 at 12:00 PM</label>
+                <div class="radio-group">
+                    <div class="radio-option">
+                        <input type="radio" id="defense-inperson" name="defense-mode" value="in-person" required>
+                        <label for="defense-inperson">In Person</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="defense-virtual" name="defense-mode" value="virtual">
+                        <label for="defense-virtual">Virtual</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="defense-skip" name="defense-mode" value="skip">
+                        <label for="defense-skip">Can't Make It</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2: Other Events -->
+            <div class="form-group" id="events-group">
+                <label class="form-label">Will you also attend?</label>
+                <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.75rem;">Please RSVP to additional events below. Leave empty if you can't make it.</p>
+                <div class="checkbox-group">
+                    <label class="checkbox-option" id="cb-reception">
+                        <input type="checkbox" name="events" value="reception">
+                        <div>
+                            <div class="checkbox-label">Reception</div>
+                            <div class="checkbox-detail">Friday, June 5 at 1:00 PM &middot; In person only</div>
+                        </div>
+                    </label>
+                    <label class="checkbox-option" id="cb-celebration">
+                        <input type="checkbox" name="events" value="celebration">
+                        <div>
+                            <div class="checkbox-label">Defense Party</div>
+                            <div class="checkbox-detail">Saturday, June 6 at 7:00 PM &middot; In person only</div>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <p style="font-size: 0.8rem; color: var(--text-muted); text-align: center; margin-top: 1.5rem;">You'll receive a confirmation email with your RSVP details.</p>
+            <button type="submit" class="submit-btn" id="submit-btn">Send RSVP</button>
+
+            <div class="form-feedback" id="form-feedback"></div>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>&copy; 2025 Yasmine Bassil</footer>
+
+    <!-- JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>
+        // ---- EmailJS Init ----
+        // !! REPLACE WITH YOUR EMAILJS PUBLIC KEY !!
+        emailjs.init('GOkQM-FcHb6v8REig');
+
+    </script>
+
+    <script type="module">
+        // ---- Countdown Timer ----
+        function updateCountdown() {
+            const target = new Date('2026-06-05T12:00:00-04:00');
+            const now = new Date();
+            const diff = target - now;
+
+            if (diff <= 0) {
+                document.getElementById('countdown').innerHTML =
+                    '<p class="countdown-past">The defense is happening now!</p>';
+                return;
+            }
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            const minutes = Math.floor((diff / (1000 * 60)) % 60);
+            const seconds = Math.floor((diff / 1000) % 60);
+
+            document.getElementById('countdown-days').textContent = days;
+            document.getElementById('countdown-hours').textContent = hours;
+            document.getElementById('countdown-minutes').textContent = minutes;
+            document.getElementById('countdown-seconds').textContent = seconds;
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        // ---- Scroll Reveal ----
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.15,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // ---- Form: Defense Mode Toggle ----
+        const defenseModeRadios = document.querySelectorAll('input[name="defense-mode"]');
+        const eventsGroup = document.getElementById('events-group');
+        const eventCheckboxes = document.querySelectorAll('input[name="events"]');
+
+        defenseModeRadios.forEach(radio => {
+            radio.addEventListener('change', () => {
+                const value = document.querySelector('input[name="defense-mode"]:checked').value;
+                eventsGroup.style.display = '';
+            });
+        });
+
+        // ---- Firebase ----
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
+        import { getFirestore, collection, addDoc, serverTimestamp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyCvZj28rtAVYGZUF6p3uPZESebJJvHAtkc",
+            authDomain: "yb-defense.firebaseapp.com",
+            projectId: "yb-defense",
+            storageBucket: "yb-defense.firebasestorage.app",
+            messagingSenderId: "15104415472",
+            appId: "1:15104415472:web:c7364c4ddacde7ddc55435"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // ---- Form Submission ----
+        const form = document.getElementById('rsvp-form');
+        const submitBtn = document.getElementById('submit-btn');
+        const feedback = document.getElementById('form-feedback');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const name = document.getElementById('rsvp-name').value.trim();
+            const email = document.getElementById('rsvp-email').value.trim();
+            const emailConfirm = document.getElementById('rsvp-email-confirm').value.trim();
+            const defenseMode = document.querySelector('input[name="defense-mode"]:checked');
+            const events = [...document.querySelectorAll('input[name="events"]:checked')]
+                               .map(cb => cb.value);
+
+            if (!name || !email || !emailConfirm || !defenseMode) {
+                showFeedback('Please fill in all required fields.', 'error');
+                return;
+            }
+
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                showFeedback('Please enter a valid email address.', 'error');
+                return;
+            }
+
+            if (email.toLowerCase() !== emailConfirm.toLowerCase()) {
+                showFeedback('Email addresses do not match. Please re-enter.', 'error');
+                return;
+            }
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+
+            try {
+                await addDoc(collection(db, 'rsvps'), {
+                    name: name,
+                    email: email,
+                    defenseMode: defenseMode.value,
+                    events: events,
+                    timestamp: serverTimestamp()
+                });
+
+                // Send confirmation email via EmailJS
+                try {
+                    await emailjs.send('service_uiv8ong', 'template_nf5g6dj', {
+                        to_name: name,
+                        to_email: email,
+                        defense_mode: defenseMode.value === 'skip' ? "Can't make it" : defenseMode.value === 'virtual' ? 'Virtual' : 'In Person',
+                        events: events.length > 0 ? events.map(e => e === 'reception' ? 'Reception' : 'Defense Party').join(', ') : 'None'
+                    });
+                } catch (emailError) {
+                    console.warn('Confirmation email failed:', emailError);
+                }
+
+                showFeedback('Thank you! Your RSVP has been received.<br>A confirmation email is on its way.', 'success');
+                form.reset();
+                eventsGroup.style.display = '';
+            } catch (error) {
+                console.error('RSVP submission error:', error);
+                showFeedback('Something went wrong. Please try again or email Yasmine directly.', 'error');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Send RSVP';
+            }
+        });
+
+        function showFeedback(message, type) {
+            feedback.innerHTML = message;
+            feedback.className = 'form-feedback ' + type;
+        }
+
+        // ---- Mobile Nav Toggle ----
+        const navToggle = document.querySelector('.mobile-nav-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        if (navToggle) {
+            navToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('open');
+            });
+        }
+    </script>
+
+</body>
+</html>
