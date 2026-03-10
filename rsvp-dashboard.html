@@ -202,7 +202,7 @@
                 return;
             }
 
-            let html = '<table><thead><tr><th>Name</th><th>Email</th><th>Defense</th><th>Events</th><th>Date</th></tr></thead><tbody>';
+            let html = '<table><thead><tr><th>Name</th><th>Email</th><th>Defense</th><th>Events</th><th>Dietary</th><th>Accommodations</th><th>Date</th></tr></thead><tbody>';
             data.forEach(r => {
                 const mode = r.defenseMode || '—';
                 let modePill = '';
@@ -222,7 +222,7 @@
                     dateStr = '<span class="timestamp">' + d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) + '</span>';
                 }
 
-                html += '<tr><td>' + (r.name || '—') + '</td><td>' + (r.email || '—') + '</td><td>' + modePill + '</td><td>' + eventPills + '</td><td>' + dateStr + '</td></tr>';
+                html += '<tr><td>' + (r.name || '—') + '</td><td>' + (r.email || '—') + '</td><td>' + modePill + '</td><td>' + eventPills + '</td><td>' + (r.dietary || '—') + '</td><td>' + (r.accommodations || '—') + '</td><td>' + dateStr + '</td></tr>';
             });
             html += '</tbody></table>';
             container.innerHTML = html;

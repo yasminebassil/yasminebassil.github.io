@@ -1198,6 +1198,7 @@
             <div class="venue-sub" style="color: var(--accent-terracotta);">Saturday, June 6, 2026 &middot; 7:00 PM</div>
             <span class="pill-btn" style="opacity: 0.4; cursor: default;">Details coming soon</span>
         </div>
+        <p style="text-align: center; font-size: 0.85rem; color: var(--text-muted); margin-top: 3rem;">Detailed directions, parking, and accommodation info will be available soon.</p>
     </section>
 
     <!-- Ornament -->
@@ -1324,6 +1325,20 @@
                 </div>
             </div>
 
+            <!-- Dietary & Accommodations (shown when an event checkbox is selected) -->
+            <div id="extra-questions" style="display: none;">
+                <div class="form-group">
+                    <label class="form-label" for="rsvp-dietary">Dietary restrictions, allergies, or preferences?</label>
+                    <input class="form-input" type="text" id="rsvp-dietary" name="dietary"
+                           placeholder="e.g., vegetarian, nut allergy, halal" autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="rsvp-accommodations">Any accommodations we should know about?</label>
+                    <input class="form-input" type="text" id="rsvp-accommodations" name="accommodations"
+                           placeholder="e.g., wheelchair access, transportation needs" autocomplete="off">
+                </div>
+            </div>
+
             <p style="font-size: 0.8rem; color: var(--text-muted); text-align: center; margin-top: 1.5rem;">You'll receive a confirmation email with your RSVP details.</p>
             <button type="submit" class="submit-btn" id="submit-btn">Send RSVP</button>
 
@@ -1391,6 +1406,14 @@
         const defenseModeRadios = document.querySelectorAll('input[name="defense-mode"]');
         const eventsGroup = document.getElementById('events-group');
         const eventCheckboxes = document.querySelectorAll('input[name="events"]');
+        const extraQuestions = document.getElementById('extra-questions');
+
+        function toggleExtraQuestions() {
+            const anyChecked = [...eventCheckboxes].some(cb => cb.checked);
+            extraQuestions.style.display = anyChecked ? '' : 'none';
+        }
+
+        eventCheckboxes.forEach(cb => cb.addEventListener('change', toggleExtraQuestions));
 
         defenseModeRadios.forEach(radio => {
             radio.addEventListener('change', () => {
@@ -1449,11 +1472,16 @@
             submitBtn.textContent = 'Sending...';
 
             try {
+                const dietary = document.getElementById('rsvp-dietary').value.trim();
+                const accommodations = document.getElementById('rsvp-accommodations').value.trim();
+
                 await addDoc(collection(db, 'rsvps'), {
                     name: name,
                     email: email,
                     defenseMode: defenseMode.value,
                     events: events,
+                    dietary: dietary || '',
+                    accommodations: accommodations || '',
                     timestamp: serverTimestamp()
                 });
 
@@ -1472,6 +1500,7 @@
                 showFeedback('Thank you! Your RSVP has been received.<br>A confirmation email is on its way.', 'success');
                 form.reset();
                 eventsGroup.style.display = '';
+                extraQuestions.style.display = 'none';
             } catch (error) {
                 console.error('RSVP submission error:', error);
                 showFeedback('Something went wrong. Please try again or email Yasmine directly.', 'error');
