@@ -815,6 +815,70 @@
             background: rgba(196, 117, 91, 0.05);
         }
 
+        /* ---- Guest Stepper ---- */
+        .guest-stepper-row {
+            display: none;
+            align-items: center;
+            gap: 0.6rem;
+            margin-top: 0.6rem;
+            padding: 0.5rem 0.75rem;
+            background: rgba(196, 117, 91, 0.05);
+            border-radius: 6px;
+            border: 1px solid rgba(196, 117, 91, 0.15);
+        }
+
+        .guest-stepper-row.visible {
+            display: flex;
+        }
+
+        .guest-stepper-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            flex: 1;
+        }
+
+        .stepper {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .stepper-btn {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            border: 1px solid var(--bg-cream-dark);
+            background: var(--bg-card);
+            color: var(--text-charcoal);
+            font-size: 1rem;
+            line-height: 1;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+        }
+
+        .stepper-btn:hover:not(:disabled) {
+            border-color: var(--accent-terracotta);
+            color: var(--accent-terracotta);
+        }
+
+        .stepper-btn:disabled {
+            opacity: 0.35;
+            cursor: not-allowed;
+        }
+
+        .stepper-value {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--text-charcoal);
+            min-width: 1.5rem;
+            text-align: center;
+        }
+
         .submit-btn {
             display: block;
             width: 100%;
@@ -1369,6 +1433,15 @@
                         <label for="defense-skip">Can't Make It</label>
                     </div>
                 </div>
+                <div class="guest-stepper-row" id="stepper-defense">
+                    <span class="guest-stepper-label" id="defense-stepper-label">Additional guests you're bringing?</span>
+                    <div class="stepper">
+                        <button type="button" class="stepper-btn" id="defense-minus" disabled>−</button>
+                        <span class="stepper-value" id="defense-count">0</span>
+                        <button type="button" class="stepper-btn" id="defense-plus">+</button>
+                    </div>
+                </div>
+                <input type="hidden" name="defense-guests" id="defense-guests-val" value="0">
             </div>
 
             <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: -0.5rem; margin-bottom: 1.25rem; font-style: italic; text-align: center;">Detailed event information will be available on this page soon.</p>
@@ -1378,20 +1451,42 @@
                 <label class="form-label">Will you also attend?</label>
                 <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.75rem;">Please RSVP to additional in-person events below. Leave empty if you can't make it.</p>
                 <div class="checkbox-group">
-                    <label class="checkbox-option" id="cb-reception">
-                        <input type="checkbox" name="events" value="reception">
-                        <div>
-                            <div class="checkbox-label">Reception</div>
-                            <div class="checkbox-detail">Friday, June 5 at 1:00 PM &middot; In person only</div>
+                    <div>
+                        <label class="checkbox-option" id="cb-reception">
+                            <input type="checkbox" name="events" value="reception">
+                            <div>
+                                <div class="checkbox-label">Reception</div>
+                                <div class="checkbox-detail">Friday, June 5 at 1:00 PM &middot; In person only</div>
+                            </div>
+                        </label>
+                        <div class="guest-stepper-row" id="stepper-reception">
+                            <span class="guest-stepper-label">Additional guests you're bringing?</span>
+                            <div class="stepper">
+                                <button type="button" class="stepper-btn" id="reception-minus" disabled>−</button>
+                                <span class="stepper-value" id="reception-count">0</span>
+                                <button type="button" class="stepper-btn" id="reception-plus">+</button>
+                            </div>
                         </div>
-                    </label>
-                    <label class="checkbox-option" id="cb-celebration">
-                        <input type="checkbox" name="events" value="celebration">
-                        <div>
-                            <div class="checkbox-label">Defense Party</div>
-                            <div class="checkbox-detail">Saturday, June 6 at 7:00 PM &middot; In person only</div>
+                        <input type="hidden" name="reception-guests" id="reception-guests-val" value="0">
+                    </div>
+                    <div>
+                        <label class="checkbox-option" id="cb-celebration">
+                            <input type="checkbox" name="events" value="celebration">
+                            <div>
+                                <div class="checkbox-label">Defense Party</div>
+                                <div class="checkbox-detail">Saturday, June 6 at 7:00 PM &middot; In person only</div>
+                            </div>
+                        </label>
+                        <div class="guest-stepper-row" id="stepper-celebration">
+                            <span class="guest-stepper-label">Additional guests you're bringing?</span>
+                            <div class="stepper">
+                                <button type="button" class="stepper-btn" id="celebration-minus" disabled>−</button>
+                                <span class="stepper-value" id="celebration-count">0</span>
+                                <button type="button" class="stepper-btn" id="celebration-plus">+</button>
+                            </div>
                         </div>
-                    </label>
+                        <input type="hidden" name="celebration-guests" id="celebration-guests-val" value="0">
+                    </div>
                 </div>
             </div>
 
@@ -1489,7 +1584,72 @@
             radio.addEventListener('change', () => {
                 const value = document.querySelector('input[name="defense-mode"]:checked').value;
                 eventsGroup.style.display = '';
+                const defenseStepperRow = document.getElementById('stepper-defense');
+                if (value === 'in-person' || value === 'virtual') {
+                    defenseStepperRow.classList.add('visible');
+                    document.getElementById('defense-stepper-label').textContent = value === 'virtual'
+                        ? 'Additional guests that will be joining?'
+                        : 'Additional guests you\'re bringing?';
+                } else {
+                    defenseStepperRow.classList.remove('visible');
+                    document.getElementById('defense-count').textContent = '0';
+                    document.getElementById('defense-guests-val').value = '0';
+                    document.getElementById('defense-minus').disabled = true;
+                }
             });
+        });
+
+        // ---- Guest Steppers ----
+        function setupStepper(eventName) {
+            const checkbox = document.querySelector(`input[name="events"][value="${eventName}"]`);
+            const stepperRow = document.getElementById(`stepper-${eventName}`);
+            const minusBtn = document.getElementById(`${eventName}-minus`);
+            const plusBtn = document.getElementById(`${eventName}-plus`);
+            const countEl = document.getElementById(`${eventName}-count`);
+            const hiddenVal = document.getElementById(`${eventName}-guests-val`);
+
+            checkbox.addEventListener('change', () => {
+                if (checkbox.checked) {
+                    stepperRow.classList.add('visible');
+                } else {
+                    stepperRow.classList.remove('visible');
+                    countEl.textContent = '0';
+                    hiddenVal.value = '0';
+                    minusBtn.disabled = true;
+                }
+                toggleExtraQuestions();
+            });
+
+            plusBtn.addEventListener('click', () => {
+                let val = parseInt(countEl.textContent) + 1;
+                countEl.textContent = val;
+                hiddenVal.value = val;
+                minusBtn.disabled = false;
+            });
+
+            minusBtn.addEventListener('click', () => {
+                let val = Math.max(0, parseInt(countEl.textContent) - 1);
+                countEl.textContent = val;
+                hiddenVal.value = val;
+                minusBtn.disabled = val === 0;
+            });
+        }
+
+        setupStepper('reception');
+        setupStepper('celebration');
+
+        // Defense stepper (triggered by radio, not checkbox)
+        document.getElementById('defense-plus').addEventListener('click', () => {
+            let val = parseInt(document.getElementById('defense-count').textContent) + 1;
+            document.getElementById('defense-count').textContent = val;
+            document.getElementById('defense-guests-val').value = val;
+            document.getElementById('defense-minus').disabled = false;
+        });
+        document.getElementById('defense-minus').addEventListener('click', () => {
+            let val = Math.max(0, parseInt(document.getElementById('defense-count').textContent) - 1);
+            document.getElementById('defense-count').textContent = val;
+            document.getElementById('defense-guests-val').value = val;
+            document.getElementById('defense-minus').disabled = val === 0;
         });
 
         // ---- Firebase ----
@@ -1522,6 +1682,11 @@
             const defenseMode = document.querySelector('input[name="defense-mode"]:checked');
             const events = [...document.querySelectorAll('input[name="events"]:checked')]
                                .map(cb => cb.value);
+            const guestCounts = {
+                defense: parseInt(document.getElementById('defense-guests-val').value) || 0,
+                reception: parseInt(document.getElementById('reception-guests-val').value) || 0,
+                celebration: parseInt(document.getElementById('celebration-guests-val').value) || 0
+            };
 
             if (!name || !email || !emailConfirm || !defenseMode) {
                 showFeedback('Please fill in all required fields.', 'error');
@@ -1550,6 +1715,7 @@
                     email: email,
                     defenseMode: defenseMode.value,
                     events: events,
+                    guestCounts: guestCounts,
                     dietary: dietary || '',
                     accommodations: accommodations || '',
                     timestamp: serverTimestamp()
@@ -1571,6 +1737,13 @@
                 form.reset();
                 eventsGroup.style.display = '';
                 extraQuestions.style.display = 'none';
+                // Reset steppers
+                ['defense', 'reception', 'celebration'].forEach(e => {
+                    document.getElementById(`stepper-${e}`).classList.remove('visible');
+                    document.getElementById(`${e}-count`).textContent = '0';
+                    document.getElementById(`${e}-guests-val`).value = '0';
+                    document.getElementById(`${e}-minus`).disabled = true;
+                });
             } catch (error) {
                 console.error('RSVP submission error:', error);
                 showFeedback('Something went wrong. Please try again or email Yasmine directly.', 'error');

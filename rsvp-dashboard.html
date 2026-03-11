@@ -8,8 +8,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-cream: #f9f6f6;
-            --bg-cream-dark: #e1d3d3;
+            --bg-cream: #fdf8fc;
+            --bg-cream-dark: #F0EBE3;
             --text-charcoal: #2C2825;
             --text-muted: #5C5552;
             --accent-terracotta: #C4755B;
@@ -43,6 +43,7 @@
         .stat-card { background: var(--bg-card); border-radius: 12px; padding: 1.25rem 1.5rem; box-shadow: var(--shadow-soft); }
         .stat-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 0.25rem; }
         .stat-value { font-family: var(--font-display); font-size: 2rem; font-weight: 600; }
+        .stat-sub { font-size: 0.72rem; color: var(--text-muted); margin-top: 0.15rem; }
 
         /* Table */
         .table-wrap { background: var(--bg-card); border-radius: 12px; box-shadow: var(--shadow-soft); overflow: hidden; }
@@ -599,32 +600,53 @@
             renderGuestTab();
         }
 
-        // ---- Stats & RSVP Table (unchanged) ----
+        // ---- Stats & RSVP Table ----
         function updateStats() {
+            const receptionRsvps = allRsvps.filter(r => r.events && r.events.includes('reception'));
+            const celebrationRsvps = allRsvps.filter(r => r.events && r.events.includes('celebration'));
+            const defenseAttending = allRsvps.filter(r => r.defenseMode === 'in-person' || r.defenseMode === 'virtual');
+            const defenseHeadcount = defenseAttending.reduce((sum, r) => sum + 1 + (r.guestCounts?.defense || 0), 0);
+            const receptionHeadcount = receptionRsvps.reduce((sum, r) => sum + 1 + (r.guestCounts?.reception || 0), 0);
+            const celebrationHeadcount = celebrationRsvps.reduce((sum, r) => sum + 1 + (r.guestCounts?.celebration || 0), 0);
+
             document.getElementById('stats').innerHTML = `
                 <div class="stat-card"><div class="stat-label">Total RSVPs</div><div class="stat-value">${allRsvps.length}</div></div>
-                <div class="stat-card"><div class="stat-label">Defense — In Person</div><div class="stat-value">${allRsvps.filter(r=>r.defenseMode==='in-person').length}</div></div>
-                <div class="stat-card"><div class="stat-label">Defense — Virtual</div><div class="stat-value">${allRsvps.filter(r=>r.defenseMode==='virtual').length}</div></div>
+                <div class="stat-card"><div class="stat-label">Defense — In Person</div><div class="stat-value">${allRsvps.filter(r=>r.defenseMode==='in-person').length}</div><div class="stat-sub">${allRsvps.filter(r=>r.defenseMode==='in-person').reduce((s,r)=>s+1+(r.guestCounts?.defense||0),0)} total w/ guests</div></div>
+                <div class="stat-card"><div class="stat-label">Defense — Virtual</div><div class="stat-value">${allRsvps.filter(r=>r.defenseMode==='virtual').length}</div><div class="stat-sub">${allRsvps.filter(r=>r.defenseMode==='virtual').reduce((s,r)=>s+1+(r.guestCounts?.defense||0),0)} total w/ guests</div></div>
                 <div class="stat-card"><div class="stat-label">Defense — Can't Make It</div><div class="stat-value">${allRsvps.filter(r=>r.defenseMode==='skip').length}</div></div>
-                <div class="stat-card"><div class="stat-label">Reception</div><div class="stat-value">${allRsvps.filter(r=>r.events&&r.events.includes('reception')).length}</div></div>
-                <div class="stat-card"><div class="stat-label">Celebration</div><div class="stat-value">${allRsvps.filter(r=>r.events&&r.events.includes('celebration')).length}</div></div>
+                <div class="stat-card"><div class="stat-label">Reception</div><div class="stat-value">${receptionRsvps.length}</div><div class="stat-sub">${receptionHeadcount} total w/ guests</div></div>
+                <div class="stat-card"><div class="stat-label">Celebration</div><div class="stat-value">${celebrationRsvps.length}</div><div class="stat-sub">${celebrationHeadcount} total w/ guests</div></div>
             `;
         }
 
         function renderTable(data) {
             const container = document.getElementById('table-container');
             if (data.length === 0) { container.innerHTML = '<div class="no-data">No RSVPs yet.</div>'; return; }
-            let html = '<table><thead><tr><th>Name</th><th>Email</th><th>Defense</th><th>Events</th><th>Dietary</th><th>Accommodations</th><th>Date</th></tr></thead><tbody>';
+            let html = '<table><thead><tr><th>Name</th><th>Email</th><th>Defense</th><th>Events</th><th>Guests</th><th>Dietary</th><th>Accommodations</th><th>Date</th></tr></thead><tbody>';
             data.forEach(r => {
                 const mode = r.defenseMode || '—';
                 let mp = modePill(mode);
                 let ep = eventPills(r.events);
+
+                // Guest counts per event
+                let guestCell = '—';
+                if (r.guestCounts) {
+                    const parts = [];
+                    if ((r.defenseMode === 'in-person' || r.defenseMode === 'virtual') && r.guestCounts.defense > 0)
+                        parts.push(`+${r.guestCounts.defense} defense`);
+                    if (r.events && r.events.includes('reception') && r.guestCounts.reception > 0)
+                        parts.push(`+${r.guestCounts.reception} reception`);
+                    if (r.events && r.events.includes('celebration') && r.guestCounts.celebration > 0)
+                        parts.push(`+${r.guestCounts.celebration} party`);
+                    guestCell = parts.length > 0 ? parts.join('<br>') : '—';
+                }
+
                 let dateStr = '—';
                 if (r.timestamp) {
                     const d = r.timestamp.toDate ? r.timestamp.toDate() : new Date(r.timestamp);
                     dateStr = '<span class="timestamp">' + d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) + '</span>';
                 }
-                html += `<tr><td>${r.name||'—'}</td><td>${r.email||'—'}</td><td>${mp}</td><td>${ep}</td><td>${r.dietary||'—'}</td><td>${r.accommodations||'—'}</td><td>${dateStr}</td></tr>`;
+                html += `<tr><td>${r.name||'—'}</td><td>${r.email||'—'}</td><td>${mp}</td><td>${ep}</td><td>${guestCell}</td><td>${r.dietary||'—'}</td><td>${r.accommodations||'—'}</td><td>${dateStr}</td></tr>`;
             });
             html += '</tbody></table>';
             container.innerHTML = html;
