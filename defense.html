@@ -481,12 +481,20 @@
 
         .timeline-content {
             width: 48%;
+        }
+
+        .timeline-card {
             background: var(--bg-card);
             border-radius: 12px;
             box-shadow: var(--shadow-soft);
             padding: 0;
             overflow: hidden;
             transition: box-shadow 0.3s ease, transform 0.3s ease;
+        }
+
+        .timeline-card:hover {
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-2px);
         }
 
         .timeline-header {
@@ -522,12 +530,7 @@
         }
 
         .timeline-body {
-            padding: 1.25rem 1.5rem;
-        }
-
-        .timeline-content:hover {
-            box-shadow: var(--shadow-hover);
-            transform: translateY(-2px);
+            padding: 1rem 1.25rem;
         }
 
         .timeline-event:nth-child(odd) .timeline-content {
@@ -542,10 +545,10 @@
 
         .timeline-date {
             font-family: var(--font-display);
-            font-size: 1rem;
+            font-size: 1.25rem;
             font-weight: 600;
             color: var(--accent-terracotta);
-            margin-bottom: 0.25rem;
+            margin-bottom: 0.5rem;
         }
 
         .timeline-title {
@@ -564,19 +567,17 @@
 
         .timeline-venue {
             font-family: var(--font-display);
-            font-size: 1.1rem;
-            color: var(--accent-terracotta);
+            font-size: 1.05rem;
+            color: rgba(255, 255, 255, 0.95);
         }
 
         .timeline-venue .venue-link {
-            color: var(--accent-terracotta);
+            color: #fff;
         }
 
         .timeline-location {
             font-size: 0.85rem;
-            color: var(--accent-terracotta);
-            opacity: 0.75;
-            margin-bottom: 0.75rem;
+            color: rgba(255, 255, 255, 0.75);
         }
 
         /* ---- Committee ---- */
@@ -1215,9 +1216,6 @@
         </div>
     </section>
 
-    <!-- Ornament -->
-    <div class="ornament">&#10022;</div>
-
     <!-- Details -->
     <section class="defense-section details-section reveal" id="details" style="display: none;">
         <h2 class="section-label">The Details</h2>
@@ -1227,7 +1225,7 @@
             <div class="venue-name">HSRB-I Auditorium &amp; <a href="https://emory.zoom.us/my/yasminebassil" class="venue-link" target="_blank">Zoom</a> (Hybrid)</div>
             <div class="venue-sub">1760 Haygood Dr NE, Atlanta, GA 30322</div>
             <div class="venue-sub" style="color: var(--accent-terracotta);">Friday, June 5, 2026 &middot; 12:00 &ndash; 1:00 PM EDT</div>
-            <span class="pill-btn" style="opacity: 0.4; cursor: default;">Details coming soon</span>
+            <span class="pill-btn" style="opacity: 0.75; cursor: default;">Details coming soon</span>
         </div>
 
         <div class="venue-info" style="margin-top: 3rem;">
@@ -1235,7 +1233,7 @@
             <div class="venue-name">HSRB-I Caf&eacute;</div>
             <div class="venue-sub">1760 Haygood Dr NE, Atlanta, GA 30322</div>
             <div class="venue-sub" style="color: var(--accent-terracotta);">Friday, June 5, 2026 &middot; 1:00 &ndash; 3:30 PM</div>
-            <span class="pill-btn" style="opacity: 0.4; cursor: default;">Details coming soon</span>
+            <span class="pill-btn" style="opacity: 0.75; cursor: default;">Details coming soon</span>
         </div>
 
         <div class="venue-info" style="margin-top: 3rem;">
@@ -1243,7 +1241,7 @@
             <div class="venue-name">Yasmine's Backyard</div>
             <div class="venue-sub">989 Moreland Ave SE, Atlanta, GA</div>
             <div class="venue-sub" style="color: var(--accent-terracotta);">Saturday, June 6, 2026 &middot; 7:00 PM</div>
-            <span class="pill-btn" style="opacity: 0.4; cursor: default;">Details coming soon</span>
+            <span class="pill-btn" style="opacity: 0.75; cursor: default;">Details coming soon</span>
         </div>
     </section>
 
@@ -1259,18 +1257,20 @@
             <div class="timeline-event">
                 <div class="timeline-dot"></div>
                 <div class="timeline-content reveal">
-                    <div class="timeline-header">
-                        <div class="timeline-date">Friday, June 5, 2026 &middot; 12:00 &ndash; 1:00 PM EDT</div>
-                        <div class="timeline-title">Doctoral Defense</div>
-                    </div>
-                    <div class="timeline-body">
-                        <div class="timeline-venue">HSRB-I Auditorium &amp; <a href="https://emory.zoom.us/my/yasminebassil" class="venue-link" target="_blank">Zoom</a> (Hybrid)</div>
-                        <div class="timeline-location">1760 Haygood Dr NE, Atlanta, GA 30322</div>
-                        <div class="timeline-detail">
-                            Yasmine presents and defends her dissertation research on spatial
-                            navigation and cognitive aging. Open to all &mdash; in person and via Zoom.
+                    <div class="timeline-date">Friday, June 5, 2026 &middot; 12:00 &ndash; 1:00 PM EDT</div>
+                    <div class="timeline-card">
+                        <div class="timeline-header">
+                            <div class="timeline-title">Doctoral Defense</div>
+                            <div class="timeline-venue">HSRB-I Auditorium &amp; <a href="https://emory.zoom.us/my/yasminebassil" class="venue-link" target="_blank">Zoom</a> (Hybrid)</div>
+                            <div class="timeline-location">1760 Haygood Dr NE, Atlanta, GA 30322</div>
                         </div>
-                        <span class="pill-btn" style="opacity: 0.4; cursor: default;">Details coming soon</span>
+                        <div class="timeline-body">
+                            <div class="timeline-detail">
+                                Yasmine presents and defends her dissertation research on spatial
+                                navigation and cognitive aging. Open to all &mdash; in person and via Zoom.
+                            </div>
+                            <span class="pill-btn" style="opacity: 0.75; cursor: default;">Details coming soon</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1279,19 +1279,21 @@
             <div class="timeline-event">
                 <div class="timeline-dot"></div>
                 <div class="timeline-content reveal">
-                    <div class="timeline-header">
-                        <div class="timeline-date">Friday, June 5, 2026 &middot; 1:00 &ndash; 3:30 PM</div>
-                        <div class="timeline-title">Reception</div>
-                    </div>
-                    <div class="timeline-body">
-                        <div class="timeline-venue">HSRB-I Caf&eacute;</div>
-                        <div class="timeline-location">1760 Haygood Dr NE, Atlanta, GA 30322</div>
-                        <div class="timeline-detail">
-                            Reception begins with refreshments while Yasmine completes her private
-                            defense. Yasmine joins around 2:00 PM to celebrate through 3:30 PM.
-                            In person only.
+                    <div class="timeline-date">Friday, June 5, 2026 &middot; 1:00 &ndash; 3:30 PM</div>
+                    <div class="timeline-card">
+                        <div class="timeline-header">
+                            <div class="timeline-title">Reception</div>
+                            <div class="timeline-venue">HSRB-I Caf&eacute;</div>
+                            <div class="timeline-location">1760 Haygood Dr NE, Atlanta, GA 30322</div>
                         </div>
-                        <span class="pill-btn" style="opacity: 0.4; cursor: default;">Details coming soon</span>
+                        <div class="timeline-body">
+                            <div class="timeline-detail">
+                                Reception begins with refreshments while Yasmine completes her private
+                                defense. Yasmine joins around 2:00 PM to celebrate through 3:30 PM.
+                                In person only.
+                            </div>
+                            <span class="pill-btn" style="opacity: 0.75; cursor: default;">Details coming soon</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1300,18 +1302,20 @@
             <div class="timeline-event">
                 <div class="timeline-dot"></div>
                 <div class="timeline-content reveal">
-                    <div class="timeline-header">
-                        <div class="timeline-date">Saturday, June 6, 2026 &middot; 7:00 PM</div>
-                        <div class="timeline-title">Celebrating Dr. Bassil!</div>
-                    </div>
-                    <div class="timeline-body">
-                        <div class="timeline-venue">Yasmine's Backyard</div>
-                        <div class="timeline-location">989 Moreland Ave SE, Atlanta, GA</div>
-                        <div class="timeline-detail">
-                            An evening of celebrations! Food, music, dancing, and fun with friends
-                            and family. In person only.
+                    <div class="timeline-date">Saturday, June 6, 2026 &middot; 7:00 PM</div>
+                    <div class="timeline-card">
+                        <div class="timeline-header">
+                            <div class="timeline-title">Celebrating Dr. Bassil!</div>
+                            <div class="timeline-venue">Yasmine's Backyard</div>
+                            <div class="timeline-location">989 Moreland Ave SE, Atlanta, GA</div>
                         </div>
-                        <span class="pill-btn" style="opacity: 0.4; cursor: default;">Details coming soon</span>
+                        <div class="timeline-body">
+                            <div class="timeline-detail">
+                                An evening of celebrations! Food, music, dancing, and fun with friends
+                                and family. In person only.
+                            </div>
+                            <span class="pill-btn" style="opacity: 0.75; cursor: default;">Details coming soon</span>
+                        </div>
                     </div>
                 </div>
             </div>
