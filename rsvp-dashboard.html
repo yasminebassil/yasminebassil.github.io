@@ -8,8 +8,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-cream: #fdf8fc;
-            --bg-cream-dark: #F0EBE3;
+            --bg-cream: #f9f6f6;
+            --bg-cream-dark: #e1d3d3;
             --text-charcoal: #2C2825;
             --text-muted: #5C5552;
             --accent-terracotta: #C4755B;
@@ -64,12 +64,71 @@
         .loading { text-align: center; padding: 3rem; color: var(--text-muted); }
         .timestamp { color: var(--text-muted); font-size: 0.8rem; }
 
+        /* Tabs */
+        .tabs { display: flex; gap: 0; margin-bottom: 2rem; border-bottom: 2px solid var(--bg-cream-dark); }
+        .tab-btn { font-family: var(--font-body); font-size: 0.9rem; font-weight: 500; padding: 0.65rem 1.5rem; background: none; border: none; cursor: pointer; color: var(--text-muted); border-bottom: 2px solid transparent; margin-bottom: -2px; transition: all 0.2s ease; }
+        .tab-btn:hover { color: var(--text-charcoal); }
+        .tab-btn.active { color: var(--accent-terracotta); border-bottom-color: var(--accent-terracotta); }
+        .tab-panel { display: none; }
+        .tab-panel.active { display: block; }
+
+        /* Guest list */
+        .add-guest-row { display: flex; gap: 0.75rem; margin-bottom: 1.5rem; }
+        .add-guest-row input { flex: 1; padding: 0.6rem 1rem; font-family: var(--font-body); font-size: 0.9rem; border: 1px solid var(--bg-cream-dark); border-radius: 8px; outline: none; background: var(--bg-card); color: var(--text-charcoal); }
+        .add-guest-row input:focus { border-color: var(--accent-terracotta); box-shadow: 0 0 0 3px rgba(196,117,91,0.1); }
+        .add-guest-row button { padding: 0.6rem 1.25rem; font-family: var(--font-body); font-size: 0.85rem; font-weight: 500; background: var(--text-charcoal); color: var(--bg-cream); border: none; border-radius: 8px; cursor: pointer; white-space: nowrap; transition: background 0.2s; }
+        .add-guest-row button:hover { background: var(--accent-terracotta); }
+
+        .guest-section-title { font-family: var(--font-display); font-size: 1.1rem; font-weight: 500; margin: 1.5rem 0 0.75rem; color: var(--text-charcoal); display: flex; align-items: center; gap: 0.5rem; }
+        .guest-section-title .count-badge { font-family: var(--font-body); font-size: 0.72rem; font-weight: 500; background: var(--bg-cream-dark); color: var(--text-muted); padding: 0.15rem 0.55rem; border-radius: 12px; }
+
+        .guest-table-wrap { background: var(--bg-card); border-radius: 12px; box-shadow: var(--shadow-soft); overflow: hidden; margin-bottom: 2rem; }
+        .guest-table-wrap table { width: 100%; border-collapse: collapse; }
+        .guest-table-wrap thead th { text-align: left; padding: 0.75rem 1.25rem; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); border-bottom: 1px solid var(--bg-cream-dark); font-weight: 500; }
+        .guest-table-wrap tbody td { padding: 0.7rem 1.25rem; font-size: 0.85rem; border-bottom: 1px solid var(--bg-cream-dark); vertical-align: middle; }
+        .guest-table-wrap tbody tr:last-child td { border-bottom: none; }
+        .guest-table-wrap tbody tr:hover { background: var(--bg-cream); }
+
+        .status-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 0.4rem; vertical-align: middle; }
+        .dot-responded { background: var(--accent-olive); }
+        .dot-pending { background: var(--bg-cream-dark); border: 1.5px solid #ccc; }
+
+        .match-info { font-size: 0.8rem; color: var(--text-muted); }
+        .match-name { font-weight: 500; color: var(--text-charcoal); }
+        .match-confidence { font-size: 0.72rem; padding: 0.1rem 0.4rem; border-radius: 8px; background: rgba(92,107,84,0.1); color: var(--accent-olive); margin-left: 0.3rem; }
+        .match-confidence.low { background: rgba(196,117,91,0.1); color: var(--accent-terracotta); }
+
+        .link-btn { font-size: 0.75rem; padding: 0.2rem 0.6rem; border-radius: 6px; border: 1px solid var(--bg-cream-dark); background: none; cursor: pointer; color: var(--text-muted); font-family: var(--font-body); transition: all 0.2s; }
+        .link-btn:hover { border-color: var(--accent-terracotta); color: var(--accent-terracotta); }
+        .unlink-btn { font-size: 0.75rem; padding: 0.2rem 0.6rem; border-radius: 6px; border: 1px solid transparent; background: none; cursor: pointer; color: var(--text-muted); font-family: var(--font-body); transition: all 0.2s; }
+        .unlink-btn:hover { color: var(--accent-terracotta); }
+        .delete-guest-btn { font-size: 0.75rem; padding: 0.2rem 0.5rem; border-radius: 6px; border: none; background: none; cursor: pointer; color: #ccc; font-family: var(--font-body); transition: all 0.2s; }
+        .delete-guest-btn:hover { color: var(--accent-terracotta); }
+
+        .link-modal { position: fixed; inset: 0; background: rgba(44,40,37,0.4); z-index: 1000; display: flex; align-items: center; justify-content: center; padding: 2rem; }
+        .link-modal-box { background: var(--bg-card); border-radius: 16px; padding: 1.75rem; max-width: 480px; width: 100%; box-shadow: 0 8px 40px rgba(44,40,37,0.15); }
+        .link-modal-box h3 { font-family: var(--font-display); font-size: 1.3rem; margin-bottom: 0.25rem; }
+        .link-modal-box p { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.25rem; }
+        .link-option { display: flex; align-items: center; gap: 0.75rem; padding: 0.65rem 0.85rem; border-radius: 8px; cursor: pointer; transition: background 0.15s; }
+        .link-option:hover { background: var(--bg-cream); }
+        .link-option-name { font-size: 0.9rem; font-weight: 500; }
+        .link-option-email { font-size: 0.78rem; color: var(--text-muted); }
+        .link-modal-cancel { margin-top: 1rem; width: 100%; padding: 0.5rem; font-family: var(--font-body); font-size: 0.85rem; background: none; border: 1px solid var(--bg-cream-dark); border-radius: 8px; cursor: pointer; color: var(--text-muted); transition: all 0.2s; }
+        .link-modal-cancel:hover { border-color: var(--text-muted); color: var(--text-charcoal); }
+
+        .progress-bar-wrap { background: var(--bg-cream-dark); border-radius: 8px; height: 6px; margin-bottom: 1.5rem; overflow: hidden; }
+        .progress-bar-fill { height: 100%; background: var(--accent-terracotta); border-radius: 8px; transition: width 0.5s ease; }
+        .progress-label { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.4rem; }
+
+        .empty-state { text-align: center; padding: 2.5rem; color: var(--text-muted); font-size: 0.9rem; }
+
         @media (max-width: 700px) {
             .stats { grid-template-columns: repeat(2, 1fr); }
             .table-header { flex-direction: column; gap: 0.75rem; align-items: flex-start; }
             .search-input { width: 100%; }
             table { font-size: 0.8rem; }
             thead th, tbody td { padding: 0.5rem 0.75rem; }
+            .add-guest-row { flex-direction: column; }
         }
     </style>
 </head>
@@ -86,6 +145,14 @@
     <div class="dashboard" id="dashboard" style="display:none;">
         <h1>RSVP Dashboard</h1>
         <p class="subtitle">Real-time responses for your defense and celebrations</p>
+
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="responses">Responses</button>
+            <button class="tab-btn" data-tab="guests">Guest Tracker</button>
+        </div>
+
+        <!-- Tab: Responses -->
+        <div class="tab-panel active" id="tab-responses">
 
         <div class="stats" id="stats">
             <div class="stat-card">
@@ -123,11 +190,58 @@
                 <div class="loading">Loading RSVPs...</div>
             </div>
         </div>
+        </div> <!-- end tab-responses -->
+
+        <!-- Tab: Guest Tracker -->
+        <div class="tab-panel" id="tab-guests">
+
+            <div class="progress-label" id="progress-label">Loading...</div>
+            <div class="progress-bar-wrap"><div class="progress-bar-fill" id="progress-bar" style="width:0%"></div></div>
+
+            <div class="add-guest-row">
+                <input type="text" id="new-guest-name" placeholder="Add guest name (e.g. Dr. Sarah Chen)">
+                <button id="add-guest-btn">+ Add Guest</button>
+            </div>
+
+            <div class="guest-section-title">
+                Invited Guests
+                <span class="count-badge" id="guests-count">0</span>
+            </div>
+            <div class="guest-table-wrap">
+                <table>
+                    <thead><tr><th>Name</th><th>Status</th><th>Matched RSVP</th><th>Defense</th><th>Events</th><th></th></tr></thead>
+                    <tbody id="guest-tbody"><tr><td colspan="6" class="empty-state">No guests added yet.</td></tr></tbody>
+                </table>
+            </div>
+
+            <div class="guest-section-title">
+                Unmatched RSVPs
+                <span class="count-badge" id="unmatched-count">0</span>
+            </div>
+            <p style="font-size:0.82rem; color:var(--text-muted); margin-bottom:0.75rem;">These people responded but aren't linked to anyone on your guest list yet. Click "Link" to connect them manually.</p>
+            <div class="guest-table-wrap">
+                <table>
+                    <thead><tr><th>Name (from RSVP)</th><th>Email</th><th>Defense</th><th>Events</th><th></th></tr></thead>
+                    <tbody id="unmatched-tbody"><tr><td colspan="5" class="empty-state">No unmatched RSVPs.</td></tr></tbody>
+                </table>
+            </div>
+        </div> <!-- end tab-guests -->
+
+    </div>
+
+    <!-- Link Modal -->
+    <div class="link-modal" id="link-modal" style="display:none;">
+        <div class="link-modal-box">
+            <h3>Link RSVP to Guest</h3>
+            <p id="link-modal-desc">Select which guest to link this RSVP to:</p>
+            <div id="link-options"></div>
+            <button class="link-modal-cancel" id="link-modal-cancel">Cancel</button>
+        </div>
     </div>
 
     <script type="module">
         import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
-        import { getFirestore, collection, getDocs, query, orderBy } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
+        import { getFirestore, collection, getDocs, addDoc, deleteDoc, updateDoc, doc, query, orderBy, setDoc } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
 
         const firebaseConfig = {
             apiKey: "AIzaSyCvZj28rtAVYGZUF6p3uPZESebJJvHAtkc",
@@ -152,7 +266,7 @@
         if (sessionStorage.getItem('dashboard-access') === 'granted') {
             gate.style.display = 'none';
             dashboard.style.display = '';
-            loadData();
+            loadAll();
         }
 
         function unlock() {
@@ -160,7 +274,7 @@
                 sessionStorage.setItem('dashboard-access', 'granted');
                 gate.style.display = 'none';
                 dashboard.style.display = '';
-                loadData();
+                loadAll();
             } else {
                 gateError.classList.add('show');
                 gateInput.style.borderColor = 'var(--accent-terracotta)';
@@ -170,14 +284,32 @@
         gateBtn.addEventListener('click', unlock);
         gateInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') unlock(); gateError.classList.remove('show'); });
 
-        // ---- Load Data ----
-        let allRsvps = [];
+        // ---- Tabs ----
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+                btn.classList.add('active');
+                document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+            });
+        });
 
-        async function loadData() {
+        // ---- State ----
+        let allRsvps = [];
+        let allGuests = []; // { id, name, rsvpId (or null) }
+
+        async function loadAll() {
+            await Promise.all([loadRsvps(), loadGuests()]);
+            runMatching();
+            renderGuestTab();
+        }
+
+        // ---- Load RSVPs ----
+        async function loadRsvps() {
             try {
                 const q = query(collection(db, 'rsvps'), orderBy('timestamp', 'desc'));
                 const snapshot = await getDocs(q);
-                allRsvps = snapshot.docs.map(doc => doc.data());
+                allRsvps = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
                 updateStats();
                 renderTable(allRsvps);
             } catch (err) {
@@ -186,56 +318,324 @@
             }
         }
 
+        // ---- Load Guests ----
+        async function loadGuests() {
+            try {
+                const snapshot = await getDocs(collection(db, 'guests'));
+                allGuests = snapshot.docs.map(d => ({ id: d.id, ...d.data() }));
+            } catch (err) {
+                console.error('Error loading guests:', err);
+                allGuests = [];
+            }
+        }
+
+        // ---- Fuzzy Matching ----
+        function normalizeName(name) {
+            return name.toLowerCase()
+                .replace(/^(dr\.?|prof\.?|mr\.?|ms\.?|mrs\.?)\s+/i, '')
+                .replace(/[^a-z\s]/g, '')
+                .trim();
+        }
+
+        function fuzzyScore(a, b) {
+            a = normalizeName(a);
+            b = normalizeName(b);
+            if (a === b) return 1.0;
+            if (a.includes(b) || b.includes(a)) return 0.9;
+
+            // Token-based overlap (handles "John Smith" vs "Smith, John")
+            const tokensA = a.split(/\s+/);
+            const tokensB = b.split(/\s+/);
+            const common = tokensA.filter(t => tokensB.includes(t)).length;
+            const tokenScore = (2 * common) / (tokensA.length + tokensB.length);
+            if (tokenScore >= 0.5) return tokenScore;
+
+            // Bigram similarity
+            function bigrams(s) {
+                const bg = new Set();
+                for (let i = 0; i < s.length - 1; i++) bg.add(s.slice(i, i + 2));
+                return bg;
+            }
+            const bg1 = bigrams(a.replace(/\s/g, ''));
+            const bg2 = bigrams(b.replace(/\s/g, ''));
+            let inter = 0;
+            bg1.forEach(g => { if (bg2.has(g)) inter++; });
+            return (2 * inter) / (bg1.size + bg2.size);
+        }
+
+        const MATCH_THRESHOLD = 0.55;
+
+        function runMatching() {
+            // Only auto-match guests that have no rsvpId already set
+            const unmatchedRsvps = new Set(allRsvps.map(r => r.id));
+
+            // Remove already-linked rsvp IDs from unmatched pool
+            allGuests.forEach(g => { if (g.rsvpId) unmatchedRsvps.delete(g.rsvpId); });
+
+            allGuests.forEach(guest => {
+                if (guest.rsvpId) return; // already manually or previously linked
+                let bestScore = 0, bestRsvp = null;
+                allRsvps.forEach(rsvp => {
+                    if (!unmatchedRsvps.has(rsvp.id)) return;
+                    const score = fuzzyScore(guest.name, rsvp.name || '');
+                    if (score > bestScore) { bestScore = score; bestRsvp = rsvp; }
+                });
+                if (bestScore >= MATCH_THRESHOLD && bestRsvp) {
+                    guest._autoMatch = bestRsvp;
+                    guest._autoMatchScore = bestScore;
+                    unmatchedRsvps.delete(bestRsvp.id);
+                } else {
+                    guest._autoMatch = null;
+                    guest._autoMatchScore = 0;
+                }
+            });
+
+            // Remaining unmatched RSVPs
+            const linkedRsvpIds = new Set([
+                ...allGuests.filter(g => g.rsvpId).map(g => g.rsvpId),
+                ...allGuests.filter(g => g._autoMatch).map(g => g._autoMatch.id)
+            ]);
+            window._unmatchedRsvps = allRsvps.filter(r => !linkedRsvpIds.has(r.id));
+        }
+
+        // ---- Render Guest Tab ----
+        function renderGuestTab() {
+            const total = allGuests.length;
+            const responded = allGuests.filter(g => g.rsvpId || g._autoMatch).length;
+            const pct = total > 0 ? Math.round((responded / total) * 100) : 0;
+            document.getElementById('progress-label').textContent = `${responded} of ${total} invited guests have responded (${pct}%)`;
+            document.getElementById('progress-bar').style.width = pct + '%';
+            document.getElementById('guests-count').textContent = total;
+
+            // Guest rows
+            const tbody = document.getElementById('guest-tbody');
+            if (allGuests.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="6" class="empty-state">No guests added yet. Add names above.</td></tr>';
+            } else {
+                tbody.innerHTML = allGuests.map(g => {
+                    const rsvp = g.rsvpId ? allRsvps.find(r => r.id === g.rsvpId) : g._autoMatch;
+                    const isManual = !!g.rsvpId;
+                    const score = g._autoMatchScore || 0;
+                    let statusCell, matchCell, defenseCell, eventsCell, actionsCell;
+
+                    if (rsvp) {
+                        const confidenceLabel = isManual ? 'manual' : (score >= 0.85 ? 'high' : 'fuzzy');
+                        const confidenceClass = (!isManual && score < 0.85) ? 'low' : '';
+                        statusCell = `<td><span class="status-dot dot-responded"></span> Responded</td>`;
+                        matchCell = `<td><span class="match-name">${rsvp.name || '—'}</span><span class="match-confidence ${confidenceClass}">${confidenceLabel}</span><br><span class="match-info">${rsvp.email || ''}</span></td>`;
+                        defenseCell = `<td>${modePill(rsvp.defenseMode)}</td>`;
+                        eventsCell = `<td>${eventPills(rsvp.events)}</td>`;
+                        actionsCell = `<td><button class="unlink-btn" data-gid="${g.id}">✕ unlink</button> <button class="delete-guest-btn" data-gid="${g.id}" title="Remove guest">🗑</button></td>`;
+                    } else {
+                        statusCell = `<td><span class="status-dot dot-pending"></span> No response</td>`;
+                        matchCell = `<td class="match-info">—</td>`;
+                        defenseCell = `<td>—</td>`;
+                        eventsCell = `<td>—</td>`;
+                        actionsCell = `<td><button class="link-btn" data-gid="${g.id}">Link</button> <button class="delete-guest-btn" data-gid="${g.id}" title="Remove guest">🗑</button></td>`;
+                    }
+
+                    return `<tr><td>${g.name}</td>${statusCell}${matchCell}${defenseCell}${eventsCell}${actionsCell}</tr>`;
+                }).join('');
+            }
+
+            // Unmatched RSVPs
+            const unmatched = window._unmatchedRsvps || [];
+            document.getElementById('unmatched-count').textContent = unmatched.length;
+            const utbody = document.getElementById('unmatched-tbody');
+            if (unmatched.length === 0) {
+                utbody.innerHTML = '<tr><td colspan="5" class="empty-state">No unmatched RSVPs. 🎉</td></tr>';
+            } else {
+                utbody.innerHTML = unmatched.map(r => `
+                    <tr>
+                        <td>${r.name || '—'}</td>
+                        <td class="match-info">${r.email || '—'}</td>
+                        <td>${modePill(r.defenseMode)}</td>
+                        <td>${eventPills(r.events)}</td>
+                        <td><button class="link-btn" data-rid="${r.id}">Link to guest</button></td>
+                    </tr>
+                `).join('');
+            }
+
+            attachGuestHandlers();
+        }
+
+        function modePill(mode) {
+            if (mode === 'in-person') return '<span class="pill pill-inperson">In Person</span>';
+            if (mode === 'virtual') return '<span class="pill pill-virtual">Virtual</span>';
+            if (mode === 'skip') return '<span class="pill pill-skip">Can\'t Make It</span>';
+            return '—';
+        }
+
+        function eventPills(events) {
+            if (!events || events.length === 0) return '—';
+            return events.map(e => `<span class="pill pill-event">${e}</span>`).join(' ');
+        }
+
+        function attachGuestHandlers() {
+            // Unlink
+            document.querySelectorAll('.unlink-btn').forEach(btn => {
+                btn.addEventListener('click', async () => {
+                    const gid = btn.dataset.gid;
+                    const guest = allGuests.find(g => g.id === gid);
+                    if (!guest) return;
+                    guest.rsvpId = null;
+                    await updateDoc(doc(db, 'guests', gid), { rsvpId: null });
+                    runMatching();
+                    renderGuestTab();
+                });
+            });
+
+            // Delete guest
+            document.querySelectorAll('.delete-guest-btn').forEach(btn => {
+                btn.addEventListener('click', async () => {
+                    const gid = btn.dataset.gid;
+                    if (!confirm('Remove this guest from the list?')) return;
+                    await deleteDoc(doc(db, 'guests', gid));
+                    allGuests = allGuests.filter(g => g.id !== gid);
+                    runMatching();
+                    renderGuestTab();
+                });
+            });
+
+            // Link from guest row (no match yet)
+            document.querySelectorAll('.link-btn[data-gid]').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const gid = btn.dataset.gid;
+                    const guest = allGuests.find(g => g.id === gid);
+                    openLinkModal({ forGuest: guest, forRsvp: null });
+                });
+            });
+
+            // Link from unmatched RSVP row
+            document.querySelectorAll('.link-btn[data-rid]').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const rid = btn.dataset.rid;
+                    const rsvp = allRsvps.find(r => r.id === rid);
+                    openLinkModal({ forGuest: null, forRsvp: rsvp });
+                });
+            });
+        }
+
+        // ---- Link Modal ----
+        let linkModalContext = null;
+
+        function openLinkModal({ forGuest, forRsvp }) {
+            linkModalContext = { forGuest, forRsvp };
+            const modal = document.getElementById('link-modal');
+            const desc = document.getElementById('link-modal-desc');
+            const optionsEl = document.getElementById('link-options');
+
+            if (forGuest) {
+                // Show unmatched RSVPs to pick from
+                desc.textContent = `Link an RSVP to "${forGuest.name}":`;
+                const candidates = window._unmatchedRsvps || [];
+                if (candidates.length === 0) {
+                    optionsEl.innerHTML = '<p style="color:var(--text-muted);font-size:0.85rem;padding:0.5rem 0">No unmatched RSVPs available.</p>';
+                } else {
+                    optionsEl.innerHTML = candidates.map(r => `
+                        <div class="link-option" data-rid="${r.id}">
+                            <div>
+                                <div class="link-option-name">${r.name || '—'}</div>
+                                <div class="link-option-email">${r.email || ''} · ${r.defenseMode || ''}</div>
+                            </div>
+                        </div>
+                    `).join('');
+                }
+            } else {
+                // Show guests without a link to pick from
+                desc.textContent = `Link "${forRsvp.name}" to a guest on your list:`;
+                const unlinkedGuests = allGuests.filter(g => !g.rsvpId && !g._autoMatch);
+                if (unlinkedGuests.length === 0) {
+                    optionsEl.innerHTML = '<p style="color:var(--text-muted);font-size:0.85rem;padding:0.5rem 0">All guests are already linked, or guest list is empty.</p>';
+                } else {
+                    optionsEl.innerHTML = unlinkedGuests.map(g => `
+                        <div class="link-option" data-gid="${g.id}">
+                            <div><div class="link-option-name">${g.name}</div></div>
+                        </div>
+                    `).join('');
+                }
+            }
+
+            optionsEl.querySelectorAll('.link-option').forEach(opt => {
+                opt.addEventListener('click', () => handleLinkSelection(opt));
+            });
+
+            modal.style.display = 'flex';
+        }
+
+        async function handleLinkSelection(opt) {
+            const { forGuest, forRsvp } = linkModalContext;
+            if (forGuest) {
+                const rid = opt.dataset.rid;
+                forGuest.rsvpId = rid;
+                await updateDoc(doc(db, 'guests', forGuest.id), { rsvpId: rid });
+            } else {
+                const gid = opt.dataset.gid;
+                const guest = allGuests.find(g => g.id === gid);
+                guest.rsvpId = forRsvp.id;
+                await updateDoc(doc(db, 'guests', gid), { rsvpId: forRsvp.id });
+            }
+            document.getElementById('link-modal').style.display = 'none';
+            runMatching();
+            renderGuestTab();
+        }
+
+        document.getElementById('link-modal-cancel').addEventListener('click', () => {
+            document.getElementById('link-modal').style.display = 'none';
+        });
+
+        // ---- Add Guest ----
+        document.getElementById('add-guest-btn').addEventListener('click', addGuest);
+        document.getElementById('new-guest-name').addEventListener('keydown', e => { if (e.key === 'Enter') addGuest(); });
+
+        async function addGuest() {
+            const input = document.getElementById('new-guest-name');
+            const name = input.value.trim();
+            if (!name) return;
+            const docRef = await addDoc(collection(db, 'guests'), { name, rsvpId: null });
+            allGuests.push({ id: docRef.id, name, rsvpId: null });
+            input.value = '';
+            runMatching();
+            renderGuestTab();
+        }
+
+        // ---- Stats & RSVP Table (unchanged) ----
         function updateStats() {
-            document.getElementById('stat-total').textContent = allRsvps.length;
-            document.getElementById('stat-inperson').textContent = allRsvps.filter(r => r.defenseMode === 'in-person').length;
-            document.getElementById('stat-virtual').textContent = allRsvps.filter(r => r.defenseMode === 'virtual').length;
-            document.getElementById('stat-skip').textContent = allRsvps.filter(r => r.defenseMode === 'skip').length;
-            document.getElementById('stat-reception').textContent = allRsvps.filter(r => r.events && r.events.includes('reception')).length;
-            document.getElementById('stat-celebration').textContent = allRsvps.filter(r => r.events && r.events.includes('celebration')).length;
+            document.getElementById('stats').innerHTML = `
+                <div class="stat-card"><div class="stat-label">Total RSVPs</div><div class="stat-value">${allRsvps.length}</div></div>
+                <div class="stat-card"><div class="stat-label">Defense — In Person</div><div class="stat-value">${allRsvps.filter(r=>r.defenseMode==='in-person').length}</div></div>
+                <div class="stat-card"><div class="stat-label">Defense — Virtual</div><div class="stat-value">${allRsvps.filter(r=>r.defenseMode==='virtual').length}</div></div>
+                <div class="stat-card"><div class="stat-label">Defense — Can't Make It</div><div class="stat-value">${allRsvps.filter(r=>r.defenseMode==='skip').length}</div></div>
+                <div class="stat-card"><div class="stat-label">Reception</div><div class="stat-value">${allRsvps.filter(r=>r.events&&r.events.includes('reception')).length}</div></div>
+                <div class="stat-card"><div class="stat-label">Celebration</div><div class="stat-value">${allRsvps.filter(r=>r.events&&r.events.includes('celebration')).length}</div></div>
+            `;
         }
 
         function renderTable(data) {
             const container = document.getElementById('table-container');
-            if (data.length === 0) {
-                container.innerHTML = '<div class="no-data">No RSVPs yet.</div>';
-                return;
-            }
-
+            if (data.length === 0) { container.innerHTML = '<div class="no-data">No RSVPs yet.</div>'; return; }
             let html = '<table><thead><tr><th>Name</th><th>Email</th><th>Defense</th><th>Events</th><th>Dietary</th><th>Accommodations</th><th>Date</th></tr></thead><tbody>';
             data.forEach(r => {
                 const mode = r.defenseMode || '—';
-                let modePill = '';
-                if (mode === 'in-person') modePill = '<span class="pill pill-inperson">In Person</span>';
-                else if (mode === 'virtual') modePill = '<span class="pill pill-virtual">Virtual</span>';
-                else if (mode === 'skip') modePill = '<span class="pill pill-skip">Can\'t Make It</span>';
-                else modePill = mode;
-
-                let eventPills = '—';
-                if (r.events && r.events.length > 0) {
-                    eventPills = r.events.map(e => '<span class="pill pill-event">' + e + '</span>').join(' ');
-                }
-
+                let mp = modePill(mode);
+                let ep = eventPills(r.events);
                 let dateStr = '—';
                 if (r.timestamp) {
                     const d = r.timestamp.toDate ? r.timestamp.toDate() : new Date(r.timestamp);
                     dateStr = '<span class="timestamp">' + d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) + '</span>';
                 }
-
-                html += '<tr><td>' + (r.name || '—') + '</td><td>' + (r.email || '—') + '</td><td>' + modePill + '</td><td>' + eventPills + '</td><td>' + (r.dietary || '—') + '</td><td>' + (r.accommodations || '—') + '</td><td>' + dateStr + '</td></tr>';
+                html += `<tr><td>${r.name||'—'}</td><td>${r.email||'—'}</td><td>${mp}</td><td>${ep}</td><td>${r.dietary||'—'}</td><td>${r.accommodations||'—'}</td><td>${dateStr}</td></tr>`;
             });
             html += '</tbody></table>';
             container.innerHTML = html;
         }
 
-        // ---- Search ----
         document.getElementById('search').addEventListener('input', (e) => {
             const term = e.target.value.toLowerCase();
-            const filtered = allRsvps.filter(r =>
+            renderTable(allRsvps.filter(r =>
                 (r.name && r.name.toLowerCase().includes(term)) ||
                 (r.email && r.email.toLowerCase().includes(term))
-            );
-            renderTable(filtered);
+            ));
         });
     </script>
 </body>
