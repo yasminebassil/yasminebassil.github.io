@@ -1687,7 +1687,7 @@
 
         // ---- Firebase ----
         import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
-        import { getFirestore, collection, addDoc, serverTimestamp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
+        import { getFirestore, collection, addDoc, query, where, getDocs, updateDoc, doc, serverTimestamp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
 
         const firebaseConfig = {
             apiKey: "AIzaSyCvZj28rtAVYGZUF6p3uPZESebJJvHAtkc",
@@ -1743,7 +1743,8 @@
                 const dietary = document.getElementById('rsvp-dietary').value.trim();
                 const accommodations = document.getElementById('rsvp-accommodations').value.trim();
 
-                await addDoc(collection(db, 'rsvps'), {
+                // Check if an RSVP with this email already exists
+                const rsvpData = {
                     name: name,
                     email: email,
                     defenseMode: defenseMode.value,
@@ -1752,7 +1753,29 @@
                     dietary: dietary || '',
                     accommodations: accommodations || '',
                     timestamp: serverTimestamp()
-                });
+                };
+
+                // Query by both original and lowercase email for backwards compatibility
+                const qLower = query(collection(db, 'rsvps'), where('email', '==', email.toLowerCase()));
+                const qOriginal = email !== email.toLowerCase()
+                    ? query(collection(db, 'rsvps'), where('email', '==', email))
+                    : null;
+                const [existingLower, existingOriginal] = await Promise.all([
+                    getDocs(qLower),
+                    qOriginal ? getDocs(qOriginal) : Promise.resolve({ empty: true, docs: [] })
+                ]);
+                const existing = !existingLower.empty ? existingLower : existingOriginal;
+                let isUpdate = false;
+
+                if (!existing.empty) {
+                    // Update the most recent existing RSVP
+                    const existingDoc = existing.docs[0];
+                    await updateDoc(doc(db, 'rsvps', existingDoc.id), rsvpData);
+                    isUpdate = true;
+                } else {
+                    rsvpData.email = email.toLowerCase();
+                    await addDoc(collection(db, 'rsvps'), rsvpData);
+                }
 
                 // Send confirmation email via EmailJS
                 try {
@@ -1766,7 +1789,9 @@
                     console.warn('Confirmation email failed:', emailError);
                 }
 
-                showFeedback('Thank you! Your RSVP has been received.<br>A confirmation email is on its way.', 'success');
+                showFeedback(isUpdate
+                    ? 'Your RSVP has been updated!<br>A confirmation email is on its way.'
+                    : 'Thank you! Your RSVP has been received.<br>A confirmation email is on its way.', 'success');
                 form.reset();
                 eventsGroup.style.display = '';
                 extraQuestions.style.display = 'none';

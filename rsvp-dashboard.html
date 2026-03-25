@@ -205,13 +205,24 @@
             </div>
 
             <div class="guest-section-title">
-                Invited Guests
-                <span class="count-badge" id="guests-count">0</span>
+                Responded
+                <span class="count-badge" id="responded-count">0</span>
             </div>
             <div class="guest-table-wrap">
                 <table>
-                    <thead><tr><th>Name</th><th>Status</th><th>Matched RSVP</th><th>Defense</th><th>Events</th><th></th></tr></thead>
-                    <tbody id="guest-tbody"><tr><td colspan="6" class="empty-state">No guests added yet.</td></tr></tbody>
+                    <thead><tr><th>Name</th><th>Matched RSVP</th><th>Defense</th><th>Events</th><th></th></tr></thead>
+                    <tbody id="responded-tbody"><tr><td colspan="5" class="empty-state">No responses yet.</td></tr></tbody>
+                </table>
+            </div>
+
+            <div class="guest-section-title">
+                No Response
+                <span class="count-badge" id="noresponse-count">0</span>
+            </div>
+            <div class="guest-table-wrap">
+                <table>
+                    <thead><tr><th>Name</th><th></th></tr></thead>
+                    <tbody id="noresponse-tbody"><tr><td colspan="2" class="empty-state">Everyone has responded! 🎉</td></tr></tbody>
                 </table>
             </div>
 
@@ -406,36 +417,39 @@
             const pct = total > 0 ? Math.round((responded / total) * 100) : 0;
             document.getElementById('progress-label').textContent = `${responded} of ${total} invited guests have responded (${pct}%)`;
             document.getElementById('progress-bar').style.width = pct + '%';
-            document.getElementById('guests-count').textContent = total;
+            // Split guests into responded vs no response
+            const respondedGuests = allGuests.filter(g => g.rsvpId || g._autoMatch);
+            const noResponseGuests = allGuests.filter(g => !g.rsvpId && !g._autoMatch);
 
-            // Guest rows
-            const tbody = document.getElementById('guest-tbody');
-            if (allGuests.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="6" class="empty-state">No guests added yet. Add names above.</td></tr>';
+            document.getElementById('responded-count').textContent = respondedGuests.length;
+            document.getElementById('noresponse-count').textContent = noResponseGuests.length;
+
+            // Responded rows
+            const respondedTbody = document.getElementById('responded-tbody');
+            if (respondedGuests.length === 0) {
+                respondedTbody.innerHTML = '<tr><td colspan="5" class="empty-state">No responses yet.</td></tr>';
             } else {
-                tbody.innerHTML = allGuests.map(g => {
+                respondedTbody.innerHTML = respondedGuests.map(g => {
                     const rsvp = g.rsvpId ? allRsvps.find(r => r.id === g.rsvpId) : g._autoMatch;
                     const isManual = !!g.rsvpId;
                     const score = g._autoMatchScore || 0;
-                    let statusCell, matchCell, defenseCell, eventsCell, actionsCell;
+                    const confidenceLabel = isManual ? 'manual' : (score >= 0.85 ? 'high' : 'fuzzy');
+                    const confidenceClass = (!isManual && score < 0.85) ? 'low' : '';
+                    const matchCell = `<td><span class="match-name">${rsvp.name || '—'}</span><span class="match-confidence ${confidenceClass}">${confidenceLabel}</span><br><span class="match-info">${rsvp.email || ''}</span></td>`;
+                    const defenseCell = `<td>${modePill(rsvp.defenseMode)}</td>`;
+                    const eventsCell = `<td>${eventPills(rsvp.events)}</td>`;
+                    const actionsCell = `<td><button class="unlink-btn" data-gid="${g.id}">✕ unlink</button> <button class="delete-guest-btn" data-gid="${g.id}" title="Remove guest">🗑</button></td>`;
+                    return `<tr><td>${g.name}</td>${matchCell}${defenseCell}${eventsCell}${actionsCell}</tr>`;
+                }).join('');
+            }
 
-                    if (rsvp) {
-                        const confidenceLabel = isManual ? 'manual' : (score >= 0.85 ? 'high' : 'fuzzy');
-                        const confidenceClass = (!isManual && score < 0.85) ? 'low' : '';
-                        statusCell = `<td><span class="status-dot dot-responded"></span> Responded</td>`;
-                        matchCell = `<td><span class="match-name">${rsvp.name || '—'}</span><span class="match-confidence ${confidenceClass}">${confidenceLabel}</span><br><span class="match-info">${rsvp.email || ''}</span></td>`;
-                        defenseCell = `<td>${modePill(rsvp.defenseMode)}</td>`;
-                        eventsCell = `<td>${eventPills(rsvp.events)}</td>`;
-                        actionsCell = `<td><button class="unlink-btn" data-gid="${g.id}">✕ unlink</button> <button class="delete-guest-btn" data-gid="${g.id}" title="Remove guest">🗑</button></td>`;
-                    } else {
-                        statusCell = `<td><span class="status-dot dot-pending"></span> No response</td>`;
-                        matchCell = `<td class="match-info">—</td>`;
-                        defenseCell = `<td>—</td>`;
-                        eventsCell = `<td>—</td>`;
-                        actionsCell = `<td><button class="link-btn" data-gid="${g.id}">Link</button> <button class="delete-guest-btn" data-gid="${g.id}" title="Remove guest">🗑</button></td>`;
-                    }
-
-                    return `<tr><td>${g.name}</td>${statusCell}${matchCell}${defenseCell}${eventsCell}${actionsCell}</tr>`;
+            // No response rows
+            const noResponseTbody = document.getElementById('noresponse-tbody');
+            if (noResponseGuests.length === 0) {
+                noResponseTbody.innerHTML = '<tr><td colspan="2" class="empty-state">Everyone has responded! 🎉</td></tr>';
+            } else {
+                noResponseTbody.innerHTML = noResponseGuests.map(g => {
+                    return `<tr><td>${g.name}</td><td><button class="link-btn" data-gid="${g.id}">Link</button> <button class="delete-guest-btn" data-gid="${g.id}" title="Remove guest">🗑</button></td></tr>`;
                 }).join('');
             }
 
