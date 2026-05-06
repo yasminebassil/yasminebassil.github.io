@@ -6,7 +6,7 @@
     <title>Defense Info — Yasmine Bassil</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:ital,wght@0,400;0,500;1,400&family=Noto+Sans+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Patrick+Hand&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Noto+Sans+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-cream: #faf6f2;
@@ -92,7 +92,7 @@
         .info-section h2 {
             font-family: var(--font-display);
             font-size: 1.75rem;
-            font-weight: 500;
+            font-weight: 700;
             color: var(--text-charcoal);
             margin-bottom: 1rem;
             padding-bottom: 0.5rem;
@@ -182,17 +182,24 @@
 
         /* ---- Committee Grid ---- */
         .committee-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 1.5rem;
+        }
+
+        .committee-grid .committee-card {
+            flex: 0 1 270px;
         }
 
         .committee-card {
             text-align: center;
-            padding: 1.5rem 1rem;
+            padding: 1rem 1rem;
             background: var(--bg-card);
             border-radius: 12px;
             box-shadow: var(--shadow-soft);
+            display: flex;
+            flex-direction: column;
         }
 
         .committee-name {
@@ -213,8 +220,10 @@
 
         .committee-affiliation {
             font-size: 0.85rem;
-            color: var(--text-muted);
+            color: #8A8380;
             line-height: 1.5;
+            margin-top: auto;
+            padding-top: 0.5rem;
         }
 
         /* ---- Info Cards (logistics) ---- */
@@ -276,7 +285,7 @@
             background: rgba(196, 117, 91, 0.06);
             border-left: 3px solid var(--accent-terracotta);
             border-radius: 0 8px 8px 0;
-            padding: 1.25rem 1.5rem;
+            padding: 1.25rem 1.5rem 0.5rem;
             margin-top: 1rem;
             display: flex;
             gap: 1rem;
@@ -304,10 +313,62 @@
             margin-bottom: 0;
         }
 
+        /* ---- Collapsible Walking Directions ---- */
+        details.walking-collapse {
+            background: rgba(196, 117, 91, 0.06);
+            border-left: 3px solid var(--accent-terracotta);
+            border-radius: 0 8px 8px 0;
+            padding: 0.85rem 1.25rem;
+            margin-top: 1rem;
+        }
+
+        details.walking-collapse summary {
+            list-style: none;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.15rem 0;
+        }
+
+        details.walking-collapse summary::-webkit-details-marker,
+        details.walking-collapse summary::marker {
+            display: none;
+        }
+
+        .walking-summary-title {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-charcoal);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        details.walking-collapse .chevron {
+            color: var(--accent-terracotta);
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: transform 0.25s ease;
+            flex-shrink: 0;
+            user-select: none;
+        }
+
+        details.walking-collapse[open] .chevron {
+            transform: rotate(180deg);
+        }
+
+        .walking-content {
+            margin-top: 0.85rem;
+        }
+
         /* ---- Info Pills ---- */
         .info-pills {
             display: flex;
             flex-wrap: wrap;
+            justify-content: center;
             gap: 0.5rem;
             margin-top: 0.75rem;
         }
@@ -326,7 +387,7 @@
         /* ---- Transport Subsections ---- */
         .transport-sub {
             font-family: var(--font-display);
-            font-size: 1.25rem;
+            font-size: 1.3rem;
             font-weight: 600;
             color: var(--text-charcoal);
             margin-top: 2rem;
@@ -340,6 +401,132 @@
 
         .transport-sub svg {
             color: var(--accent-terracotta);
+        }
+
+        /* ---- Parking ---- */
+        .parking-option {
+            margin-top: 1.75rem;
+            padding-top: 1.25rem;
+            border-top: 1px dashed var(--bg-cream-dark);
+        }
+
+        .parking-option:first-of-type {
+            border-top: none;
+            padding-top: 0;
+        }
+
+        .parking-option-title {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-charcoal);
+            margin-bottom: 0.75rem;
+        }
+
+        .parking-option-title .option-label {
+            font-family: var(--font-body);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--accent-terracotta);
+            font-weight: 500;
+            display: block;
+            margin-bottom: 0.15rem;
+        }
+
+        .parking-walking {
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-top: 0.75rem;
+        }
+
+        .parking-walking strong {
+            color: var(--text-charcoal);
+        }
+
+        .parking-card {
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            gap: 1.5rem;
+            align-items: center;
+            background: var(--bg-card);
+            border-radius: 8px;
+            box-shadow: var(--shadow-soft);
+            padding: 1.25rem 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .parking-card-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 6px;
+            display: block;
+        }
+
+        .parking-card-name {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-charcoal);
+            margin-bottom: 0.25rem;
+        }
+
+        .parking-card-address {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .rates-block {
+            background: var(--bg-card);
+            border-radius: 8px;
+            box-shadow: var(--shadow-soft);
+            padding: 1.5rem 1.75rem;
+            margin-top: 1.25rem;
+        }
+
+        .rates-title {
+            font-family: var(--font-display);
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--accent-terracotta);
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .rates-note {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-align: center;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .rates-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            border-top: 1px solid var(--bg-cream-dark);
+        }
+
+        .rate-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.6rem 0.5rem;
+            border-bottom: 1px solid var(--bg-cream-dark);
+            font-size: 0.92rem;
+            color: var(--text-charcoal);
+        }
+
+        .rate-row span:last-child {
+            font-weight: 600;
+            color: var(--accent-terracotta);
+        }
+
+        @media (max-width: 700px) {
+            .parking-card {
+                grid-template-columns: 1fr;
+            }
         }
 
         /* ---- Pill Button ---- */
@@ -360,6 +547,42 @@
         .pill-btn:hover {
             background: var(--accent-terracotta);
             color: var(--bg-cream);
+        }
+
+        /* ---- Section Divider ---- */
+        .section-divider {
+            max-width: 900px;
+            margin: 1rem auto 2.5rem;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+        }
+
+        .section-divider::before,
+        .section-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--accent-terracotta);
+            opacity: 0.35;
+        }
+
+        .section-divider span {
+            font-family: var(--font-display);
+            font-size: 1.35rem;
+            font-style: italic;
+            font-weight: 500;
+            color: var(--accent-terracotta);
+            white-space: nowrap;
+        }
+
+        @media (max-width: 600px) {
+            .section-divider span {
+                font-size: 1.1rem;
+                white-space: normal;
+                text-align: center;
+            }
         }
 
         /* ---- Footer ---- */
@@ -411,20 +634,52 @@
 </head>
 <body>
 
-    <a href="/defense" class="back-link">&larr; Back to Defense</a>
+    <a href="/defense" class="back-link" id="back-link" style="display: none;">&larr; Back to Defense</a>
+    <script>
+        if (new URLSearchParams(window.location.search).has('from')) {
+            document.getElementById('back-link').style.display = 'flex';
+        }
+    </script>
 
     <!-- Header -->
     <div class="page-header">
-        <h1>Defense Details</h1>
-        <p class="subtitle">Everything you need to know about the day</p>
+        <p class="subtitle" style="text-transform: uppercase; letter-spacing: 0.15em; font-size: 0.75rem; color: var(--accent-terracotta); margin-bottom: 0.75rem;">Doctoral Defense</p>
+        <h1>Yasmine Bassil</h1>
+        <p style="font-family: var(--font-display); font-size: 1.15rem; font-style: italic; color: var(--text-muted); margin-top: 0.25rem;">&ldquo;Navigating Aging: How We Find Our Way Over Time&rdquo;</p>
+        <p style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.5rem;">
+            <svg width="16" height="16" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: -2px;"><polygon points="32,4 2,22 32,40 62,22" fill="var(--accent-terracotta)" opacity="0.85"/><rect x="30" y="28" width="4" height="18" rx="1" fill="var(--accent-terracotta)" opacity="0.7"/><path d="M16 26 v12 c0 8 16 14 16 14 s16-6 16-14 v-12" stroke="var(--accent-terracotta)" stroke-width="3" fill="none" opacity="0.6"/><circle cx="52" cy="38" r="2.5" fill="var(--accent-terracotta)" opacity="0.7"/><line x1="52" y1="22" x2="52" y2="38" stroke="var(--accent-terracotta)" stroke-width="2.5" opacity="0.7"/></svg>
+            Doctor of Philosophy in Neuroscience &middot; Emory University
+            <svg width="16" height="16" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: -2px;"><polygon points="32,4 2,22 32,40 62,22" fill="var(--accent-terracotta)" opacity="0.85"/><rect x="30" y="28" width="4" height="18" rx="1" fill="var(--accent-terracotta)" opacity="0.7"/><path d="M16 26 v12 c0 8 16 14 16 14 s16-6 16-14 v-12" stroke="var(--accent-terracotta)" stroke-width="3" fill="none" opacity="0.6"/><circle cx="52" cy="38" r="2.5" fill="var(--accent-terracotta)" opacity="0.7"/><line x1="52" y1="22" x2="52" y2="38" stroke="var(--accent-terracotta)" stroke-width="2.5" opacity="0.7"/></svg>
+        </p>
+        <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.25rem;">
+            <div style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1.25rem; border: 1px solid rgba(196, 117, 91, 0.3); border-radius: 50px; font-size: 0.85rem; color: var(--text-charcoal);">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--accent-terracotta)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                Friday, June 5th at 12:00 PM EDT
+            </div>
+            <div style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1.25rem; border: 1px solid rgba(196, 117, 91, 0.3); border-radius: 50px; font-size: 0.85rem; color: var(--text-charcoal);">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--accent-terracotta)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                HSRB-I Auditorium &middot; Emory University
+            </div>
+        </div>
     </div>
+
+    <!-- Personal Note -->
+    <section class="info-section">
+        <div style="max-width: 900px; margin: 0 auto 2rem; padding: 1.25rem 1.75rem; background: #faf6f0; border-radius: 2px; box-shadow: 2px 3px 8px rgba(44,40,37,0.1); transform: rotate(-0.5deg) translateZ(0); backface-visibility: hidden; -webkit-font-smoothing: antialiased; text-rendering: geometricPrecision; position: relative; overflow: hidden; border-left: 3px solid var(--accent-terracotta); font-family: 'Patrick Hand', cursive; font-size: 1.1rem; color: var(--text-muted); line-height: 1.6;">
+            <svg style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; opacity: 0.18;" xmlns="http://www.w3.org/2000/svg"><filter id="paper"><feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="5" seed="2" stitchTiles="stitch"/><feDiffuseLighting in="noise" lighting-color="#faf6f0" surfaceScale="2"><feDistantLight azimuth="45" elevation="60"/></feDiffuseLighting></filter><rect width="100%" height="100%" filter="url(#paper)"/></svg>
+            <div style="position: relative;">
+                After 6 years of research, I am excited to invite you to my <strong>Neuroscience PhD Defense</strong>! I would love to celebrate this milestone with all who have been in community with me so far &mdash; friends, family, co-workers, study participants, community members, and anyone interested in the research being presented. See below for details.
+                <div style="font-family: 'Patrick Hand', cursive; font-size: 1.3rem; color: var(--text-charcoal); margin-top: 0.5rem; text-align: right;">&mdash; Yasmine</div>
+            </div>
+        </div>
+    </section>
 
     <!-- Abstract -->
     <section class="info-section">
         <h2>About the Research</h2>
         <div class="abstract">
             <p>
-                <strong>How do we find our way around, and what changes as we get older?</strong> One of the earliest signs of aging-related cognitive decline is a shift in how people navigate their daily environments. Older adults tend to rely on memorized routes and body-based cues &mdash; such as &ldquo;turn left at the stop sign&rdquo; &mdash; rather than forming flexible, map-like mental representations of their environment. Understanding this shift could help identify early markers of cognitive decline, and that&rsquo;s what this research is all about.
+                <strong>How do we find our way around, and what changes as we get older?</strong> One of the earliest signs of aging-related cognitive decline is a shift in how people navigate their daily environments. With age, we tend to rely on memorized routes and body-based cues &mdash; such as &ldquo;turn left at the stop sign&rdquo; &mdash; rather than forming flexible, map-like mental representations of their environment. Understanding this shift could help identify early markers of cognitive decline, and that&rsquo;s what this research is all about.
             </p>
             <p>
                 Yasmine will be presenting her work on understanding the aging navigational system, using virtual reality, neuroimaging, and other multimodal neuroscience techniques. She welcomes you to join her as she shares what she&rsquo;s learned about how we find our way over time.
@@ -434,30 +689,89 @@
 
     <!-- What to Expect -->
     <section class="info-section">
-        <h2>What to Expect</h2>
+        <h2>What to Expect: <span style="font-weight: 400;">The Defense</span></h2>
         <div class="two-col">
             <div class="two-col-text">
                 <p>
-                    The defense will begin with the Director of Graduate Studies setting the agenda for the session, followed by an introduction from Yasmine&rsquo;s advisor, Dr. Michael Borich. Yasmine will then present her dissertation research in a ~45 minute presentation, followed by questions from the audience. The full public session (presentation + Q&amp;A) will last approximately one hour. All are welcome to attend.
+                    This is a <strong style="font-weight: 600;">public, community-facing lecture</strong> &mdash; no neuroscience background needed. Friends, family, neighbors, and anyone curious are warmly welcome.
                 </p>
                 <p>
-                    After the Q&amp;A (~1:00 PM), the audience will be asked to step out as the private defense commences between Yasmine and her committee. Afterwards, the committee will deliberate, and Yasmine will emerge once a decision has been reached.
+                    The <strong style="font-weight: 600;">defense</strong> will begin with an introduction from Yasmine&rsquo;s advisor, Dr. Michael Borich. Yasmine will then present her dissertation research (~45 minutes), followed by audience Q&amp;A. The full public session lasts about an hour.
+                </p>
+                <p>
+                    After the Q&amp;A (~1:00 PM), the audience will be asked to step out as the private defense commences between Yasmine and her committee. Meanwhile, guests are invited to enjoy light refreshments in the lobby (<a href="#reception" style="color: var(--accent-terracotta); text-decoration: none; font-weight: 500;">see Reception details below</a>).
                 </p>
             </div>
             <div>
-                <div class="img-frame">
-                    [Photo of HSRB or auditorium]
+                <div class="img-frame" style="aspect-ratio: 16 / 10;">
+                    <img src="auditorium.jpg" alt="HSRB-I Auditorium" style="filter: brightness(1.08);">
                 </div>
                 <p class="img-caption">HSRB-I Auditorium</p>
                 <div class="info-pills">
                     <span class="info-pill">No dress code</span>
                     <span class="info-pill">Non-flash photography &amp; video permitted</span>
                     <span class="info-pill">Phones on silent</span>
-
+                    <span class="info-pill">Family friendly</span>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- What to Expect: Reception -->
+    <section class="info-section" id="reception">
+        <h2>What to Expect: <span style="font-weight: 400;">The Reception</span></h2>
+        <div class="two-col">
+            <div>
+                <div class="img-frame" style="aspect-ratio: 2 / 1;">
+                    <img src="cafe.jpg" alt="HSRB-I Caf&eacute;">
+                </div>
+                <p class="img-caption">HSRB-I Caf&eacute; (just outside the auditorium)</p>
+                <div class="info-pills">
+                    <span class="info-pill">Light refreshments &amp; cake</span>
+                    <span class="info-pill">Non-alcoholic drinks</span>
+                    <span class="info-pill">Champagne</span>
+                    <span class="info-pill">Family friendly</span>
+                </div>
+            </div>
+            <div class="two-col-text">
+                <p>
+                    Following the defense Q&amp;A (~1:00 PM), guests are invited to the <strong style="font-weight: 600;">reception</strong> in the HSRB-I caf&eacute;, located right outside the auditorium. Light refreshments will be available throughout.
+                </p>
+                <p>
+                    From 1:00&ndash;2:00 PM, Yasmine will be in her private defense with her committee. Please enjoy the food and mingle during this time &mdash; no need to wait quietly!
+                </p>
+                <p>
+                    Around 2:00 PM, Yasmine will join the reception to celebrate with everyone. The reception runs through <strong style="font-weight: 600;">3:30 PM</strong>. Stay as long as you&rsquo;d like!
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Virtual Attendance -->
+    <section class="info-section">
+        <h2>Joining Virtually?</h2>
+        <div class="info-cards">
+            <div class="info-card">
+                <h3>Zoom Link</h3>
+                <p>Join the defense remotely via Zoom.</p>
+                <a href="https://emory.zoom.us/my/yasminebassil" target="_blank" rel="noopener" class="pill-btn" style="margin-top: 0.85rem;">Join Zoom Meeting &rarr;</a>
+            </div>
+            <div class="info-card" style="display: flex; flex-direction: column;">
+                <h3>Time Zone</h3>
+                <p>The defense begins at 12:00 PM in Atlanta (EDT / UTC-4).</p>
+                <p style="margin-top: auto; padding-top: 0.75rem; color: var(--accent-terracotta);">7:00 PM in Beirut <span style="font-size: 0.8rem;">(EEST / UTC+3)</span><br>8:00 PM in Dubai <span style="font-size: 0.8rem;">(GST / UTC+4)</span></p>
+            </div>
+            <div class="info-card">
+                <h3>What to Know</h3>
+                <p>Please keep your mic muted during the presentation. Questions will be opened up after the talk, but feel free to use the chat anytime.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Divider -->
+    <div class="section-divider">
+        <span>Attending in person? See below &darr;</span>
+    </div>
 
     <!-- Getting There -->
     <section class="info-section">
@@ -487,10 +801,10 @@
         <div class="two-col" style="margin-top: 1.5rem;">
             <div class="two-col-text">
                 <p>
-                    Take this path upwards and take the staircase or ramp (pictured to the right, circled) to arrive to the proper entrance. We will have friends outside with a sign to greet you and show you to the auditorium.
+                    Take this path upwards and take the staircase or ramp (pictured to the right, circled) to arrive to the proper entrance. We will have signs along the way to show you the direction to the auditorium.
                 </p>
                 <p>
-                    Please try to arrive a few minutes early, as the building doors require keycard access to be let in. There will only be someone to let you in until 12:05PM. If you arrive later than that, we will provide a number you can text to notify someone to let you in.
+                    Please try to arrive at least 15 minutes early, as the building doors require keycard access to be let in. There will only be someone to let guests in until 12:00PM sharp. If you arrive later than that, we will provide a number you can text to notify someone to let you in.
                 </p>
             </div>
             <div>
@@ -506,75 +820,139 @@
     <section class="info-section">
         <h2>Transportation</h2>
 
-        <!-- Walking Directions -->
-        <div class="navigator-blurb">
-            <div class="nav-icon">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C4755B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="13" cy="4" r="2"/>
-                    <path d="M10 10l2-1 4 4"/>
-                    <path d="M12 9l-4.5 12"/>
-                    <path d="M16 13l1.5 8"/>
-                    <path d="M6 8l2 1"/>
-                </svg>
-            </div>
-            <div style="flex: 1;">
-                <div class="nav-label">Walking Directions</div>
-                <p>
-                    If you&rsquo;re walking from main campus (or parking decks), you will walk down Haygood Dr NE in the southeast direction. You will walk down the road until you see the Emory Brumley Bridge (pictured above). Take the staircase on the <strong>left</strong> before the bridge, which will lead you to the proper entrance doors.
-                </p>
-            </div>
-            <div style="position: relative; flex-shrink: 0;">
-                <img src="navigation-path.png" alt="Navigation path to HSRB-I" style="width: 100px; height: 120px; object-fit: cover; border-radius: 6px;">
-                <svg width="24" height="24" viewBox="0 0 24 24" style="position: absolute; top: -6px; right: -6px; background: var(--bg-cream); border-radius: 50%; padding: 2px;">
-                    <circle cx="12" cy="12" r="10" fill="none" stroke="#C4755B" stroke-width="0.8" opacity="0.4"/>
-                    <polygon points="12,3 13.2,10 12,8.5 10.8,10" fill="#C4755B"/>
-                    <polygon points="12,21 13.2,14 12,15.5 10.8,14" fill="#C4755B" opacity="0.3"/>
-                    <polygon points="3,12 10,10.8 8.5,12 10,13.2" fill="#C4755B" opacity="0.3"/>
-                    <polygon points="21,12 14,10.8 15.5,12 14,13.2" fill="#C4755B" opacity="0.3"/>
-                    <text x="12" y="2.5" text-anchor="middle" font-size="3" fill="#C4755B" font-weight="600" font-family="DM Sans, sans-serif">N</text>
-                </svg>
-            </div>
-        </div>
-
         <!-- Parking -->
         <h3 class="transport-sub">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 17V7h4a3 3 0 0 1 0 6H9"/></svg>
             Parking
         </h3>
-        <p>[Parking information — visitor decks, rates, closest deck to HSRB-I, payment methods, etc.]</p>
+        <p>If you are driving yourself to Emory&rsquo;s campus, there are two convenient visitor parking decks near the venue (~11 min walk). Please see below for parking deck names, addresses, parking fees, and walking directions from each parking deck to the venue.</p>
+
+        <!-- Option 1: Michael Street Parking Deck -->
+        <div class="parking-option">
+            <h4 class="parking-option-title">
+                <span class="option-label">Option 1</span>
+                Michael Street Parking Deck
+            </h4>
+            <div class="parking-card">
+                <div class="parking-card-image">
+                    <img src="michael-street.png" alt="Michael Street Parking Deck location map">
+                </div>
+                <div class="parking-card-info">
+                    <div class="rates-title">Parking Rates</div>
+                    <div class="rates-note">Fees apply Monday&ndash;Friday, 7am&ndash;5pm &middot; Lost ticket fee: $25</div>
+                    <div class="rates-grid">
+                        <div class="rate-row"><span>0&ndash;15 minutes</span><span>Free</span></div>
+                        <div class="rate-row"><span>15 minutes &ndash; 1 hour</span><span>$7</span></div>
+                        <div class="rate-row"><span>1&ndash;2 hours</span><span>$9</span></div>
+                        <div class="rate-row"><span>2&ndash;3 hours</span><span>$11</span></div>
+                        <div class="rate-row"><span>3&ndash;4 hours</span><span>$13</span></div>
+                        <div class="rate-row"><span>4&ndash;24 hours</span><span>$15</span></div>
+                    </div>
+                </div>
+            </div>
+            <details class="walking-collapse">
+                <summary>
+                    <span class="walking-summary-title">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="#C4755B" stroke="none">
+                            <path d="M13.5 5.5c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zM9.8 8.9 7 23h2.1l1.8-8 2.1 2v6h2v-7.5l-2.1-2 .6-3C14.8 12 16.8 13 19 13v-2c-1.9 0-3.5-1-4.3-2.4l-1-1.6c-.4-.6-1-1-1.7-1-.3 0-.5.1-.8.1L6 8.3V13h2V9.6l1.8-.7-1 5z"/>
+                        </svg>
+                        Walking Directions: Michael&rsquo;s Street to Venue (~11 min walk)
+                    </span>
+                    <span class="chevron">&#9662;</span>
+                </summary>
+                <div class="walking-content">
+                    <div style="width: 100%;">
+                        <img src="michael-walking-dir.png" alt="Walking directions from Michael Street Deck to HSRB-I" style="width: 100%; height: auto; max-height: 500px; object-fit: contain; border-radius: 6px; display: block;">
+                    </div>
+                    <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.7; margin-top: 0.5rem; margin-bottom: 0;">
+                        If you parked in the <strong>Michael Street Parking Deck</strong>, you will exit the deck and turn left (head east) down Michael&rsquo;s Street until you reach Clifton Rd NE. Then, you will turn right (walk south) down Clifton Rd NE. Very soon after, turn left to walk down Haygood Dr NE. You will walk down the road until you see the Emory Brumley Bridge (pictured above). Take the staircase on the <em>left</em> before the bridge, which will lead you to the proper entrance doors.
+                    </p>
+                </div>
+            </details>
+        </div>
+
+        <!-- Option 2: Lowergate East Parking Deck -->
+        <div class="parking-option">
+            <h4 class="parking-option-title">
+                <span class="option-label">Option 2</span>
+                Lowergate East Parking Deck
+            </h4>
+            <div class="parking-card">
+                <div class="parking-card-image">
+                    <img src="lowergate-east.png" alt="Lowergate East Parking Deck location map">
+                </div>
+                <div class="parking-card-info">
+                    <div class="rates-title">Hospital / Clinic Parking Rates</div>
+                    <div class="rates-note">Lost ticket fee: $25</div>
+                    <div class="rates-grid">
+                        <div class="rate-row"><span>0&ndash;30 minutes</span><span>Free</span></div>
+                        <div class="rate-row"><span>30 minutes &ndash; 1 hour</span><span>$7</span></div>
+                        <div class="rate-row"><span>1&ndash;3 hours</span><span>$9</span></div>
+                        <div class="rate-row"><span>3&ndash;4 hours</span><span>$11</span></div>
+                        <div class="rate-row"><span>4&ndash;7 hours</span><span>$13</span></div>
+                        <div class="rate-row"><span>7&ndash;24 hours</span><span>$15</span></div>
+                    </div>
+                </div>
+            </div>
+            <details class="walking-collapse">
+                <summary>
+                    <span class="walking-summary-title">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="#C4755B" stroke="none">
+                            <path d="M13.5 5.5c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zM9.8 8.9 7 23h2.1l1.8-8 2.1 2v6h2v-7.5l-2.1-2 .6-3C14.8 12 16.8 13 19 13v-2c-1.9 0-3.5-1-4.3-2.4l-1-1.6c-.4-.6-1-1-1.7-1-.3 0-.5.1-.8.1L6 8.3V13h2V9.6l1.8-.7-1 5z"/>
+                        </svg>
+                        Walking Directions: Lowergate East to Venue (~11 min walk)
+                    </span>
+                    <span class="chevron">&#9662;</span>
+                </summary>
+                <div class="walking-content">
+                    <div style="display: flex; gap: 1.25rem; align-items: flex-start;">
+                        <p style="flex: 1; font-size: 0.9rem; color: var(--text-muted); line-height: 1.7; margin: 0;">
+                            If you parked in the <strong>Lowergate East Parking Deck</strong>, exit the deck area and walk back to the main road, turning right (heading north) on Clifton Rd NE. After some walking, you&rsquo;ll reach Haygood Dr NE and turn right. Then, you&rsquo;ll head down Haygood Dr NE until you see the Emory Brumley Bridge (see &ldquo;Getting There&rdquo;). Take the staircase on the <em>left</em> before the bridge, which will lead you to the proper entrance doors.
+                        </p>
+                        <div style="flex-shrink: 0;">
+                            <img src="lowergate-walking-dir.png" alt="Walking directions from Lowergate East Deck to HSRB-I" style="width: 440px; height: 510px; object-fit: contain; border-radius: 6px;">
+                        </div>
+                    </div>
+                </div>
+            </details>
+        </div>
 
         <!-- Public Transit -->
         <h3 class="transport-sub">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="14" rx="2"/><path d="M4 11h16"/><path d="M12 3v14"/><circle cx="8" cy="20" r="1"/><circle cx="16" cy="20" r="1"/><path d="M8 17v3"/><path d="M16 17v3"/></svg>
             Public Transit
         </h3>
-        <p>[MARTA directions — nearest station, bus routes, shuttle info, walking time from station, etc.]</p>
+        <p>If you are taking public transit to Emory&rsquo;s campus, please see below for the nearest bus stops and shuttles.</p>
+
+        <div class="info-card" style="margin-top: 1rem; position: relative;">
+            <span style="position: absolute; top: 1.25rem; right: 1.5rem; font-size: 0.8rem; font-weight: 600; color: var(--accent-terracotta);">$2.50 one-way MARTA trip</span>
+            <h3 style="display: flex; align-items: center; gap: 0.5rem;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C4755B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="14" rx="2"/><path d="M4 11h16"/><path d="M12 3v14"/><circle cx="8" cy="20" r="1"/><circle cx="16" cy="20" r="1"/><path d="M8 17v3"/><path d="M16 17v3"/></svg>
+                Bus Stop
+            </h3>
+            <p>Clifton Rd NE &amp; Haygood Dr NE &middot; servicing MARTA Buses <strong>#11</strong> and <strong>#15</strong></p>
+            <p style="font-size: 0.85rem; color: var(--text-muted); font-style: italic; margin-top: 0.35rem;">~5 min walk to HSRB-I</p>
+        </div>
+
+        <div class="info-card" style="margin-top: 1rem; position: relative;">
+            <span style="position: absolute; top: 1.25rem; right: 1.5rem; font-size: 0.8rem; font-weight: 600; color: var(--accent-terracotta);">Free parking + shuttle service</span>
+            <h3 style="display: flex; align-items: center; gap: 0.5rem;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C4755B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="14" rx="2"/><path d="M4 11h16"/><path d="M12 3v14"/><circle cx="8" cy="20" r="1"/><circle cx="16" cy="20" r="1"/><path d="M8 17v3"/><path d="M16 17v3"/></svg>
+                Emory South DeKalb Commuter Shuttle
+            </h3>
+            <p><strong>South DeKalb Mall</strong> &middot; 2801 Candler Rd, Decatur, GA 30034</p>
+            <p style="margin-top: 0.5rem;">Commuter transit service between the South DeKalb Mall free parking lot and Emory&rsquo;s Atlanta Campus, with limited stops in between. Parking at the South DeKalb Mall is near the Firestone tire store. Drop off on Emory campus at the Emory Woodruff Memorial Research Building (~8 min walk from venue).</p>
+            <p style="margin-top: 0.5rem;"><a href="https://transportation.emory.edu/shuttles/south-dekalb-mall-commuter-transit" target="_blank" rel="noopener" style="color: var(--accent-terracotta); text-decoration: none; font-weight: 500;">More info &amp; stop times &rarr;</a></p>
+        </div>
 
         <!-- Rideshare -->
         <h3 class="transport-sub">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
             Rideshare
         </h3>
-        <p>[Uber/Lyft drop-off location, recommended pin address, tips, etc.]</p>
-    </section>
-
-    <!-- Virtual Attendance -->
-    <section class="info-section">
-        <h2>Joining Virtually</h2>
-        <div class="info-cards">
-            <div class="info-card">
-                <h3>Zoom Link</h3>
-                <p>[Zoom link will be added closer to the date and shared via email.]</p>
-            </div>
-            <div class="info-card">
-                <h3>Time Zone</h3>
-                <p>The defense begins at 12:00 PM Eastern Daylight Time (EDT / UTC-4).</p>
-            </div>
-            <div class="info-card">
-                <h3>What to Know</h3>
-                <p>[Any virtual etiquette notes — e.g., "Please keep your mic muted during the presentation. Questions will be opened up after the talk."]</p>
-            </div>
-        </div>
+        <p>Uber, Lyft, or other rideshare dropoff is at the main address for the venue: <strong>1760 Haygood Dr NE, Atlanta, GA 30322</strong>.</p>
+        <p>Rideshare options often drop passengers off at the building entrance on Andrews Circle, which is <strong>NOT</strong> the entrance that we will be standing at to let you into the building. Since building entrances require an Emory ID to enter, please make sure that you walk around the building to the entrance indicated above (see &ldquo;Getting There&rdquo;).</p>
+        <p>The correct entrance for the building for the defense is on Haygood Dr NE. There will be signage outside showing you to this entrance.</p>
     </section>
 
     <!-- Committee -->
@@ -582,37 +960,42 @@
         <h2>Dissertation Committee</h2>
         <div class="committee-grid">
             <div class="committee-card">
-                <div class="committee-name">[Advisor Name]</div>
-                <div class="committee-role">Chair</div>
-                <div class="committee-affiliation">[Department], Emory University</div>
+                <div class="committee-name">Michael Borich, PT, DPT, PhD</div>
+                <div class="committee-role">Advisor</div>
+                <div class="committee-affiliation">Rehabilitation Medicine, School of Medicine, Emory University</div>
             </div>
             <div class="committee-card">
-                <div class="committee-name">[Member Name]</div>
+                <div class="committee-name">Thackery Brown, PhD</div>
                 <div class="committee-role">Committee Member</div>
-                <div class="committee-affiliation">[Department], Emory University</div>
+                <div class="committee-affiliation">School of Psychology,<br>Georgia Tech</div>
             </div>
             <div class="committee-card">
-                <div class="committee-name">[Member Name]</div>
+                <div class="committee-name">Shella Keilholz, PhD</div>
                 <div class="committee-role">Committee Member</div>
-                <div class="committee-affiliation">[Department], Emory University</div>
+                <div class="committee-affiliation">Biomedical Engineering, Georgia Tech &amp; Emory University</div>
             </div>
             <div class="committee-card">
-                <div class="committee-name">[Member Name]</div>
+                <div class="committee-name">Annabelle Singer, PhD</div>
                 <div class="committee-role">Committee Member</div>
-                <div class="committee-affiliation">[Department / Institution]</div>
+                <div class="committee-affiliation">Biomedical Engineering, Georgia Tech &amp; Emory University</div>
             </div>
             <div class="committee-card">
-                <div class="committee-name">[Member Name]</div>
+                <div class="committee-name">Joe Nocera, PhD</div>
                 <div class="committee-role">Committee Member</div>
-                <div class="committee-affiliation">[Department / Institution]</div>
+                <div class="committee-affiliation">Rehabilitation Medicine, School of Medicine, Emory University</div>
             </div>
         </div>
     </section>
 
-    <!-- Back button -->
-    <div style="text-align: center; padding: 1rem 2rem 2rem;">
+    <!-- Back button (only visible if came from defense page) -->
+    <div id="back-bottom" style="text-align: center; padding: 1rem 2rem 2rem; display: none;">
         <a href="defense.html#rsvp" class="pill-btn">Back to RSVP &rarr;</a>
     </div>
+    <script>
+        if (new URLSearchParams(window.location.search).has('from')) {
+            document.getElementById('back-bottom').style.display = 'block';
+        }
+    </script>
 
     <footer>&copy; 2025 Yasmine Bassil</footer>
 
