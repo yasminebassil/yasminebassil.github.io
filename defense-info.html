@@ -549,6 +549,63 @@
             color: var(--bg-cream);
         }
 
+        /* ---- Lowergate Walking Row (text + image side-by-side, stacks on mobile) ---- */
+        .walking-row {
+            display: flex;
+            gap: 1.25rem;
+            align-items: flex-start;
+        }
+
+        .walking-row > p {
+            flex: 1;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        .walking-row > .walking-img-wrap {
+            flex: 0 0 auto;
+            max-width: 50%;
+        }
+
+        .walking-row > .walking-img-wrap img {
+            width: 100%;
+            max-width: 440px;
+            height: auto;
+            object-fit: contain;
+            border-radius: 6px;
+            display: block;
+        }
+
+        @media (max-width: 700px) {
+            .walking-row {
+                flex-direction: column;
+            }
+            .walking-row > .walking-img-wrap {
+                max-width: 100%;
+                width: 100%;
+            }
+        }
+
+        /* ---- Card Tag (top-right pill on info cards) ---- */
+        .card-tag {
+            position: absolute;
+            top: 1.25rem;
+            right: 1.5rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--accent-terracotta);
+        }
+
+        @media (max-width: 600px) {
+            .card-tag {
+                position: static;
+                display: block;
+                margin-top: 0.5rem;
+            }
+        }
+
         /* ---- Section Divider ---- */
         .section-divider {
             max-width: 900px;
@@ -905,12 +962,12 @@
                     <span class="chevron">&#9662;</span>
                 </summary>
                 <div class="walking-content">
-                    <div style="display: flex; gap: 1.25rem; align-items: flex-start;">
-                        <p style="flex: 1; font-size: 0.9rem; color: var(--text-muted); line-height: 1.7; margin: 0;">
+                    <div class="walking-row">
+                        <p>
                             If you parked in the <strong>Lowergate East Parking Deck</strong>, exit the deck area and walk back to the main road, turning right (heading north) on Clifton Rd NE. After some walking, you&rsquo;ll reach Haygood Dr NE and turn right. Then, you&rsquo;ll head down Haygood Dr NE until you see the Emory Brumley Bridge (see &ldquo;Getting There&rdquo;). Take the staircase on the <em>left</em> before the bridge, which will lead you to the proper entrance doors.
                         </p>
-                        <div style="flex-shrink: 0;">
-                            <img src="lowergate-walking-dir.png" alt="Walking directions from Lowergate East Deck to HSRB-I" style="width: 440px; height: 510px; object-fit: contain; border-radius: 6px;">
+                        <div class="walking-img-wrap">
+                            <img src="lowergate-walking-dir.png" alt="Walking directions from Lowergate East Deck to HSRB-I">
                         </div>
                     </div>
                 </div>
@@ -925,7 +982,7 @@
         <p>If you are taking public transit to Emory&rsquo;s campus, please see below for the nearest bus stops and shuttles.</p>
 
         <div class="info-card" style="margin-top: 1rem; position: relative;">
-            <span style="position: absolute; top: 1.25rem; right: 1.5rem; font-size: 0.8rem; font-weight: 600; color: var(--accent-terracotta);">$2.50 one-way MARTA trip</span>
+            <span class="card-tag">$2.50 one-way MARTA trip</span>
             <h3 style="display: flex; align-items: center; gap: 0.5rem;">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C4755B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="14" rx="2"/><path d="M4 11h16"/><path d="M12 3v14"/><circle cx="8" cy="20" r="1"/><circle cx="16" cy="20" r="1"/><path d="M8 17v3"/><path d="M16 17v3"/></svg>
                 Bus Stop
@@ -935,7 +992,7 @@
         </div>
 
         <div class="info-card" style="margin-top: 1rem; position: relative;">
-            <span style="position: absolute; top: 1.25rem; right: 1.5rem; font-size: 0.8rem; font-weight: 600; color: var(--accent-terracotta);">Free parking + shuttle service</span>
+            <span class="card-tag">Free parking + shuttle service</span>
             <h3 style="display: flex; align-items: center; gap: 0.5rem;">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C4755B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="14" rx="2"/><path d="M4 11h16"/><path d="M12 3v14"/><circle cx="8" cy="20" r="1"/><circle cx="16" cy="20" r="1"/><path d="M8 17v3"/><path d="M16 17v3"/></svg>
                 Emory South DeKalb Commuter Shuttle
