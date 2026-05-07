@@ -351,7 +351,12 @@
 </head>
 <body>
 
-    <a href="/defense" class="back-link">&larr; Back to Defense</a>
+    <a href="/defense#timeline" class="back-link" id="back-link" style="display: none;">&larr; Back to main page</a>
+    <script>
+        if (new URLSearchParams(window.location.search).has('from')) {
+            document.getElementById('back-link').style.display = 'flex';
+        }
+    </script>
 
     <div class="page-header">
         <h1>Celebrating Dr. Bassil!</h1>
