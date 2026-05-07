@@ -189,7 +189,8 @@
         }
 
         .committee-grid .committee-card {
-            flex: 0 1 270px;
+            flex: 0 1 calc(33.333% - 1rem);
+            min-width: 220px;
         }
 
         .committee-card {
@@ -820,7 +821,7 @@
             </div>
             <div class="info-card">
                 <h3>What to Know</h3>
-                <p>Please keep your mic muted during the presentation. Questions will be opened up after the talk, but feel free to use the chat anytime.</p>
+                <p>Please keep your mic muted during the presentation. Questions will be opened up after the talk &mdash; feel free to use the chat anytime.</p>
             </div>
         </div>
     </section>
@@ -1009,7 +1010,7 @@
         </h3>
         <p>Uber, Lyft, or other rideshare dropoff is at the main address for the venue: <strong>1760 Haygood Dr NE, Atlanta, GA 30322</strong>.</p>
         <p>Rideshare options often drop passengers off at the building entrance on Andrews Circle, which is <strong>NOT</strong> the entrance that we will be standing at to let you into the building. Since building entrances require an Emory ID to enter, please make sure that you walk around the building to the entrance indicated above (see &ldquo;Getting There&rdquo;).</p>
-        <p>The correct entrance for the building for the defense is on Haygood Dr NE. There will be signage outside showing you to this entrance.</p>
+        <p>The correct entrance for the building for the defense is on <strong>Haygood Dr NE</strong>. There will be signage outside showing you to this entrance.</p>
     </section>
 
     <!-- Committee -->
@@ -1044,6 +1045,17 @@
         </div>
     </section>
 
+    <!-- RSVP section (always visible) -->
+    <section class="info-section" id="rsvp-cta">
+        <h2>RSVP</h2>
+        <p>
+            If you plan to attend, please RSVP so we can plan refreshments and seating accordingly. You&rsquo;ll be able to indicate whether you&rsquo;ll join in person or virtually, and whether you&rsquo;ll stay for the reception.
+        </p>
+        <div style="text-align: center; margin-top: 1.25rem;">
+            <a href="defense.html?event=defense#rsvp" class="pill-btn" style="padding: 0.85rem 2.5rem; font-size: 1rem; font-weight: 600; background: var(--accent-terracotta); color: var(--bg-cream); border: none; box-shadow: 0 2px 8px rgba(196, 117, 91, 0.25);">RSVP for the Defense &rarr;</a>
+        </div>
+    </section>
+
     <!-- Back button (only visible if came from defense page) -->
     <div id="back-bottom" style="text-align: center; padding: 1rem 2rem 2rem; display: none;">
         <a href="defense.html#rsvp" class="pill-btn">Back to RSVP &rarr;</a>
@@ -1051,6 +1063,7 @@
     <script>
         if (new URLSearchParams(window.location.search).has('from')) {
             document.getElementById('back-bottom').style.display = 'block';
+            document.getElementById('rsvp-cta').style.display = 'none';
         }
     </script>
 

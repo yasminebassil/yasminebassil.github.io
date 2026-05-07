@@ -1333,11 +1333,11 @@
             <a href="defense-info.html?from=defense#reception" class="pill-btn">View Reception Details &rarr;</a>
         </div>
 
-        <div class="venue-info" style="margin-top: 3rem;">
+        <div class="venue-info celebration-only" style="margin-top: 3rem;">
             <div class="venue-label">Celebrating Dr. Bassil!</div>
             <div class="venue-name">Yasmine's Backyard</div>
             <div class="venue-sub">989 Moreland Ave SE, Atlanta, GA</div>
-            <div class="venue-sub" style="color: var(--accent-terracotta);">Saturday, June 6, 2026 &middot; 7:00 PM</div>
+            <div class="venue-sub" style="color: var(--accent-terracotta);">Saturday, June 6, 2026 &middot; 5:00 PM</div>
             <span class="pill-btn" style="opacity: 0.75; cursor: default;">Details coming soon</span>
         </div>
     </section>
@@ -1396,10 +1396,10 @@
             </div>
 
             <!-- Celebration -->
-            <div class="timeline-event">
+            <div class="timeline-event celebration-only">
                 <div class="timeline-dot"></div>
                 <div class="timeline-content reveal">
-                    <div class="timeline-date">Saturday, June 6, 2026 &middot; 7:00 PM</div>
+                    <div class="timeline-date">Saturday, June 6, 2026 &middot; 5:00 PM</div>
                     <div class="timeline-card">
                         <div class="timeline-header">
                             <div class="timeline-title">Celebrating Dr. Bassil!</div>
@@ -1477,7 +1477,7 @@
                 <input type="hidden" name="defense-guests" id="defense-guests-val" value="0">
             </div>
 
-            <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: -0.5rem; margin-bottom: 1.25rem; font-style: italic; text-align: center;">Detailed event information will be available on this page soon.</p>
+            <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: -0.5rem; margin-bottom: 1.25rem; font-style: italic; text-align: center;">Detailed event information can be found above by clicking on &ldquo;View Defense Details&rdquo;.</p>
 
             <!-- Step 2: Other Events -->
             <div class="form-group" id="events-group">
@@ -1489,7 +1489,7 @@
                             <input type="checkbox" name="events" value="reception">
                             <div>
                                 <div class="checkbox-label">Reception</div>
-                                <div class="checkbox-detail">Friday, June 5 at 1:00 PM &middot; In person only</div>
+                                <div class="checkbox-detail">Friday, June 5 &middot; 1:00 &ndash; 3:30 PM &middot; In person only</div>
                             </div>
                         </label>
                         <div class="guest-stepper-row" id="stepper-reception">
@@ -1502,12 +1502,12 @@
                         </div>
                         <input type="hidden" name="reception-guests" id="reception-guests-val" value="0">
                     </div>
-                    <div>
+                    <div class="celebration-only">
                         <label class="checkbox-option" id="cb-celebration">
                             <input type="checkbox" name="events" value="celebration">
                             <div>
                                 <div class="checkbox-label">Defense Party</div>
-                                <div class="checkbox-detail">Saturday, June 6 at 7:00 PM &middot; In person only</div>
+                                <div class="checkbox-detail">Saturday, June 6 at 5:00 PM &middot; In person only</div>
                             </div>
                         </label>
                         <div class="guest-stepper-row" id="stepper-celebration">
@@ -1554,6 +1554,12 @@
         // !! REPLACE WITH YOUR EMAILJS PUBLIC KEY !!
         emailjs.init('GOkQM-FcHb6v8REig');
 
+        // ---- Defense-only mode: hide celebration content when ?event=defense ----
+        if (new URLSearchParams(window.location.search).get('event') === 'defense') {
+            document.querySelectorAll('.celebration-only').forEach(function(el) {
+                el.style.display = 'none';
+            });
+        }
     </script>
 
     <script type="module">
