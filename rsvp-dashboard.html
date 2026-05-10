@@ -98,6 +98,9 @@
         .match-name { font-weight: 500; color: var(--text-charcoal); }
         .match-confidence { font-size: 0.72rem; padding: 0.1rem 0.4rem; border-radius: 8px; background: rgba(92,107,84,0.1); color: var(--accent-olive); margin-left: 0.3rem; }
         .match-confidence.low { background: rgba(196,117,91,0.1); color: var(--accent-terracotta); }
+        .match-confidence.plusone { background: rgba(196,117,91,0.15); color: var(--accent-terracotta); font-weight: 500; }
+        .link-section-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); font-weight: 500; margin: 0.85rem 0 0.4rem; padding: 0 0.85rem; }
+        .link-section-label:first-child { margin-top: 0; }
 
         .link-btn { font-size: 0.75rem; padding: 0.2rem 0.6rem; border-radius: 6px; border: 1px solid var(--bg-cream-dark); background: none; cursor: pointer; color: var(--text-muted); font-family: var(--font-body); transition: all 0.2s; }
         .link-btn:hover { border-color: var(--accent-terracotta); color: var(--accent-terracotta); }
@@ -378,14 +381,22 @@
         const MATCH_THRESHOLD = 0.55;
 
         function runMatching() {
-            // Only auto-match guests that have no rsvpId already set
-            const unmatchedRsvps = new Set(allRsvps.map(r => r.id));
+            // Reset transient state
+            allGuests.forEach(g => {
+                g._autoMatch = null;
+                g._autoMatchScore = 0;
+                g._isPlusOne = !!g.linkedAsPlusOne;
+                g._primaryGuest = null;
+            });
 
-            // Remove already-linked rsvp IDs from unmatched pool
-            allGuests.forEach(g => { if (g.rsvpId) unmatchedRsvps.delete(g.rsvpId); });
+            // Only RSVPs claimed as PRIMARY (not as +1) take an RSVP out of the auto-match pool
+            const unmatchedRsvps = new Set(allRsvps.map(r => r.id));
+            allGuests.forEach(g => {
+                if (g.rsvpId && !g.linkedAsPlusOne) unmatchedRsvps.delete(g.rsvpId);
+            });
 
             allGuests.forEach(guest => {
-                if (guest.rsvpId) return; // already manually or previously linked
+                if (guest.rsvpId) return; // manually linked guests don't auto-match
                 let bestScore = 0, bestRsvp = null;
                 allRsvps.forEach(rsvp => {
                     if (!unmatchedRsvps.has(rsvp.id)) return;
@@ -396,18 +407,38 @@
                     guest._autoMatch = bestRsvp;
                     guest._autoMatchScore = bestScore;
                     unmatchedRsvps.delete(bestRsvp.id);
-                } else {
-                    guest._autoMatch = null;
-                    guest._autoMatchScore = 0;
                 }
             });
 
+            // Resolve _primaryGuest for each +1
+            allGuests.forEach(g => {
+                if (!g._isPlusOne || !g.rsvpId) return;
+                const primary = allGuests.find(g2 =>
+                    g2.id !== g.id && (
+                        (g2.rsvpId === g.rsvpId && !g2.linkedAsPlusOne) ||
+                        (g2._autoMatch && g2._autoMatch.id === g.rsvpId)
+                    )
+                );
+                g._primaryGuest = primary || null;
+            });
+
             // Remaining unmatched RSVPs
-            const linkedRsvpIds = new Set([
-                ...allGuests.filter(g => g.rsvpId).map(g => g.rsvpId),
+            const linkedPrimaryRsvpIds = new Set([
+                ...allGuests.filter(g => g.rsvpId && !g.linkedAsPlusOne).map(g => g.rsvpId),
                 ...allGuests.filter(g => g._autoMatch).map(g => g._autoMatch.id)
             ]);
-            window._unmatchedRsvps = allRsvps.filter(r => !linkedRsvpIds.has(r.id));
+            window._unmatchedRsvps = allRsvps.filter(r => !linkedPrimaryRsvpIds.has(r.id));
+        }
+
+        function availablePlusOneSlots(rsvp) {
+            if (!rsvp.guestCounts) return 0;
+            const max = Math.max(
+                rsvp.guestCounts.defense || 0,
+                rsvp.guestCounts.reception || 0,
+                rsvp.guestCounts.celebration || 0
+            );
+            const claimed = allGuests.filter(g => g.rsvpId === rsvp.id && g.linkedAsPlusOne).length;
+            return max - claimed;
         }
 
         // ---- Render Guest Tab ----
@@ -421,6 +452,17 @@
             const respondedGuests = allGuests.filter(g => g.rsvpId || g._autoMatch);
             const noResponseGuests = allGuests.filter(g => !g.rsvpId && !g._autoMatch);
 
+            // Sort: alphabetical, but +1s sit right after their primary
+            respondedGuests.sort((a, b) => {
+                const aAnchor = (a._isPlusOne && a._primaryGuest) ? a._primaryGuest.name : a.name;
+                const bAnchor = (b._isPlusOne && b._primaryGuest) ? b._primaryGuest.name : b.name;
+                const cmp = aAnchor.localeCompare(bAnchor);
+                if (cmp !== 0) return cmp;
+                if (a._isPlusOne !== b._isPlusOne) return a._isPlusOne ? 1 : -1;
+                return a.name.localeCompare(b.name);
+            });
+            noResponseGuests.sort((a, b) => a.name.localeCompare(b.name));
+
             document.getElementById('responded-count').textContent = respondedGuests.length;
             document.getElementById('noresponse-count').textContent = noResponseGuests.length;
 
@@ -433,9 +475,25 @@
                     const rsvp = g.rsvpId ? allRsvps.find(r => r.id === g.rsvpId) : g._autoMatch;
                     const isManual = !!g.rsvpId;
                     const score = g._autoMatchScore || 0;
-                    const confidenceLabel = isManual ? 'manual' : (score >= 0.85 ? 'high' : 'fuzzy');
-                    const confidenceClass = (!isManual && score < 0.85) ? 'low' : '';
-                    const matchCell = `<td><span class="match-name">${rsvp.name || '—'}</span><span class="match-confidence ${confidenceClass}">${confidenceLabel}</span><br><span class="match-info">${rsvp.email || ''}</span></td>`;
+
+                    let confidenceLabel, confidenceClass = '';
+                    if (g._isPlusOne) {
+                        confidenceLabel = '+1';
+                        confidenceClass = 'plusone';
+                    } else if (isManual) {
+                        confidenceLabel = 'manual';
+                    } else if (score >= 0.85) {
+                        confidenceLabel = 'high';
+                    } else {
+                        confidenceLabel = 'fuzzy';
+                        confidenceClass = 'low';
+                    }
+
+                    const subInfo = (g._isPlusOne && g._primaryGuest)
+                        ? `+1 of ${g._primaryGuest.name}`
+                        : (rsvp.email || '');
+
+                    const matchCell = `<td><span class="match-name">${rsvp.name || '—'}</span><span class="match-confidence ${confidenceClass}">${confidenceLabel}</span><br><span class="match-info">${subInfo}</span></td>`;
                     const defenseCell = `<td>${modePill(rsvp.defenseMode)}</td>`;
                     const eventsCell = `<td>${eventPills(rsvp.events)}</td>`;
                     const actionsCell = `<td><button class="unlink-btn" data-gid="${g.id}">✕ unlink</button> <button class="delete-guest-btn" data-gid="${g.id}" title="Remove guest">🗑</button></td>`;
@@ -494,7 +552,8 @@
                     const guest = allGuests.find(g => g.id === gid);
                     if (!guest) return;
                     guest.rsvpId = null;
-                    await updateDoc(doc(db, 'guests', gid), { rsvpId: null });
+                    guest.linkedAsPlusOne = false;
+                    await updateDoc(doc(db, 'guests', gid), { rsvpId: null, linkedAsPlusOne: false });
                     runMatching();
                     renderGuestTab();
                 });
@@ -541,21 +600,41 @@
             const optionsEl = document.getElementById('link-options');
 
             if (forGuest) {
-                // Show unmatched RSVPs to pick from
+                // Show unmatched RSVPs + RSVPs with +1 slots to pick from
                 desc.textContent = `Link an RSVP to "${forGuest.name}":`;
-                const candidates = window._unmatchedRsvps || [];
-                if (candidates.length === 0) {
-                    optionsEl.innerHTML = '<p style="color:var(--text-muted);font-size:0.85rem;padding:0.5rem 0">No unmatched RSVPs available.</p>';
-                } else {
-                    optionsEl.innerHTML = candidates.map(r => `
-                        <div class="link-option" data-rid="${r.id}">
+                const unmatched = window._unmatchedRsvps || [];
+                const plusOneCandidates = allRsvps.filter(r => availablePlusOneSlots(r) > 0);
+
+                let html = '';
+                if (unmatched.length > 0) {
+                    html += '<div class="link-section-label">Unmatched RSVPs</div>';
+                    html += unmatched.map(r => `
+                        <div class="link-option" data-rid="${r.id}" data-mode="primary">
                             <div>
                                 <div class="link-option-name">${r.name || '—'}</div>
-                                <div class="link-option-email">${r.email || ''} · ${r.defenseMode || ''}</div>
+                                <div class="link-option-email">${r.email || ''} &middot; ${r.defenseMode || ''}</div>
                             </div>
                         </div>
                     `).join('');
                 }
+                if (plusOneCandidates.length > 0) {
+                    html += '<div class="link-section-label">Link as +1 of&hellip;</div>';
+                    html += plusOneCandidates.map(r => {
+                        const slots = availablePlusOneSlots(r);
+                        return `
+                            <div class="link-option" data-rid="${r.id}" data-mode="plusone">
+                                <div>
+                                    <div class="link-option-name">+1 of ${r.name || '—'}</div>
+                                    <div class="link-option-email">${slots} slot${slots > 1 ? 's' : ''} available</div>
+                                </div>
+                            </div>
+                        `;
+                    }).join('');
+                }
+                if (!html) {
+                    html = '<p style="color:var(--text-muted);font-size:0.85rem;padding:0.5rem 0">No unmatched RSVPs or +1 slots available.</p>';
+                }
+                optionsEl.innerHTML = html;
             } else {
                 // Show guests without a link to pick from
                 desc.textContent = `Link "${forRsvp.name}" to a guest on your list:`;
@@ -582,13 +661,16 @@
             const { forGuest, forRsvp } = linkModalContext;
             if (forGuest) {
                 const rid = opt.dataset.rid;
+                const isPlusOne = opt.dataset.mode === 'plusone';
                 forGuest.rsvpId = rid;
-                await updateDoc(doc(db, 'guests', forGuest.id), { rsvpId: rid });
+                forGuest.linkedAsPlusOne = isPlusOne;
+                await updateDoc(doc(db, 'guests', forGuest.id), { rsvpId: rid, linkedAsPlusOne: isPlusOne });
             } else {
                 const gid = opt.dataset.gid;
                 const guest = allGuests.find(g => g.id === gid);
                 guest.rsvpId = forRsvp.id;
-                await updateDoc(doc(db, 'guests', gid), { rsvpId: forRsvp.id });
+                guest.linkedAsPlusOne = false;
+                await updateDoc(doc(db, 'guests', gid), { rsvpId: forRsvp.id, linkedAsPlusOne: false });
             }
             document.getElementById('link-modal').style.display = 'none';
             runMatching();
