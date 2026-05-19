@@ -1789,7 +1789,9 @@
                         to_name: name,
                         to_email: email,
                         defense_mode: defenseMode.value === 'skip' ? "Can't make it" : defenseMode.value === 'virtual' ? 'Virtual' : 'In Person',
-                        events: events.length > 0 ? events.map(e => e === 'reception' ? 'Reception' : 'Defense Party').join(', ') : 'None'
+                        events: events.length > 0 ? events.map(e => e === 'reception' ? 'Reception' : 'Defense Party').join(', ') : 'None',
+                        attending_reception: events.includes('reception') ? 'true' : '',
+                        attending_celebration: events.includes('celebration') ? 'true' : ''
                     });
                 } catch (emailError) {
                     console.warn('Confirmation email failed:', emailError);
