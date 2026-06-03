@@ -53,6 +53,9 @@
         .table-header h2 { font-family: var(--font-display); font-size: 1.4rem; font-weight: 500; }
         .search-input { padding: 0.5rem 1rem; font-family: var(--font-body); font-size: 0.85rem; border: 1px solid var(--bg-cream-dark); border-radius: 8px; outline: none; width: 220px; }
         .search-input:focus { border-color: var(--accent-terracotta); }
+        .table-header-actions { display: flex; gap: 0.5rem; align-items: center; }
+        .export-btn { padding: 0.5rem 1rem; font-family: var(--font-body); font-size: 0.85rem; font-weight: 500; background: var(--text-charcoal); color: var(--bg-cream); border: none; border-radius: 8px; cursor: pointer; white-space: nowrap; transition: background 0.2s; }
+        .export-btn:hover { background: var(--accent-terracotta); }
         table { width: 100%; border-collapse: collapse; }
         thead th { text-align: left; padding: 0.75rem 1.5rem; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); border-bottom: 1px solid var(--bg-cream-dark); font-weight: 500; }
         tbody td { padding: 0.75rem 1.5rem; font-size: 0.85rem; border-bottom: 1px solid var(--bg-cream-dark); }
@@ -131,6 +134,7 @@
         @media (max-width: 700px) {
             .stats { grid-template-columns: repeat(2, 1fr); }
             .table-header { flex-direction: column; gap: 0.75rem; align-items: flex-start; }
+            .table-header-actions { width: 100%; flex-direction: column; align-items: stretch; }
             .search-input { width: 100%; }
             table { font-size: 0.8rem; }
             thead th, tbody td { padding: 0.5rem 0.75rem; }
@@ -190,7 +194,10 @@
         <div class="table-wrap">
             <div class="table-header">
                 <h2>All Responses</h2>
-                <input type="text" class="search-input" id="search" placeholder="Search by name or email...">
+                <div class="table-header-actions">
+                    <input type="text" class="search-input" id="search" placeholder="Search by name or email...">
+                    <button class="export-btn" id="export-csv">Download CSV</button>
+                </div>
             </div>
             <div id="table-container">
                 <div class="loading">Loading RSVPs...</div>
@@ -757,6 +764,53 @@
                 (r.email && r.email.toLowerCase().includes(term))
             ));
         });
+
+        function downloadCSV() {
+            const headers = ['Name', 'Email', 'Defense', 'Reception', 'Celebration',
+                             'Defense Guests', 'Reception Guests', 'Celebration Guests',
+                             'Dietary', 'Accommodations', 'Submitted'];
+            const defenseLabel = m => m === 'in-person' ? 'In Person'
+                                    : m === 'virtual' ? 'Virtual'
+                                    : m === 'skip' ? "Can't Make It"
+                                    : '';
+            const esc = v => {
+                const s = String(v ?? '');
+                return /[",\n\r]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s;
+            };
+            const rows = allRsvps.map(r => {
+                const events = r.events || [];
+                const gc = r.guestCounts || {};
+                let dateStr = '';
+                if (r.timestamp) {
+                    const d = r.timestamp.toDate ? r.timestamp.toDate() : new Date(r.timestamp);
+                    dateStr = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+                }
+                return [
+                    r.name || '',
+                    r.email || '',
+                    defenseLabel(r.defenseMode),
+                    events.includes('reception') ? 'Yes' : 'No',
+                    events.includes('celebration') ? 'Yes' : 'No',
+                    gc.defense || 0,
+                    gc.reception || 0,
+                    gc.celebration || 0,
+                    r.dietary || '',
+                    r.accommodations || '',
+                    dateStr,
+                ].map(esc).join(',');
+            });
+            const csv = [headers.join(','), ...rows].join('\n');
+            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `rsvps-${new Date().toISOString().slice(0, 10)}.csv`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+        document.getElementById('export-csv').addEventListener('click', downloadCSV);
     </script>
 </body>
 </html>
