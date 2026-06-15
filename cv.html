@@ -203,7 +203,9 @@
         }
 
         .download-btn {
-            display: inline-flex;
+            display: flex;
+            width: fit-content;
+            margin: 0 auto 1.5rem;
             align-items: center;
             gap: 0.5rem;
             padding: 0.75rem 1.5rem;
@@ -214,11 +216,6 @@
             font-size: 0.95rem;
             transition: opacity 0.2s ease;
             white-space: nowrap;
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translate(-50%, 0);
-            z-index: 10;
             box-shadow: 0 2px 8px rgba(107, 91, 142, 0.25);
         }
 
@@ -512,7 +509,7 @@
             nav { padding: 1rem 1.5rem; }
             .nav-links { display: none; }
             .mobile-nav-toggle { display: block; }
-            .cv-page-wrapper { margin: 1rem; padding-top: 1.25rem; }
+            .cv-page-wrapper { margin: 1rem; padding-top: 4rem; }
             .cv-page { padding: 1.5rem; }
             .cv-header { flex-direction: column; gap: 1rem; }
             .cv-header-left h1 { font-size: 2rem; }
@@ -564,9 +561,9 @@
                 <div class="subtitle">Neuroscientist · Research Leader</div>
             </div>
             <div class="cv-header-right">
-                <span class="status-badge" style="float: right; margin-right: -0.5rem;">open to work · open to relocation</span>
+                <div><span class="status-badge">open to work · open to relocation</span></div>
                 <div class="contact">
-                    Atlanta, GA | Open to Relocation<br>
+                    Atlanta, GA<br>
                     <a href="mailto:yasminebassil@gmail.com">yasminebassil@gmail.com</a> |
                     <a href="https://yasminebassil.github.io">website</a> |
                     <a href="https://linkedin.com/in/yasminebassil">linkedin</a>
