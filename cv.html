@@ -681,6 +681,20 @@
             display: none;
         }
 
+        .selected-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            color: var(--accent-purple);
+            margin-bottom: 0.6rem;
+        }
+
+        .cv-item.spotlight {
+            border-left: 3px solid var(--accent-purple);
+            padding-left: 0.75rem;
+        }
+
         .mentorship-intro {
             font-style: italic;
             color: var(--accent-olive);
@@ -1323,6 +1337,22 @@
 
         <div class="tight-section">
         <h2 id="talks">Invited Talks, Lectures, &amp; Media Spotlights</h2>
+        <p class="selected-label">Selected talks</p>
+        <div class="cv-item spotlight">
+            <div class="item-header">
+                <span class="item-title">Speaker | Tech Talks: Unique &amp; Diverse Perspectives in Science</span>
+                <span class="item-date">Mar 2022</span>
+            </div>
+            <div class="item-description">Atlanta Science Festival (ASF) · Atlanta, GA</div>
+        </div>
+        <div class="cv-item spotlight">
+            <div class="item-header">
+                <span class="item-title">Keynote Speaker | Neuroscience Research Symposium</span>
+                <span class="item-date">Apr 2021</span>
+            </div>
+            <div class="item-description">Georgia Tech Neuroscience Student Advisory Council · Virtual (Atlanta, GA)</div>
+        </div>
+        <div class="expandable-more" id="talks-more" hidden>
         <div class="cv-item">
             <div class="item-header">
                 <span class="item-title">Panelist | Graduate School Panel — Neuroscience Undergraduate Professional Development Series</span>
@@ -1344,7 +1374,6 @@
             </div>
             <div class="item-description">Emory Neuroscience Graduate Program (NGP), for potential incoming students · Atlanta, GA</div>
         </div>
-        <div class="expandable-more" id="talks-more" hidden>
         <div class="cv-item">
             <div class="item-header">
                 <span class="item-title">Panelist | NS Rotations Panel</span>
@@ -1379,13 +1408,6 @@
                 <span class="item-date">Sep 2022</span>
             </div>
             <div class="item-description">National Scholarships &amp; Fellowships Program, Emory University · Virtual (Atlanta, GA)</div>
-        </div>
-        <div class="cv-item">
-            <div class="item-header">
-                <span class="item-title">Speaker | Tech Talks: Unique &amp; Diverse Perspectives in Science</span>
-                <span class="item-date">Mar 2022</span>
-            </div>
-            <div class="item-description">Atlanta Science Festival (ASF) · Atlanta, GA</div>
         </div>
         <div class="cv-item">
             <div class="item-header">
@@ -1431,20 +1453,13 @@
         </div>
         <div class="cv-item">
             <div class="item-header">
-                <span class="item-title">Keynote Speaker | Neuroscience Research Symposium</span>
-                <span class="item-date">Apr 2021</span>
-            </div>
-            <div class="item-description">Georgia Tech Neuroscience Student Advisory Council · Virtual (Atlanta, GA)</div>
-        </div>
-        <div class="cv-item">
-            <div class="item-header">
                 <span class="item-title">Panelist | “Preparing for Graduate School” Panel</span>
                 <span class="item-date">Sep 2020</span>
             </div>
             <div class="item-description">Georgia Tech Office of Pre-Graduate &amp; Pre-Professional Education · Virtual (Atlanta, GA)</div>
         </div>
         </div>
-        <button class="expand-toggle" data-target="talks-more" data-more="Show all (17) ↓" data-less="Show less ↑">Show all (17) ↓</button>
+        <button class="expand-toggle" data-target="talks-more" data-more="Show 15 more ↓" data-less="Show less ↑">Show 15 more ↓</button>
         </div>
         </div>
       </div>
