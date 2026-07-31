@@ -512,15 +512,31 @@
         }
 
         .bio-toggle-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             font-family: var(--font-body);
-            font-size: 1.15rem;
-            font-weight: 400;
+            font-size: 1rem;
+            font-weight: 500;
             line-height: 1;
-            color: var(--accent-olive);
-            width: 1.1rem;
-            text-align: center;
+            color: white;
+            background: var(--accent-olive);
+            width: 1.45rem;
+            height: 1.45rem;
+            border-radius: 50%;
             flex-shrink: 0;
             user-select: none;
+            transition: transform 0.15s ease, opacity 0.15s ease;
+        }
+
+        .section-header.bio-toggle:hover .bio-toggle-icon {
+            transform: scale(1.12);
+            opacity: 0.85;
+        }
+
+        .section-header.bio-toggle:hover span:first-child {
+            text-decoration: underline;
+            text-underline-offset: 3px;
         }
 
         .bio-teaser {
@@ -528,6 +544,19 @@
             font-style: italic;
             margin: -0.75rem 0 1.5rem 0;
             cursor: pointer;
+            display: inline-block;
+        }
+
+        .bio-teaser::after {
+            content: ' — read more →';
+            font-style: normal;
+            font-weight: 600;
+            color: var(--accent-olive);
+            white-space: nowrap;
+        }
+
+        .bio-teaser:hover::after {
+            text-decoration: underline;
         }
 
         .bio-teaser[hidden],
