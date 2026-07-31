@@ -641,6 +641,26 @@
             white-space: nowrap;
         }
 
+        .expand-toggle {
+            background: none;
+            border: none;
+            padding: 0.25rem 0;
+            margin-top: 0.35rem;
+            color: var(--accent-purple);
+            font-family: inherit;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .expand-toggle:hover {
+            text-decoration: underline;
+        }
+
+        .expandable-more[hidden] {
+            display: none;
+        }
+
         .mentorship-intro {
             font-style: italic;
             color: var(--accent-olive);
@@ -1036,6 +1056,7 @@
             <span><span class="service-role">Co-Instructor</span> — <span class="service-org">Atlanta Brain Bee (high-school outreach)</span></span>
             <span class="service-date">2021</span>
         </div>
+        <div class="expandable-more" id="service-more" hidden>
         <div class="service-item">
             <span><span class="service-role">Representative</span> — <span class="service-org">Office of Undergraduate Education Student Advisory Board, Georgia Tech</span></span>
             <span class="service-date">2019 – 2020</span>
@@ -1072,6 +1093,8 @@
             <span><span class="service-role">Mental Health & Well-Being Activator</span> — <span class="service-org">GT Health Initiatives</span></span>
             <span class="service-date">2017</span>
         </div>
+        </div>
+        <button class="expand-toggle" data-target="service-more" data-more="Show all (12) ↓" data-less="Show less ↑">Show all (12) ↓</button>
 
         <h2 id="education">Education</h2>
         <div class="cv-item">
@@ -1410,6 +1433,24 @@
             }, { rootMargin: '-12% 0px -80% 0px', threshold: 0 });
             sections.forEach(function (s) { observer.observe(s); });
         })();
-    </script>
+
+        (function () {
+            var toggles = Array.prototype.slice.call(document.querySelectorAll('.expand-toggle'));
+            toggles.forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    var target = document.getElementById(btn.getAttribute('data-target'));
+                    if (!target) return;
+                    var expanded = target.hasAttribute('hidden');
+                    if (expanded) {
+                        target.removeAttribute('hidden');
+                        btn.textContent = btn.getAttribute('data-less');
+                    } else {
+                        target.setAttribute('hidden', '');
+                        btn.textContent = btn.getAttribute('data-more');
+                    }
+                });
+            });
+        })();
+</script>
 </body>
 </html>
