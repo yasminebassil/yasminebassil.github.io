@@ -184,8 +184,9 @@
             position: relative;
             z-index: 50;
             font-family: var(--font-display);
-            font-size: 4rem;
+            font-size: 3.5rem;
             font-weight: 500;
+            white-space: nowrap;
             line-height: 1.1;
             margin-bottom: 1rem;
         }
@@ -308,7 +309,7 @@
                 max-width: 100%;
             }
             
-            .hero-name { font-size: 2.75rem; }
+            .hero-name { font-size: 2.75rem; white-space: normal; }
             .hero-links { justify-content: center; }
         }
 
@@ -460,7 +461,6 @@
             <li><a href="bio.html">bio</a></li>
             <li><a href="cv.html">cv</a></li>
             <li><a href="science.html">science</a></li>
-            <li><a href="service.html">service</a></li>
             <li><a href="media.html">media</a></li>
             <li><a href="thoughts.html">thoughts</a></li>
             <li><a href="music.html">music</a></li>
@@ -475,9 +475,9 @@
         <div class="hero-bg"></div>
         <div class="hero-content">
             <p class="hero-greeting">welcome — أهلا وسهلا</p>
-            <h1 class="hero-name">Yasmine Bassil</h1>
+            <h1 class="hero-name">Yasmine Bassil, PhD</h1>
             <p class="hero-title">
-                neuroscientist | advocate | mentor
+                neuroscience. research leadership.
             </p>
             <p class="hero-tagline">
                 nsf graduate research fellow, emory university
@@ -491,7 +491,7 @@
                         email
                     </span>
                     <div class="email-box" id="emailBox">
-                        <span>ybassil@emory.edu</span>
+                        <span>yasminebassil@gmail.com</span>
                         <button onclick="copyEmail()" class="copy-btn" title="Copy to clipboard">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" width="14" height="14">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0013.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 01-.75.75H9a.75.75 0 01-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 01-2.25 2.25H6.75A2.25 2.25 0 014.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 011.927-.184" />
@@ -524,7 +524,7 @@
         }
 
         function copyEmail() {
-            navigator.clipboard.writeText('ybassil@emory.edu');
+            navigator.clipboard.writeText('yasminebassil@gmail.com');
             const btn = document.querySelector('.copy-btn');
             btn.title = 'Copied!';
             setTimeout(() => { btn.title = 'Copy to clipboard'; }, 2000);

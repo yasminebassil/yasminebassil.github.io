@@ -229,6 +229,47 @@
             height: 18px;
         }
 
+        .cv-download-note {
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin: -0.75rem auto 1.75rem;
+        }
+
+        .cv-outline {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            left: calc((100vw - 850px) / 2 - 9.5rem);
+            width: 8.5rem;
+            z-index: 90;
+            display: flex;
+            flex-direction: column;
+            gap: 0.1rem;
+            max-height: 82vh;
+            overflow-y: auto;
+        }
+
+        .cv-outline a {
+            font-size: 0.72rem;
+            line-height: 1.3;
+            color: var(--text-muted);
+            text-decoration: none;
+            padding: 0.25rem 0 0.25rem 0.7rem;
+            border-left: 2px solid transparent;
+            transition: color 0.2s ease, border-color 0.2s ease;
+        }
+
+        .cv-outline a:hover,
+        .cv-outline a.active {
+            color: var(--accent-olive);
+            border-left-color: var(--accent-olive);
+        }
+
+        @media (max-width: 1180px) {
+            .cv-outline { display: none; }
+        }
+
         .summary {
             background: rgba(107, 91, 142, 0.08);
             padding: 1.25rem 1.5rem;
@@ -258,6 +299,7 @@
             display: flex;
             align-items: center;
             gap: 0.75rem;
+            scroll-margin-top: 6rem;
         }
 
         h2::after {
@@ -274,8 +316,25 @@
             margin-bottom: 1rem;
         }
 
+        .skills-subhead {
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-muted);
+            margin: 1rem 0 0.6rem;
+        }
+
         .skill-card.span-2 {
             grid-column: span 2;
+        }
+
+        .skills-grid.tech-grid {
+            grid-template-columns: repeat(5, 1fr);
+        }
+
+        .skills-grid.lr-grid {
+            grid-template-columns: 1.15fr 0.7fr 1.15fr;
         }
 
         .skill-card {
@@ -323,9 +382,13 @@
             display: flex;
             justify-content: space-between;
             align-items: baseline;
-            flex-wrap: wrap;
-            gap: 0.5rem;
+            gap: 0.75rem;
             border-bottom: 1px solid var(--bg-cream-dark);
+        }
+
+        .job-header > div {
+            flex: 1;
+            min-width: 0;
         }
 
         .job-title {
@@ -337,14 +400,17 @@
         }
 
         .job-org {
+            display: block;
             font-weight: 500;
             color: var(--text-charcoal);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
 
         .job-date {
             color: var(--text-muted);
             font-size: 0.85rem;
+            white-space: nowrap;
+            flex-shrink: 0;
         }
 
         .job-content {
@@ -376,8 +442,8 @@
         }
 
         .cv-item {
-            margin-bottom: 1.25rem;
-            padding-bottom: 1.25rem;
+            margin-bottom: 0.65rem;
+            padding-bottom: 0.65rem;
             border-bottom: 1px solid rgba(240, 235, 227, 0.5);
         }
 
@@ -416,7 +482,7 @@
         .item-description {
             color: var(--text-muted);
             font-size: 0.9rem;
-            line-height: 1.6;
+            line-height: 1.45;
         }
 
         .funding-amount {
@@ -458,6 +524,48 @@
             border-radius: 6px;
         }
 
+        .scholar-link {
+            display: inline-block;
+            margin-bottom: 0.85rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            color: var(--accent-olive);
+            text-decoration: none;
+        }
+
+        .scholar-link:hover {
+            text-decoration: underline;
+        }
+
+        .doi-link {
+            color: var(--accent-olive);
+            text-decoration: none;
+            word-break: break-word;
+        }
+
+        .doi-link:hover {
+            text-decoration: underline;
+        }
+
+        .presentation-item {
+            font-size: 0.82rem;
+            line-height: 1.45;
+            margin-bottom: 0.55rem;
+            padding-left: 1rem;
+            border-left: 2px solid var(--bg-cream-dark);
+            color: var(--text-charcoal);
+        }
+
+        .presentation-item em {
+            color: var(--accent-olive);
+        }
+
+        .presentation-item .award {
+            color: var(--accent-purple);
+            font-weight: 500;
+        }
+
         .teaching-item {
             display: flex;
             justify-content: space-between;
@@ -482,6 +590,38 @@
             font-size: 0.85rem;
         }
 
+        .teaching-instructor {
+            flex-basis: 100%;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: -0.35rem;
+            line-height: 1.3;
+        }
+
+        .service-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.15rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .service-role {
+            font-weight: 500;
+            color: var(--text-charcoal);
+        }
+
+        .service-org {
+            color: var(--text-muted);
+        }
+
+        .service-date {
+            color: var(--accent-olive);
+            font-size: 0.85rem;
+            white-space: nowrap;
+        }
+
         .mentorship-intro {
             font-style: italic;
             color: var(--accent-olive);
@@ -496,6 +636,81 @@
             font-size: 0.9rem;
             margin-bottom: 0.5rem;
             color: var(--text-charcoal);
+        }
+
+        .mentorship-stats {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 0.5rem;
+            margin: 0.4rem 0 0.85rem;
+        }
+
+        .mentorship-stat {
+            background: rgba(107, 91, 142, 0.04);
+            border: 1px solid rgba(107, 91, 142, 0.12);
+            border-radius: 6px;
+            padding: 0.6rem 0.5rem;
+            text-align: center;
+        }
+
+        .mentorship-stat .stat-num {
+            display: block;
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 600;
+            line-height: 1;
+            color: var(--accent-olive);
+        }
+
+        .mentorship-stat.wide {
+            grid-column: span 2;
+        }
+
+        .mentorship-stat .stat-label {
+            display: block;
+            margin-top: 0.3rem;
+            font-size: 0.62rem;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+            line-height: 1.25;
+            color: var(--text-muted);
+        }
+
+        .mentorship-stat .stat-detail {
+            display: block;
+            margin-top: 0.2rem;
+            font-size: 0.6rem;
+            line-height: 1.3;
+            color: var(--text-muted);
+        }
+
+        .mentorship-fellowships {
+            font-size: 0.85rem;
+            line-height: 1.5;
+            color: var(--text-charcoal);
+        }
+
+        .scholarships-line {
+            font-size: 0.78rem;
+            color: #928c88;
+        }
+
+        .mentees-label {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--accent-olive);
+            margin: 1rem 0 0.5rem;
+        }
+
+        .mentee {
+            font-size: 0.85rem;
+            line-height: 1.5;
+            margin-bottom: 0.45rem;
+            color: var(--text-charcoal);
+        }
+
+        .mentee .mentee-meta {
+            color: var(--text-muted);
         }
 
         footer {
@@ -514,6 +729,9 @@
             .cv-header { flex-direction: column; gap: 1rem; }
             .cv-header-left h1 { font-size: 2rem; }
             .skills-grid { grid-template-columns: repeat(2, 1fr); }
+            .skills-grid.tech-grid { grid-template-columns: repeat(2, 1fr); }
+            .skills-grid.lr-grid { grid-template-columns: repeat(2, 1fr); }
+            .mentorship-stats { grid-template-columns: repeat(2, 1fr); }
             .skill-card.span-2 { grid-column: span 2; }
         }
 
@@ -534,7 +752,6 @@
             <li><a href="bio.html">bio</a></li>
             <li><a href="cv.html" class="active">cv</a></li>
             <li><a href="science.html">science</a></li>
-            <li><a href="service.html">service</a></li>
             <li><a href="media.html">media</a></li>
             <li><a href="thoughts.html">thoughts</a></li>
             <li><a href="music.html">music</a></li>
@@ -545,14 +762,29 @@
         </button>
     </nav>
 
+    <nav class="cv-outline" aria-label="Jump to CV section">
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#service">Service</a>
+        <a href="#education">Education</a>
+        <a href="#funding">Funding</a>
+        <a href="#honors">Honors</a>
+        <a href="#mentorship">Mentorship</a>
+        <a href="#publications">Publications</a>
+        <a href="#presentations">Presentations</a>
+        <a href="#teaching">Teaching</a>
+        <a href="#talks">Invited Talks</a>
+    </nav>
+
     <main>
       <div class="cv-page-wrapper">
         <a href="Bassil_CV_2026.pdf" class="download-btn" target="_blank">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
             </svg>
-            Download PDF
+            Download 2-Page Résumé
         </a>
+        <p class="cv-download-note">or see the full, comprehensive CV below ↓</p>
         <div class="cv-page">
         <div class="cv-header">
             <div class="cv-header-left">
@@ -571,14 +803,16 @@
         </div>
 
         <div class="summary">
-            <p>Neuroscientist and research leader with a record of building research and leadership infrastructure, leading cross-functional teams, and orchestrating LLM-based workflows across complex, multi-stage projects. Experienced securing $260K+ in competitive funding, running AI agents across the full research lifecycle from data pipelines to publication, and translating technical work into durable institutional tools — with a critical, ethics-first approach to AI.</p>
-            <p><span class="seeking-dot"></span> Seeking leadership and systems-building roles in neuroscience research and related scientific fields.</p>
+            <p><strong>Neuroscientist and research leader</strong> with a record of building research and leadership infrastructure, leading cross-functional teams, and driving rigorous, reproducible science across complex, multi-stage projects. Built an independent research program from the ground up — securing <strong>$260K+ in competitive funding</strong>, mentoring <strong>15+ trainees</strong>, and carrying projects from data pipelines to <strong>7 peer-reviewed publications</strong> — and translated technical work into durable institutional tools and lasting scientific relationships.</p>
+            <p><span class="seeking-dot"></span> Seeking <strong>leadership and systems-building roles in neuroscience research</strong>, with a preferred focus on expanding international scientific collaborations.</p>
         </div>
 
-        <h2>Skills</h2>
-        <div class="skills-grid">
+        <h2 id="skills">Skills</h2>
+
+        <p class="skills-subhead">Technical</p>
+        <div class="skills-grid tech-grid">
             <div class="skill-card">
-                <div class="skill-card-header">Languages</div>
+                <div class="skill-card-header">Programming</div>
                 <div class="skill-card-body">python, bash/zsh, R, MATLAB, C#</div>
             </div>
             <div class="skill-card">
@@ -586,38 +820,42 @@
                 <div class="skill-card-body">FSL, fMRIPrep, FreeSurfer, AFNI, Unity</div>
             </div>
             <div class="skill-card">
-                <div class="skill-card-header">Development Tools</div>
+                <div class="skill-card-header">Dev Tools</div>
                 <div class="skill-card-body">Git, Docker/Singularity, Jupyter Notebooks</div>
             </div>
             <div class="skill-card">
                 <div class="skill-card-header">Methods</div>
                 <div class="skill-card-body">VR, fMRI, MRI, TMS, TMS-fMRI, EEG, EMG</div>
             </div>
-            <div class="skill-card span-2">
-                <div class="skill-card-header">AI Tools & Workflows</div>
-                <div class="skill-card-body">AI-agent orchestration, LLM workflows; Claude Code, Claude, Perplexity</div>
-            </div>
-            <div class="skill-card span-2">
-                <div class="skill-card-header">Leadership</div>
-                <div class="skill-card-body">Cross-Functional Team Leadership, Program Development, Systems Building, Research Program Management, Mentorship (15+ trainees)</div>
-            </div>
-            <div class="skill-card span-2">
-                <div class="skill-card-header">Research</div>
-                <div class="skill-card-body">Statistical Modeling & Data Analysis, Grant Writing ($260K+ secured), Reproducible Pipelines, Data Visualization, Science Communication</div>
-            </div>
-            <div class="skill-card span-2">
-                <div class="skill-card-header">Languages</div>
-                <div class="skill-card-body">English (fluent), Arabic (fluent), French (intermediate)</div>
+            <div class="skill-card">
+                <div class="skill-card-header">AI Tools</div>
+                <div class="skill-card-body">Claude Code, Claude, Perplexity</div>
             </div>
         </div>
 
-        <h2>Experience</h2>
+        <p class="skills-subhead">Leadership & Research</p>
+        <div class="skills-grid lr-grid">
+            <div class="skill-card">
+                <div class="skill-card-header">Leadership</div>
+                <div class="skill-card-body">Cross-Functional Team Leadership, Program Development, Systems Building, Research Program Management, Mentorship (15+ trainees)</div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-card-header">Spoken Languages</div>
+                <div class="skill-card-body">English (fluent), Arabic (fluent), French (intermediate)</div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-card-header">Research</div>
+                <div class="skill-card-body">Statistical Modeling & Data Analysis, Grant Writing ($260K+ secured), Reproducible Pipelines, Data Visualization, Science Communication</div>
+            </div>
+        </div>
+
+        <h2 id="experience">Experience</h2>
 
         <div class="job-section">
             <div class="job-header">
                 <div>
                     <span class="job-title">Neuroscience PhD Researcher</span>
-                    <span class="job-org"> · Neural Plasticity Research Lab, Emory University</span>
+                    <span class="job-org">Neural Plasticity Research Lab, Emory University</span>
                 </div>
                 <span class="job-date">Aug 2020 – Jun 2026</span>
             </div>
@@ -632,7 +870,23 @@
                     <li>Established novel neuroimaging methodology (concurrent TMS-fMRI) as a shared institutional capability at Emory, expanding research access for the broader Atlanta scientific community.</li>
                     <li>Built and open-sourced a city-scale VR environment in Unity (NavCity) and co-developed a custom neuroimaging pipeline (MR.Flow), replacing manual workflows with reproducible tools.</li>
                     <li>Established lab-wide GitHub infrastructure (7 repositories) and standardized analysis pipelines (Python, R).</li>
-                    <li>Orchestrated AI agents & LLM workflows (Claude Code, Claude, Perplexity) across the full research lifecycle — data pipelines, MR.Flow development, figure generation, literature review, manuscript drafting — to standardize, automate, and reproduce complex multi-stage workflows.</li>
+
+                </ul>
+            </div>
+        </div>
+
+        <div class="job-section">
+            <div class="job-header">
+                <div>
+                    <span class="job-title">Internal Affairs Lead</span>
+                    <span class="job-org">Arabs in Neuroscience (AiN)</span>
+                </div>
+                <span class="job-date">Apr 2024 – Present</span>
+            </div>
+            <div class="job-content">
+                <ul>
+                    <li>Proposed and established the Internal Affairs Lead role on the Executive Board of Arabs in Neuroscience (AiN) — an international community connecting Arab neuroscientists and allies worldwide — after identifying an unmet need to communicate with the membership.</li>
+                    <li>Lead all communications to the general membership — biweekly Executive Board reports and newsletters to members and allies — and maintain member records and the AiN Slack workspace.</li>
                 </ul>
             </div>
         </div>
@@ -641,7 +895,7 @@
             <div class="job-header">
                 <div>
                     <span class="job-title">Co-President</span>
-                    <span class="job-org"> · Graduates in Neuroscience, Emory University</span>
+                    <span class="job-org">Graduates in Neuroscience, Emory University</span>
                 </div>
                 <span class="job-date">Jun 2023 – Jun 2025</span>
             </div>
@@ -649,6 +903,23 @@
                 <ul>
                     <li>Served as primary liaison between 120+ PhD students and program leadership, leading a 22-member executive board across 12 positions and organizing 10+ annual program events.</li>
                     <li>Rebuilt organizational infrastructure from the ground up: established the first internal documentation system, defined officer roles, formalized transition protocols, implemented meeting schedules, established recognition initiatives, and created budget infrastructure — all designed to outlast any single leadership team.</li>
+                    <li>Founded (2020) and moderate the program-wide Neuroscience student Slack workspace — structuring channels for announcements, new-student onboarding, events, professional development, and research discussion to sustain community, including through the pandemic.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="job-section">
+            <div class="job-header">
+                <div>
+                    <span class="job-title">Scholar</span>
+                    <span class="job-org">Computational Neural Engineering Training Program, Georgia Tech & Emory University</span>
+                </div>
+                <span class="job-date">Sep 2021 – 2023</span>
+            </div>
+            <div class="job-content">
+                <ul>
+                    <li>Contributing to a selective community of scholars — students and faculty — whose research lies at the intersection of computational neuroscience, neural engineering, data science, and clinical neurophysiology.</li>
+                    <li>Led the Annual Events Committee for 2 years to organize programmatic events for 90+ members, including the CNTP Retreat/Orientation, Research Expo (interfacing with the CNTP Advisory Board), and yearly socials.</li>
                 </ul>
             </div>
         </div>
@@ -657,7 +928,7 @@
             <div class="job-header">
                 <div>
                     <span class="job-title">Co-Chair</span>
-                    <span class="job-org"> · Diversity, Equity, & Inclusion Committee, Emory Neuroscience Graduate Program</span>
+                    <span class="job-org">Diversity, Equity, & Inclusion Committee, Emory Neuroscience Graduate Program</span>
                 </div>
                 <span class="job-date">Jun 2021 – Jun 2023</span>
             </div>
@@ -673,7 +944,7 @@
             <div class="job-header">
                 <div>
                     <span class="job-title">Organizing Committee Chair</span>
-                    <span class="job-org"> · Brainhack ATL 2019</span>
+                    <span class="job-org">Brainhack ATL 2019, Brainhack Global</span>
                 </div>
                 <span class="job-date">Jul 2019 – Dec 2019</span>
             </div>
@@ -689,7 +960,7 @@
             <div class="job-header">
                 <div>
                     <span class="job-title">STEM Communications Fellow</span>
-                    <span class="job-org"> · College of Sciences, Georgia Institute of Technology</span>
+                    <span class="job-org">College of Sciences, Georgia Institute of Technology</span>
                 </div>
                 <span class="job-date">May 2019 – Aug 2020</span>
             </div>
@@ -704,7 +975,7 @@
             <div class="job-header">
                 <div>
                     <span class="job-title">President</span>
-                    <span class="job-org"> · Undergraduate Research Ambassadors, Georgia Institute of Technology</span>
+                    <span class="job-org">Undergraduate Research Ambassadors, Georgia Institute of Technology</span>
                 </div>
                 <span class="job-date">May 2017 – May 2020</span>
             </div>
@@ -716,14 +987,81 @@
             </div>
         </div>
 
-        <h2>Education</h2>
+        <div class="job-section">
+            <div class="job-header">
+                <div>
+                    <span class="job-title">Undergraduate Scientific Researcher</span>
+                    <span class="job-org">Keilholz MIND Lab (PI: Shella Keilholz, PhD), Georgia Tech & Emory University</span>
+                </div>
+                <span class="job-date">Nov 2016 – May 2020</span>
+            </div>
+            <div class="job-content">
+                <ul>
+                    <li>Investigated whole-brain resting-state dynamics via quasi-periodic patterns (QPPs) of infra-slow BOLD activity in ADHD using the ADHD-200 dataset — work published in Abbas et al. (2018, 2019).</li>
+                    <li>Led an independent undergraduate thesis extending QPP analysis to idiopathic hypersomnia & narcolepsy, collaborating with Lynn Marie Trotti, MD (Emory Brain Health Center) and Eric Schumacher, PhD (Georgia Tech) — foundational to Daley et al. (2025).</li>
+                    <li>Redeveloped in-lab fMRI preprocessing pipelines (FSL, MATLAB), extracted QPPs, and built functional connectivity analyses.</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2 id="service">Additional Service & Leadership</h2>
+        <div class="service-item">
+            <span><span class="service-role">Secretary</span> — <span class="service-org">Emory Graduates in Neuroscience</span></span>
+            <span class="service-date">2021 – 2023</span>
+        </div>
+        <div class="service-item">
+            <span><span class="service-role">Editor-in-Chief, The Central Sulcus</span> — <span class="service-org">Graduates in Neuroscience, Emory</span></span>
+            <span class="service-date">2021 – 2022</span>
+        </div>
+        <div class="service-item">
+            <span><span class="service-role">Co-Instructor</span> — <span class="service-org">Atlanta Brain Bee (high-school outreach)</span></span>
+            <span class="service-date">2021</span>
+        </div>
+        <div class="service-item">
+            <span><span class="service-role">Representative</span> — <span class="service-org">Office of Undergraduate Education Student Advisory Board, Georgia Tech</span></span>
+            <span class="service-date">2019 – 2020</span>
+        </div>
+        <div class="service-item">
+            <span><span class="service-role">Undergraduate Representative</span> — <span class="service-org">Neuroscience Curriculum Committee, Georgia Tech</span></span>
+            <span class="service-date">2019 – 2020</span>
+        </div>
+        <div class="service-item">
+            <span><span class="service-role">Founder</span> — <span class="service-org">International Student Task Force, Georgia Tech</span></span>
+            <span class="service-date">2017 – 2020</span>
+        </div>
+        <div class="service-item">
+            <span><span class="service-role">Student Ambassador</span> — <span class="service-org">College of Sciences, Georgia Tech</span></span>
+            <span class="service-date">2017 – 2020</span>
+        </div>
+        <div class="service-item">
+            <span><span class="service-role">Vice President of External Affairs</span> — <span class="service-org">International Ambassadors, Georgia Tech</span></span>
+            <span class="service-date">2018 – 2019</span>
+        </div>
+        <div class="service-item">
+            <span><span class="service-role">Undergraduate Representative</span> — <span class="service-org">College of Sciences Dean Search Committee, Georgia Tech</span></span>
+            <span class="service-date">2018 – 2019</span>
+        </div>
+        <div class="service-item">
+            <span><span class="service-role">Team Leader</span> — <span class="service-org">GT1000 First-Year Seminar, Georgia Tech</span></span>
+            <span class="service-date">2017 – 2018</span>
+        </div>
+        <div class="service-item">
+            <span><span class="service-role">Vice President</span> — <span class="service-org">Arab Student Organization, Georgia Tech</span></span>
+            <span class="service-date">2017</span>
+        </div>
+        <div class="service-item">
+            <span><span class="service-role">Mental Health & Well-Being Activator</span> — <span class="service-org">GT Health Initiatives</span></span>
+            <span class="service-date">2017</span>
+        </div>
+
+        <h2 id="education">Education</h2>
         <div class="cv-item">
             <div class="item-header">
                 <span class="item-title">PhD in Neuroscience</span>
                 <span class="item-date">Aug 2020 – May 2026</span>
             </div>
             <div class="item-org">Emory University</div>
-            <div class="item-description">Thesis: Behavioral and neural mechanisms of aging-related deficits in human spatial navigation</div>
+            <div class="item-description">Dissertation: Behavioral and neural mechanisms of aging-related deficits in human spatial navigation</div>
         </div>
         <div class="cv-item">
             <div class="item-header">
@@ -731,10 +1069,11 @@
                 <span class="item-date">Aug 2016 – May 2020</span>
             </div>
             <div class="item-org">Georgia Institute of Technology</div>
-            <div class="item-description">Highest Honors | Zell Miller Scholarship | Psychology Minor, Research Option with Published Thesis</div>
+            <div class="item-description">Highest Honors | Psychology Minor | Research Option with Published Thesis</div>
+            <div class="item-description scholarships-line">Scholarships: Zell Miller, Southern Federation of Syrian Lebanese Americans, Ron &amp; Linda Mafrige Memorial, Tony Ayoub Family (Cedar Club of Atlanta), Cedar Club of Atlanta, Cedar Club of Houston, Charles K. &amp; Barbara Shaheen, Jane Fox Volunteerism (Walton HS Chorus)</div>
         </div>
 
-        <h2>Funding</h2>
+        <h2 id="funding">Funding</h2>
         <div class="cv-item">
             <div class="item-header">
                 <span class="item-title">NSF Graduate Research Fellowship Program</span>
@@ -752,69 +1091,137 @@
         <div class="cv-item">
             <div class="item-header">
                 <span class="item-title">Trainee Professional Development Award</span>
+                <span class="funding-amount">$1K</span>
             </div>
             <div class="item-description">2024 · Society for Neuroscience</div>
         </div>
+        <div class="cv-item">
+            <div class="item-header">
+                <span class="item-title">WISH Conference Grant</span>
+                <span class="funding-amount">$1K</span>
+            </div>
+            <div class="item-description">2023 · Wentworth Institute of Science and Health — International Workshop on TMS-fMRI, Evia, Greece</div>
+        </div>
 
-        <h2>Honors</h2>
+        <h2 id="honors">Honors</h2>
         <div class="cv-item">
             <div class="item-header">
                 <span class="item-title">Scientific Achievement Award</span>
                 <span class="item-date">2026</span>
             </div>
-            <div class="item-description">Emory Neuroscience Graduate Program</div>
+            <div class="item-description">Emory Neuroscience Graduate Program · Selected by faculty committee from 120+ students</div>
         </div>
         <div class="cv-item">
             <div class="item-header">
                 <span class="item-title">Teaching Award</span>
                 <span class="item-date">2025</span>
             </div>
-            <div class="item-description">Emory Neuroscience Graduate Program</div>
+            <div class="item-description">Emory Neuroscience Graduate Program · Selected by faculty committee from 120+ students</div>
         </div>
         <div class="cv-item">
             <div class="item-header">
                 <span class="item-title">Leadership Award</span>
                 <span class="item-date">2024</span>
             </div>
-            <div class="item-description">Emory Neuroscience Graduate Program</div>
+            <div class="item-description">Emory Neuroscience Graduate Program · Selected by faculty committee from 120+ students</div>
         </div>
         <div class="cv-item">
             <div class="item-header">
                 <span class="item-title">Excellence in Mentorship Award</span>
                 <span class="item-date">2023</span>
             </div>
-            <div class="item-description">Emory Neuroscience Graduate Program</div>
+            <div class="item-description">Emory Neuroscience Graduate Program · Selected by faculty committee from 120+ students</div>
         </div>
         <div class="cv-item">
             <div class="item-header">
-                <span class="item-title">Scholar, Computational Neural Engineering Training Program</span>
+                <span class="item-title">ISC + ComSHER Cohort</span>
                 <span class="item-date">2021</span>
             </div>
-            <div class="item-description">Georgia Tech / Emory</div>
+            <div class="item-description">Association for Education in Journalism & Mass Communication (AEJMC) & Inclusive SciComm (ISC) — attendance for the 2021 AEJMC Annual Conference & ISC Symposium</div>
         </div>
 
-        <h2>Mentorship</h2>
-        <p class="mentorship-intro">Directly mentored 15+ trainees (high school, undergraduate, & doctoral students), resulting in:</p>
-        <ul class="mentorship-list">
-            <li>5 award-winning presentations at institutional and regional conferences.</li>
-            <li>2 completed Honors Theses with Highest Honors designations at Emory University.</li>
-            <li>2 completed Research Option Certificates with published thesis at Georgia Tech.</li>
-            <li>Multiple competitive fellowships, including Fulbright, DAAD-Rise, Georgia Tech President's Undergraduate Research Award, Emory Pathways Center Internship Funding, & 100 Senior Honorary Award by Emory Alumni Association & Student Alumni Board.</li>
-        </ul>
+        <h2 id="mentorship">Mentorship</h2>
+        <p class="mentorship-intro">Directly mentored high school, undergraduate, & doctoral trainees, producing:</p>
+        <div class="mentorship-stats">
+            <div class="mentorship-stat">
+                <span class="stat-num">15+</span>
+                <span class="stat-label">Trainees Mentored</span>
+            </div>
+            <div class="mentorship-stat">
+                <span class="stat-num">5</span>
+                <span class="stat-label">Award-Winning Presentations</span>
+            </div>
+            <div class="mentorship-stat">
+                <span class="stat-num">5</span>
+                <span class="stat-label">Competitive Fellowships</span>
+            </div>
+            <div class="mentorship-stat wide">
+                <span class="stat-num">4</span>
+                <span class="stat-label">Published Theses</span>
+                <span class="stat-detail">2 Highest Honors (Emory) · 2 Certificates (Georgia Tech)</span>
+            </div>
+        </div>
+        <p class="mentorship-fellowships">Competitive fellowships included: Fulbright, DAAD-RISE, Georgia Tech President's Undergraduate Research Award, Emory Pathways Center Internship Funding, & the 100 Senior Honorary Award (Emory University).</p>
 
-        <h2>Publication Highlights</h2>
-        <div class="publication">
-            <p><strong>Bassil, Y.</strong>, Kanukolanu, A., Funderburg, E., Cui, E., Brown, T., & Borich, M. (2025). Distinct aging-related profiles of allocentric knowledge recall following navigation in an immersive, naturalistic, city-like environment. <em>PsyArXiv</em>. (under review at Frontiers in Aging Neuroscience)</p>
-        </div>
-        <div class="publication">
-            <p><strong>Bassil, Y.</strong>, Kanukolanu, A., Funderburg, E., Brown, T., & Borich, M. R. (2025). Formation of allocentric representations after exposure to a novel, naturalistic, city-like, virtual reality environment. <em>Neuropsychologia</em>, 109290.</p>
-        </div>
-        <div class="publication">
-            <p>Woolgar, A., Feredoes, E., Assem, M., <strong>Bassil, Y.</strong>, Bergmann, T. O., Beynel, L., ... & Sack, A. T. (2025). Consensus guidelines for the use of concurrent TMS-fMRI in cognitive and clinical neuroscience. <em>Nature Protocols</em>, 1-17.</p>
-        </div>
-        <p class="pub-note">7 peer-reviewed publications (including a Nature Protocols consensus paper), 12 self-presented conference presentations (incl. 1 platform presentation), and 2 presentation awards. 15+ invited talks, including Speaker at Atlanta Science Festival Tech Talks (2022) and Keynote Speaker at the Georgia Tech Neuroscience Research Symposium (2021).</p>
+        <p class="mentees-label">Mentees</p>
+        <p class="mentee"><strong>Anisha Kanukolanu</strong> <span class="mentee-meta">— Neuroscience (undergrad), Georgia Tech · 2021–2023</span> — PURA &amp; DAAD-RISE (Berlin) awardee; three poster/abstract awards and an ASNR travel award.</p>
+        <p class="mentee"><strong>Emily Cui</strong> <span class="mentee-meta">— Neuroscience &amp; Behavioral Biology (undergrad) → Research Specialist, NPRL, Emory · 2022–2024</span> — Highest Honors thesis; 100 Senior Honorary Award.</p>
+        <p class="mentee"><strong>Emma Funderburg</strong> <span class="mentee-meta">— Neuroscience &amp; Behavioral Biology (undergrad), Emory · 2023–2025</span> — Honors Thesis.</p>
+        <p class="mentee"><strong>Ashley Pelton</strong> <span class="mentee-meta">— Neuroscience (undergrad), Georgia Tech · 2023–2025</span> — Research Option.</p>
+        <p class="mentee"><strong>Akarshana Arunkumar</strong> <span class="mentee-meta">— Neuroscience (undergrad), Georgia Tech · 2023–2025</span> — began as a high-school volunteer (Denmark HS).</p>
+        <p class="mentee"><strong>Nicholas Hess</strong> <span class="mentee-meta">— Industrial Engineering (undergrad), Georgia Tech · 2023</span></p>
+        <p class="mentee"><strong>Jacob Stein</strong> <span class="mentee-meta">— Neuroscience &amp; Behavioral Biology (undergrad), Emory · 2022</span></p>
+        <p class="mentee"><strong>DPT Research Teams</strong> <span class="mentee-meta">— Costlow, Adams &amp; Tran (2022–2023); Carter, Ferrer &amp; Hilten (2021–2022), Emory</span> — recruited 40+ participants; 1st &amp; 3rd Place, Annual DPT Research Poster Session.</p>
 
-        <h2>Teaching</h2>
+        <h2 id="publications">Publications</h2>
+        <a class="scholar-link" href="https://scholar.google.com/citations?user=mcp_4HQAAAAJ" target="_blank" rel="noopener">View full profile on Google Scholar ↗</a>
+        <div class="publication">
+            <p><strong>Bassil, Y.</strong>, Kanukolanu, A., Funderburg, E., Cui, E. Z., Brown, T. I., & Borich, M. R. (2026). Distinct aging-related profiles of allocentric knowledge recall following navigation in an immersive, naturalistic, city-like environment. <em>Frontiers in Aging Neuroscience</em>, 18. <a class="doi-link" href="https://doi.org/10.3389/fnagi.2026.1746016" target="_blank" rel="noopener">https://doi.org/10.3389/fnagi.2026.1746016</a></p>
+        </div>
+        <div class="publication">
+            <p>Woolgar, A., Feredoes, E., Assem, M., <strong>Bassil, Y.</strong>, Bergmann, T. O., Beynel, L., ... & Sack, A. T. (2026). Consensus guidelines for the use of concurrent TMS-fMRI in cognitive and clinical neuroscience. <em>Nature Protocols</em>, 21(1), 1–17. <a class="doi-link" href="https://doi.org/10.1038/s41596-025-01182-4" target="_blank" rel="noopener">https://doi.org/10.1038/s41596-025-01182-4</a></p>
+        </div>
+        <div class="publication">
+            <p><strong>Bassil, Y.</strong>, Kanukolanu, A., Funderburg, E., Brown, T. I., & Borich, M. R. (2025). Formation of allocentric representations after exposure to a novel, naturalistic, city-like, virtual reality environment. <em>Neuropsychologia</em>, 109290. <a class="doi-link" href="https://doi.org/10.1016/j.neuropsychologia.2025.109290" target="_blank" rel="noopener">https://doi.org/10.1016/j.neuropsychologia.2025.109290</a></p>
+        </div>
+        <div class="publication">
+            <p>Daley, L., Saini, P., Watters, H., <strong>Bassil, Y.</strong>, Schumacher, E. H., Trotti, L. M., et al. (2025). Altered functional connectivity and spatiotemporal dynamics in individuals with central disorders of hypersomnolence. <em>Frontiers in Neuroscience</em>, 19, 1538479. <a class="doi-link" href="https://doi.org/10.3389/fnins.2025.1538479" target="_blank" rel="noopener">https://doi.org/10.3389/fnins.2025.1538479</a></p>
+        </div>
+        <div class="publication">
+            <p>Xu, N., LaGrow, T. J., Anumba, N., Lee, A., Zhang, X., Yousefi, B., <strong>Bassil, Y.</strong>, et al. (2022). Functional connectivity of the brain across rodents and humans. <em>Frontiers in Neuroscience</em>, 16, 816331. <a class="doi-link" href="https://doi.org/10.3389/fnins.2022.816331" target="_blank" rel="noopener">https://doi.org/10.3389/fnins.2022.816331</a></p>
+        </div>
+        <div class="publication">
+            <p>Gau, R., Noble, S., Heuer, K., Bottenhorn, K. L., ... <strong>Bassil, Y.</strong>, et al. (2021). Brainhack: Developing a culture of open, inclusive, community-driven neuroscience. <em>Neuron</em>, 109(11), 1769–1775. <a class="doi-link" href="https://doi.org/10.1016/j.neuron.2021.04.001" target="_blank" rel="noopener">https://doi.org/10.1016/j.neuron.2021.04.001</a></p>
+        </div>
+        <div class="publication">
+            <p>Abbas, A., <strong>Bassil, Y.</strong>, & Keilholz, S. (2019). Quasi-periodic patterns of brain activity in individuals with attention-deficit/hyperactivity disorder. <em>NeuroImage: Clinical</em>, 21, 101653. <a class="doi-link" href="https://doi.org/10.1016/j.nicl.2019.101653" target="_blank" rel="noopener">https://doi.org/10.1016/j.nicl.2019.101653</a></p>
+        </div>
+        <p class="pub-note">270+ citations · h-index 5 (Google Scholar).</p>
+
+        <h2 id="presentations">Presentations</h2>
+        <p class="mentorship-intro">* denotes presenting author</p>
+        <div class="presentation-item">*<strong>Bassil, Y.</strong>, Kanukolanu, A., Cui, E., Funderburg, E., Pelton, A., Arunkumar, A., &amp; Borich, M. (2024). "Reference frame utilization as a potential marker of aging-related deficits in human spatial navigation." Poster, <em>Interdisciplinary Navigation (iNAV) Symposium</em>, Merano, Italy.</div>
+        <div class="presentation-item">*<strong>Bassil, Y.</strong>, Kanukolanu, A., Cui, E., &amp; Borich, M. (2024). "Reference frame utilization as a potential marker of aging-related deficits in human spatial navigation." Poster, <em>Center for Research and Education in Navigation (CRaNE) Conference</em>, Atlanta, GA.</div>
+        <div class="presentation-item">*Funderburg, E., <strong>Bassil, Y.</strong>, Cui, E., Arunkumar, A., Pelton, A., &amp; Borich, M. (2024). "Effects of demographic factors on spatial navigation ability in aging." Poster, <em>CRaNE Conference</em>, Atlanta, GA.</div>
+        <div class="presentation-item">*<strong>Bassil, Y.</strong>, Kanukolanu, A., Cui, E., &amp; Borich, M. (2024). "Reference frame utilization as a potential marker of aging-related deficits in human spatial navigation." Poster, <em>Arab Conference at Harvard</em>, Boston, MA.</div>
+        <div class="presentation-item">*Arunkumar, A., <strong>Bassil, Y.</strong>, Funderburg, E., Pelton, A., Cui, E., &amp; Borich, M. (2024). "Aging-related effects on individual spatial navigation performance." Poster, <em>Georgia Tech Neuroscience Undergraduate Research Symposium</em>, Atlanta, GA.</div>
+        <div class="presentation-item">*Cui, E., <strong>Bassil, Y.</strong>, &amp; Borich, M. (2024). "Exploring effects of reference frame classification and aging in a traditional Y-maze spatial navigation task." Poster, <em>American Society for Neurorehabilitation Annual Meeting</em>, San Antonio, TX.</div>
+        <div class="presentation-item">*<strong>Bassil, Y.</strong>, Kanukolanu, A., Cui, E., &amp; Borich, M. (2024). "Reference frame utilization as a potential marker of aging-related deficits in human spatial navigation." Poster, <em>Annual Graduate Division of Biological &amp; Biomedical Sciences (GDBBS) Research Symposium</em>, Emory University, Atlanta, GA. <span class="award">(3rd Place Poster)</span></div>
+        <div class="presentation-item">*Adams, A., *Tran, V., Costlow, A., <strong>Bassil, Y.</strong>, Kanukolanu, A., Cui, E., &amp; Borich, M. (2024). "Interactions between navigation, balance, and higher-order cognition in the aging brain." Oral platform presentation, <em>American Physical Therapy Association (APTA) Combined Sections Meeting</em>, Boston, MA.</div>
+        <div class="presentation-item">*<strong>Bassil, Y.</strong>, &amp; Borich, M. (2023). "Testing circuit-based mechanisms of aging effects on human spatial navigation with TMS-fMRI." Oral presentation, <em>2nd International Workshop on Concurrent TMS-fMRI</em>, Evia, Greece.</div>
+        <div class="presentation-item">*<strong>Bassil, Y.</strong>, Kanukolanu, A., Cui, E., &amp; Borich, M. (2023). "Reference frame utilization as a potential marker of aging-related deficits in human spatial navigation." Poster, <em>Society for Neuroscience</em>, Washington, D.C.</div>
+        <div class="presentation-item">*<strong>Bassil, Y.</strong>, Kanukolanu, A., Cui, E., &amp; Borich, M. (2023). "Interactions between spatial navigation ability and cognitive function in the aging brain." Poster, <em>American Society for Neurorehabilitation (ASNR) Annual Conference</em>, Charleston, SC.</div>
+        <div class="presentation-item">*Kanukolanu, A., <strong>Bassil, Y.</strong>, &amp; Borich, M. (2023). "Aging-related effects on reference frame utilization during spatial navigation in a novel virtual reality environment." Poster, <em>ASNR Annual Conference</em>, Charleston, SC.</div>
+        <div class="presentation-item">Carter, K., Ferrer, M., Hilten, E., <strong>Bassil, Y.</strong>, Kanukolanu, A., &amp; *Borich, M. (2023). "Interactions between balance, navigation, &amp; cognition in the aging brain." Poster, <em>APTA Combined Sections Meeting</em>, San Diego, CA.</div>
+        <div class="presentation-item">*Kanukolanu, A., <strong>Bassil, Y.</strong>, Hilten, E., Carter, K., Ferrer, M., &amp; Borich, M. (2022). "Aging effects on spatial navigation &amp; cognitive function." Poster, <em>16th Annual Georgia Tech Undergraduate Research Symposium</em>, Atlanta, GA. <span class="award">(1st Place Poster, College of Sciences)</span></div>
+        <div class="presentation-item">*Kanukolanu, A., <strong>Bassil, Y.</strong>, Hilten, E., Carter, K., Ferrer, M., &amp; Borich, M. (2022). "Aging effects on spatial navigation &amp; cognitive function." Poster, <em>1st Annual Psychology Research Conference</em>, Atlanta, GA. <span class="award">(2nd Place Poster)</span></div>
+        <div class="presentation-item">*Kanukolanu, A., <strong>Bassil, Y.</strong>, Hilten, E., Carter, K., Ferrer, M., &amp; Borich, M. (2022). "Aging effects on spatial navigation &amp; cognitive function." Poster, <em>Georgia Tech Neuroscience Research Symposium</em>, Atlanta, GA. <span class="award">(Faculty Award for Best Abstract)</span></div>
+        <div class="presentation-item"><strong>Bassil, Y.</strong> (2019). "Actionable items to promote inclusivity in scientific workspaces." Poster, <em>Inclusive SciComm Conference</em>, South Kingstown, RI.</div>
+        <div class="presentation-item">Abbas, A., <strong>Bassil, Y.</strong>, &amp; Keilholz, S. (2018). "Quasi-periodic patterns contribute to functional connectivity differences in individuals with ADHD." Poster, <em>Organization for Human Brain Mapping (OHBM) Conference</em>, Singapore.</div>
+        <div class="presentation-item">Abbas, A., <strong>Bassil, Y.</strong>, &amp; Keilholz, S. (2018). "Quasi-periodic patterns contribute to functional connectivity differences between adolescents &amp; adults." Poster, <em>OHBM Conference</em>, Singapore.</div>
+        <div class="presentation-item">Abbas, A., <strong>Bassil, Y.</strong>, &amp; Keilholz, S. (2018). "Quasi-periodic patterns contribute to functional connectivity differences in individuals with ADHD." Poster, <em>Nu Rho Psi Atlanta Neuroscience Symposium</em>, Georgia.</div>
+
+        <h2 id="teaching">Teaching</h2>
         <div class="teaching-item">
             <span><span class="teaching-role">Instructor of Record</span> — <span class="teaching-course">Explore Neuroscience & Behavioral Biology</span></span>
             <span class="teaching-code">NBB299</span>
@@ -822,17 +1229,21 @@
         <div class="teaching-item">
             <span><span class="teaching-role">Co-Instructor</span> — <span class="teaching-course">Neurobiology Simulation & Analysis Lab</span></span>
             <span class="teaching-code">BIO360L/NBB301L</span>
+            <span class="teaching-instructor">with Samuel J. Sober, PhD</span>
         </div>
         <div class="teaching-item">
             <span><span class="teaching-role">Program & Teaching Assistant</span> — <span class="teaching-course">Global Neuro & Behavior</span></span>
             <span class="teaching-code">NBB402W</span>
+            <span class="teaching-instructor">with Leah Anderson Roesch, PhD</span>
         </div>
         <div class="teaching-item">
             <span><span class="teaching-role">Teaching Assistant</span> — <span class="teaching-course">Principles of Motor Learning</span></span>
             <span class="teaching-code">DPT805</span>
+            <span class="teaching-instructor">with Michael R. Borich, PT, DPT, PhD</span>
         </div>
 
-        <h2>Press</h2>
+        <h2 id="talks">Invited Talks</h2>
+        <p class="mentorship-intro">15+ invited talks, including:</p>
         <div class="cv-item">
             <div class="item-header">
                 <span class="item-title">Speaker | Tech Talks: Unique & Diverse Perspectives in Science</span>
@@ -852,5 +1263,28 @@
     </main>
 
     <footer>© 2026 Yasmine Bassil</footer>
+
+    <script>
+        (function () {
+            var links = Array.prototype.slice.call(document.querySelectorAll('.cv-outline a'));
+            if (!links.length || !('IntersectionObserver' in window)) return;
+            var map = {};
+            var sections = [];
+            links.forEach(function (a) {
+                var id = a.getAttribute('href').slice(1);
+                var el = document.getElementById(id);
+                if (el) { map[id] = a; sections.push(el); }
+            });
+            var observer = new IntersectionObserver(function (entries) {
+                entries.forEach(function (e) {
+                    if (e.isIntersecting) {
+                        links.forEach(function (l) { l.classList.remove('active'); });
+                        if (map[e.target.id]) map[e.target.id].classList.add('active');
+                    }
+                });
+            }, { rootMargin: '-12% 0px -80% 0px', threshold: 0 });
+            sections.forEach(function (s) { observer.observe(s); });
+        })();
+    </script>
 </body>
 </html>
