@@ -544,6 +544,33 @@
             display: none;
         }
 
+        .sidebar h2.sidebar-toggle {
+            display: flex;
+            align-items: baseline;
+            cursor: pointer;
+        }
+
+        .sidebar-toggle-icon {
+            margin-left: auto;
+            align-self: center;
+            font-size: 0.6rem;
+            color: var(--text-muted);
+            flex-shrink: 0;
+            transition: transform 0.2s ease;
+        }
+
+        .sidebar h2.sidebar-toggle:hover {
+            opacity: 0.7;
+        }
+
+        .sidebar-toggle[aria-expanded="true"] .sidebar-toggle-icon {
+            transform: rotate(90deg);
+        }
+
+        .sidebar-collapse[hidden] {
+            display: none;
+        }
+
         .sidebar .simple-list {
             font-size: 0.9rem;
         }
@@ -654,7 +681,7 @@
             <li><a href="science.html">science</a></li>
             <li><a href="media.html">media</a></li>
             <li><a href="thoughts.html">thoughts</a></li>
-            <li><a href="music.html">music</a></li>
+            <li><a href="music.html">creative</a></li>
             <li><a href="/defense">defense</a></li>
         </ul>
         <button class="mobile-nav-toggle" aria-label="Toggle navigation">
@@ -964,6 +991,12 @@
                 e.preventDefault();
                 history.replaceState(null, null, '#' + targetId);
 
+                // Auto-expand a collapsed sidebar section being navigated to
+                var collapsedHeading = target.querySelector
+                    ? target.querySelector('h2.sidebar-toggle[aria-expanded="false"]')
+                    : null;
+                if (collapsedHeading) collapsedHeading.click();
+
                 const rect = target.getBoundingClientRect();
                 const isVisible = rect.top >= 0 && rect.top < window.innerHeight;
 
@@ -1014,6 +1047,63 @@
                 }
             });
         });
+
+        // Collapsible sidebar sections (minimal caret per heading)
+        (function () {
+            var sidebar = document.querySelector('.sidebar');
+            if (!sidebar) return;
+            sidebar.querySelectorAll('h2').forEach(function (h2) {
+                var label = h2.textContent.trim().toLowerCase();
+                if (label.indexOf('contact') === 0) return; // keep contact always visible
+
+                var nodes = [];
+                var n = h2.nextElementSibling;
+                while (n && n.tagName !== 'H2' && !n.classList.contains('sidebar-section')) {
+                    nodes.push(n);
+                    n = n.nextElementSibling;
+                }
+                if (!nodes.length) return;
+
+                var wrap = document.createElement('div');
+                wrap.className = 'sidebar-collapse';
+                h2.parentNode.insertBefore(wrap, h2.nextSibling);
+                nodes.forEach(function (node) { wrap.appendChild(node); });
+
+                var icon = document.createElement('span');
+                icon.className = 'sidebar-toggle-icon';
+                icon.textContent = '▸';
+                h2.appendChild(icon);
+                h2.classList.add('sidebar-toggle');
+                h2.setAttribute('role', 'button');
+                h2.setAttribute('tabindex', '0');
+
+                var open = label.indexOf('education') === 0; // education open by default
+                if (open) {
+                    h2.setAttribute('aria-expanded', 'true');
+                } else {
+                    wrap.setAttribute('hidden', '');
+                    h2.setAttribute('aria-expanded', 'false');
+                }
+
+                function toggle() {
+                    var collapsed = wrap.hasAttribute('hidden');
+                    if (collapsed) {
+                        wrap.removeAttribute('hidden');
+                        h2.setAttribute('aria-expanded', 'true');
+                    } else {
+                        wrap.setAttribute('hidden', '');
+                        h2.setAttribute('aria-expanded', 'false');
+                    }
+                }
+                h2.addEventListener('click', toggle);
+                h2.addEventListener('keydown', function (e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        toggle();
+                    }
+                });
+            });
+        })();
     </script>
 </body>
 </html>
