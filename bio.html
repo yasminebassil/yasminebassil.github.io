@@ -507,6 +507,34 @@
             color: white;
         }
 
+        .section-header.bio-toggle {
+            cursor: pointer;
+        }
+
+        .bio-toggle-icon {
+            font-family: var(--font-body);
+            font-size: 1.15rem;
+            font-weight: 400;
+            line-height: 1;
+            color: var(--accent-olive);
+            width: 1.1rem;
+            text-align: center;
+            flex-shrink: 0;
+            user-select: none;
+        }
+
+        .bio-teaser {
+            color: var(--text-muted);
+            font-style: italic;
+            margin: -0.75rem 0 1.5rem 0;
+            cursor: pointer;
+        }
+
+        .bio-teaser[hidden],
+        .bio-collapse[hidden] {
+            display: none;
+        }
+
         .sidebar .simple-list {
             font-size: 0.9rem;
         }
@@ -650,11 +678,14 @@
 
             <p class="intro-hook">As an Atlanta-based Lebanese scientist, plant enthusiast, amateur chef, musician, and community member, I believe science and life are better when we show up authentically as whole people — so feel free to explore a more holistic introduction of myself below.</p>
 
-            <div class="section-header with-action">
+            <div class="section-header with-action bio-toggle" data-target="sec-education" role="button" tabindex="0" aria-expanded="true">
                 <span>Education & Training</span>
+                <span class="bio-toggle-icon">−</span>
                 <div class="section-line"></div>
                 <a href="science.html" class="header-action">science</a>
             </div>
+            <p class="bio-teaser" data-target="sec-education" hidden>PhD at Emory, undergrad at Georgia Tech, and the research I built.</p>
+            <div class="bio-collapse" id="sec-education">
 
             <p>I've moved back and forth between the US and Lebanon throughout my life, ultimately settling in Atlanta ten years ago to pursue higher <a href="#education">education</a>.</p>
 
@@ -664,11 +695,16 @@
 
             <p>Prior to my PhD, I completed my undergraduate degree at the Georgia Institute of Technology, as well as my undergraduate thesis with Dr. Shella Keilholz in the <a href="https://sites.google.com/view/keilholz-lab/home" target="_blank">Keilholz MIND Lab</a>, analyzing resting-state brain connectivity in individuals with ADHD, PTSD, and sleep disorders.</p>
 
-            <div class="section-header with-action">
+            </div>
+
+            <div class="section-header with-action bio-toggle" data-target="sec-interests" role="button" tabindex="0" aria-expanded="false">
                 <span>Interests & Passions</span>
+                <span class="bio-toggle-icon">+</span>
                 <div class="section-line"></div>
                 <a href="cv.html" class="header-action">cv</a>
             </div>
+            <p class="bio-teaser" data-target="sec-interests">Advocacy and building accessible, inclusive research infrastructure.</p>
+            <div class="bio-collapse" id="sec-interests" hidden>
 
             <p>I'm endlessly passionate about advocating for (and with) the communities I'm a part of—particularly through building accessible and inclusive systems that help others thrive.</p>
 
@@ -676,11 +712,16 @@
 
             <p>For more on leadership and advocacy, see my <a href="cv.html">cv</a>.</p>
 
-            <div class="section-header with-action">
+            </div>
+
+            <div class="section-header with-action bio-toggle" data-target="sec-personal" role="button" tabindex="0" aria-expanded="false">
                 <span>Personal</span>
+                <span class="bio-toggle-icon">+</span>
                 <div class="section-line"></div>
                 <a href="music.html" class="header-action">creative</a>
             </div>
+            <p class="bio-teaser" data-target="sec-personal">Lebanon, cooking, 30+ plants, music, and pottery.</p>
+            <div class="bio-collapse" id="sec-personal" hidden>
 
             <div class="personal-note">
                 <p>The science and the scientist are inextricably intertwined. Often, we're encouraged to separate personal and professional identities, but science is inevitably shaped by the person conducting it. This profile embraces that, blending personal and professional identity to show more of who I am.</p>
@@ -692,9 +733,14 @@
 
             <p>I'm a lover of all things <a href="music.html">creative</a>. I'm currently part of <a href="https://www.instagram.com/labratband/" target="_blank">la brat band</a>, on piano and lead vocals (and occasionally bass!), putting my classical training to good use. We had our <a href="https://labratband.com/" target="_blank">debut show</a> last year. Otherwise, I love artistic endeavors in all forms, with my new favorite medium of pottery.</p>
 
-            <div class="section-header">
-                <span>More</span>
             </div>
+
+            <div class="section-header bio-toggle" data-target="sec-more" role="button" tabindex="0" aria-expanded="false">
+                <span>More</span>
+                <span class="bio-toggle-icon">+</span>
+            </div>
+            <p class="bio-teaser" data-target="sec-more">Currently reading, favorite flavors, languages, and quirks.</p>
+            <div class="bio-collapse" id="sec-more" hidden>
 
             <div class="misc-item"><strong>currently reading:</strong> <a href="https://charisbooksandmore.com/book/9780295752297" target="_blank">Queer World Making: Contemporary Middle Eastern Diasporic Art</a> by Andrew Gayed</div>
             <div class="misc-item"><strong>favorite dessert:</strong> anything with rose, cardamom, and pistachio</div>
@@ -704,6 +750,7 @@
             <div class="misc-item"><strong>favorite new hobby recently:</strong> pottery, or block printing!</div>
             <div class="misc-item"><strong>currently obsessed with:</strong> learning how to count from 1 to 10 in as many languages as I can</div>
             <div class="misc-item"><strong>thing I'm unreasonably good at:</strong> color-coding and organizing my digital and physical life</div>
+            </div>
 
         </div>
 
@@ -931,6 +978,46 @@
                 setTimeout(() => highlightSection(target), 100);
             }
         }
+
+        // Collapsible bio sections
+        function toggleBioSection(id) {
+            var body = document.getElementById(id);
+            if (!body) return;
+            var teaser = document.querySelector('.bio-teaser[data-target="' + id + '"]');
+            var header = document.querySelector('.bio-toggle[data-target="' + id + '"]');
+            var icon = header ? header.querySelector('.bio-toggle-icon') : null;
+            var collapsed = body.hasAttribute('hidden');
+            if (collapsed) {
+                body.removeAttribute('hidden');
+                if (teaser) teaser.setAttribute('hidden', '');
+                if (icon) icon.textContent = '−';
+                if (header) header.setAttribute('aria-expanded', 'true');
+            } else {
+                body.setAttribute('hidden', '');
+                if (teaser) teaser.removeAttribute('hidden');
+                if (icon) icon.textContent = '+';
+                if (header) header.setAttribute('aria-expanded', 'false');
+            }
+        }
+
+        document.querySelectorAll('.bio-toggle').forEach(function (header) {
+            header.addEventListener('click', function (e) {
+                if (e.target.closest('.header-action')) return;
+                toggleBioSection(header.getAttribute('data-target'));
+            });
+            header.addEventListener('keydown', function (e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    toggleBioSection(header.getAttribute('data-target'));
+                }
+            });
+        });
+
+        document.querySelectorAll('.bio-teaser').forEach(function (teaser) {
+            teaser.addEventListener('click', function () {
+                toggleBioSection(teaser.getAttribute('data-target'));
+            });
+        });
     </script>
 </body>
 </html>
