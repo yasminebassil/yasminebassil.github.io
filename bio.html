@@ -539,31 +539,6 @@
             text-underline-offset: 3px;
         }
 
-        .bio-teaser {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            margin: -0.5rem 0 1.75rem 0;
-            padding: 0.5rem 1.1rem;
-            background: var(--accent-olive);
-            color: white;
-            border-radius: 999px;
-            font-family: var(--font-body);
-            font-style: normal;
-            font-size: 0.78rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            cursor: pointer;
-            transition: opacity 0.15s ease, transform 0.15s ease;
-        }
-
-        .bio-teaser:hover {
-            opacity: 0.88;
-            transform: translateY(-1px);
-        }
-
-        .bio-teaser[hidden],
         .bio-collapse[hidden] {
             display: none;
         }
@@ -713,11 +688,10 @@
 
             <div class="section-header with-action bio-toggle" data-target="sec-education" role="button" tabindex="0" aria-expanded="true">
                 <span>Education & Training</span>
-                <span class="bio-toggle-icon">−</span>
+                <span class="bio-toggle-icon">▴</span>
                 <div class="section-line"></div>
                 <a href="science.html" class="header-action">science</a>
             </div>
-            <p class="bio-teaser" data-target="sec-education" hidden>+ Click to expand</p>
             <div class="bio-collapse" id="sec-education">
 
             <p>I've moved back and forth between the US and Lebanon throughout my life, ultimately settling in Atlanta ten years ago to pursue higher <a href="#education">education</a>.</p>
@@ -732,11 +706,10 @@
 
             <div class="section-header with-action bio-toggle" data-target="sec-interests" role="button" tabindex="0" aria-expanded="false">
                 <span>Interests & Passions</span>
-                <span class="bio-toggle-icon">+</span>
+                <span class="bio-toggle-icon">▾</span>
                 <div class="section-line"></div>
                 <a href="cv.html" class="header-action">cv</a>
             </div>
-            <p class="bio-teaser" data-target="sec-interests">+ Click to expand</p>
             <div class="bio-collapse" id="sec-interests" hidden>
 
             <p>I'm endlessly passionate about advocating for (and with) the communities I'm a part of—particularly through building accessible and inclusive systems that help others thrive.</p>
@@ -749,11 +722,10 @@
 
             <div class="section-header with-action bio-toggle" data-target="sec-personal" role="button" tabindex="0" aria-expanded="false">
                 <span>Personal</span>
-                <span class="bio-toggle-icon">+</span>
+                <span class="bio-toggle-icon">▾</span>
                 <div class="section-line"></div>
                 <a href="music.html" class="header-action">creative</a>
             </div>
-            <p class="bio-teaser" data-target="sec-personal">+ Click to expand</p>
             <div class="bio-collapse" id="sec-personal" hidden>
 
             <div class="personal-note">
@@ -770,9 +742,8 @@
 
             <div class="section-header bio-toggle" data-target="sec-more" role="button" tabindex="0" aria-expanded="false">
                 <span>More</span>
-                <span class="bio-toggle-icon">+</span>
+                <span class="bio-toggle-icon">▾</span>
             </div>
-            <p class="bio-teaser" data-target="sec-more">+ Click to expand</p>
             <div class="bio-collapse" id="sec-more" hidden>
 
             <div class="misc-item"><strong>currently reading:</strong> <a href="https://charisbooksandmore.com/book/9780295752297" target="_blank">Queer World Making: Contemporary Middle Eastern Diasporic Art</a> by Andrew Gayed</div>
@@ -1016,19 +987,16 @@
         function toggleBioSection(id) {
             var body = document.getElementById(id);
             if (!body) return;
-            var teaser = document.querySelector('.bio-teaser[data-target="' + id + '"]');
             var header = document.querySelector('.bio-toggle[data-target="' + id + '"]');
             var icon = header ? header.querySelector('.bio-toggle-icon') : null;
             var collapsed = body.hasAttribute('hidden');
             if (collapsed) {
                 body.removeAttribute('hidden');
-                if (teaser) teaser.setAttribute('hidden', '');
-                if (icon) icon.textContent = '−';
+                if (icon) icon.textContent = '▴';
                 if (header) header.setAttribute('aria-expanded', 'true');
             } else {
                 body.setAttribute('hidden', '');
-                if (teaser) teaser.removeAttribute('hidden');
-                if (icon) icon.textContent = '+';
+                if (icon) icon.textContent = '▾';
                 if (header) header.setAttribute('aria-expanded', 'false');
             }
         }
@@ -1043,12 +1011,6 @@
                     e.preventDefault();
                     toggleBioSection(header.getAttribute('data-target'));
                 }
-            });
-        });
-
-        document.querySelectorAll('.bio-teaser').forEach(function (teaser) {
-            teaser.addEventListener('click', function () {
-                toggleBioSection(teaser.getAttribute('data-target'));
             });
         });
     </script>
