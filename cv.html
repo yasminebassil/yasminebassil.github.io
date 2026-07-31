@@ -542,6 +542,25 @@
             border-radius: 6px;
         }
 
+        .pub-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 0.85rem;
+        }
+
+        .pub-header .scholar-link {
+            margin-bottom: 0;
+        }
+
+        .pub-stats {
+            font-style: italic;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
         .scholar-link {
             display: inline-block;
             margin-bottom: 0.85rem;
@@ -588,9 +607,10 @@
             display: flex;
             justify-content: space-between;
             align-items: baseline;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.3rem;
             flex-wrap: wrap;
             gap: 0.5rem;
+            font-size: 0.85rem;
         }
 
         .teaching-role {
@@ -665,6 +685,10 @@
             font-style: italic;
             color: var(--accent-olive);
             margin-bottom: 0.75rem;
+        }
+
+        .pres-note {
+            font-size: 0.85rem;
         }
 
         .mentorship-list {
@@ -1221,7 +1245,10 @@
         <button class="expand-toggle" data-target="mentees-more" data-more="Show all (8) ↓" data-less="Show less ↑">Show all (8) ↓</button>
 
         <h2 id="publications">Publications</h2>
-        <a class="scholar-link" href="https://scholar.google.com/citations?user=mcp_4HQAAAAJ" target="_blank" rel="noopener">View full profile on Google Scholar ↗</a>
+        <div class="pub-header">
+            <a class="scholar-link" href="https://scholar.google.com/citations?user=mcp_4HQAAAAJ" target="_blank" rel="noopener">View full profile on Google Scholar ↗</a>
+            <span class="pub-stats">270+ citations · h-index 5 (Google Scholar).</span>
+        </div>
         <div class="publication">
             <p><strong>Bassil, Y.</strong>, Kanukolanu, A., Funderburg, E., Cui, E. Z., Brown, T. I., & Borich, M. R. (2026). Distinct aging-related profiles of allocentric knowledge recall following navigation in an immersive, naturalistic, city-like environment. <em>Frontiers in Aging Neuroscience</em>, 18. <a class="doi-link" href="https://doi.org/10.3389/fnagi.2026.1746016" target="_blank" rel="noopener">https://doi.org/10.3389/fnagi.2026.1746016</a></p>
         </div>
@@ -1246,10 +1273,9 @@
         </div>
         </div>
         <button class="expand-toggle" data-target="pub-more" data-more="Show all (7) ↓" data-less="Show less ↑">Show all (7) ↓</button>
-        <p class="pub-note">270+ citations · h-index 5 (Google Scholar).</p>
 
         <h2 id="presentations">Presentations</h2>
-        <p class="mentorship-intro">* denotes presenting author</p>
+        <p class="mentorship-intro pres-note">* denotes presenting author</p>
         <div class="presentation-item">*<strong>Bassil, Y.</strong>, Kanukolanu, A., Cui, E., Funderburg, E., Pelton, A., Arunkumar, A., &amp; Borich, M. (2024). "Reference frame utilization as a potential marker of aging-related deficits in human spatial navigation." Poster, <em>Interdisciplinary Navigation (iNAV) Symposium</em>, Merano, Italy.</div>
         <div class="presentation-item">*<strong>Bassil, Y.</strong>, Kanukolanu, A., Cui, E., &amp; Borich, M. (2024). "Reference frame utilization as a potential marker of aging-related deficits in human spatial navigation." Poster, <em>Center for Research and Education in Navigation (CRaNE) Conference</em>, Atlanta, GA.</div>
         <div class="presentation-item">*Funderburg, E., <strong>Bassil, Y.</strong>, Cui, E., Arunkumar, A., Pelton, A., &amp; Borich, M. (2024). "Effects of demographic factors on spatial navigation ability in aging." Poster, <em>CRaNE Conference</em>, Atlanta, GA.</div>
