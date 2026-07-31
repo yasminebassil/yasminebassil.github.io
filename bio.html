@@ -540,23 +540,27 @@
         }
 
         .bio-teaser {
-            color: var(--text-muted);
-            font-style: italic;
-            margin: -0.75rem 0 1.5rem 0;
-            cursor: pointer;
-            display: inline-block;
-        }
-
-        .bio-teaser::after {
-            content: ' — read more →';
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            margin: -0.5rem 0 1.75rem 0;
+            padding: 0.5rem 1.1rem;
+            background: var(--accent-olive);
+            color: white;
+            border-radius: 999px;
+            font-family: var(--font-body);
             font-style: normal;
+            font-size: 0.78rem;
             font-weight: 600;
-            color: var(--accent-olive);
-            white-space: nowrap;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            cursor: pointer;
+            transition: opacity 0.15s ease, transform 0.15s ease;
         }
 
-        .bio-teaser:hover::after {
-            text-decoration: underline;
+        .bio-teaser:hover {
+            opacity: 0.88;
+            transform: translateY(-1px);
         }
 
         .bio-teaser[hidden],
@@ -713,7 +717,7 @@
                 <div class="section-line"></div>
                 <a href="science.html" class="header-action">science</a>
             </div>
-            <p class="bio-teaser" data-target="sec-education" hidden>PhD at Emory, undergrad at Georgia Tech, and the research I built.</p>
+            <p class="bio-teaser" data-target="sec-education" hidden>+ Click to expand</p>
             <div class="bio-collapse" id="sec-education">
 
             <p>I've moved back and forth between the US and Lebanon throughout my life, ultimately settling in Atlanta ten years ago to pursue higher <a href="#education">education</a>.</p>
@@ -732,7 +736,7 @@
                 <div class="section-line"></div>
                 <a href="cv.html" class="header-action">cv</a>
             </div>
-            <p class="bio-teaser" data-target="sec-interests">Advocacy and building accessible, inclusive research infrastructure.</p>
+            <p class="bio-teaser" data-target="sec-interests">+ Click to expand</p>
             <div class="bio-collapse" id="sec-interests" hidden>
 
             <p>I'm endlessly passionate about advocating for (and with) the communities I'm a part of—particularly through building accessible and inclusive systems that help others thrive.</p>
@@ -749,7 +753,7 @@
                 <div class="section-line"></div>
                 <a href="music.html" class="header-action">creative</a>
             </div>
-            <p class="bio-teaser" data-target="sec-personal">Lebanon, cooking, 30+ plants, music, and pottery.</p>
+            <p class="bio-teaser" data-target="sec-personal">+ Click to expand</p>
             <div class="bio-collapse" id="sec-personal" hidden>
 
             <div class="personal-note">
@@ -768,7 +772,7 @@
                 <span>More</span>
                 <span class="bio-toggle-icon">+</span>
             </div>
-            <p class="bio-teaser" data-target="sec-more">Currently reading, favorite flavors, languages, and quirks.</p>
+            <p class="bio-teaser" data-target="sec-more">+ Click to expand</p>
             <div class="bio-collapse" id="sec-more" hidden>
 
             <div class="misc-item"><strong>currently reading:</strong> <a href="https://charisbooksandmore.com/book/9780295752297" target="_blank">Queer World Making: Contemporary Middle Eastern Diasporic Art</a> by Andrew Gayed</div>
