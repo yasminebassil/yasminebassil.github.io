@@ -372,42 +372,57 @@
         }
 
         /* Option 2: above sidebar (commented out)
+        .cv-section {
+            margin-top: 2.5rem;
+            padding-top: 1.75rem;
+            border-top: 1px solid rgba(74, 124, 89, 0.25);
+        }
+
         .cv-cta {
             display: block;
-            margin-top: 1.75rem;
-            padding: 0.9rem 1.1rem;
-            border: 1px solid rgba(74, 124, 89, 0.35);
-            border-radius: 10px;
-            background: rgba(74, 124, 89, 0.05);
-            color: var(--text-charcoal);
+            padding: 1.1rem 1.2rem;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #4a7c59 0%, #5a8f6a 100%);
+            color: #fff;
             text-decoration: none;
-            transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+            box-shadow: 0 2px 10px rgba(74, 124, 89, 0.18);
+            transition: box-shadow 0.2s ease, transform 0.2s ease;
         }
 
         .cv-cta:hover {
-            background: rgba(74, 124, 89, 0.11);
-            border-color: rgba(74, 124, 89, 0.6);
-            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(74, 124, 89, 0.3);
+            transform: translateY(-2px);
         }
 
-        .cv-cta span:first-child {
+        .cv-cta-label {
             display: block;
-            font-family: var(--font-display);
-            font-size: 1.1rem;
-            font-weight: 500;
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            opacity: 0.75;
         }
 
-        .cv-cta span:first-child::after {
+        .cv-cta-title {
+            display: block;
+            margin-top: 0.3rem;
+            font-family: var(--font-display);
+            font-size: 1.35rem;
+            font-weight: 500;
+            line-height: 1.1;
+        }
+
+        .cv-cta-title::after {
             content: ' →';
-            font-size: 0.9rem;
+            font-size: 0.95rem;
+            transition: opacity 0.2s ease;
         }
 
         .cv-cta-detail {
             display: block;
-            margin-top: 0.2rem;
-            font-size: 0.78rem;
-            color: var(--text-muted);
-            line-height: 1.4;
+            margin-top: 0.45rem;
+            font-size: 0.76rem;
+            line-height: 1.45;
+            opacity: 0.85;
         }
 
         .status-badge-sidebar {
@@ -821,8 +836,6 @@
                         <div class="item-org">Georgia Institute of Technology</div>
                     </li>
                 </ul>
-
-                <p style="font-size: 0.85rem; color: var(--text-muted);"><em>→ Full education history on my <a href="cv.html#education">cv</a>.</em></p>
             </div>
 
             <h2>funding &amp; awards</h2>
@@ -844,27 +857,9 @@
                 </li>
                 <li class="section-item">
                     <div class="item-header">
-                        <span class="item-title">2026 Scientific Achievement Award</span>
+                        <span class="item-title">Emory Neuroscience Awards</span>
                     </div>
-                    <div class="item-org">Neuroscience Graduate Program, Emory University</div>
-                </li>
-                <li class="section-item">
-                    <div class="item-header">
-                        <span class="item-title">2025 Teaching Award</span>
-                    </div>
-                    <div class="item-org">Neuroscience Graduate Program, Emory University</div>
-                </li>
-                <li class="section-item">
-                    <div class="item-header">
-                        <span class="item-title">2024 Leadership Award</span>
-                    </div>
-                    <div class="item-org">Neuroscience Graduate Program, Emory University</div>
-                </li>
-                <li class="section-item">
-                    <div class="item-header">
-                        <span class="item-title">2023 Excellence in Mentorship Award</span>
-                    </div>
-                    <div class="item-org">Neuroscience Graduate Program, Emory University</div>
+                    <div class="item-org">Scientific Achievement (2026) &middot; Teaching (2025) &middot; Leadership (2024) &middot; Excellence in Mentorship (2023)</div>
                 </li>
                 <li class="section-item">
                     <div class="item-header">
@@ -874,10 +869,13 @@
                 </li>
             </ul>
 
-            <a href="cv.html" class="cv-cta">
-                <span>the full cv</span>
-                <span class="cv-cta-detail">publications &middot; leadership &middot; teaching &amp; mentorship</span>
-            </a>
+            <div class="sidebar-section cv-section">
+                <a href="cv.html" class="cv-cta">
+                    <span class="cv-cta-label">curriculum vitae</span>
+                    <span class="cv-cta-title">the full cv</span>
+                    <span class="cv-cta-detail">publications &middot; leadership &middot; teaching &amp; mentorship</span>
+                </a>
+            </div>
 
             <h2>contact</h2>
 
