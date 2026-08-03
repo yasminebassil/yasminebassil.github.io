@@ -372,6 +372,44 @@
         }
 
         /* Option 2: above sidebar (commented out)
+        .cv-cta {
+            display: block;
+            margin-top: 1.75rem;
+            padding: 0.9rem 1.1rem;
+            border: 1px solid rgba(74, 124, 89, 0.35);
+            border-radius: 10px;
+            background: rgba(74, 124, 89, 0.05);
+            color: var(--text-charcoal);
+            text-decoration: none;
+            transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .cv-cta:hover {
+            background: rgba(74, 124, 89, 0.11);
+            border-color: rgba(74, 124, 89, 0.6);
+            transform: translateY(-1px);
+        }
+
+        .cv-cta span:first-child {
+            display: block;
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .cv-cta span:first-child::after {
+            content: ' →';
+            font-size: 0.9rem;
+        }
+
+        .cv-cta-detail {
+            display: block;
+            margin-top: 0.2rem;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
         .status-badge-sidebar {
             display: inline-flex;
             align-items: center;
@@ -715,7 +753,7 @@
 
             <p>I'm endlessly passionate about advocating for (and with) the communities I'm a part of—particularly through building accessible and inclusive systems that help others thrive.</p>
 
-            <p>Whether I'm developing novel <a href="science.html">tools</a> for experimental questions, or building operational infrastructure for neuroscience <a href="#leadership">organizations</a>, I'm passionate about building robust, inclusive, and accessible neuroscience research infrastructure, no matter what role I'm in.</p>
+            <p>Whether I'm developing novel <a href="science.html">tools</a> for experimental questions, or building operational infrastructure for neuroscience <a href="cv.html#service">organizations</a>, I'm passionate about building robust, inclusive, and accessible neuroscience research infrastructure, no matter what role I'm in.</p>
 
             <p>For more on leadership and advocacy, see my <a href="cv.html">cv</a>.</p>
 
@@ -787,9 +825,23 @@
                 <p style="font-size: 0.85rem; color: var(--text-muted);"><em>→ Full education history on my <a href="cv.html#education">cv</a>.</em></p>
             </div>
 
-            <h2>honors, awards, & funding</h2>
+            <h2>funding &amp; awards</h2>
 
             <ul class="section-list">
+                <li class="section-item">
+                    <div class="item-header">
+                        <span class="item-title">NSF Graduate Research Fellowship</span>
+                        <span class="item-date">2022 - 2025</span>
+                    </div>
+                    <div class="item-org">National Science Foundation ($170K+)</div>
+                </li>
+                <li class="section-item">
+                    <div class="item-header">
+                        <span class="item-title">NIH T32 Training Grant</span>
+                        <span class="item-date">2021 - 2022</span>
+                    </div>
+                    <div class="item-org">National Institutes of Health ($90K+)</div>
+                </li>
                 <li class="section-item">
                     <div class="item-header">
                         <span class="item-title">2026 Scientific Achievement Award</span>
@@ -810,104 +862,22 @@
                 </li>
                 <li class="section-item">
                     <div class="item-header">
-                        <span class="item-title">2024 Trainee Professional Development Award</span>
-                    </div>
-                    <div class="item-org">Society for Neuroscience</div>
-                </li>
-                <li class="section-item">
-                    <div class="item-header">
                         <span class="item-title">2023 Excellence in Mentorship Award</span>
                     </div>
                     <div class="item-org">Neuroscience Graduate Program, Emory University</div>
                 </li>
                 <li class="section-item">
                     <div class="item-header">
-                        <span class="item-title">NSF Graduate Research Fellowship</span>
-                        <span class="item-date">2022 - 2025</span>
+                        <span class="item-title">2024 Trainee Professional Development Award</span>
                     </div>
-                    <div class="item-org">National Science Foundation ($170K+)</div>
-                </li>
-                <li class="section-item">
-                    <div class="item-header">
-                        <span class="item-title">NIH T32 Training Grant</span>
-                        <span class="item-date">2021 - 2022</span>
-                    </div>
-                    <div class="item-org">National Institutes of Health ($90K+)</div>
+                    <div class="item-org">Society for Neuroscience</div>
                 </li>
             </ul>
 
-            <p style="font-size: 0.85rem; color: var(--text-muted);"><em>→ Full list of honors and funding on my <a href="cv.html#honors">cv</a>.</em></p>
-
-            <div id="leadership" class="sidebar-section">
-                <h2>leadership</h2>
-
-                <ul class="section-list">
-                    <li class="section-item">
-                        <div class="item-header">
-                            <span class="item-title">Co-President</span>
-                            <span class="item-date">2023 - 2025</span>
-                        </div>
-                        <div class="item-org"><a href="https://biomed.emory.edu/PROGRAM_SITES/NS/about-us/graduates-in-neuroscience.html" target="_blank">Graduates in Neuroscience</a>, Emory University</div>
-                    </li>
-                    <li class="section-item">
-                        <div class="item-header">
-                            <span class="item-title">Executive Board, Internal Affairs</span>
-                            <span class="item-date">2024 - 2025</span>
-                        </div>
-                        <div class="item-org"><a href="https://www.arabsinneuro.org/" target="_blank">Arabs in Neuroscience</a></div>
-                    </li>
-                    <li class="section-item">
-                        <div class="item-header">
-                            <span class="item-title">Co-Chair</span>
-                            <span class="item-date">2021 - 2023</span>
-                        </div>
-                        <div class="item-org">DEI [<a href="https://biomed.emory.edu/PROGRAM_SITES/NS/about-us/axon.html" target="_blank">AXON</a>] Committee, Neuroscience Graduate Program, Emory University</div>
-                    </li>
-                    <li class="section-item">
-                        <div class="item-header">
-                            <span class="item-title">Organizing Committee Chair</span>
-                            <span class="item-date">2019</span>
-                        </div>
-                        <div class="item-org"><a href="https://sites.gatech.edu/brainhackatl/" target="_blank">Brainhack ATL</a></div>
-                    </li>
-                </ul>
-
-                <p style="font-size: 0.85rem; color: var(--text-muted);"><em>→ Full leadership and service history on my <a href="cv.html#service">cv</a>.</em></p>
-            </div>
-
-            <h2>selected work</h2>
-
-            <ul class="simple-list">
-                <li><strong>Bassil, Y.</strong>, Kanukolanu, A., Funderburg, E., Cui, E. Z., Brown, T. I., & Borich, M. R. (2026). Distinct aging-related profiles of allocentric knowledge recall following navigation in an immersive, naturalistic, city-like environment. <em>Frontiers in Aging Neuroscience</em>, 18.</li>
-                <li><strong>Bassil, Y.</strong>, Kanukolanu, A., Funderburg, E., Brown, T., & Borich, M. R. (2025). Formation of allocentric representations after exposure to a novel, naturalistic, city-like, virtual reality environment. <em>Neuropsychologia</em>, 109290.</li>
-                <li>Woolgar, A., Feredoes, E., Assem, M., <strong>Bassil, Y.</strong>, et al. (2026). Consensus guidelines for the use of concurrent TMS-fMRI in cognitive and clinical neuroscience. <em>Nature Protocols</em>, 21(1), 1-17.</li>
-            </ul>
-
-                <li><strong>Bassil, Y.</strong> & Borich, M. (2023). "Testing circuit-based mechanisms of aging effects on human spatial navigation with TMS-fMRI." Oral presentation, International Workshop on Concurrent TMS-fMRI, Evia, Greece.</li>
-                <li>Adams, A., Tran, V. E., Costlow, A., <strong>Bassil, Y.</strong>, Kanukolanu, A., Cui, E., & Borich, M. (2024). "Interactions between navigation, balance, and higher-order cognition in the aging brain." Platform presentation, APTA CSM, Boston, MA.</li>
-            </ul>
-
-            <p style="font-size: 0.85rem; color: var(--text-muted);"><em>→ All publications and presentations on <a href="science.html">science</a>.</em></p>
-
-            <h2>teaching &amp; mentorship</h2>
-
-            <p>Directly mentored 15+ trainees (high school through doctoral level), resulting in:</p>
-
-            <ul class="simple-list">
-                <li>5 award-winning presentations</li>
-                <li>2 Honors Theses with Highest Honors</li>
-                <li>2 Research Option Certificates with published theses</li>
-                <li>5 competitive fellowships (Fulbright, DAAD-RISE, PURA)</li>
-            </ul>
-
-            <ul class="simple-list">
-                <li>Instructor: <em>Explore Neuroscience & Behavioral Biology</em></li>
-                <li>Co-Instructor: <em>Neurobiology Simulation & Analysis Lab</em></li>
-                <li>Program & Teaching Assistant: <em>Global Neuro & Behavior</em></li>
-                <li>Teaching Assistant: <em>Principles of Motor Learning</em></li>
-            </ul>
-
-            <p style="font-size: 0.85rem; color: var(--text-muted);"><em>→ Full teaching and mentorship record on my <a href="cv.html#teaching">cv</a>.</em></p>
+            <a href="cv.html" class="cv-cta">
+                <span>the full cv</span>
+                <span class="cv-cta-detail">publications &middot; leadership &middot; teaching &amp; mentorship</span>
+            </a>
 
             <h2>contact</h2>
 
