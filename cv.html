@@ -335,7 +335,32 @@
         }
 
         .skills-grid.lr-grid {
-            grid-template-columns: 1.15fr 0.7fr 1.15fr;
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .skills-subhead-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .skills-languages {
+            margin: 1rem 0 0.6rem;
+            font-size: 0.75rem;
+            font-style: italic;
+            color: var(--text-muted);
+            text-align: right;
+        }
+
+        .skills-languages-label {
+            font-style: normal;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            font-size: 0.65rem;
+            margin-right: 0.35rem;
         }
 
         .skill-card {
@@ -809,6 +834,8 @@
             .skills-grid { grid-template-columns: repeat(2, 1fr); }
             .skills-grid.tech-grid { grid-template-columns: repeat(2, 1fr); }
             .skills-grid.lr-grid { grid-template-columns: repeat(2, 1fr); }
+            .skills-subhead-row { flex-direction: column; gap: 0; }
+            .skills-languages { text-align: left; margin-top: 0; }
             .mentorship-stats { grid-template-columns: repeat(2, 1fr); }
             .skill-card.span-2 { grid-column: span 2; }
         }
@@ -841,8 +868,8 @@
     </nav>
 
     <nav class="cv-outline" aria-label="Jump to CV section">
-        <a href="#skills">Skills</a>
         <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
         <a href="#service">Service</a>
         <a href="#education">Education</a>
         <a href="#funding">Funding</a>
@@ -856,7 +883,7 @@
 
     <main>
       <div class="cv-page-wrapper">
-        <a href="Bassil_CV_2026.pdf" class="download-btn" target="_blank">
+        <a href="Bassil_Resume_2026.pdf" class="download-btn" target="_blank">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
             </svg>
@@ -874,57 +901,14 @@
                 <div class="contact">
                     Atlanta, GA<br>
                     <a href="mailto:yasminebassil@gmail.com">yasminebassil@gmail.com</a> |
-                    <a href="https://yasminebassil.github.io">website</a> |
                     <a href="https://linkedin.com/in/yasminebassil">linkedin</a>
                 </div>
             </div>
         </div>
 
         <div class="summary">
-            <p><strong>Neuroscientist and research leader</strong> with a record of building research and leadership infrastructure, leading cross-functional teams, and driving rigorous, reproducible science across complex, multi-stage projects. Built an independent research program from the ground up — securing <strong>$260K+ in competitive funding</strong>, mentoring <strong>15+ trainees</strong>, and carrying projects from data pipelines to <strong>7 peer-reviewed publications</strong> — and translated technical work into durable institutional tools and lasting scientific relationships.</p>
-            <p><span class="seeking-dot"></span> Seeking <strong>leadership and systems-building roles in neuroscience research</strong>, with a preferred focus on expanding international scientific collaborations.</p>
-        </div>
-
-        <h2 id="skills">Skills</h2>
-
-        <p class="skills-subhead">Technical</p>
-        <div class="skills-grid tech-grid">
-            <div class="skill-card">
-                <div class="skill-card-header">Programming</div>
-                <div class="skill-card-body">python, bash/zsh, R, MATLAB, C#</div>
-            </div>
-            <div class="skill-card">
-                <div class="skill-card-header">Software</div>
-                <div class="skill-card-body">FSL, fMRIPrep, FreeSurfer, AFNI, Unity</div>
-            </div>
-            <div class="skill-card">
-                <div class="skill-card-header">Dev Tools</div>
-                <div class="skill-card-body">Git, Docker/Singularity, Jupyter Notebooks</div>
-            </div>
-            <div class="skill-card">
-                <div class="skill-card-header">Methods</div>
-                <div class="skill-card-body">VR, fMRI, MRI, TMS, TMS-fMRI, EEG, EMG</div>
-            </div>
-            <div class="skill-card">
-                <div class="skill-card-header">AI Tools</div>
-                <div class="skill-card-body">Claude Code, Claude, Perplexity</div>
-            </div>
-        </div>
-
-        <p class="skills-subhead">Leadership & Research</p>
-        <div class="skills-grid lr-grid">
-            <div class="skill-card">
-                <div class="skill-card-header">Leadership</div>
-                <div class="skill-card-body">Cross-Functional Team Leadership, Program Development, Systems Building, Research Program Management, Mentorship (15+ trainees)</div>
-            </div>
-            <div class="skill-card">
-                <div class="skill-card-header">Spoken Languages</div>
-                <div class="skill-card-body">English (fluent), Arabic (fluent), French (intermediate)</div>
-            </div>
-            <div class="skill-card">
-                <div class="skill-card-header">Research</div>
-                <div class="skill-card-body">Statistical Modeling & Data Analysis, Grant Writing ($260K+ secured), Reproducible Pipelines, Data Visualization, Science Communication</div>
-            </div>
+            <p><strong>Neuroscientist with a parallel track record in program and partnership management</strong> — establishing shared research infrastructure and cross-institutional collaborations, securing <strong>$260K+ in competitive funding</strong>, and serving as primary stakeholder liaison across students, faculty, and institutional leadership. Built a lab-based research program from the ground up: tracking milestones and deliverables across <strong>15+ team members</strong>, <strong>110+ participants</strong>, and <strong>5+ lab partnerships</strong> — while leading <strong>5+ years of program and portfolio management beyond the lab</strong>, spanning academic, nonprofit, and industry-sponsored initiatives.</p>
+            <p><span class="seeking-dot"></span> Seeking to lead <strong>scientific partnership and program strategy</strong> — building structures for emerging projects and partnerships, with a community-minded approach to connecting people and ideas.</p>
         </div>
 
         <h2 id="experience">Experience</h2>
@@ -938,17 +922,21 @@
                 <span class="job-date">Aug 2020 – Jun 2026</span>
             </div>
             <div class="job-content">
-                <h4>Research Leadership & Execution</h4>
+                <h4>Research Leadership</h4>
                 <ul>
-                    <li>Designed and led an independent research program investigating aging effects on spatial cognition. Recruited and managed 110+ participants, secured $260K in competitive funding (NSF GRFP, NIH T32), and culminated in a dissertation defense and 7 peer-reviewed publications.</li>
-                    <li>Directed 15+ member Navigation Team, establishing meeting cadences, tracking milestones, and overseeing independent sub-studies per team member.</li>
+                    <li>Proposed and built a multi-year research program from the ground up: defining scope, structure, and operations to study aging and spatial cognition; secured $260K in competitive funding (NSF GRFP, NIH T32). Culminated in a dissertation defense and 7 peer-reviewed publications; now expanding into an interdepartmental, cross-species, multi-institution initiative.</li>
+                    <li>Spearheaded building lab operational infrastructure: documentation systems (meeting agendas and schedules, storage drives, data and computational servers, lab wiki), standard operating procedures (method-specific protocols, room and equipment maintenance), and continuity protocols (onboarding, transitions).</li>
+                    <li>Formed community partnerships to create a recruitment database of 110+ older adult participants across 5 labs.</li>
                 </ul>
-                <h4>Technical Infrastructure & Tools</h4>
+                <h4>Mentorship</h4>
                 <ul>
-                    <li>Established novel neuroimaging methodology (concurrent TMS-fMRI) as a shared institutional capability at Emory, expanding research access for the broader Atlanta scientific community.</li>
-                    <li>Built and open-sourced a city-scale VR environment in Unity (NavCity) and co-developed a custom neuroimaging pipeline (MR.Flow), replacing manual workflows with reproducible tools.</li>
-                    <li>Established lab-wide GitHub infrastructure (7 repositories) and standardized analysis pipelines (Python, R).</li>
-
+                    <li>Directed a 15+ member research team across 6 years: mentored trainees to produce 9 presentations at local and national conferences (including 5 awards), 4 published theses (2 Highest Honors, Emory; 2 Research Option certificates, Georgia Tech), and 5 competitive fellowships (including Fulbright, DAAD-RISE, and the Georgia Tech President's Undergraduate Research Award).</li>
+                    <li>Managed up to 4 concurrent sub-studies (including deliverables, timelines, and operating plans), running weekly cross-project meetings to align on milestones, evaluations, and risk mitigation.</li>
+                </ul>
+                <h4>Technical Infrastructure</h4>
+                <ul>
+                    <li>Developed novel neuroimaging methodology (concurrent TMS-fMRI) and co-developed a GUI-based neuroimaging workbench (MR.Flow), owning front-end and UX/UI design and establishing shared imaging capability as an institutional resource at Emory and across the Atlanta scientific community.</li>
+                    <li>Built program-related technical infrastructure, including a city-scale VR environment built in Unity (NavCity), clinical assessments, and data visualization and analysis pipelines (Python, R, bash/zsh), open-sourcing all tools via 7 lab-wide GitHub repositories.</li>
                 </ul>
             </div>
         </div>
@@ -964,7 +952,9 @@
             <div class="job-content">
                 <ul>
                     <li>Proposed and established the Internal Affairs Lead role on the Executive Board of Arabs in Neuroscience (AiN) — an international community connecting Arab neuroscientists and allies worldwide — after identifying an unmet need to communicate with the membership.</li>
+                    <li>Pitched and led organizational restructuring for the nonprofit: redesigned internal structure into a 3-tier membership model, established communications from senior leadership to members, and defined roles, responsibilities, and documentation protocols.</li>
                     <li>Led all communications to the general membership — biweekly Executive Board reports and newsletters to members and allies — and maintained member records and the AiN Slack workspace.</li>
+                    <li>Co-led planning and execution of the organization's first-ever conference social at the Society for Neuroscience meeting: independently managed venue logistics, presentation materials, and running the on-site event.</li>
                 </ul>
             </div>
         </div>
@@ -979,8 +969,8 @@
             </div>
             <div class="job-content">
                 <ul>
-                    <li>Served as primary liaison between 120+ PhD students and program leadership, leading a 22-member executive board across 12 positions and organizing 10+ annual program events.</li>
-                    <li>Rebuilt organizational infrastructure from the ground up: established the first internal documentation system, defined officer roles, formalized transition protocols, implemented meeting schedules, established recognition initiatives, and created budget infrastructure — all designed to outlast any single leadership team.</li>
+                    <li>Served as primary stakeholder liaison between 120+ PhD students and program leadership, managing a 22-member executive board across 12 positions and directing 10+ annual program events.</li>
+                    <li>Rebuilt organizational operating infrastructure from scratch: established the first internal documentation system, defined officer roles and transition protocols for continuity risk mitigation, implemented recurring meeting cadences, and developed operating plans and budget infrastructure — sustaining long-term institutional relationships beyond any single leadership term.</li>
                     <li>Founded (2020) and moderate the program-wide Neuroscience student Slack workspace — structuring channels for announcements, new-student onboarding, events, professional development, and research discussion to sustain community, including through the pandemic.</li>
                 </ul>
             </div>
@@ -1079,6 +1069,55 @@
                     <li>Led an independent undergraduate thesis extending QPP analysis to idiopathic hypersomnia & narcolepsy, collaborating with Lynn Marie Trotti, MD (Emory Brain Health Center) and Eric Schumacher, PhD (Georgia Tech) — foundational to Daley et al. (2025).</li>
                     <li>Redeveloped in-lab fMRI preprocessing pipelines (FSL, MATLAB), extracted QPPs, and built functional connectivity analyses.</li>
                 </ul>
+            </div>
+        </div>
+
+        <h2 id="skills">Skills</h2>
+
+        <div class="skills-subhead-row">
+            <p class="skills-subhead">Leadership, Program, &amp; Operations</p>
+            <p class="skills-languages"><span class="skills-languages-label">spoken languages</span> English (fluent) · Arabic (fluent) · French (intermediate)</p>
+        </div>
+        <div class="skills-grid lr-grid">
+            <div class="skill-card">
+                <div class="skill-card-header">Leadership</div>
+                <div class="skill-card-body">cross-functional leadership, stakeholder engagement, executive reporting, partnership development, sponsor &amp; vendor relations, mentorship (15+ trainees)</div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-card-header">Program</div>
+                <div class="skill-card-body">project &amp; portfolio management, operational planning, program building &amp; evaluation, milestone &amp; deliverable tracking, risk mitigation, budget administration</div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-card-header">Operations</div>
+                <div class="skill-card-body">SOP development &amp; documentation systems, onboarding &amp; continuity planning, change management, event &amp; conference programming, community &amp; participant engagement</div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-card-header">Research</div>
+                <div class="skill-card-body">statistical modeling, data visualization, data analysis, grant writing &amp; funding acquisition, science communication, open science &amp; data stewardship</div>
+            </div>
+        </div>
+
+        <p class="skills-subhead">Technical</p>
+        <div class="skills-grid tech-grid">
+            <div class="skill-card">
+                <div class="skill-card-header">Programming</div>
+                <div class="skill-card-body">python, bash/zsh, R, MATLAB, C#</div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-card-header">Software</div>
+                <div class="skill-card-body">FSL, fMRIPrep, FreeSurfer, AFNI, Unity</div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-card-header">Dev Tools</div>
+                <div class="skill-card-body">Git, Jupyter Notebooks, Docker/Singularity</div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-card-header">Methods</div>
+                <div class="skill-card-body">VR, f(MRI), TMS, TMS-fMRI, EEG, EMG</div>
+            </div>
+            <div class="skill-card">
+                <div class="skill-card-header">Tools</div>
+                <div class="skill-card-body">Airtable, Slack (workspace admin), Claude Code, Claude, Perplexity</div>
             </div>
         </div>
 
