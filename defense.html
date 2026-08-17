@@ -1263,7 +1263,7 @@
                 <circle cx="1070" cy="700" r="1.5"/>
             </g>
         </svg>
-        <p class="overline">You are invited to the doctoral defense of</p>
+        <p class="overline">Celebrating the doctoral defense of</p>
         <h1 class="candidate-name">Yasmine Bassil</h1>
         <p class="dissertation-title">"Navigating Aging: How We Find Our Way Over Time"</p>
         <p class="degree-info">
@@ -1274,21 +1274,8 @@
         </p>
 
         <div class="countdown" id="countdown">
-            <div class="countdown-unit">
-                <div class="countdown-number" id="countdown-days">--</div>
-                <div class="countdown-label">Days</div>
-            </div>
-            <div class="countdown-unit">
-                <div class="countdown-number" id="countdown-hours">--</div>
-                <div class="countdown-label">Hours</div>
-            </div>
-            <div class="countdown-unit">
-                <div class="countdown-number" id="countdown-minutes">--</div>
-                <div class="countdown-label">Minutes</div>
-            </div>
-            <div class="countdown-unit">
-                <div class="countdown-number" id="countdown-seconds">--</div>
-                <div class="countdown-label">Seconds</div>
+            <p class="countdown-past">Successfully defended</p>
+        </div>
             </div>
         </div>
 
@@ -1580,32 +1567,6 @@
     </script>
 
     <script type="module">
-        // ---- Countdown Timer ----
-        function updateCountdown() {
-            const target = new Date('2026-06-05T12:00:00-04:00');
-            const now = new Date();
-            const diff = target - now;
-
-            if (diff <= 0) {
-                document.getElementById('countdown').innerHTML =
-                    '<p class="countdown-past">The defense is happening now!</p>';
-                return;
-            }
-
-            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-            const minutes = Math.floor((diff / (1000 * 60)) % 60);
-            const seconds = Math.floor((diff / 1000) % 60);
-
-            document.getElementById('countdown-days').textContent = days;
-            document.getElementById('countdown-hours').textContent = hours;
-            document.getElementById('countdown-minutes').textContent = minutes;
-            document.getElementById('countdown-seconds').textContent = seconds;
-        }
-
-        updateCountdown();
-        setInterval(updateCountdown, 1000);
-
         // ---- Scroll Reveal ----
         const revealElements = document.querySelectorAll('.reveal');
 
