@@ -310,6 +310,13 @@
             background: var(--bg-cream-dark);
         }
 
+        h2 .h2-note {
+            font-weight: 400;
+            font-size: 0.7em;
+            opacity: 0.65;
+            margin-left: -0.4rem;
+        }
+
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -439,6 +446,13 @@
             flex-shrink: 0;
         }
 
+        /* Satoshi ships 400/500/700 — no 600 face, so 600 would resolve up to
+           full bold. 500 (Medium) is this family's true semi-bold step. */
+        .semi {
+            font-weight: 500;
+            color: var(--text-charcoal);
+        }
+
         .job-content {
             padding: 1rem;
         }
@@ -509,6 +523,19 @@
             color: var(--text-muted);
             font-size: 0.9rem;
             line-height: 1.45;
+        }
+
+        .cert-item .item-title {
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .cert-item .item-description {
+            font-size: 0.78rem;
+        }
+
+        .cert-item .item-date {
+            font-size: 0.78rem;
         }
 
         .funding-amount {
@@ -652,6 +679,11 @@
         .teaching-code {
             color: var(--accent-olive);
             font-size: 0.85rem;
+        }
+
+        .teaching-inst {
+            color: var(--text-muted);
+            font-weight: 400;
         }
 
         .teaching-instructor {
@@ -879,6 +911,7 @@
         <a href="#presentations">Presentations</a>
         <a href="#teaching">Teaching</a>
         <a href="#talks">Invited Talks</a>
+        <a href="#certificates">Certificates</a>
     </nav>
 
     <main>
@@ -911,7 +944,7 @@
             <p><span class="seeking-dot"></span> Seeking to lead <strong>scientific partnership and program strategy</strong> — building structures for emerging projects and partnerships, with a community-minded approach to connecting people and ideas.</p>
         </div>
 
-        <h2 id="experience">Experience</h2>
+        <h2 id="experience">Experience <span class="h2-note">(select)</span></h2>
 
         <div class="job-section">
             <div class="job-header">
@@ -924,19 +957,19 @@
             <div class="job-content">
                 <h4>Research Leadership</h4>
                 <ul>
-                    <li>Proposed and built a multi-year research program from the ground up: defining scope, structure, and operations to study aging and spatial cognition; secured $260K in competitive funding (NSF GRFP, NIH T32). Culminated in a dissertation defense and 7 peer-reviewed publications; now expanding into an interdepartmental, cross-species, multi-institution initiative.</li>
-                    <li>Spearheaded building lab operational infrastructure: documentation systems (meeting agendas and schedules, storage drives, data and computational servers, lab wiki), standard operating procedures (method-specific protocols, room and equipment maintenance), and continuity protocols (onboarding, transitions).</li>
-                    <li>Formed community partnerships to create a recruitment database of 110+ older adult participants across 5 labs.</li>
+                    <li>Proposed and built a <span class="semi">multi-year research program</span> from the ground up: defining scope, structure, and operations to study aging and spatial cognition; <span class="semi">secured $260K in competitive funding</span> (NSF GRFP, NIH T32). Culminated in a dissertation defense and 7 peer-reviewed publications; now expanding into an interdepartmental, cross-species, multi-institution initiative.</li>
+                    <li>Spearheaded building <span class="semi">lab operational infrastructure</span>: documentation systems (meeting agendas and schedules, storage drives, data and computational servers, lab wiki), standard operating procedures (method-specific protocols, room and equipment maintenance), and continuity protocols (onboarding, transitions).</li>
+                    <li>Formed community partnerships to create a <span class="semi">recruitment database</span> of <span class="semi">110+</span> older adult participants across <span class="semi">5</span> labs.</li>
                 </ul>
                 <h4>Mentorship</h4>
                 <ul>
-                    <li>Directed a 15+ member research team across 6 years: mentored trainees to produce 9 presentations at local and national conferences (including 5 awards), 4 published theses (2 Highest Honors, Emory; 2 Research Option certificates, Georgia Tech), and 5 competitive fellowships (including Fulbright, DAAD-RISE, and the Georgia Tech President's Undergraduate Research Award).</li>
-                    <li>Managed up to 4 concurrent sub-studies (including deliverables, timelines, and operating plans), running weekly cross-project meetings to align on milestones, evaluations, and risk mitigation.</li>
+                    <li>Directed a <span class="semi">15+ member research team</span> across <span class="semi">6</span> years: mentored trainees to produce <span class="semi">9</span> presentations at local and national conferences (including <span class="semi">5</span> awards), <span class="semi">4</span> published theses (2 Highest Honors, Emory; 2 Research Option certificates, Georgia Tech), and <span class="semi">5</span> competitive fellowships (including Fulbright, DAAD-RISE, and the Georgia Tech President's Undergraduate Research Award).</li>
+                    <li>Managed up to <span class="semi">4 concurrent sub-studies</span> (including deliverables, timelines, and operating plans), running weekly cross-project meetings to align on milestones, evaluations, and risk mitigation.</li>
                 </ul>
                 <h4>Technical Infrastructure</h4>
                 <ul>
-                    <li>Developed novel neuroimaging methodology (concurrent TMS-fMRI) and co-developed a GUI-based neuroimaging workbench (MR.Flow), owning front-end and UX/UI design and establishing shared imaging capability as an institutional resource at Emory and across the Atlanta scientific community.</li>
-                    <li>Built program-related technical infrastructure, including a city-scale VR environment built in Unity (NavCity), clinical assessments, and data visualization and analysis pipelines (Python, R, bash/zsh), open-sourcing all tools via 7 lab-wide GitHub repositories.</li>
+                    <li>Developed novel neuroimaging methodology (concurrent TMS-fMRI) and co-developed a GUI-based neuroimaging workbench (MR.Flow), <span class="semi">owning front-end and UX/UI design</span> and <span class="semi">establishing shared imaging capability</span> as an institutional resource at Emory and across the Atlanta scientific community.</li>
+                    <li>Built <span class="semi">program-related technical infrastructure</span>, including a city-scale VR environment built in Unity (NavCity), clinical assessments, and data visualization and analysis pipelines (Python, R, bash/zsh), <span class="semi">open-sourcing all tools</span> via <span class="semi">7</span> lab-wide GitHub repositories.</li>
                 </ul>
             </div>
         </div>
@@ -952,9 +985,8 @@
             <div class="job-content">
                 <ul>
                     <li>Proposed and established the Internal Affairs Lead role on the Executive Board of Arabs in Neuroscience (AiN) — an international community connecting Arab neuroscientists and allies worldwide — after identifying an unmet need to communicate with the membership.</li>
-                    <li>Pitched and led organizational restructuring for the nonprofit: redesigned internal structure into a 3-tier membership model, established communications from senior leadership to members, and defined roles, responsibilities, and documentation protocols.</li>
-                    <li>Led all communications to the general membership — biweekly Executive Board reports and newsletters to members and allies — and maintained member records and the AiN Slack workspace.</li>
-                    <li>Co-led planning and execution of the organization's first-ever conference social at the Society for Neuroscience meeting: independently managed venue logistics, presentation materials, and running the on-site event.</li>
+                    <li>Pitched and led <span class="semi">organizational restructuring</span> for the nonprofit: redesigned internal structure into a 3-tier membership model, established communications from senior leadership to members (biweekly reports, newsletters), and defined roles, responsibilities, and documentation protocols.</li>
+                    <li>Co-led planning and execution of the organization's <span class="semi">first-ever conference social</span> at the Society for Neuroscience meeting: independently managed venue logistics, presentation materials, and running the on-site event.</li>
                 </ul>
             </div>
         </div>
@@ -969,9 +1001,9 @@
             </div>
             <div class="job-content">
                 <ul>
-                    <li>Served as primary stakeholder liaison between 120+ PhD students and program leadership, managing a 22-member executive board across 12 positions and directing 10+ annual program events.</li>
-                    <li>Rebuilt organizational operating infrastructure from scratch: established the first internal documentation system, defined officer roles and transition protocols for continuity risk mitigation, implemented recurring meeting cadences, and developed operating plans and budget infrastructure — sustaining long-term institutional relationships beyond any single leadership term.</li>
-                    <li>Founded (2020) and moderate the program-wide Neuroscience student Slack workspace — structuring channels for announcements, new-student onboarding, events, professional development, and research discussion to sustain community, including through the pandemic.</li>
+                    <li>Served as <span class="semi">primary stakeholder liaison</span> between <span class="semi">120+</span> PhD students and program leadership, managing a <span class="semi">22-member</span> executive board across <span class="semi">12</span> positions and directing <span class="semi">10+</span> annual program events.</li>
+                    <li>Rebuilt <span class="semi">organizational operating infrastructure</span> from scratch: established the first internal documentation system, defined officer roles and transition protocols for continuity risk mitigation, implemented recurring meeting cadences, and developed operating plans and budget infrastructure — sustaining long-term institutional relationships beyond any single leadership term.</li>
+                    <li>Founded (2020) and moderated the program-wide Neuroscience student Slack workspace: structured channels for announcements, new-student onboarding, events, professional development, and research discussion to sustain community, including through the pandemic.</li>
                 </ul>
             </div>
         </div>
@@ -986,8 +1018,8 @@
             </div>
             <div class="job-content">
                 <ul>
-                    <li>Contributed to a selective community of scholars — students and faculty — whose research lies at the intersection of computational neuroscience, neural engineering, data science, and clinical neurophysiology.</li>
-                    <li>Led the Annual Events Committee for 2 years to organize programmatic events for 90+ members, including the CNTP Retreat/Orientation, Research Expo (interfacing with the CNTP Advisory Board), and yearly socials.</li>
+                    <li>Led the Annual Events Committee to plan and execute <span class="semi">cross-institutional programming</span> for <span class="semi">90+ trainees</span> across Georgia Tech and Emory, including an all-day Research Expo, new member orientation, and annual retreats.</li>
+                    <li>Led the organization of the annual <span class="semi">Advisory Board Visitation Day</span> — coordinating logistics for <span class="semi">50+</span> faculty, board members, and trainees, presenting directly to senior leadership and moderating a live Q&A that required balancing trainee and institutional interests.</li>
                 </ul>
             </div>
         </div>
@@ -1002,8 +1034,8 @@
             </div>
             <div class="job-content">
                 <ul>
-                    <li>Co-led a 17-member DEI committee across 3 subcommittees, serving as institutional liaison between students, faculty, and Laney Graduate School administration.</li>
-                    <li>Drove measurable program-level changes: conducted admissions review to identify and reduce bias, revised curriculum modules for neurological inclusivity, and partnered with Emory's DEI office to launch a new unconscious bias certificate training program adopted program-wide.</li>
+                    <li>Co-led a <span class="semi">17-member</span> DEI committee across <span class="semi">3</span> subcommittees and <span class="semi">2</span> faculty representatives, serving as institutional liaison between stakeholder groups — students, faculty, and Laney Graduate School administration.</li>
+                    <li>Led <span class="semi">program-level change management</span>: conducted admissions review to identify and reduce bias, revised curriculum modules for neurological inclusivity, and partnered with Emory's DEI office to launch a new unconscious bias certificate training program adopted program-wide.</li>
                 </ul>
             </div>
         </div>
@@ -1018,8 +1050,8 @@
             </div>
             <div class="job-content">
                 <ul>
-                    <li>Led 13-member interdisciplinary organizing committee across multiple Atlanta research institutions to plan 3-day computational neuroscience hackathon for 30+ accepted attendees.</li>
-                    <li>Secured $35,000 in sponsorships, created 3 neuroimaging project tracks, recruited 6 faculty speakers, and attracted 90+ applications from 9 academic and professional institutions, selecting 30 attendees.</li>
+                    <li>Built and led a <span class="semi">13-member interdisciplinary organizing committee</span> spanning <span class="semi">3+ Atlanta research institutions</span>, coordinating academic and industry stakeholders to design and execute a 3-day computational neuroscience hackathon.</li>
+                    <li><span class="semi">Managed external sponsor relationships</span>, <span class="semi">securing $35,000</span> in corporate and institutional funding; created <span class="semi">3</span> neuroimaging project tracks, recruited <span class="semi">6</span> faculty speakers, and attracted <span class="semi">90+</span> applications from <span class="semi">9</span> institutions, selecting <span class="semi">30</span> attendees.</li>
                 </ul>
             </div>
         </div>
@@ -1034,7 +1066,39 @@
             </div>
             <div class="job-content">
                 <ul>
-                    <li>Supported institutional science communications at Georgia Tech's College of Sciences: wrote & edited articles, created graphics, produced photography & video content, managed social media & news outlets, and created multimedia coverage of research for 6 CoS schools and across campus — translating complex science into accessible public-facing narratives.</li>
+                    <li>Contributed to <span class="semi">science communication strategy and execution</span> for the College of Sciences (<span class="semi">6</span> schools): gathered research material through faculty and student interviews, and owned end-to-end production of social media, graphics, photography and video, plus select articles, across <span class="semi">164+ published pieces</span> — translating complex science into accessible public-facing narratives.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="job-section">
+            <div class="job-header">
+                <div>
+                    <span class="job-title">Vice President of External Affairs</span>
+                    <span class="job-org">International Ambassadors, Georgia Institute of Technology</span>
+                </div>
+                <span class="job-date">Aug 2018 – May 2019</span>
+            </div>
+            <div class="job-content">
+                <ul>
+                    <li>Led a committee of <span class="semi">14</span> International Ambassadors to plan on-campus events for <span class="semi">2,000+</span> students promoting cultural diversity, cross-cultural communication, and cultural inclusion, in collaboration with the Office of International Education.</li>
+                    <li>Organized <span class="semi">2 large annual on-campus events</span> — Night Market and Culture Fest — drawing <span class="semi">1,000+</span> students each, and <span class="semi">created the International Student Welcome Gala</span>, a new annual event providing academic, cultural, and personal resources to <span class="semi">100+</span> newly accepted international students.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="job-section">
+            <div class="job-header">
+                <div>
+                    <span class="job-title">Student Innovation Assistant</span>
+                    <span class="job-org">Center for Academic Enrichment, Georgia Institute of Technology</span>
+                </div>
+                <span class="job-date">Aug 2017 – May 2019</span>
+            </div>
+            <div class="job-content">
+                <ul>
+                    <li>Served on the organizing team for the <span class="semi">GT InVenture Prize and ACC InVenture Prize</span> — televised interdisciplinary innovation competitions for Georgia Tech students: planned event logistics, coordinated volunteers, advertised the competition to local Atlanta organizations, and scheduled preliminary, semi-final, and final rounds.</li>
+                    <li>Created and proposed a <span class="semi">Transfer Student Program proposal</span>, aiding the center in introducing and pitching new transfer student programs to the Office of Undergraduate Education.</li>
                 </ul>
             </div>
         </div>
@@ -1049,8 +1113,8 @@
             </div>
             <div class="job-content">
                 <ul>
-                    <li>Established full operational structure of 22-member undergraduate research organization, building committee structure across 4 functional areas (Events, Campus Relations, Outreach, Advertising).</li>
-                    <li>Grew program reach to 1,000+ students per semester through research fairs, workshops, panels, and office hours connecting undergraduates to research opportunities.</li>
+                    <li>Established <span class="semi">full operational structure</span> of a <span class="semi">22-member</span> undergraduate research organization, building committees across <span class="semi">4</span> functional areas (Events, Campus Relations, Outreach, Advertising) and a <span class="semi">research opportunity portfolio</span> of <span class="semi">110+</span> entries across <span class="semi">34</span> majors.</li>
+                    <li>Grew program reach to <span class="semi">1,000+</span> students per semester through an annual research fair, <span class="semi">2</span> monthly events (workshops, panels), and weekly office hours, connecting <span class="semi">150+</span> undergraduates to labs per semester.</li>
                 </ul>
             </div>
         </div>
@@ -1065,8 +1129,8 @@
             </div>
             <div class="job-content">
                 <ul>
-                    <li>Investigated whole-brain resting-state dynamics via quasi-periodic patterns (QPPs) of infra-slow BOLD activity in ADHD using the ADHD-200 dataset — work published in Abbas et al. (2018, 2019).</li>
-                    <li>Led an independent undergraduate thesis extending QPP analysis to idiopathic hypersomnia & narcolepsy, collaborating with Lynn Marie Trotti, MD (Emory Brain Health Center) and Eric Schumacher, PhD (Georgia Tech) — foundational to Daley et al. (2025).</li>
+                    <li>Investigated whole-brain resting-state dynamics via quasi-periodic patterns (QPPs) of infra-slow BOLD activity in ADHD using the ADHD-200 dataset; work published in Abbas et al. (2018, 2019).</li>
+                    <li>Led an <span class="semi">independent undergraduate thesis</span> extending QPP analysis to idiopathic hypersomnia & narcolepsy, collaborating with Lynn Marie Trotti, MD (Emory Brain Health Center) and Eric Schumacher, PhD (Georgia Tech); foundational to Daley et al. (2025).</li>
                     <li>Redeveloped in-lab fMRI preprocessing pipelines (FSL, MATLAB), extracted QPPs, and built functional connectivity analyses.</li>
                 </ul>
             </div>
@@ -1152,16 +1216,8 @@
             <span class="service-date">2017 – 2020</span>
         </div>
         <div class="service-item">
-            <span><span class="service-role">Vice President of External Affairs</span> — <span class="service-org">International Ambassadors, Georgia Tech</span></span>
-            <span class="service-date">2018 – 2019</span>
-        </div>
-        <div class="service-item">
             <span><span class="service-role">Undergraduate Representative</span> — <span class="service-org">College of Sciences Dean Search Committee, Georgia Tech</span></span>
             <span class="service-date">2018 – 2019</span>
-        </div>
-        <div class="service-item">
-            <span><span class="service-role">Team Leader</span> — <span class="service-org">GT1000 First-Year Seminar, Georgia Tech</span></span>
-            <span class="service-date">2017 – 2018</span>
         </div>
         <div class="service-item">
             <span><span class="service-role">Vice President</span> — <span class="service-org">Arab Student Organization, Georgia Tech</span></span>
@@ -1172,7 +1228,7 @@
             <span class="service-date">2017</span>
         </div>
         </div>
-        <button class="expand-toggle" data-target="service-more" data-more="Show all (12) ↓" data-less="Show less ↑">Show all (12) ↓</button>
+        <button class="expand-toggle" data-target="service-more" data-more="Show all ({total}) ↓" data-less="Show less ↑">Show all ↓</button>
 
         <h2 id="education">Education</h2>
         <div class="cv-item">
@@ -1190,8 +1246,9 @@
             </div>
             <div class="item-org">Georgia Institute of Technology</div>
             <div class="item-description">Highest Honors | Psychology Minor | Research Option with Published Thesis</div>
-            <div class="item-description scholarships-line">Scholarships: Zell Miller, Southern Federation of Syrian Lebanese American Clubs, Cedar Club of Atlanta, Cedar Club of Houston, Jane Fox Volunteerism (Walton HS Chorus)</div>
+            <div class="item-description scholarships-line">Scholarships: Zell Miller, Southern Federation of Syrian Lebanese American Clubs, Cedar Clubs of Atlanta &amp; Houston, Jane Fox Volunteerism (Walton HS Chorus)</div>
         </div>
+
 
         <div class="tight-section">
         <h2 id="funding">Funding</h2>
@@ -1295,7 +1352,7 @@
         <p class="mentee"><strong>Jacob Stein</strong> <span class="mentee-meta">— Neuroscience &amp; Behavioral Biology (undergrad), Emory · 2022</span></p>
         <p class="mentee"><strong>DPT Research Teams</strong> <span class="mentee-meta">— Costlow, Adams &amp; Tran (2022–2023); Carter, Ferrer &amp; Hilten (2021–2022), Emory</span> — recruited 40+ participants; 1st &amp; 3rd Place Posters, Annual DPT Research Poster Session.</p>
         </div>
-        <button class="expand-toggle" data-target="mentees-more" data-more="Show all (8) ↓" data-less="Show less ↑">Show all (8) ↓</button>
+        <button class="expand-toggle" data-target="mentees-more" data-more="Show all ({total}) ↓" data-less="Show less ↑">Show all ↓</button>
 
         <h2 id="publications">Publications</h2>
         <div class="pub-header">
@@ -1325,7 +1382,7 @@
             <p>Abbas, A., <strong>Bassil, Y.</strong>, & Keilholz, S. (2019). Quasi-periodic patterns of brain activity in individuals with attention-deficit/hyperactivity disorder. <em>NeuroImage: Clinical</em>, 21, 101653. <a class="doi-link" href="https://doi.org/10.1016/j.nicl.2019.101653" target="_blank" rel="noopener">https://doi.org/10.1016/j.nicl.2019.101653</a></p>
         </div>
         </div>
-        <button class="expand-toggle" data-target="pub-more" data-more="Show all (7) ↓" data-less="Show less ↑">Show all (7) ↓</button>
+        <button class="expand-toggle" data-target="pub-more" data-more="Show all ({total}) ↓" data-less="Show less ↑">Show all ↓</button>
 
         <h2 id="presentations">Presentations</h2>
         <p class="mentorship-intro pres-note">* denotes presenting author</p>
@@ -1351,28 +1408,41 @@
         <div class="presentation-item">Abbas, A., <strong>Bassil, Y.</strong>, &amp; Keilholz, S. (2018). "Quasi-periodic patterns contribute to functional connectivity differences between adolescents &amp; adults." Poster, <em>OHBM Conference</em>, Singapore.</div>
         <div class="presentation-item">Abbas, A., <strong>Bassil, Y.</strong>, &amp; Keilholz, S. (2018). "Quasi-periodic patterns contribute to functional connectivity differences in individuals with ADHD." Poster, <em>Nu Rho Psi Atlanta Neuroscience Symposium</em>, Georgia.</div>
         </div>
-        <button class="expand-toggle" data-target="pres-more" data-more="Show all (21) ↓" data-less="Show less ↑">Show all (21) ↓</button>
+        <button class="expand-toggle" data-target="pres-more" data-more="Show all ({total}) ↓" data-less="Show less ↑">Show all ↓</button>
 
         <h2 id="teaching">Teaching</h2>
         <div class="teaching-item">
             <span><span class="teaching-role">Instructor of Record</span> — <span class="teaching-course">Explore Neuroscience & Behavioral Biology</span></span>
-            <span class="teaching-code">NBB299</span>
+            <span class="teaching-code">NBB299 <span class="teaching-inst">Emory</span></span>
         </div>
         <div class="teaching-item">
             <span><span class="teaching-role">Co-Instructor</span> — <span class="teaching-course">Neurobiology Simulation & Analysis Lab</span></span>
-            <span class="teaching-code">BIO360L/NBB301L</span>
+            <span class="teaching-code">BIO360L/NBB301L <span class="teaching-inst">Emory</span></span>
             <span class="teaching-instructor">with Samuel J. Sober, PhD</span>
         </div>
         <div class="teaching-item">
             <span><span class="teaching-role">Program & Teaching Assistant</span> — <span class="teaching-course">Global Neuro & Behavior</span></span>
-            <span class="teaching-code">NBB402W</span>
+            <span class="teaching-code">NBB402W <span class="teaching-inst">Emory</span></span>
             <span class="teaching-instructor">with Leah Anderson Roesch, PhD</span>
         </div>
+        <div class="expandable-more" id="teaching-more" hidden>
         <div class="teaching-item">
             <span><span class="teaching-role">Teaching Assistant</span> — <span class="teaching-course">Principles of Motor Learning</span></span>
-            <span class="teaching-code">DPT805</span>
+            <span class="teaching-code">DPT805 <span class="teaching-inst">Emory</span></span>
             <span class="teaching-instructor">with Michael R. Borich, PT, DPT, PhD</span>
         </div>
+        <div class="teaching-item">
+            <span><span class="teaching-role">Teaching Assistant</span> — <span class="teaching-course">Organic Chemistry I</span></span>
+            <span class="teaching-code">CHEM2311 <span class="teaching-inst">Georgia Tech</span></span>
+            <span class="teaching-instructor">Biomolecular Engineering, Science, &amp; Technology Summer Study Abroad Program, Lyon, France: organized review sessions, held office hours, provided instructional resources, and proctored exams</span>
+        </div>
+        <div class="teaching-item">
+            <span><span class="teaching-role">Team Leader (Undergraduate TA)</span> — <span class="teaching-course">First-Year Seminar</span></span>
+            <span class="teaching-code">GT1000 <span class="teaching-inst">Georgia Tech</span></span>
+            <span class="teaching-instructor">Sections for newly accepted Neuroscience majors and general sections: led lessons and small group activities, and planned in-class workshops on topics relevant to the student experience</span>
+        </div>
+        </div>
+        <button class="expand-toggle" data-target="teaching-more" data-more="Show all ({total}) ↓" data-less="Show less ↑">Show all ↓</button>
 
         <div class="tight-section">
         <h2 id="talks">Invited Talks, Lectures, &amp; Media Spotlights</h2>
@@ -1498,7 +1568,23 @@
             <div class="item-description">Georgia Tech Office of Pre-Graduate &amp; Pre-Professional Education · Virtual (Atlanta, GA)</div>
         </div>
         </div>
-        <button class="expand-toggle" data-target="talks-more" data-more="Show 15 more ↓" data-less="Show less ↑">Show 15 more ↓</button>
+        <button class="expand-toggle" data-target="talks-more" data-more="Show {hidden} more ↓" data-less="Show less ↑">Show more ↓</button>
+        </div>
+
+        <h2 id="certificates">Certificates</h2>
+        <div class="cv-item cert-item">
+            <div class="item-header">
+                <span class="item-title">NeuroMatch Academy: Computational Neuroscience Course</span>
+                <span class="item-date">Jul 2021</span>
+            </div>
+            <div class="item-description">Course Certificate · Awarded on completion of the 3-week intensive Computational Neuroscience course as an interactive student</div>
+        </div>
+        <div class="cv-item cert-item">
+            <div class="item-header">
+                <span class="item-title">Equity in STEM for All Genders</span>
+                <span class="item-date">Dec 2020</span>
+            </div>
+            <div class="item-description">CIRTL Course Certificate · Awarded on completion of the semester-long CIRTL course</div>
         </div>
         </div>
       </div>
@@ -1531,9 +1617,30 @@
         (function () {
             var toggles = Array.prototype.slice.call(document.querySelectorAll('.expand-toggle'));
             toggles.forEach(function (btn) {
+                var target = document.getElementById(btn.getAttribute('data-target'));
+                if (!target) return;
+
+                // Count entries so the button label never goes stale when items are
+                // added or removed: hidden ones live inside the container, shown ones
+                // are the matching siblings just above it.
+                var hidden = target.children.length;
+                var sample = target.firstElementChild;
+                var shown = 0;
+                if (sample) {
+                    var cls = sample.className;
+                    var prev = target.previousElementSibling;
+                    while (prev && prev.className === cls) {
+                        shown++;
+                        prev = prev.previousElementSibling;
+                    }
+                }
+                var label = btn.getAttribute('data-more')
+                    .replace('{hidden}', hidden)
+                    .replace('{total}', shown + hidden);
+                btn.setAttribute('data-more', label);
+                btn.textContent = label;
+
                 btn.addEventListener('click', function () {
-                    var target = document.getElementById(btn.getAttribute('data-target'));
-                    if (!target) return;
                     var expanded = target.hasAttribute('hidden');
                     if (expanded) {
                         target.removeAttribute('hidden');
