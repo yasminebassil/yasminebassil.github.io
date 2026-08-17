@@ -96,6 +96,8 @@
 
         .nav-links a:hover { color: var(--accent-terracotta); }
         .nav-links a.active { color: var(--text-charcoal); }
+        .nav-links a.nav-past { opacity: 0.45; }
+        .nav-links a.nav-past:hover { opacity: 0.7; }
 
         .lang-toggle {
             font-family: var(--font-body);
@@ -889,10 +891,9 @@
             <li><a href="bio.html">bio</a></li>
             <li><a href="cv.html" class="active">cv</a></li>
             <li><a href="science.html">science</a></li>
-            <li><a href="media.html">media</a></li>
             <li><a href="thoughts.html">thoughts</a></li>
             <li><a href="music.html">creative</a></li>
-            <li><a href="/defense">defense</a></li>
+            <li><a href="/defense" class="nav-past">defense</a></li>
         </ul>
         <button class="mobile-nav-toggle" aria-label="Toggle navigation">
             <span></span><span></span><span></span>
@@ -1056,6 +1057,7 @@
             </div>
         </div>
 
+        <div class="expandable-more" id="experience-more" hidden>
         <div class="job-section">
             <div class="job-header">
                 <div>
@@ -1135,6 +1137,9 @@
                 </ul>
             </div>
         </div>
+
+        </div>
+        <button class="expand-toggle" data-target="experience-more" data-more="Show all ({total}) ↓" data-less="Show less ↑">Show all ↓</button>
 
         <h2 id="skills">Skills</h2>
 
@@ -1350,7 +1355,8 @@
         <p class="mentee"><strong>Akarshana Arunkumar</strong> <span class="mentee-meta">— High-school volunteer (Denmark HS) → Neuroscience (undergrad), Georgia Tech · 2023–2025</span></p>
         <p class="mentee"><strong>Nicholas Hess</strong> <span class="mentee-meta">— Industrial Engineering (undergrad), Georgia Tech · 2023</span></p>
         <p class="mentee"><strong>Jacob Stein</strong> <span class="mentee-meta">— Neuroscience &amp; Behavioral Biology (undergrad), Emory · 2022</span></p>
-        <p class="mentee"><strong>DPT Research Teams</strong> <span class="mentee-meta">— Costlow, Adams &amp; Tran (2022–2023); Carter, Ferrer &amp; Hilten (2021–2022), Emory</span> — recruited 40+ participants; 1st &amp; 3rd Place Posters, Annual DPT Research Poster Session.</p>
+        <p class="mentee"><strong>Moura Saad</strong> <span class="mentee-meta">— LGS SOAR Scholar (undergrad), Macalester College · 2023</span></p>
+        <p class="mentee"><strong>DPT Research Teams</strong> <span class="mentee-meta">— <span class="semi">Alexis Costlow, Emily Adams &amp; Van Tran</span> (2022–2023); <span class="semi">Katie Carter, Monica Ferrer &amp; Emma Hilten</span> (2021–2022), Emory</span> — recruited 40+ participants; 1st &amp; 3rd Place Posters, Annual DPT Research Poster Session.</p>
         </div>
         <button class="expand-toggle" data-target="mentees-more" data-more="Show all ({total}) ↓" data-less="Show less ↑">Show all ↓</button>
 
@@ -1399,6 +1405,7 @@
         <div class="presentation-item">*<strong>Bassil, Y.</strong>, Kanukolanu, A., Cui, E., &amp; Borich, M. (2023). "Reference frame utilization as a potential marker of aging-related deficits in human spatial navigation." Poster, <em>Society for Neuroscience</em>, Washington, D.C.</div>
         <div class="presentation-item">*<strong>Bassil, Y.</strong>, Kanukolanu, A., Cui, E., &amp; Borich, M. (2023). "Interactions between spatial navigation ability and cognitive function in the aging brain." Poster, <em>American Society for Neurorehabilitation (ASNR) Annual Conference</em>, Charleston, SC.</div>
         <div class="presentation-item">*Kanukolanu, A., <strong>Bassil, Y.</strong>, &amp; Borich, M. (2023). "Aging-related effects on reference frame utilization during spatial navigation in a novel virtual reality environment." Poster, <em>ASNR Annual Conference</em>, Charleston, SC.</div>
+        <div class="presentation-item">*Saad, M., <strong>Bassil, Y.</strong>, &amp; Borich, M. (2023). "Effects of demographics and lifestyle choices on spatial navigation in the aging brain." Poster, <em>Laney Graduate School Summer Opportunity for Academic Research (SOAR) Poster Session</em>, Atlanta, GA.</div>
         <div class="presentation-item">Carter, K., Ferrer, M., Hilten, E., <strong>Bassil, Y.</strong>, Kanukolanu, A., &amp; *Borich, M. (2023). "Interactions between balance, navigation, &amp; cognition in the aging brain." Poster, <em>APTA Combined Sections Meeting</em>, San Diego, CA.</div>
         <div class="presentation-item">*Kanukolanu, A., <strong>Bassil, Y.</strong>, Hilten, E., Carter, K., Ferrer, M., &amp; Borich, M. (2022). "Aging effects on spatial navigation &amp; cognitive function." Poster, <em>16th Annual Georgia Tech Undergraduate Research Symposium</em>, Atlanta, GA. <span class="award">(1st Place Poster, College of Sciences)</span></div>
         <div class="presentation-item">*Kanukolanu, A., <strong>Bassil, Y.</strong>, Hilten, E., Carter, K., Ferrer, M., &amp; Borich, M. (2022). "Aging effects on spatial navigation &amp; cognitive function." Poster, <em>1st Annual Psychology Research Conference</em>, Atlanta, GA. <span class="award">(2nd Place Poster)</span></div>
