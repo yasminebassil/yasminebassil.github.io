@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bio (sample layout) &mdash; Yasmine Bassil</title>
+    <!-- Sample page for review only: kept out of search until it replaces bio.html -->
+    <meta name="robots" content="noindex">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Fraunces:ital,opsz,wght@1,9..144,400..700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/site.css">
+
+    <style>
+        /* ---------- Page chrome: nav (same as bio.html) ---------- */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            padding: 1rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--paper);
+            box-shadow: 0 1px 0 var(--rule-soft);
+        }
+        .logo {
+            font-family: 'Fraunces', var(--display);
+            font-optical-sizing: auto;
+            font-variation-settings: 'SOFT' 45, 'WONK' 1;
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--ink);
+            text-decoration: none;
+        }
+        .nav-links { display: flex; gap: 2rem; align-items: center; list-style: none; }
+        .nav-links a {
+            font-family: var(--meta);
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            color: var(--muted);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .nav-links a:hover { color: var(--purple); }
+        .nav-links a.active { color: var(--ink); }
+        .nav-links a.nav-past { opacity: 0.45; }
+        .nav-links a.nav-past:hover { opacity: 0.7; }
+        .mobile-nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
+        .mobile-nav-toggle span { display: block; width: 24px; height: 2px; background: var(--ink); margin: 5px 0; }
+
+        /* ---------- The sheet: one card of paper on a warm desk ---------- */
+        /* Trial palette, scoped to this page only: oxblood, mulberry & sage, with slate
+           violet for blocks, on porcelain. The variable names are the site's existing
+           ones so the rest of the page needs no changes. */
+        :root {
+            --paper: #FCFAF8;            /* porcelain, as it lands in the homepage photo */
+            --ink: #2B2224;
+            --muted: #5E5557;
+            --oxblood: #44181D;          /* headlines and the main blocks */
+            --purple: #6E3358;           /* mulberry: links and emphasis */
+            --purple-soft: #F3E6E3;      /* blush */
+            --olive: #566B58;            /* sage: labels */
+            --cup-blue: #4F5285;         /* slate violet: blocks only */
+        }
+        /* the desk: a neutral step darker than the sheet */
+        body { background: #F1EFEC; }
+        .page-inner {
+            width: 92%;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 7.5rem 0 4rem;
+        }
+        .sheet {
+            position: relative;
+            background: var(--paper);
+            border-radius: 12px;
+            padding: 3rem 3rem 3.5rem;
+            box-shadow: 0 1px 2px rgba(44, 40, 37, 0.04), 0 12px 32px rgba(44, 40, 37, 0.06);
+        }
+
+        /* ---------- Utility bar: who / where ---------- */
+        .utility-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem 1.5rem;
+            font-family: var(--meta);
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--muted);
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--rule);
+            margin-bottom: 2.5rem;
+        }
+
+        /* ---------- Numbered labels (rail items and section heads share them) ---------- */
+        .num-label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: var(--meta);
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--olive);
+            margin-bottom: 0.7rem;
+        }
+        .num-label .num { color: var(--olive); }
+        .section-head {
+            margin: 3.25rem 0 1.5rem;
+            padding-top: 1.2rem;
+            border-top: 1px solid var(--rule);
+            scroll-margin-top: 5rem;
+        }
+
+        /* ---------- Hero: headline + author on the left, facts rail on the right ---------- */
+        .hero {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 280px;
+            gap: 3rem;
+            align-items: start;
+        }
+        .hero-headline {
+            font-family: 'Fraunces', var(--display);
+            font-optical-sizing: auto;
+            font-weight: 600;
+            font-size: 3.3rem;
+            line-height: 1.12;
+            letter-spacing: -0.015em;
+            color: var(--oxblood);
+            margin-bottom: 1.5rem;
+            max-width: 17em;
+        }
+        .hero-headline em { font-style: italic; color: var(--purple); }
+
+        .author { max-width: 30rem; margin-bottom: 1.6rem; }
+        .author-card {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            padding: 0.9rem 1.1rem;
+            border: 1px solid var(--rule);
+            border-radius: 4px;
+        }
+        .author-card img {
+            width: 92px; height: 92px;
+            border-radius: 8px;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+        .author-name {
+            font-family: 'Fraunces', var(--display);
+            font-weight: 600;
+            font-size: 1.2rem;
+            line-height: 1.3;
+        }
+        .author-name .ar {
+            font-family: var(--arabic);
+            font-weight: 500;
+            font-size: 1rem;
+            color: var(--muted);
+            margin-left: 0.5rem;
+        }
+        .author-role {
+            font-family: var(--meta);
+            font-size: 0.72rem;
+            color: var(--olive);
+            margin-top: 0.3rem;
+        }
+        .status-badge {
+            display: inline-block;
+            margin-top: 0.6rem;
+            font-family: var(--meta);
+            font-size: 0.6rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--purple);
+            border: 1px solid transparent;
+            border-radius: 999px;
+            padding: 0.25rem 0.7rem;
+            background: var(--purple-soft);
+        }
+
+        .prose p { font-size: 1.02rem; line-height: 1.65; color: var(--muted); }
+        .prose p + p { margin-top: 0.85rem; }
+        .prose a, .rail a {
+            color: var(--purple);
+            text-decoration: none;
+            border-bottom: 1px solid rgba(110, 51, 88, 0.3);
+            transition: border-color 0.25s ease;
+        }
+        .prose a:hover, .rail a:hover { border-bottom-color: var(--purple); }
+
+        /* handwritten margin note */
+        .note {
+            font-family: 'Caveat', var(--meta);
+            font-size: 1.3rem;
+            line-height: 1.35;
+            color: var(--muted);
+            padding-left: 0.9rem;
+            border-left: 2px solid var(--rule);
+            margin: 1.4rem 0;
+        }
+        .prose .note { padding-top: 1.2rem; border-top: 1px solid var(--rule); border-left: none; padding-left: 0; }
+        .prose .note span { display: block; padding-left: 0.9rem; border-left: 2px solid var(--rule); }
+
+        /* ---------- Facts rail ---------- */
+        .rail-item { padding: 1.3rem 0; border-bottom: 1px solid var(--rule); }
+        .rail-item:first-child { padding-top: 0; }
+        .rail-item p, .rail-item li { font-size: 0.9rem; line-height: 1.5; color: var(--ink); }
+        .rail-item ul { list-style: none; }
+        .rail-item li + li { margin-top: 0.35rem; }
+        .rail-item .k {
+            display: block;
+            font-family: var(--meta);
+            font-size: 0.6rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+        .rail-item.center ul { text-align: center; }
+
+        /* ---------- Two-column sections: prose + a small rail ---------- */
+        .split {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 280px;
+            gap: 3rem;
+            align-items: start;
+        }
+        .split .prose { max-width: 44rem; }
+        .prose p.pull {
+            font-family: var(--display);
+            font-size: 1.75rem;
+            line-height: 1.25;
+            color: var(--oxblood);
+            margin-bottom: 1.1rem;
+        }
+
+        /* ---------- Program cards (the reference's reel grid) ---------- */
+        .programs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; }
+        .program {
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--rule);
+            border-radius: 6px;
+            overflow: hidden;
+            background: var(--paper);
+        }
+        .program-top {
+            padding: 1.4rem 1.4rem 1.2rem;
+            color: #fff;
+            min-height: 8.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+        .program:nth-child(1) .program-top { background: var(--oxblood); }
+        .program:nth-child(2) .program-top { background: var(--olive); }
+        .program:nth-child(3) .program-top { background: var(--cup-blue); }
+        .program-when {
+            font-family: var(--meta);
+            font-size: 0.66rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            opacity: 0.85;
+        }
+        .program-top h3 {
+            font-family: 'Fraunces', var(--display);
+            font-weight: 600;
+            font-size: 1.35rem;
+            line-height: 1.2;
+            margin-top: 0.3rem;
+        }
+        .program-role {
+            font-family: var(--meta);
+            font-size: 0.68rem;
+            margin-top: 0.35rem;
+            opacity: 0.9;
+        }
+        .program p { padding: 1.1rem 1.4rem 1.4rem; font-size: 0.9rem; line-height: 1.55; color: var(--muted); }
+        .receipts {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1.25rem;
+            margin-top: 1.5rem;
+        }
+        .receipt { border-top: 1px solid var(--rule); padding-top: 0.8rem; }
+        .receipt .k {
+            display: block;
+            font-family: var(--meta);
+            font-size: 0.6rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+        .receipt .v { font-size: 0.92rem; line-height: 1.45; }
+        .receipt .v small { display: block; color: var(--muted); font-size: 0.82rem; }
+
+        /* ---------- In my own words: one large centred quote ---------- */
+        .quote {
+            position: relative;
+            max-width: 44rem;
+            margin: 3.5rem auto 3.5rem;
+            padding: 0 3rem;
+            text-align: center;
+        }
+        .quote p {
+            font-family: var(--display);
+            font-style: italic;
+            font-size: 2rem;
+            line-height: 1.35;
+            color: var(--oxblood);
+        }
+        .quote::before, .quote::after {
+            position: absolute;
+            font-family: var(--display);
+            font-size: 3.5rem;
+            line-height: 1;
+            color: var(--rule);
+        }
+        .quote::before { content: '\201C'; left: 0; top: -0.6rem; }
+        .quote::after  { content: '\201D'; right: 0; bottom: -1.8rem; }
+
+        /* ---------- Currently: small facts in a grid ---------- */
+        .now-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0 1.5rem; }
+        .now-item { border-top: 1px solid var(--rule-soft); padding: 0.9rem 0 1.1rem; font-size: 0.9rem; line-height: 1.5; }
+        .now-item strong {
+            display: block;
+            font-family: var(--meta);
+            font-weight: 500;
+            font-size: 0.6rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 0.25rem;
+        }
+        .now-item a { color: var(--purple); text-decoration: none; border-bottom: 1px solid rgba(110, 51, 88, 0.3); }
+
+        /* ---------- Funding & awards ---------- */
+        .awards { border-top: 1px solid var(--rule-soft); }
+        .award {
+            display: grid;
+            grid-template-columns: 8.5rem minmax(0, 1fr);
+            gap: 1.5rem;
+            padding: 0.9rem 0;
+            border-bottom: 1px solid var(--rule-soft);
+        }
+        .award-when { font-family: var(--meta); font-size: 0.68rem; letter-spacing: 0.1em; color: var(--muted); padding-top: 0.25rem; }
+        .award-what { font-weight: 500; }
+        .award-who { display: block; color: var(--muted); font-size: 0.9rem; }
+
+        /* ---------- Places you can find me: the card wall ---------- */
+        .places { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 1.1rem; }
+        .place {
+            position: relative;
+            grid-column: span 2;
+            min-height: 12rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 1.5rem 1.5rem;
+            border-radius: 6px;
+            color: #fff;
+            text-decoration: none;
+            overflow: hidden;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+        .place:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(44, 40, 37, 0.16); }
+        .place--wide { grid-column: span 4; }
+        .place--half { grid-column: span 3; }
+        .place h3 { font-family: 'Fraunces', var(--display); font-weight: 600; font-size: 1.45rem; line-height: 1.2; }
+        .place p { font-size: 0.88rem; line-height: 1.5; margin-top: 0.4rem; opacity: 0.92; max-width: 26rem; }
+        .place .receipt-line { font-family: var(--meta); font-size: 0.68rem; letter-spacing: 0.06em; margin-top: 0.5rem; opacity: 0.9; }
+        .place .cta { font-family: var(--meta); font-size: 0.7rem; margin-top: 0.8rem; border-bottom: 1px solid rgba(255, 255, 255, 0.5); padding-bottom: 1px; }
+        .place--cv       { background: var(--oxblood); }
+        .place--research { background: var(--cup-blue); }
+        .place--creative { background: var(--olive); }
+        .place--band     { background: var(--purple); }
+        .place--thoughts { background: var(--olive); }
+        .place--photo {
+            background: linear-gradient(rgba(68, 24, 29, 0.55), rgba(68, 24, 29, 0.72)), url('img/profile.jpg') center 30% / cover;
+        }
+        .place--light {
+            background: var(--purple-soft);
+            color: var(--ink);
+            min-height: 6.5rem;
+        }
+        .place--light h3 { font-size: 1.1rem; }
+        .place--light .cta { border-bottom-color: rgba(110, 51, 88, 0.4); color: var(--purple); margin-top: 0.4rem; }
+        /* the finjan motif, ghosted into a card corner */
+        .place .motif {
+            position: absolute;
+            right: 1rem; bottom: 0.9rem;
+            width: 30px;
+            margin: 0;
+            opacity: 0.55;
+        }
+        .place .motif .petal, .place .motif .stem { stroke: #fff; }
+        .place .motif .blade { fill: #fff; }
+
+        footer {
+            text-align: center;
+            padding: 0 2rem 2.5rem;
+            font-family: var(--meta);
+            font-size: 0.62rem;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            color: var(--muted);
+        }
+
+        /* ---------- Narrower screens ---------- */
+        @media (max-width: 1000px) {
+            .hero, .split { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
+            .hero-headline { font-size: 2.6rem; }
+            .programs, .receipts { grid-template-columns: minmax(0, 1fr); }
+            .now-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .place, .place--wide, .place--half { grid-column: span 6; }
+            .place--light { grid-column: span 3; }
+        }
+        @media (max-width: 900px) {
+            nav { padding: 1rem 1.5rem; }
+            .nav-links { display: none; }
+            .nav-links.open {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+                position: absolute;
+                top: 100%; left: 0; right: 0;
+                background: var(--paper);
+                padding: 1.25rem 1.5rem;
+                border-bottom: 1px solid var(--rule-soft);
+            }
+            .mobile-nav-toggle { display: block; }
+        }
+        @media (max-width: 600px) {
+            .page-inner { width: 100%; padding: 5.5rem 0.75rem 3rem; }
+            .sheet { padding: 1.75rem 1.25rem 2.25rem; }
+            .hero-headline { font-size: 2.1rem; }
+            .author-card { flex-direction: column; align-items: flex-start; }
+            .quote { padding: 0 1.5rem; }
+            .quote p { font-size: 1.5rem; }
+            .now-grid { grid-template-columns: minmax(0, 1fr); }
+            .award { grid-template-columns: minmax(0, 1fr); gap: 0.2rem; }
+            .place--light { grid-column: span 6; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="logo">yasmine bassil</a>
+        <ul class="nav-links">
+            <li><a href="index.html">home</a></li>
+            <li><a href="bio.html" class="active">bio</a></li>
+            <li><a href="cv.html">cv</a></li>
+            <li><a href="research.html">research</a></li>
+            <li><a href="thoughts.html">thoughts</a></li>
+            <li><a href="music.html">creative</a></li>
+            <li><a href="/defense" class="nav-past">defense</a></li>
+        </ul>
+        <button class="mobile-nav-toggle" aria-label="Toggle navigation">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <main class="page-inner">
+        <div class="sheet">
+            <div class="utility-bar">
+                <span>Neuroscientist &mdash; Research Leader &mdash; Program Builder</span>
+                <span>Atlanta, GA</span>
+            </div>
+
+            <div class="hero" id="bio-intro">
+                <div class="hero-left">
+                    <h1 class="hero-headline">Building the <em>structures and systems</em> that support neuroscience research.</h1>
+
+                    <div class="author">
+                        <span class="num-label"><span class="num">00</span> The Author</span>
+                        <div class="author-card">
+                            <img src="img/profile.jpg" alt="Yasmine Bassil">
+                            <div>
+                                <div class="author-name">Yasmine Bassil, PhD<span class="ar">&#1610;&#1575;&#1587;&#1605;&#1610;&#1606; &#1576;&#1575;&#1587;&#1610;&#1604;</span></div>
+                                <div class="author-role">neuroscientist. research leader. program builder.</div>
+                                <span class="status-badge">open to work &middot; open to relocation</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="prose">
+                        <p>Neuroscientist by trade, with a parallel record in program and partnership management &mdash; from lab research programs to nonprofits, hackathons, and graduate organizations. I build the structures and systems that support neuroscience research, from local to global scales.</p>
+                        <div class="note"><span>The science and the scientist are inextricably intertwined.</span></div>
+                        <p>As an Atlanta-based Lebanese scientist, plant enthusiast, amateur chef, musician, and community member, I believe science and life are better when we show up authentically as whole people &mdash; so feel free to explore a more holistic introduction of myself below.</p>
+                    </div>
+                </div>
+
+                <aside class="rail">
+                    <div class="rail-item">
+                        <span class="num-label"><span class="num">01</span> Now</span>
+                        <ul>
+                            <li>Atlanta, Georgia</li>
+                            <li>PhD in Neuroscience, Emory University (2026)</li>
+                            <li>Open to work &middot; open to relocation</li>
+                        </ul>
+                    </div>
+                    <div class="rail-item">
+                        <span class="num-label"><span class="num">02</span> Focus</span>
+                        <p>Program and partnership roles in research institutes and science philanthropy.</p>
+                    </div>
+                    <div class="rail-item">
+                        <span class="num-label"><span class="num">03</span> At A Glance</span>
+                        <ul>
+                            <li><span class="k">originally from</span>Smar Jbeil, Batroun, Lebanon</li>
+                            <li><span class="k">pronouns</span>she/her &middot; &#1607;&#1610;</li>
+                            <li><span class="k">languages</span>English, Arabic, French</li>
+                        </ul>
+                    </div>
+                    <div class="rail-item">
+                        <span class="num-label"><span class="num">04</span> Get In Touch</span>
+                        <p>Say hello.<br><a href="#bio-contact">Places you can find me &darr;</a></p>
+                    </div>
+                </aside>
+            </div>
+
+            <!-- 05 Education -->
+            <div class="section-head num-label" id="bio-education"><span class="num">05</span> Education &amp; Training</div>
+            <div class="split">
+                <div class="prose">
+                    <p class="pull">I've moved back and forth between the US and Lebanon throughout my early life, ultimately settling in Atlanta in 2012.</p>
+                    <p>I'm a cognitive neuroscientist who recently completed my PhD in Neuroscience at Emory University. As an <a href="https://www.nsfgrfp.org/" target="_blank" rel="noopener">NSF Graduate Research Fellow</a>, I worked in the <a href="https://npresearchlab.com" target="_blank" rel="noopener">Neural Plasticity Research Lab</a> to study how aging changes the brain's navigation systems using neuroimaging, neurostimulation, and virtual reality.</p>
+                    <p>Over the course of my PhD, I built a new core research capacity for the lab from the ground up &mdash; a navigation research program integrating clinical assessments, VR, and neuroimaging to study spatial navigation across the lifespan &mdash; tracking milestones and deliverables across 15+ team members, 110+ participants, and 5+ lab partnerships. For more on this work, see <a href="research.html">research</a>.</p>
+                    <p>Prior to my PhD, I completed my undergraduate degree at the Georgia Institute of Technology, as well as my undergraduate thesis with Dr. Shella Keilholz in the <a href="https://sites.google.com/view/keilholz-lab/home" target="_blank" rel="noopener">Keilholz MIND Lab</a>, analyzing resting-state brain connectivity in individuals with ADHD, PTSD, and sleep disorders.</p>
+                </div>
+                <aside class="rail">
+                    <div class="rail-item">
+                        <span class="num-label">Degrees</span>
+                        <ul>
+                            <li><span class="k">2020 &mdash; 2026</span>PhD in Neuroscience<br>Emory University</li>
+                            <li><span class="k">2016 &mdash; 2020</span>BS in Neuroscience<br>Georgia Institute of Technology</li>
+                        </ul>
+                    </div>
+                </aside>
+            </div>
+
+            <!-- 06 Projects & Programs -->
+            <div class="section-head num-label" id="bio-programs"><span class="num">06</span> Projects &amp; Programs</div>
+            <div class="prose" style="max-width:44rem; margin-bottom:1.6rem;">
+                <p>I establish shared research infrastructure and cross-institutional collaborations, have secured $260K+ in competitive funding, and serve as primary stakeholder liaison across students, faculty, and institutional leadership.</p>
+            </div>
+            <div class="programs">
+                <article class="program">
+                    <div class="program-top">
+                        <span class="program-when">2020 &mdash; 2026</span>
+                        <h3>Navigation Research Program</h3>
+                        <span class="program-role">Founder</span>
+                    </div>
+                    <p>Built and ran a new research arm: 8 concurrent sub-studies, 110+ participants, 15+ team members over six years. Established concurrent TMS-fMRI as an institutional capability, opening the method to the wider Atlanta neuro community.</p>
+                </article>
+                <article class="program">
+                    <div class="program-top">
+                        <span class="program-when">2023 &mdash; 2025</span>
+                        <h3>Graduates in Neuroscience</h3>
+                        <span class="program-role">Co-President</span>
+                    </div>
+                    <p>Led a 22-member board across 12 roles as primary liaison between 120+ PhD students and program leadership. Built the organization's first documentation system, defined officer responsibilities, operationalized role transitions, and created its budget infrastructure &mdash; the things that let it survive turnover.</p>
+                </article>
+                <article class="program">
+                    <div class="program-top">
+                        <span class="program-when">2019</span>
+                        <h3>Brainhack ATL</h3>
+                        <span class="program-role">Organizing Committee Chair</span>
+                    </div>
+                    <p>Led a 13-member committee across four Atlanta institutions to build a 3-day computational neuroscience hackathon &mdash; $35K in sponsorships, 3 project tracks, 6 faculty speakers, 90+ applications from 9 institutions.</p>
+                </article>
+            </div>
+            <div class="receipts">
+                <div class="receipt"><span class="k">funding secured</span><span class="v">$260K+ competitive<small>plus $35K in sponsorships</small></span></div>
+                <div class="receipt"><span class="k">teams led</span><span class="v">15+ researchers &middot; 22-member board &middot; 13-member committee</span></div>
+                <div class="receipt"><span class="k">communities served</span><span class="v">120+ PhD students &middot; 110+ participants</span></div>
+            </div>
+
+            <!-- 07 In my own words -->
+            <div class="section-head num-label"><span class="num">07</span> In My Own Words</div>
+            <blockquote class="quote">
+                <p>Most of what I'm proudest of started as a gap someone else had learned to live with.</p>
+            </blockquote>
+
+            <!-- 08 Personal -->
+            <div class="section-head num-label" id="bio-personal"><span class="num">08</span> Personal</div>
+            <div class="split">
+                <div class="prose">
+                    <p>Being Lebanese is a central part of my identity, and I try to visit home (Smar Jbeil, Batroun, Lebanon) to see friends and family at least once a year. I always find a piece of Lebanon wherever I go &mdash; cooking family recipes, scavenging local record stores for Arabic music, leading the dabke line, or finding small pockets of community in whatever city I'm in.</p>
+                    <p>I love to cook, usually experimenting with dishes from all around the world. I'm an avid plant enthusiast and caretaker to 30+ indoor plants. When I'm exploring the city (by foot, bike, or public transit, preferably), you can usually find me at the discount section of my local plant store, thrift stores, book stores, or speciality grocery stores.</p>
+                    <p>I'm a lover of all things <a href="music.html">creative</a>. I'm currently part of <a href="https://www.instagram.com/labratband/" target="_blank" rel="noopener">la brat band</a>, on piano and lead vocals (and occasionally bass!), putting my classical training to good use. We had our <a href="https://labratband.com/" target="_blank" rel="noopener">debut show</a> last year. Otherwise, I love artistic endeavors in all forms, with my new favorite medium of pottery.</p>
+                    <div class="note"><span>Often, we're encouraged to separate personal and professional identities, but science is inevitably shaped by the person conducting it.</span></div>
+                </div>
+                <aside class="rail">
+                    <div class="rail-item">
+                        <span class="num-label">Elsewhere</span>
+                        <ul>
+                            <li><span class="k">on stage</span><a href="https://www.instagram.com/labratband/" target="_blank" rel="noopener">la brat band</a> &mdash; piano &amp; lead vocals</li>
+                            <li><span class="k">making</span>pottery, block printing</li>
+                            <li><span class="k">growing</span>30+ indoor plants</li>
+                        </ul>
+                    </div>
+                </aside>
+            </div>
+
+            <!-- 09 Currently -->
+            <div class="section-head num-label" id="bio-currently"><span class="num">09</span> Currently</div>
+            <div class="now-grid">
+                <div class="now-item"><strong>currently reading</strong><a href="https://charisbooksandmore.com/book/9780295752297" target="_blank" rel="noopener">Queer World Making: Contemporary Middle Eastern Diasporic Art</a> by Andrew Gayed</div>
+                <div class="now-item"><strong>favorite flavors</strong>cardamom, jasmine, rose</div>
+                <div class="now-item"><strong>favorite drink</strong>recently had the best cocktail I've ever had &mdash; gin, bergamot liqueur, sake, matcha milk jam</div>
+                <div class="now-item"><strong>favorite ingredient to cook with</strong>pomegranate molasses</div>
+                <div class="now-item"><strong>languages</strong>English (native), Arabic (native, Lebanese dialect), French (intermediate)</div>
+                <div class="now-item"><strong>favorite new hobby recently</strong>pottery, or block printing!</div>
+                <div class="now-item"><strong>currently obsessed with</strong>learning how to count from 1 to 10 in as many languages as I can</div>
+                <div class="now-item"><strong>time sink</strong>color-coding and organizing my digital and physical life</div>
+            </div>
+
+            <!-- 10 Funding & awards -->
+            <div class="section-head num-label" id="bio-awards"><span class="num">10</span> Funding &amp; Awards</div>
+            <div class="split">
+                <div>
+                    <div class="awards">
+                        <div class="award">
+                            <span class="award-when">2022 &mdash; 2025</span>
+                            <span><span class="award-what">NSF Graduate Research Fellowship</span><span class="award-who">National Science Foundation ($170K+)</span></span>
+                        </div>
+                        <div class="award">
+                            <span class="award-when">2021 &mdash; 2022</span>
+                            <span><span class="award-what">NIH T32 Training Grant</span><span class="award-who">National Institutes of Health ($90K+)</span></span>
+                        </div>
+                        <div class="award">
+                            <span class="award-when">2023 &mdash; 2026</span>
+                            <span><span class="award-what">Emory Neuroscience Awards</span><span class="award-who">Scientific Achievement (2026) &middot; Teaching (2025) &middot; Leadership (2024) &middot; Excellence in Mentorship (2023)</span></span>
+                        </div>
+                    </div>
+                    <div class="prose" style="margin-top:1.25rem;"><p>The full list of publications, presentations, and invited talks lives on my <a href="cv.html">cv</a>.</p></div>
+                </div>
+                <aside class="rail">
+                    <div class="rail-item">
+                        <span class="num-label">Output</span>
+                        <ul>
+                            <li><span class="k">publications</span>7 peer-reviewed</li>
+                            <li><span class="k">presentations</span>20 conference</li>
+                            <li><span class="k">invited talks</span>17</li>
+                        </ul>
+                    </div>
+                </aside>
+            </div>
+
+            <!-- 11 Places you can find me -->
+            <div class="section-head num-label" id="bio-contact"><span class="num">11</span> Places You Can Find Me</div>
+            <div class="places">
+                <a href="cv.html" class="place place--wide place--cv">
+                    <h3>CV</h3>
+                    <span class="receipt-line">7 publications &middot; 20 presentations &middot; 17 invited talks &middot; $260K+ funding</span>
+                    <span class="cta">See the full cv &rarr;</span>
+                    <svg class="motif" viewBox="0 0 24 42" aria-hidden="true">
+                        <path class="petal" d="M12,25.5 C5.5,22.5 2.2,15 2.2,3.5 L7,12.5 L12,1.5 L17,12.5 L21.8,3.5 C21.8,15 18.5,22.5 12,25.5 Z"/>
+                        <path class="petal" d="M7,12.8 C7.7,18 9.3,22.6 12,25.4"/>
+                        <path class="petal" d="M17,12.8 C16.3,18 14.7,22.6 12,25.4"/>
+                        <path class="stem" d="M12,25.5 L12,41"/>
+                        <path class="stem" d="M12,29 C9,29 7,30 5.8,31.8"/>
+                        <path class="stem" d="M12,29 C15,29 17,30 18.2,31.8"/>
+                    </svg>
+                </a>
+                <a href="index.html" class="place place--photo">
+                    <h3>Home</h3>
+                    <p>The person behind the work.</p>
+                    <span class="cta">Back to the start &rarr;</span>
+                </a>
+                <a href="research.html" class="place place--research">
+                    <h3>Research</h3>
+                    <p>How aging changes the brain's navigation systems.</p>
+                    <span class="cta">Read the research &rarr;</span>
+                </a>
+                <a href="music.html" class="place place--creative">
+                    <h3>Creative</h3>
+                    <p>Music, pottery, block printing, and everything else I make.</p>
+                    <span class="cta">Creative work &rarr;</span>
+                </a>
+                <a href="https://www.instagram.com/labratband/" target="_blank" rel="noopener" class="place place--band">
+                    <h3>la brat band</h3>
+                    <p>Piano and lead vocals (and occasionally bass!).</p>
+                    <span class="cta">@labratband &rarr;</span>
+                </a>
+                <a href="mailto:yasmine.bassil@emory.edu" class="place place--light">
+                    <h3>Email</h3>
+                    <span class="cta">yasmine.bassil@emory.edu</span>
+                </a>
+                <a href="https://linkedin.com/in/yasminebassil" target="_blank" rel="noopener" class="place place--light">
+                    <h3>LinkedIn</h3>
+                    <span class="cta">/in/yasminebassil</span>
+                </a>
+                <a href="https://scholar.google.com/citations?user=mcp_4HQAAAAJ" target="_blank" rel="noopener" class="place place--light">
+                    <h3>Scholar</h3>
+                    <span class="cta">google scholar</span>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer>&copy; 2026 Yasmine Bassil</footer>
+
+    <script>
+        // ---- Mobile nav ----
+        (function () {
+            var toggle = document.querySelector('.mobile-nav-toggle');
+            var links = document.querySelector('.nav-links');
+            if (toggle && links) {
+                toggle.addEventListener('click', function () { links.classList.toggle('open'); });
+                links.addEventListener('click', function (e) {
+                    if (e.target.tagName === 'A') links.classList.remove('open');
+                });
+            }
+        })();
+    </script>
+</body>
+</html>

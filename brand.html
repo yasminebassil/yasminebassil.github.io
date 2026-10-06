@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brand sheet &mdash; Yasmine Bassil</title>
+    <!-- Internal reference page: colours and fonts in use across the site -->
+    <meta name="robots" content="noindex">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Fraunces:ital,opsz,wght@1,9..144,400..700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=Noto+Sans+Arabic:wght@400;500;600&family=DM+Sans:wght@400;500;700&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/site.css">
+
+    <style>
+        body { background: var(--paper); }
+        .wrap { max-width: 1180px; margin: 0 auto; padding: 3.5rem 2.5rem 5rem; }
+
+        .top { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 0.5rem 2rem; padding-bottom: 1rem; border-bottom: 1px solid var(--rule); }
+        .top a { color: var(--purple); text-decoration: none; }
+        .mono {
+            font-family: var(--meta);
+            font-size: 0.68rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+        h1 {
+            font-family: 'Fraunces', var(--display);
+            font-variation-settings: 'SOFT' 45, 'WONK' 1;
+            font-weight: 600;
+            font-size: 3rem;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            margin: 2rem 0 0.6rem;
+        }
+        .intro { max-width: 44rem; color: var(--muted); }
+
+        h2 {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-family: var(--meta);
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--ink);
+            margin: 3.75rem 0 0.5rem;
+            padding-top: 1.2rem;
+            border-top: 1px solid var(--rule);
+        }
+        h2 .num { color: var(--purple); }
+        .sub { max-width: 44rem; color: var(--muted); font-size: 0.95rem; margin-bottom: 1.5rem; }
+
+        /* ---------- Swatches ---------- */
+        .swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(11.5rem, 1fr)); gap: 1.1rem; }
+        .swatch { border: 1px solid var(--rule); border-radius: 6px; overflow: hidden; background: #fff; }
+        .chip { height: 6.5rem; display: flex; align-items: flex-end; padding: 0.6rem 0.75rem; font-family: var(--meta); font-size: 0.66rem; letter-spacing: 0.08em; color: #fff; }
+        .chip.dark-text { color: var(--ink); }
+        .swatch-body { padding: 0.7rem 0.75rem 0.85rem; }
+        .swatch-name { font-weight: 500; font-size: 0.95rem; }
+        .swatch-hex { font-family: var(--meta); font-size: 0.72rem; color: var(--muted); }
+        .swatch-use { font-size: 0.8rem; line-height: 1.4; color: var(--muted); margin-top: 0.35rem; }
+        .flag {
+            display: inline-block;
+            font-family: var(--meta);
+            font-size: 0.56rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            border-radius: 999px;
+            padding: 0.12rem 0.5rem;
+            margin-top: 0.45rem;
+        }
+        .flag.core  { background: rgba(92, 107, 84, 0.14); color: #46533f; }
+        .flag.stray { background: rgba(196, 117, 91, 0.16); color: #9a4f37; }
+        .flag.trial { background: rgba(107, 91, 142, 0.14); color: #54467a; }
+
+        /* purple comparison strip */
+        .strip { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); border-radius: 6px; overflow: hidden; border: 1px solid var(--rule); }
+        .strip div { padding: 1.4rem 0.9rem 1rem; color: #fff; }
+        .strip .big { font-family: 'Fraunces', var(--display); font-style: italic; font-weight: 600; font-size: 1.5rem; line-height: 1.15; }
+        .strip .cap { font-family: var(--meta); font-size: 0.62rem; letter-spacing: 0.06em; margin-top: 0.8rem; line-height: 1.5; opacity: 0.95; }
+        .ontext { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0; margin-top: 0.9rem; }
+        .ontext p { font-family: 'Fraunces', var(--display); font-style: italic; font-weight: 600; font-size: 1.35rem; line-height: 1.2; padding: 0 0.9rem; }
+        .ontext a { font-family: var(--body); font-style: normal; font-weight: 400; font-size: 0.9rem; display: block; margin-top: 0.4rem; text-decoration: underline; text-underline-offset: 3px; color: inherit; }
+
+        /* ---------- Font specimens ---------- */
+        .fonts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.1rem; }
+        .font { border: 1px solid var(--rule); border-radius: 6px; padding: 1.4rem 1.5rem 1.3rem; background: #fff; }
+        .font-head { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; margin-bottom: 0.9rem; }
+        .font-name { font-family: var(--meta); font-size: 0.74rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; }
+        .specimen { font-size: 2.3rem; line-height: 1.15; margin-bottom: 0.7rem; }
+        .alphabet { font-size: 1rem; line-height: 1.5; color: var(--muted); word-break: break-word; }
+        .font-use { font-size: 0.82rem; line-height: 1.45; color: var(--muted); margin-top: 0.9rem; padding-top: 0.8rem; border-top: 1px solid var(--rule-soft); }
+        .font-use strong { color: var(--ink); font-weight: 500; }
+
+        .f-fraunces  { font-family: 'Fraunces', serif; font-variation-settings: 'SOFT' 45, 'WONK' 1; font-weight: 600; letter-spacing: -0.02em; }
+        .f-cormorant { font-family: 'Cormorant Garamond', serif; }
+        .f-satoshi   { font-family: 'Satoshi', sans-serif; }
+        .f-dmsans    { font-family: 'DM Sans', sans-serif; }
+        .f-plexmono  { font-family: 'IBM Plex Mono', monospace; }
+        .f-plexar    { font-family: 'IBM Plex Sans Arabic', sans-serif; }
+        .f-notoar    { font-family: 'Noto Sans Arabic', sans-serif; }
+        .f-caveat    { font-family: 'Caveat', cursive; }
+
+        /* ---------- Body-font side by side ---------- */
+        .versus { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.1rem; }
+        .versus > div { border: 1px solid var(--rule); border-radius: 6px; padding: 1.3rem 1.5rem; background: #fff; }
+        .versus p { font-size: 1rem; line-height: 1.7; margin-top: 0.6rem; }
+
+        /* ---------- Roles in context ---------- */
+        .roles { border-top: 1px solid var(--rule-soft); }
+        .role { display: grid; grid-template-columns: 13rem minmax(0, 1fr); gap: 2rem; align-items: center; padding: 1.1rem 0; border-bottom: 1px solid var(--rule-soft); }
+        .role-k { font-family: var(--meta); font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); line-height: 1.6; }
+        .r-wordmark { font-family: 'Fraunces', serif; font-variation-settings: 'SOFT' 45, 'WONK' 1; font-weight: 600; font-size: 3.2rem; line-height: 0.95; letter-spacing: -0.03em; }
+        .r-wordmark span { font-size: 0.34em; color: var(--purple); letter-spacing: 0.02em; margin-left: 0.18em; }
+        .r-headline { font-family: 'Fraunces', serif; font-weight: 600; font-size: 2.2rem; line-height: 1.15; letter-spacing: -0.015em; }
+        .r-headline em { font-style: italic; color: var(--purple); }
+        .r-lead { font-family: var(--display); font-size: 1.75rem; line-height: 1.25; }
+        .r-body { font-family: var(--body); font-size: 1rem; line-height: 1.7; max-width: 38rem; }
+        .r-body a { color: var(--purple); text-decoration: none; border-bottom: 1px solid rgba(107, 91, 142, 0.3); }
+        .r-nav { display: flex; gap: 2rem; font-family: var(--meta); font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+        .r-nav .on { color: var(--ink); }
+        .r-badge { display: inline-block; font-family: var(--meta); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); border: 1px solid var(--rule); border-radius: 999px; padding: 0.25rem 0.7rem; background: var(--purple-soft); }
+        .r-ar { font-family: var(--arabic); font-size: 1.5rem; }
+
+        /* ---------- Page-by-page table ---------- */
+        .table-wrap { overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; font-size: 0.86rem; min-width: 46rem; }
+        th { text-align: left; font-family: var(--meta); font-size: 0.62rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); padding: 0.6rem 0.9rem 0.6rem 0; border-bottom: 1px solid var(--rule); }
+        td { padding: 0.75rem 0.9rem 0.75rem 0; border-bottom: 1px solid var(--rule-soft); vertical-align: top; line-height: 1.45; }
+        td:first-child { font-weight: 500; white-space: nowrap; }
+        .dot { display: inline-block; width: 0.75rem; height: 0.75rem; border-radius: 50%; vertical-align: -1px; margin-right: 0.35rem; border: 1px solid rgba(0, 0, 0, 0.08); }
+        .off { color: #9a4f37; }
+
+        /* ---------- Things to align ---------- */
+        .todo { list-style: none; counter-reset: todo; max-width: 50rem; }
+        .todo li { counter-increment: todo; position: relative; padding: 0.9rem 0 0.9rem 2.6rem; border-bottom: 1px solid var(--rule-soft); font-size: 0.95rem; line-height: 1.55; }
+        .todo li::before { content: counter(todo, decimal-leading-zero); position: absolute; left: 0; top: 1rem; font-family: var(--meta); font-size: 0.7rem; color: var(--purple); }
+        .todo strong { font-weight: 500; }
+        code { font-family: var(--meta); font-size: 0.82em; background: var(--purple-soft); padding: 0.05em 0.35em; border-radius: 3px; }
+
+
+        /* ---------- Contrast table + principles ---------- */
+        .principles { list-style: none; max-width: 50rem; margin-bottom: 2rem; }
+        .principles li { padding: 0.8rem 0; border-bottom: 1px solid var(--rule-soft); font-size: 0.95rem; line-height: 1.55; }
+        .principles strong { font-weight: 500; }
+        .pass { color: #46533f; }
+        .fail { color: #9a4f37; }
+        .num-cell { font-family: var(--meta); font-size: 0.8rem; }
+
+        /* ---------- Palette options ---------- */
+        .options { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; }
+        .option { border: 1px solid var(--rule); border-radius: 8px; overflow: hidden; background: var(--paper); display: flex; flex-direction: column; }
+        .option-head { padding: 1rem 1.25rem; border-bottom: 1px solid var(--rule-soft); display: flex; justify-content: space-between; align-items: baseline; gap: 0.75rem; }
+        .option-name { font-family: 'Fraunces', serif; font-weight: 600; font-size: 1.15rem; }
+        .option-row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+        .option-row div { height: 4.2rem; display: flex; align-items: flex-end; padding: 0.4rem 0.5rem; font-family: var(--meta); font-size: 0.56rem; line-height: 1.4; color: #fff; }
+        .option-row .lt { color: var(--ink); }
+        .preview { padding: 1.4rem 1.25rem 1.5rem; flex: 1; }
+        .preview .p-label { font-family: var(--meta); font-size: 0.62rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--o-second); }
+        .preview .p-head { font-family: 'Fraunces', serif; font-weight: 600; font-size: 1.55rem; line-height: 1.15; letter-spacing: -0.01em; margin: 0.5rem 0 0.7rem; }
+        .preview .p-head em { font-style: italic; color: var(--o-accent); }
+        .preview .p-body { font-size: 0.9rem; line-height: 1.6; color: var(--muted); }
+        .preview .p-body a { color: var(--o-accent); text-decoration: none; border-bottom: 1px solid var(--o-line); }
+        .preview .p-badge { display: inline-block; margin-top: 0.9rem; font-family: var(--meta); font-size: 0.56rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--o-accent); background: var(--o-tint); border-radius: 999px; padding: 0.25rem 0.7rem; }
+        .preview .p-card { margin-top: 1rem; background: var(--o-accent); color: #fff; border-radius: 6px; padding: 0.9rem 1rem; }
+        .preview .p-card b { font-family: 'Fraunces', serif; font-weight: 600; font-size: 1.05rem; display: block; }
+        .preview .p-card span { font-family: var(--meta); font-size: 0.62rem; opacity: 0.9; }
+        .option-note { padding: 0.9rem 1.25rem 1.1rem; border-top: 1px solid var(--rule-soft); font-size: 0.82rem; line-height: 1.5; color: var(--muted); }
+        .option-note strong { color: var(--ink); font-weight: 500; }
+
+
+        /* options that add a deep anchor colour: it takes the headline and the filled card */
+        .option.deep .p-head { color: var(--o-deep); }
+        .option.deep .p-card { background: var(--o-deep); }
+        .options.two-up { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+
+        /* ---------- The working set ---------- */
+        .working { border: 1px solid var(--rule); border-radius: 8px; padding: 2rem 2.25rem 2.25rem; margin: 1.5rem 0 1.75rem; background: var(--paper); }
+        .working .w-label { font-family: var(--meta); font-size: 0.66rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; }
+        .working .w-head { font-family: 'Fraunces', serif; font-weight: 600; font-size: 2.5rem; line-height: 1.12; letter-spacing: -0.015em; margin: 0.6rem 0 1rem; max-width: 18em; }
+        .working .w-head em { font-style: italic; }
+        .working .w-body { max-width: 40rem; font-size: 1rem; line-height: 1.65; }
+        .working .w-body a { text-decoration: none; }
+        .working .w-badge { display: inline-block; margin: 1rem 0 1.5rem; font-family: var(--meta); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; border-radius: 999px; padding: 0.28rem 0.75rem; }
+        .working .w-blocks { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+        .bg-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.1rem; margin-top: 1.1rem; }
+        .bg-row > div { border: 1px solid var(--rule); border-radius: 6px; padding: 1.1rem 1.2rem; }
+        .bg-row b { font-weight: 500; display: block; }
+        .bg-row span { font-family: var(--meta); font-size: 0.72rem; color: var(--muted); }
+        .bg-row p { font-size: 0.82rem; line-height: 1.45; color: var(--muted); margin-top: 0.35rem; }
+
+        @media (max-width: 800px) {
+            .wrap { padding: 2.5rem 1.25rem 4rem; }
+            h1 { font-size: 2.3rem; }
+            .fonts, .versus, .options, .options.two-up { grid-template-columns: minmax(0, 1fr); }
+            .working { padding: 1.5rem 1.25rem; }
+            .working .w-head { font-size: 1.9rem; }
+            .working .w-blocks, .bg-row { grid-template-columns: minmax(0, 1fr); }
+            .strip, .ontext { grid-template-columns: minmax(0, 1fr); }
+            .ontext p { padding: 0.6rem 0; }
+            .role { grid-template-columns: minmax(0, 1fr); gap: 0.5rem; }
+            .r-nav { flex-wrap: wrap; gap: 0.75rem 1.25rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="top mono">
+            <span>yasminebassil.github.io &mdash; brand sheet</span>
+            <span><a href="index.html">home</a> &nbsp;&middot;&nbsp; <a href="bio.html">bio</a> &nbsp;&middot;&nbsp; <a href="bio-sample.html">bio sample</a> &nbsp;&middot;&nbsp; <a href="cv.html">cv</a></span>
+        </div>
+
+        <h1>Colours &amp; fonts</h1>
+        <p class="intro">Everything the site currently uses, in one place. Green tags are the core system defined in <code>css/site.css</code> (home and bio). Orange tags are values that only appear on one or two older pages and are candidates to bring in line.</p>
+
+
+        <!-- ============ 00 The working set ============ -->
+        <h2 id="working" style="margin-top:2.5rem;"><span class="num">00</span> The working set</h2>
+        <p class="sub">Where things stand now: oxblood, mulberry and sage, with slate violet for blocks. Not yet applied to any live page. Everything further down this sheet is the audit and the options that led here.</p>
+        <div class="swatches">
+            <div class="swatch"><div class="chip" style="background:#44181D">oxblood</div><div class="swatch-body"><div class="swatch-name">Oxblood</div><div class="swatch-hex">#44181D</div><div class="swatch-use">Headlines, the logo, the main filled blocks. 14.7:1 on paper.</div><span class="flag core">in the set</span></div></div>
+            <div class="swatch"><div class="chip" style="background:#6E3358">mulberry</div><div class="swatch-body"><div class="swatch-name">Mulberry</div><div class="swatch-hex">#6E3358</div><div class="swatch-use">Links and emphasis. The one colour that means clickable or important. 9.0:1.</div><span class="flag core">in the set</span></div></div>
+            <div class="swatch"><div class="chip" style="background:#566B58">sage</div><div class="swatch-body"><div class="swatch-name">Sage</div><div class="swatch-hex">#566B58</div><div class="swatch-use">Small labels and section numbers; also a block colour. 5.6:1.</div><span class="flag core">in the set</span></div></div>
+            <div class="swatch"><div class="chip" style="background:#4F5285">slate violet</div><div class="swatch-body"><div class="swatch-name">Slate violet</div><div class="swatch-hex">#4F5285</div><div class="swatch-use">Blocks and illustration only: cards, the flower motif, homepage particles. Never text.</div><span class="flag core">in the set</span></div></div>
+            <div class="swatch"><div class="chip dark-text" style="background:#F3E6E3">blush</div><div class="swatch-body"><div class="swatch-name">Blush</div><div class="swatch-hex">#F3E6E3</div><div class="swatch-use">Soft panels and badges. Oxblood thinned right down.</div><span class="flag core">in the set</span></div></div>
+            <div class="swatch"><div class="chip" style="background:#2B2224">ink</div><div class="swatch-body"><div class="swatch-name">Warm ink</div><div class="swatch-hex">#2B2224</div><div class="swatch-use">Body text. 15.1:1.</div><span class="flag core">in the set</span></div></div>
+            <div class="swatch"><div class="chip" style="background:#5E5557">muted</div><div class="swatch-body"><div class="swatch-name">Warm grey</div><div class="swatch-hex">#5E5557</div><div class="swatch-use">Secondary text. 7.0:1.</div><span class="flag core">in the set</span></div></div>
+            <div class="swatch"><div class="chip" style="background:#A9812F">ochre</div><div class="swatch-body"><div class="swatch-name">Ochre</div><div class="swatch-hex">#A9812F</div><div class="swatch-use">Optional decoration only: a status dot or a thin rule. Too light for text.</div><span class="flag trial">undecided</span></div></div>
+            <div class="swatch"><div class="chip" style="background:#7B2D3B">wine</div><div class="swatch-body"><div class="swatch-name">Wine</div><div class="swatch-hex">#7B2D3B</div><div class="swatch-use">Was the link colour in oxblood &amp; sage. Mulberry now has that job, so wine is out unless you want it back.</div><span class="flag stray">set aside</span></div></div>
+        </div>
+
+        <div class="working">
+            <span class="w-label" style="color:#566B58">05 Education &amp; Training</span>
+            <div class="w-head" style="color:#44181D">Building the <em style="color:#6E3358">structures and systems</em> that support neuroscience research.</div>
+            <p class="w-body" style="color:#5E5557"><span style="color:#2B2224">I'm a cognitive neuroscientist who recently completed my PhD in Neuroscience at Emory University.</span> As an <a href="#" style="color:#6E3358; border-bottom:1px solid rgba(110, 51, 88, 0.35)">NSF Graduate Research Fellow</a>, I studied how aging changes the brain's navigation systems using neuroimaging, neurostimulation, and virtual reality.</p>
+            <span class="w-badge" style="background:#F3E6E3; color:#6E3358">open to work &middot; open to relocation</span>
+            <div class="w-blocks">
+                <div style="background:#44181D; color:#fff; border-radius:6px; padding:1.1rem 1.2rem; min-height:7rem; display:flex; flex-direction:column; justify-content:flex-end;"><span style="font-family:var(--meta); font-size:0.62rem; letter-spacing:0.12em; opacity:0.85">2020 &mdash; 2026</span><b style="font-family:'Fraunces',serif; font-weight:600; font-size:1.1rem; line-height:1.2; margin-top:0.2rem">Navigation Research Program</b><span style="font-family:var(--meta); font-size:0.62rem; opacity:0.9; margin-top:0.25rem">Founder</span></div>
+                <div style="background:#4F5285; color:#fff; border-radius:6px; padding:1.1rem 1.2rem; min-height:7rem; display:flex; flex-direction:column; justify-content:flex-end;"><span style="font-family:var(--meta); font-size:0.62rem; letter-spacing:0.12em; opacity:0.85">2023 &mdash; 2025</span><b style="font-family:'Fraunces',serif; font-weight:600; font-size:1.1rem; line-height:1.2; margin-top:0.2rem">Graduates in Neuroscience</b><span style="font-family:var(--meta); font-size:0.62rem; opacity:0.9; margin-top:0.25rem">Co-President</span></div>
+                <div style="background:#566B58; color:#fff; border-radius:6px; padding:1.1rem 1.2rem; min-height:7rem; display:flex; flex-direction:column; justify-content:flex-end;"><span style="font-family:var(--meta); font-size:0.62rem; letter-spacing:0.12em; opacity:0.85">2019</span><b style="font-family:'Fraunces',serif; font-weight:600; font-size:1.1rem; line-height:1.2; margin-top:0.2rem">Brainhack ATL</b><span style="font-family:var(--meta); font-size:0.62rem; opacity:0.9; margin-top:0.25rem">Organizing Committee Chair</span></div>
+            </div>
+        </div>
+
+        <p class="sub" style="margin-bottom:0;"><strong style="color:var(--ink); font-weight:500;">Background: still open.</strong> The preview above is on the current paper. The three candidates:</p>
+        <div class="bg-row">
+            <div style="background:#FEFBFD"><b>Current paper</b><span>#FEFBFD</span><p>What the site has now. A faint pink-lilac cast.</p></div>
+            <div style="background:#FBFAF8"><b>Porcelain</b><span>#FBFAF8</span><p>The one you liked, but it read slightly green next to the reds.</p></div>
+            <div style="background:#FCFAF9"><b>Porcelain, nudged warm</b><span>#FCFAF9</span><p>A hair toward red to cancel the green tinge. Best judged as a full page.</p></div>
+        </div>
+
+
+        <p class="sub" id="sky" style="margin:2rem 0 0.9rem;"><strong style="color:var(--ink); font-weight:500;">Photo sky vs porcelain.</strong> The bright sky in the homepage photo is <code>#FDF7FB</code>. Here it is touching porcelain, then the same card on each.</p>
+        <div style="display:grid; grid-template-columns:1fr 1fr; border:1px solid var(--rule); border-radius:6px; overflow:hidden; margin-bottom:1.1rem;">
+            <div style="background:#FDF7FB; padding:2.2rem 1.25rem 1rem;"><span class="mono">photo sky &middot; #FDF7FB</span></div>
+            <div style="background:#FBFAF8; padding:2.2rem 1.25rem 1rem;"><span class="mono">porcelain &middot; #FBFAF8</span></div>
+        </div>
+        <div class="options two-up">
+            <div class="option deep" style="background:#FDF7FB; --o-deep:#44181D; --o-accent:#6E3358; --o-second:#566B58; --o-tint:#F3E6E3; --o-line:rgba(110, 51, 88, 0.35);">
+                <div class="option-head"><span class="option-name">Photo sky</span><span class="flag trial">#FDF7FB</span></div>
+                <div class="preview">
+                    <span class="p-label">05 Education &amp; Training</span>
+                    <div class="p-head">Building the <em>structures and systems</em> that support research.</div>
+                    <p class="p-body" style="color:#5E5557">As an <a href="#">NSF Graduate Research Fellow</a>, I studied how aging changes the brain's navigation systems.</p>
+                    <span class="p-badge">open to work &middot; open to relocation</span>
+                    <div class="p-card"><b>Navigation Research Program</b><span>2020 &mdash; 2026 &middot; Founder</span></div>
+                </div>
+                <div class="option-note">The white of the homepage photo. Slightly pink: its green value is the lowest of the three.</div>
+            </div>
+            <div class="option deep" style="background:#FBFAF8; --o-deep:#44181D; --o-accent:#6E3358; --o-second:#566B58; --o-tint:#F3E6E3; --o-line:rgba(110, 51, 88, 0.35);">
+                <div class="option-head"><span class="option-name">Porcelain</span><span class="flag trial">#FBFAF8</span></div>
+                <div class="preview">
+                    <span class="p-label">05 Education &amp; Training</span>
+                    <div class="p-head">Building the <em>structures and systems</em> that support research.</div>
+                    <p class="p-body" style="color:#5E5557">As an <a href="#">NSF Graduate Research Fellow</a>, I studied how aging changes the brain's navigation systems.</p>
+                    <span class="p-badge">open to work &middot; open to relocation</span>
+                    <div class="p-card"><b>Navigation Research Program</b><span>2020 &mdash; 2026 &middot; Founder</span></div>
+                </div>
+                <div class="option-note">Near-neutral with a trace of warmth. Next to the sky it looks greener than it is, because the sky is pink.</div>
+            </div>
+        </div>
+
+        <!-- ============ 01 Core palette ============ -->
+        <h2><span class="num">01</span> Core palette</h2>
+        <p class="sub">The nine colours defined once in <code>css/site.css</code>. Home and bio draw from these; the older pages repeat some of them under different names.</p>
+        <div class="swatches">
+            <div class="swatch">
+                <div class="chip dark-text" style="background:#FEFBFD">paper</div>
+                <div class="swatch-body"><div class="swatch-name">Paper</div><div class="swatch-hex">#FEFBFD</div><div class="swatch-use">Page background, every page.</div><span class="flag core">core</span></div>
+            </div>
+            <div class="swatch">
+                <div class="chip dark-text" style="background:#F0EBE3">paper-warm</div>
+                <div class="swatch-body"><div class="swatch-name">Warm paper</div><div class="swatch-hex">#F0EBE3</div><div class="swatch-use">Secondary panels and dividers on older pages.</div><span class="flag core">core</span></div>
+            </div>
+            <div class="swatch">
+                <div class="chip" style="background:#2C2825">ink</div>
+                <div class="swatch-body"><div class="swatch-name">Ink</div><div class="swatch-hex">#2C2825</div><div class="swatch-use">Headings and main text.</div><span class="flag core">core</span></div>
+            </div>
+            <div class="swatch">
+                <div class="chip" style="background:#5C5552">muted</div>
+                <div class="swatch-body"><div class="swatch-name">Muted</div><div class="swatch-hex">#5C5552</div><div class="swatch-use">Secondary text, nav links, labels.</div><span class="flag core">core</span></div>
+            </div>
+            <div class="swatch">
+                <div class="chip" style="background:#6B5B8E">purple</div>
+                <div class="swatch-body"><div class="swatch-name">Purple</div><div class="swatch-hex">#6B5B8E</div><div class="swatch-use">The accent: links, &ldquo;, phd&rdquo;, highlights.</div><span class="flag core">core</span></div>
+            </div>
+            <div class="swatch">
+                <div class="chip" style="background:#C4755B">terracotta</div>
+                <div class="swatch-body"><div class="swatch-name">Terracotta</div><div class="swatch-hex">#C4755B</div><div class="swatch-use">Hover colour on home; main accent on creative and defense.</div><span class="flag core">core</span></div>
+            </div>
+            <div class="swatch">
+                <div class="chip" style="background:#5C6B54">olive</div>
+                <div class="swatch-body"><div class="swatch-name">Olive</div><div class="swatch-hex">#5C6B54</div><div class="swatch-use">Home tagline (&ldquo;phd, emory university&rdquo;).</div><span class="flag core">core</span></div>
+            </div>
+            <div class="swatch">
+                <div class="chip" style="background:#3F6FA8">cup-blue</div>
+                <div class="swatch-body"><div class="swatch-name">Cup blue</div><div class="swatch-hex">#3F6FA8</div><div class="swatch-use">Stems and leaves of the flower motif on bio.</div><span class="flag core">core</span></div>
+            </div>
+            <div class="swatch">
+                <div class="chip" style="background:#B5714A">cup-clay</div>
+                <div class="swatch-body"><div class="swatch-name">Cup clay</div><div class="swatch-hex">#B5714A</div><div class="swatch-use">Petals of the flower motif. Very close to terracotta.</div><span class="flag core">core</span></div>
+            </div>
+        </div>
+
+        <!-- ============ 02 Purples ============ -->
+        <h2><span class="num">02</span> The purples, side by side</h2>
+        <p class="sub">Five different purples are in play right now. The first is the official one; the next two are stray brighter values on the cv and in the homepage particles; the last two are the trials from the bio sample.</p>
+        <div class="strip">
+            <div style="background:#6B5B8E"><div class="big">structures and systems</div><div class="cap">#6B5B8E<br>site purple &mdash; home, bio, research, thoughts</div></div>
+            <div style="background:#7671C4"><div class="big">structures and systems</div><div class="cap">#7671C4<br>cv page only (28 uses)</div></div>
+            <div style="background:#766FE2"><div class="big">structures and systems</div><div class="cap">#766FE2<br>homepage particle glow</div></div>
+            <div style="background:#6C618A"><div class="big">structures and systems</div><div class="cap">#6C618A<br>bio sample &mdash; current &ldquo;in between&rdquo;</div></div>
+            <div style="background:#6D6685"><div class="big">structures and systems</div><div class="cap">#6D6685<br>bio sample &mdash; greyer trial</div></div>
+        </div>
+        <div class="ontext">
+            <p style="color:#6B5B8E">as text on paper<a>and as a link</a></p>
+            <p style="color:#7671C4">as text on paper<a>and as a link</a></p>
+            <p style="color:#766FE2">as text on paper<a>and as a link</a></p>
+            <p style="color:#6C618A">as text on paper<a>and as a link</a></p>
+            <p style="color:#6D6685">as text on paper<a>and as a link</a></p>
+        </div>
+
+        <!-- ============ 03 Stray colours ============ -->
+        <h2><span class="num">03</span> Stray and trial colours</h2>
+        <p class="sub">Values that sit outside the core palette.</p>
+        <div class="swatches">
+            <div class="swatch">
+                <div class="chip" style="background:#7671C4">accent-purple / accent-olive</div>
+                <div class="swatch-body"><div class="swatch-name">CV purple</div><div class="swatch-hex">#7671C4</div><div class="swatch-use">cv.html. Brighter and bluer than the site purple; also assigned to the variable named &ldquo;olive&rdquo;.</div><span class="flag stray">stray</span></div>
+            </div>
+            <div class="swatch">
+                <div class="chip" style="background:#766FE2">particle</div>
+                <div class="swatch-body"><div class="swatch-name">Particle violet</div><div class="swatch-hex">#766FE2</div><div class="swatch-use">Glow on the floating dots on home. Chosen to match the brain photo.</div><span class="flag stray">stray</span></div>
+            </div>
+            <div class="swatch">
+                <div class="chip" style="background:#4A4544">&ldquo;accent-terracotta&rdquo;</div>
+                <div class="swatch-body"><div class="swatch-name">Charcoal grey</div><div class="swatch-hex">#4A4544</div><div class="swatch-use">research.html and thoughts.html. Stored under the name &ldquo;terracotta&rdquo; but it is a grey.</div><span class="flag stray">stray</span></div>
+            </div>
+            <div class="swatch">
+                <div class="chip" style="background:#4A7C59">status</div>
+                <div class="swatch-body"><div class="swatch-name">Status green</div><div class="swatch-hex">#4A7C59 / #5A8F6A</div><div class="swatch-use">cv.html only, for the availability indicator.</div><span class="flag stray">stray</span></div>
+            </div>
+            <div class="swatch">
+                <div class="chip dark-text" style="background:#F9F6F6">bg (defense)</div>
+                <div class="swatch-body"><div class="swatch-name">Defense paper</div><div class="swatch-hex">#F9F6F6</div><div class="swatch-use">defense.html background. Slightly greyer than Paper.</div><span class="flag stray">stray</span></div>
+            </div>
+            <div class="swatch">
+                <div class="chip dark-text" style="background:#F0EEF4">desk</div>
+                <div class="swatch-body"><div class="swatch-name">Sample desk</div><div class="swatch-hex">#F0EEF4</div><div class="swatch-use">Background behind the card on the bio sample.</div><span class="flag trial">trial</span></div>
+            </div>
+            <div class="swatch">
+                <div class="chip" style="background:#6C618A">purple (sample)</div>
+                <div class="swatch-body"><div class="swatch-name">In-between purple</div><div class="swatch-hex">#6C618A</div><div class="swatch-use">Accent on the bio sample only.</div><span class="flag trial">trial</span></div>
+            </div>
+        </div>
+
+        <!-- ============ 04 Fonts ============ -->
+        <h2><span class="num">04</span> Fonts</h2>
+        <p class="sub">Eight typefaces are loaded somewhere on the site. Four are the core system; the rest are older choices or sample-only.</p>
+        <div class="fonts">
+            <div class="font">
+                <div class="font-head"><span class="font-name">Fraunces</span><span class="flag core">core</span></div>
+                <div class="specimen f-fraunces">yasmine bassil, phd</div>
+                <div class="alphabet f-fraunces" style="font-weight:400; letter-spacing:0">Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz 0123456789</div>
+                <div class="font-use"><strong>Role:</strong> the wordmark. Logo in every nav and the big name on home. Also the headline on the bio sample.</div>
+            </div>
+            <div class="font">
+                <div class="font-head"><span class="font-name">Cormorant Garamond</span><span class="flag core">core</span></div>
+                <div class="specimen f-cormorant">I build the structures and systems</div>
+                <div class="alphabet f-cormorant" style="font-size:1.15rem">Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz 0123456789</div>
+                <div class="font-use"><strong>Role:</strong> display. Page titles and large lead sentences on bio, research, thoughts and creative.</div>
+            </div>
+            <div class="font">
+                <div class="font-head"><span class="font-name">Satoshi</span><span class="flag core">core</span></div>
+                <div class="specimen f-satoshi" style="font-weight:500">neuroscientist. research leader.</div>
+                <div class="alphabet f-satoshi">Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz 0123456789</div>
+                <div class="font-use"><strong>Role:</strong> body text on home, bio, cv and research.</div>
+            </div>
+            <div class="font">
+                <div class="font-head"><span class="font-name">IBM Plex Mono</span><span class="flag core">core</span></div>
+                <div class="specimen f-plexmono" style="font-size:1.25rem; letter-spacing:0.16em; text-transform:uppercase; line-height:1.6">phd, emory university &middot; nsf fellow</div>
+                <div class="alphabet f-plexmono" style="font-size:0.9rem">Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz 0123456789</div>
+                <div class="font-use"><strong>Role:</strong> small capitals for nav, labels and metadata. Home and bio only so far.</div>
+            </div>
+            <div class="font">
+                <div class="font-head"><span class="font-name">IBM Plex Sans Arabic</span><span class="flag core">core</span></div>
+                <div class="specimen f-plexar" dir="rtl">&#1610;&#1575;&#1587;&#1605;&#1610;&#1606; &#1576;&#1575;&#1587;&#1610;&#1604;</div>
+                <div class="font-use"><strong>Role:</strong> Arabic on bio.</div>
+            </div>
+            <div class="font">
+                <div class="font-head"><span class="font-name">Noto Sans Arabic</span><span class="flag stray">older pages</span></div>
+                <div class="specimen f-notoar" dir="rtl">&#1610;&#1575;&#1587;&#1605;&#1610;&#1606; &#1576;&#1575;&#1587;&#1610;&#1604;</div>
+                <div class="font-use"><strong>Role:</strong> Arabic on thoughts, creative and defense. Does the same job as IBM Plex Sans Arabic.</div>
+            </div>
+            <div class="font">
+                <div class="font-head"><span class="font-name">DM Sans</span><span class="flag stray">older pages</span></div>
+                <div class="specimen f-dmsans" style="font-weight:500">neuroscientist. research leader.</div>
+                <div class="alphabet f-dmsans">Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz 0123456789</div>
+                <div class="font-use"><strong>Role:</strong> body text on thoughts, creative and defense. Does the same job as Satoshi.</div>
+            </div>
+            <div class="font">
+                <div class="font-head"><span class="font-name">Caveat</span><span class="flag trial">sample only</span></div>
+                <div class="specimen f-caveat">The science and the scientist are intertwined.</div>
+                <div class="alphabet f-caveat" style="font-size:1.25rem">Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz 0123456789</div>
+                <div class="font-use"><strong>Role:</strong> handwritten notes on the bio sample. Not on the live site.</div>
+            </div>
+        </div>
+
+        <!-- ============ 05 Body fonts compared ============ -->
+        <h2><span class="num">05</span> The two body fonts, same paragraph</h2>
+        <p class="sub">Satoshi and DM Sans are both in use for running text, depending on the page.</p>
+        <div class="versus">
+            <div>
+                <span class="mono">Satoshi &mdash; home, bio, cv, research</span>
+                <p class="f-satoshi">Neuroscientist by trade, with a parallel record in program and partnership management &mdash; from lab research programs to nonprofits, hackathons, and graduate organizations. 110+ participants, 15+ team members, $260K+.</p>
+            </div>
+            <div>
+                <span class="mono">DM Sans &mdash; thoughts, creative, defense</span>
+                <p class="f-dmsans">Neuroscientist by trade, with a parallel record in program and partnership management &mdash; from lab research programs to nonprofits, hackathons, and graduate organizations. 110+ participants, 15+ team members, $260K+.</p>
+            </div>
+        </div>
+
+        <!-- ============ 06 Roles in context ============ -->
+        <h2><span class="num">06</span> The core system in use</h2>
+        <p class="sub">How the four core fonts and the accent are meant to work together.</p>
+        <div class="roles">
+            <div class="role"><span class="role-k">Wordmark<br>Fraunces 600</span><div class="r-wordmark">yasmine bassil<span>, phd</span></div></div>
+            <div class="role"><span class="role-k">Headline (bio sample)<br>Fraunces 600 + italic accent</span><div class="r-headline">Building the <em>structures and systems</em> that support neuroscience research.</div></div>
+            <div class="role"><span class="role-k">Lead sentence<br>Cormorant Garamond 400</span><div class="r-lead">Most of what I'm proudest of started as a gap someone else had learned to live with.</div></div>
+            <div class="role"><span class="role-k">Body<br>Satoshi 400, 17px</span><div class="r-body">I'm a cognitive neuroscientist who recently completed my PhD in Neuroscience at Emory University. As an <a href="#">NSF Graduate Research Fellow</a>, I studied how aging changes the brain's navigation systems.</div></div>
+            <div class="role"><span class="role-k">Nav<br>IBM Plex Mono caps</span><div class="r-nav"><span>home</span><span class="on">bio</span><span>cv</span><span>research</span><span>thoughts</span><span>creative</span></div></div>
+            <div class="role"><span class="role-k">Label and badge<br>IBM Plex Mono caps</span><div><span class="mono" style="margin-right:1.25rem">education &amp; training</span><span class="r-badge">open to work &middot; open to relocation</span></div></div>
+            <div class="role"><span class="role-k">Arabic<br>IBM Plex Sans Arabic</span><div class="r-ar" dir="rtl">&#1610;&#1575;&#1587;&#1605;&#1610;&#1606; &#1576;&#1575;&#1587;&#1610;&#1604;</div></div>
+        </div>
+
+        <!-- ============ 07 Page by page ============ -->
+        <h2><span class="num">07</span> Page by page</h2>
+        <p class="sub">What each page actually uses today. Orange text marks where a page departs from home and bio.</p>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr><th>Page</th><th>Accent</th><th>Body font</th><th>Nav links</th><th>Labels</th><th>Base size</th><th>Arabic</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>home</td><td><span class="dot" style="background:#6B5B8E"></span>#6B5B8E <span class="off">+ #766FE2 dots</span></td><td>Satoshi</td><td>Plex Mono caps</td><td>Plex Mono</td><td>17px</td><td>&mdash;</td></tr>
+                    <tr><td>bio</td><td><span class="dot" style="background:#6B5B8E"></span>#6B5B8E</td><td>Satoshi</td><td>Plex Mono caps</td><td>Plex Mono</td><td>17px</td><td>Plex Sans Arabic</td></tr>
+                    <tr><td>cv</td><td class="off"><span class="dot" style="background:#7671C4"></span>#7671C4</td><td>Satoshi</td><td class="off">Satoshi, lowercase</td><td class="off">no mono</td><td class="off">16px</td><td>&mdash;</td></tr>
+                    <tr><td>research</td><td><span class="dot" style="background:#6B5B8E"></span>#6B5B8E</td><td>Satoshi</td><td class="off">Satoshi, lowercase</td><td class="off">no mono</td><td class="off">16px</td><td>&mdash;</td></tr>
+                    <tr><td>thoughts</td><td><span class="dot" style="background:#6B5B8E"></span>#6B5B8E</td><td class="off">DM Sans</td><td class="off">DM Sans, lowercase</td><td class="off">no mono</td><td class="off">16px</td><td class="off">Noto Sans Arabic</td></tr>
+                    <tr><td>creative</td><td class="off"><span class="dot" style="background:#C4755B"></span>#C4755B terracotta</td><td class="off">DM Sans</td><td class="off">DM Sans, lowercase</td><td class="off">no mono</td><td class="off">16px</td><td class="off">Noto Sans Arabic</td></tr>
+                    <tr><td>defense</td><td class="off"><span class="dot" style="background:#C4755B"></span>#C4755B + olive</td><td class="off">DM Sans</td><td class="off">DM Sans, lowercase</td><td class="off">no mono</td><td class="off">16px</td><td class="off">Noto Sans Arabic</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ============ 08 To align ============ -->
+        <h2><span class="num">08</span> What to align</h2>
+        <p class="sub">The decisions that would bring the whole site onto one system, roughly in order of how visible they are.</p>
+        <ol class="todo">
+            <li><strong>Pick one purple.</strong> Choose between the site purple <code>#6B5B8E</code> and the in-between trial <code>#6C618A</code>, then replace the cv's <code>#7671C4</code> with it. The cv is the page recruiters read, and it is currently the furthest from the rest.</li>
+            <li><strong>Pick one body font.</strong> Satoshi is on four pages and DM Sans on three. Moving thoughts, creative and defense to Satoshi is the smaller change.</li>
+            <li><strong>Use one nav everywhere.</strong> Home and bio have the small mono capitals; the other pages still have the older lowercase nav, so the header visibly changes as you click around.</li>
+            <li><strong>Decide what terracotta is for.</strong> It is a hover colour on home, the main accent on creative, and on research and thoughts the variable with that name is really a grey.</li>
+            <li><strong>Use one Arabic font.</strong> IBM Plex Sans Arabic on bio, Noto Sans Arabic elsewhere.</li>
+            <li><strong>Use one base text size.</strong> 17px on home and bio, 16px on the rest.</li>
+            <li><strong>Decide on the homepage particle colour.</strong> <code>#766FE2</code> matches the brain photo rather than the site purple. Keeping it is reasonable, as long as it is a deliberate exception.</li>
+        </ol>
+
+        <!-- ============ 09 Colour check + directions ============ -->
+        <h2 id="directions"><span class="num">09</span> Colour check and three directions</h2>
+        <p class="sub">A check of the current colours against standard practice, then three palettes that aim for fresh but grounded and mature. Contrast ratios are measured against Paper (#FEFBFD); the accessibility standard (WCAG AA) asks for at least 4.5:1 for normal-size text and 3:1 for large text.</p>
+
+        <ul class="principles">
+            <li><strong>Text needs enough contrast.</strong> Anything used for small text or links should reach 4.5:1 against the background. Two current colours do not.</li>
+            <li><strong>Roughly 60 / 30 / 10.</strong> About 60% neutral background, 30% text and structure, 10% accent. The accent reads as confident when it is rare.</li>
+            <li><strong>One accent means one thing.</strong> A single colour for links and emphasis, so readers learn that colour = clickable or important. A second colour only for small labels.</li>
+            <li><strong>Depth reads as maturity.</strong> Darker, slightly desaturated colours look more grounded than bright ones; freshness comes from a clean near-white background and one clear hue, not from brightness.</li>
+            <li><strong>Colour is never the only signal.</strong> Links keep an underline as well as a colour, which your site already does.</li>
+        </ul>
+
+        <div class="table-wrap" style="margin-bottom:2.5rem;">
+            <table>
+                <thead><tr><th>Current colour</th><th>Contrast on paper</th><th>Small text / links</th><th>Note</th></tr></thead>
+                <tbody>
+                    <tr><td><span class="dot" style="background:#6B5B8E"></span>Purple #6B5B8E</td><td class="num-cell">5.8 : 1</td><td class="pass">passes</td><td>Fine as it is.</td></tr>
+                    <tr><td><span class="dot" style="background:#6C618A"></span>In-between #6C618A</td><td class="num-cell">5.5 : 1</td><td class="pass">passes</td><td>Greying it lowered contrast slightly.</td></tr>
+                    <tr><td><span class="dot" style="background:#7671C4"></span>CV purple #7671C4</td><td class="num-cell">4.1 : 1</td><td class="fail">falls short</td><td>Used for links and headings on the cv.</td></tr>
+                    <tr><td><span class="dot" style="background:#C4755B"></span>Terracotta #C4755B</td><td class="num-cell">3.4 : 1</td><td class="fail">falls short</td><td>Fine for large type and decoration, not for small text.</td></tr>
+                    <tr><td><span class="dot" style="background:#5C6B54"></span>Olive #5C6B54</td><td class="num-cell">5.5 : 1</td><td class="pass">passes</td><td></td></tr>
+                    <tr><td><span class="dot" style="background:#5C5552"></span>Muted #5C5552</td><td class="num-cell">7.1 : 1</td><td class="pass">passes</td><td></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="options">
+            <div class="option" style="--o-accent:#574780; --o-second:#566B58; --o-tint:rgba(87, 71, 128, 0.09); --o-line:rgba(87, 71, 128, 0.35);">
+                <div class="option-head"><span class="option-name">Plum &amp; sage</span><span class="flag core">recommended</span></div>
+                <div class="option-row">
+                    <div style="background:#574780">plum<br>#574780</div>
+                    <div style="background:#566B58">sage<br>#566B58</div>
+                    <div style="background:#2C2825">ink<br>#2C2825</div>
+                    <div class="lt" style="background:#FEFBFD; border-left:1px solid var(--rule-soft)">paper<br>#FEFBFD</div>
+                </div>
+                <div class="preview">
+                    <span class="p-label">05 Education &amp; Training</span>
+                    <div class="p-head">Building the <em>structures and systems</em> that support research.</div>
+                    <p class="p-body">As an <a href="#">NSF Graduate Research Fellow</a>, I studied how aging changes the brain's navigation systems.</p>
+                    <span class="p-badge">open to work &middot; open to relocation</span>
+                    <div class="p-card"><b>Navigation Research Program</b><span>2020 &mdash; 2026 &middot; Founder</span></div>
+                </div>
+                <div class="option-note"><strong>Contrast on paper:</strong> plum 7.8:1, sage 5.6:1.<br>Your purple, one step deeper. Keeps the link to the brain photo and reads more serious. Sage for small labels; terracotta stays only in the flower motif.</div>
+            </div>
+            <div class="option" style="--o-accent:#2F4F7F; --o-second:#9A5A38; --o-tint:rgba(47, 79, 127, 0.08); --o-line:rgba(47, 79, 127, 0.35);">
+                <div class="option-head"><span class="option-name">Cobalt &amp; clay</span><span class="flag trial">alternative</span></div>
+                <div class="option-row">
+                    <div style="background:#2F4F7F">cobalt<br>#2F4F7F</div>
+                    <div style="background:#9A5A38">clay<br>#9A5A38</div>
+                    <div style="background:#2C2825">ink<br>#2C2825</div>
+                    <div class="lt" style="background:#FEFBFD; border-left:1px solid var(--rule-soft)">paper<br>#FEFBFD</div>
+                </div>
+                <div class="preview">
+                    <span class="p-label">05 Education &amp; Training</span>
+                    <div class="p-head">Building the <em>structures and systems</em> that support research.</div>
+                    <p class="p-body">As an <a href="#">NSF Graduate Research Fellow</a>, I studied how aging changes the brain's navigation systems.</p>
+                    <span class="p-badge">open to work &middot; open to relocation</span>
+                    <div class="p-card"><b>Navigation Research Program</b><span>2020 &mdash; 2026 &middot; Founder</span></div>
+                </div>
+                <div class="option-note"><strong>Contrast on paper:</strong> cobalt 8.0:1, clay 5.3:1.<br>Taken from the Lebanese coffee-cup pattern already in your flower motif. The most conventional and institutional of the three; purple would remain only in the photo.</div>
+            </div>
+            <div class="option" style="--o-accent:#2F5D50; --o-second:#574780; --o-tint:rgba(47, 93, 80, 0.08); --o-line:rgba(47, 93, 80, 0.35);">
+                <div class="option-head"><span class="option-name">Pine &amp; plum</span><span class="flag trial">alternative</span></div>
+                <div class="option-row">
+                    <div style="background:#2F5D50">pine<br>#2F5D50</div>
+                    <div style="background:#574780">plum<br>#574780</div>
+                    <div style="background:#2C2825">ink<br>#2C2825</div>
+                    <div class="lt" style="background:#FEFBFD; border-left:1px solid var(--rule-soft)">paper<br>#FEFBFD</div>
+                </div>
+                <div class="preview">
+                    <span class="p-label">05 Education &amp; Training</span>
+                    <div class="p-head">Building the <em>structures and systems</em> that support research.</div>
+                    <p class="p-body">As an <a href="#">NSF Graduate Research Fellow</a>, I studied how aging changes the brain's navigation systems.</p>
+                    <span class="p-badge">open to work &middot; open to relocation</span>
+                    <div class="p-card"><b>Navigation Research Program</b><span>2020 &mdash; 2026 &middot; Founder</span></div>
+                </div>
+                <div class="option-note"><strong>Contrast on paper:</strong> pine 7.3:1, plum 7.8:1.<br>The freshest of the three and a nod to the plants. Purple steps back to labels. The biggest departure from the current site.</div>
+            </div>
+        </div>
+
+        <!-- ============ 10 Directions built on oxblood and moss ============ -->
+        <h2 id="deep"><span class="num">10</span> Six more, built on your two colours</h2>
+        <p class="sub">Oxblood <code>#301014</code> and moss <code>#243119</code> are both very dark (16.9:1 and 13.4:1 on paper, close to black). That makes them strong as the deep anchor &mdash; headlines and filled blocks &mdash; but they cannot be the link colour on their own, because a link in either would look the same as body text. So each option pairs them with a mid-tone accent for links and emphasis.</p>
+        <div class="swatches" style="margin-bottom:1.75rem; grid-template-columns: repeat(3, minmax(0, 14rem));">
+            <div class="swatch"><div class="chip" style="background:#301014">oxblood</div><div class="swatch-body"><div class="swatch-name">Oxblood</div><div class="swatch-hex">#301014</div><div class="swatch-use">Yours. A very dark wine-brown; the natural deep end of clay and terracotta.</div></div></div>
+            <div class="swatch"><div class="chip" style="background:#44181D">oxblood, lighter</div><div class="swatch-body"><div class="swatch-name">Oxblood, a tad lighter</div><div class="swatch-hex">#44181D</div><div class="swatch-use">Same hue, a step lighter. Used in the three oxblood options below.</div></div></div>
+            <div class="swatch"><div class="chip" style="background:#243119">moss</div><div class="swatch-body"><div class="swatch-name">Moss</div><div class="swatch-hex">#243119</div><div class="swatch-use">Yours. A very dark green; the natural deep end of sage and olive.</div></div></div>
+        </div>
+        <div class="options two-up">
+            <div class="option deep" style="--o-deep:#243119; --o-accent:#574780; --o-second:#566B58; --o-tint:rgba(87, 71, 128, 0.09); --o-line:rgba(87, 71, 128, 0.35);">
+                <div class="option-head"><span class="option-name">Plum, sage &amp; moss</span><span class="flag core">closest to plum &amp; sage</span></div>
+                <div class="option-row">
+                    <div style="background:#243119">moss<br>#243119</div>
+                    <div style="background:#574780">plum<br>#574780</div>
+                    <div style="background:#566B58">sage<br>#566B58</div>
+                    <div class="lt" style="background:#FEFBFD; border-left:1px solid var(--rule-soft)">paper<br>#FEFBFD</div>
+                </div>
+                <div class="preview">
+                    <span class="p-label">05 Education &amp; Training</span>
+                    <div class="p-head">Building the <em>structures and systems</em> that support research.</div>
+                    <p class="p-body">As an <a href="#">NSF Graduate Research Fellow</a>, I studied how aging changes the brain's navigation systems.</p>
+                    <span class="p-badge">open to work &middot; open to relocation</span>
+                    <div class="p-card"><b>Navigation Research Program</b><span>2020 &mdash; 2026 &middot; Founder</span></div>
+                </div>
+                <div class="option-note"><strong>Contrast on paper:</strong> moss 13.4:1, plum 7.8:1, sage 5.6:1.<br>Plum &amp; sage with moss as its deep. Moss and sage are the same green at two depths, so this adds weight without adding a new hue.</div>
+            </div>
+            <div class="option deep" style="--o-deep:#44181D; --o-accent:#2F4F7F; --o-second:#9A5A38; --o-tint:rgba(47, 79, 127, 0.09); --o-line:rgba(47, 79, 127, 0.35);">
+                <div class="option-head"><span class="option-name">Cobalt, clay &amp; oxblood</span><span class="flag trial">closest to cobalt &amp; clay</span></div>
+                <div class="option-row">
+                    <div style="background:#44181D">oxblood<br>#44181D</div>
+                    <div style="background:#2F4F7F">cobalt<br>#2F4F7F</div>
+                    <div style="background:#9A5A38">clay<br>#9A5A38</div>
+                    <div class="lt" style="background:#FEFBFD; border-left:1px solid var(--rule-soft)">paper<br>#FEFBFD</div>
+                </div>
+                <div class="preview">
+                    <span class="p-label">05 Education &amp; Training</span>
+                    <div class="p-head">Building the <em>structures and systems</em> that support research.</div>
+                    <p class="p-body">As an <a href="#">NSF Graduate Research Fellow</a>, I studied how aging changes the brain's navigation systems.</p>
+                    <span class="p-badge">open to work &middot; open to relocation</span>
+                    <div class="p-card"><b>Navigation Research Program</b><span>2020 &mdash; 2026 &middot; Founder</span></div>
+                </div>
+                <div class="option-note"><strong>Contrast on paper:</strong> oxblood 14.7:1, cobalt 8.0:1, clay 5.2:1.<br>Cobalt &amp; clay with oxblood as its deep. Oxblood and clay are the same warm family, so the blue stays the only cool note.</div>
+            </div>
+            <div class="option deep" style="--o-deep:#44181D; --o-accent:#7B2D3B; --o-second:#3F5230; --o-tint:rgba(123, 45, 59, 0.09); --o-line:rgba(123, 45, 59, 0.35);">
+                <div class="option-head"><span class="option-name">Oxblood &amp; moss</span><span class="flag trial">both of yours</span></div>
+                <div class="option-row">
+                    <div style="background:#44181D">oxblood<br>#44181D</div>
+                    <div style="background:#7B2D3B">wine<br>#7B2D3B</div>
+                    <div style="background:#3F5230">moss-light<br>#3F5230</div>
+                    <div class="lt" style="background:#FEFBFD; border-left:1px solid var(--rule-soft)">paper<br>#FEFBFD</div>
+                </div>
+                <div class="preview">
+                    <span class="p-label">05 Education &amp; Training</span>
+                    <div class="p-head">Building the <em>structures and systems</em> that support research.</div>
+                    <p class="p-body">As an <a href="#">NSF Graduate Research Fellow</a>, I studied how aging changes the brain's navigation systems.</p>
+                    <span class="p-badge">open to work &middot; open to relocation</span>
+                    <div class="p-card"><b>Navigation Research Program</b><span>2020 &mdash; 2026 &middot; Founder</span></div>
+                </div>
+                <div class="option-note"><strong>Contrast on paper:</strong> oxblood 14.7:1, wine 9.0:1, moss-light 8.3:1.<br>Both of your colours, with a wine drawn from oxblood for links and a lighter moss for labels. Earthy and distinctive; no purple, so the furthest from the brain photo. Kept this dark, the red-and-green pairing reads as earth rather than festive.</div>
+            </div>
+            <div class="option deep" style="--o-deep:#44181D; --o-accent:#574780; --o-second:#8A5A52; --o-tint:rgba(87, 71, 128, 0.09); --o-line:rgba(87, 71, 128, 0.35);">
+                <div class="option-head"><span class="option-name">Oxblood &amp; plum</span><span class="flag trial">warm take on purple</span></div>
+                <div class="option-row">
+                    <div style="background:#44181D">oxblood<br>#44181D</div>
+                    <div style="background:#574780">plum<br>#574780</div>
+                    <div style="background:#8A5A52">rosewood<br>#8A5A52</div>
+                    <div class="lt" style="background:#FEFBFD; border-left:1px solid var(--rule-soft)">paper<br>#FEFBFD</div>
+                </div>
+                <div class="preview">
+                    <span class="p-label">05 Education &amp; Training</span>
+                    <div class="p-head">Building the <em>structures and systems</em> that support research.</div>
+                    <p class="p-body">As an <a href="#">NSF Graduate Research Fellow</a>, I studied how aging changes the brain's navigation systems.</p>
+                    <span class="p-badge">open to work &middot; open to relocation</span>
+                    <div class="p-card"><b>Navigation Research Program</b><span>2020 &mdash; 2026 &middot; Founder</span></div>
+                </div>
+                <div class="option-note"><strong>Contrast on paper:</strong> oxblood 14.7:1, plum 7.8:1, rosewood 5.6:1.<br>Keeps purple as the accent but swaps the neutral charcoal for oxblood, with a muted rosewood for labels. Warmer and richer than plum &amp; sage.</div>
+            </div>
+            <div class="option deep" style="--o-deep:#44181D; --o-accent:#574780; --o-second:#566B58; --o-tint:rgba(87, 71, 128, 0.09); --o-line:rgba(87, 71, 128, 0.35);">
+                <div class="option-head"><span class="option-name">Oxblood, plum &amp; sage</span><span class="flag trial">requested</span></div>
+                <div class="option-row">
+                    <div style="background:#44181D">oxblood<br>#44181D</div>
+                    <div style="background:#574780">plum<br>#574780</div>
+                    <div style="background:#566B58">sage<br>#566B58</div>
+                    <div class="lt" style="background:#FEFBFD; border-left:1px solid var(--rule-soft)">paper<br>#FEFBFD</div>
+                </div>
+                <div class="preview">
+                    <span class="p-label">05 Education &amp; Training</span>
+                    <div class="p-head">Building the <em>structures and systems</em> that support research.</div>
+                    <p class="p-body">As an <a href="#">NSF Graduate Research Fellow</a>, I studied how aging changes the brain's navigation systems.</p>
+                    <span class="p-badge">open to work &middot; open to relocation</span>
+                    <div class="p-card"><b>Navigation Research Program</b><span>2020 &mdash; 2026 &middot; Founder</span></div>
+                </div>
+                <div class="option-note"><strong>Contrast on paper:</strong> oxblood 14.7:1, plum 7.8:1, sage 5.6:1.<br>Plum &amp; sage with oxblood as its deep in place of charcoal. Sage gives the eye a rest between the two red-leaning colours, but oxblood and plum still sit side by side in every headline.</div>
+            </div>
+            <div class="option deep" style="--o-deep:#44181D; --o-accent:#7B2D3B; --o-second:#566B58; --o-tint:rgba(123, 45, 59, 0.09); --o-line:rgba(123, 45, 59, 0.35);">
+                <div class="option-head"><span class="option-name">Oxblood &amp; sage</span><span class="flag core">what I would pair it with</span></div>
+                <div class="option-row">
+                    <div style="background:#44181D">oxblood<br>#44181D</div>
+                    <div style="background:#7B2D3B">wine<br>#7B2D3B</div>
+                    <div style="background:#566B58">sage<br>#566B58</div>
+                    <div class="lt" style="background:#FEFBFD; border-left:1px solid var(--rule-soft)">paper<br>#FEFBFD</div>
+                </div>
+                <div class="preview">
+                    <span class="p-label">05 Education &amp; Training</span>
+                    <div class="p-head">Building the <em>structures and systems</em> that support research.</div>
+                    <p class="p-body">As an <a href="#">NSF Graduate Research Fellow</a>, I studied how aging changes the brain's navigation systems.</p>
+                    <span class="p-badge">open to work &middot; open to relocation</span>
+                    <div class="p-card"><b>Navigation Research Program</b><span>2020 &mdash; 2026 &middot; Founder</span></div>
+                </div>
+                <div class="option-note"><strong>Contrast on paper:</strong> oxblood 14.7:1, wine 9.0:1, sage 5.6:1.<br>Oxblood leads on its own: wine, a lighter step of the same colour, for links, and sage as the one contrasting hue. Green is the natural opposite of red, so each makes the other look cleaner. No purple.</div>
+            </div>
+        </div>
+
+        <!-- ============ 11 Oxblood & sage, completed ============ -->
+        <h2 id="system"><span class="num">11</span> Oxblood &amp; sage, completed</h2>
+        <p class="sub">The chosen direction with the supporting colours it needs. The three additions come from outside the current site: a warmer page background, a blush tint for soft panels, and an optional ochre for tiny highlights.</p>
+        <div class="swatches" style="margin-bottom:1.75rem;">
+            <div class="swatch"><div class="chip" style="background:#44181D">oxblood</div><div class="swatch-body"><div class="swatch-name">Oxblood</div><div class="swatch-hex">#44181D</div><div class="swatch-use">Headlines, filled blocks, the logo.</div></div></div>
+            <div class="swatch"><div class="chip" style="background:#7B2D3B">wine</div><div class="swatch-body"><div class="swatch-name">Wine</div><div class="swatch-hex">#7B2D3B</div><div class="swatch-use">Links and emphasis. The one interactive colour.</div></div></div>
+            <div class="swatch"><div class="chip" style="background:#566B58">sage</div><div class="swatch-body"><div class="swatch-name">Sage</div><div class="swatch-hex">#566B58</div><div class="swatch-use">Small labels and section numbers.</div></div></div>
+            <div class="swatch"><div class="chip dark-text" style="background:#FAF7F2">bone</div><div class="swatch-body"><div class="swatch-name">Bone (new)</div><div class="swatch-hex">#FAF7F2</div><div class="swatch-use">Page background. A warm off-white in place of the pink-tinted one.</div></div></div>
+            <div class="swatch"><div class="chip dark-text" style="background:#F3E6E3">blush</div><div class="swatch-body"><div class="swatch-name">Blush (new)</div><div class="swatch-hex">#F3E6E3</div><div class="swatch-use">Soft panels, badges, the area behind a card. Oxblood thinned right down.</div></div></div>
+            <div class="swatch"><div class="chip" style="background:#2B2224">ink</div><div class="swatch-body"><div class="swatch-name">Warm ink</div><div class="swatch-hex">#2B2224</div><div class="swatch-use">Body text. Charcoal nudged toward oxblood.</div></div></div>
+            <div class="swatch"><div class="chip" style="background:#5E5557">muted</div><div class="swatch-body"><div class="swatch-name">Warm grey</div><div class="swatch-hex">#5E5557</div><div class="swatch-use">Secondary text.</div></div></div>
+            <div class="swatch"><div class="chip" style="background:#A9812F">ochre</div><div class="swatch-body"><div class="swatch-name">Ochre (optional)</div><div class="swatch-hex">#A9812F</div><div class="swatch-use">Decoration only: a status dot, a rule, the flower motif. Too light for text.</div></div></div>
+        </div>
+        <div class="options two-up">
+            <div class="option deep" style="background:#FEFBFD; --o-deep:#44181D; --o-accent:#7B2D3B; --o-second:#566B58; --o-tint:rgba(123, 45, 59, 0.09); --o-line:rgba(123, 45, 59, 0.35);">
+                <div class="option-head"><span class="option-name">On the current paper</span><span class="flag trial">#FEFBFD</span></div>
+                <div class="preview">
+                    <span class="p-label">05 Education &amp; Training</span>
+                    <div class="p-head">Building the <em>structures and systems</em> that support research.</div>
+                    <p class="p-body" style="color:#5E5557">As an <a href="#">NSF Graduate Research Fellow</a>, I studied how aging changes the brain's navigation systems using neuroimaging, neurostimulation, and virtual reality.</p>
+                    <span class="p-badge">open to work &middot; open to relocation</span>
+                    <div class="p-card"><b>Navigation Research Program</b><span>2020 &mdash; 2026 &middot; Founder</span></div>
+                </div>
+                <div class="option-note">The background the site has now. It has a faint pink-lilac cast that was chosen to sit with purple.</div>
+            </div>
+            <div class="option deep" style="background:#FAF7F2; --o-deep:#44181D; --o-accent:#7B2D3B; --o-second:#566B58; --o-tint:#F3E6E3; --o-line:rgba(123, 45, 59, 0.35);">
+                <div class="option-head"><span class="option-name">On bone, with blush and ochre</span><span class="flag core">recommended</span></div>
+                <div class="preview">
+                    <span class="p-label">05 Education &amp; Training</span>
+                    <div class="p-head">Building the <em>structures and systems</em> that support research.</div>
+                    <p class="p-body" style="color:#5E5557">As an <a href="#">NSF Graduate Research Fellow</a>, I studied how aging changes the brain's navigation systems using neuroimaging, neurostimulation, and virtual reality.</p>
+                    <span class="p-badge"><span style="display:inline-block;width:0.5rem;height:0.5rem;border-radius:50%;background:#A9812F;margin-right:0.45rem;vertical-align:1px"></span>open to work &middot; open to relocation</span>
+                    <div class="p-card"><b>Navigation Research Program</b><span>2020 &mdash; 2026 &middot; Founder</span></div>
+                </div>
+                <div class="option-note">Warm off-white background, blush badge, ochre dot. Contrast on bone: wine 8.6:1, sage 5.4:1, warm grey 6.7:1.</div>
+            </div>
+        </div>
+
+        <!-- ============ 12 Purples for oxblood & sage ============ -->
+        <h2 id="purples"><span class="num">12</span> Purples to pair with oxblood &amp; sage</h2>
+        <p class="sub">Oxblood and sage held constant; only the purple changes. Plum leans blue, which is why it competes with oxblood. Purples that lean red sit closer to oxblood and read as part of the same family.</p>
+        <div class="options">
+            <div class="option deep" style="--o-deep:#44181D; --o-accent:#574780; --o-second:#566B58; --o-tint:rgba(87, 71, 128, 0.09); --o-line:rgba(87, 71, 128, 0.35);">
+                <div class="option-head"><span class="option-name">Plum</span><span class="flag trial">current, for reference</span></div>
+                <div class="option-row">
+                    <div style="background:#44181D">oxblood<br>#44181D</div>
+                    <div style="background:#574780">plum<br>#574780</div>
+                    <div style="background:#566B58">sage<br>#566B58</div>
+                    <div class="lt" style="background:#FEFBFD; border-left:1px solid var(--rule-soft)">paper<br>#FEFBFD</div>
+                </div>
+                <div class="preview">
+                    <span class="p-label">05 Education &amp; Training</span>
+                    <div class="p-head">Building the <em>structures and systems</em> that support research.</div>
+                    <p class="p-body">As an <a href="#">NSF Graduate Research Fellow</a>, I studied how aging changes the brain's navigation systems.</p>
+                    <span class="p-badge">open to work &middot; open to relocation</span>
+                    <div class="p-card"><b>Navigation Research Program</b><span>2020 &mdash; 2026 &middot; Founder</span></div>
+                </div>
+                <div class="option-note"><strong>Contrast on paper:</strong> plum 7.8:1.<br>A blue-leaning purple. It shares little with oxblood, which is why the two compete.</div>
+            </div>
+            <div class="option deep" style="--o-deep:#44181D; --o-accent:#6E3358; --o-second:#566B58; --o-tint:rgba(110, 51, 88, 0.09); --o-line:rgba(110, 51, 88, 0.35);">
+                <div class="option-head"><span class="option-name">Mulberry</span><span class="flag core">my pick</span></div>
+                <div class="option-row">
+                    <div style="background:#44181D">oxblood<br>#44181D</div>
+                    <div style="background:#6E3358">mulberry<br>#6E3358</div>
+                    <div style="background:#566B58">sage<br>#566B58</div>
+                    <div class="lt" style="background:#FEFBFD; border-left:1px solid var(--rule-soft)">paper<br>#FEFBFD</div>
+                </div>
+                <div class="preview">
+                    <span class="p-label">05 Education &amp; Training</span>
+                    <div class="p-head">Building the <em>structures and systems</em> that support research.</div>
+                    <p class="p-body">As an <a href="#">NSF Graduate Research Fellow</a>, I studied how aging changes the brain's navigation systems.</p>
+                    <span class="p-badge">open to work &middot; open to relocation</span>
+                    <div class="p-card"><b>Navigation Research Program</b><span>2020 &mdash; 2026 &middot; Founder</span></div>
+                </div>
+                <div class="option-note"><strong>Contrast on paper:</strong> mulberry 9.0:1.<br>A red-leaning purple that sits halfway between oxblood and plum, so the two read as one family. Still clearly purple.</div>
+            </div>
+            <div class="option deep" style="--o-deep:#44181D; --o-accent:#6E3358; --o-second:#4F5285; --o-tint:rgba(110, 51, 88, 0.09); --o-line:rgba(110, 51, 88, 0.35);">
+                <div class="option-head"><span class="option-name">Oxblood, mulberry &amp; slate violet</span><span class="flag trial">requested</span></div>
+                <div class="option-row">
+                    <div style="background:#44181D">oxblood<br>#44181D</div>
+                    <div style="background:#6E3358">mulberry<br>#6E3358</div>
+                    <div style="background:#4F5285">slate violet<br>#4F5285</div>
+                    <div class="lt" style="background:#FEFBFD; border-left:1px solid var(--rule-soft)">paper<br>#FEFBFD</div>
+                </div>
+                <div class="preview">
+                    <span class="p-label">05 Education &amp; Training</span>
+                    <div class="p-head">Building the <em>structures and systems</em> that support research.</div>
+                    <p class="p-body">As an <a href="#">NSF Graduate Research Fellow</a>, I studied how aging changes the brain's navigation systems.</p>
+                    <span class="p-badge">open to work &middot; open to relocation</span>
+                    <div class="p-card"><b>Navigation Research Program</b><span>2020 &mdash; 2026 &middot; Founder</span></div>
+                </div>
+                <div class="option-note"><strong>Contrast on paper:</strong> oxblood 14.7:1, mulberry 9.0:1, slate violet 7.1:1.<br>No sage: slate violet takes the labels. The three run in one sweep from red through purple to blue, so it is cohesive and moody, with no opposite colour to freshen it.</div>
+            </div>
+            <div class="option deep" style="--o-deep:#44181D; --o-accent:#5E2F5A; --o-second:#566B58; --o-tint:rgba(94, 47, 90, 0.09); --o-line:rgba(94, 47, 90, 0.35);">
+                <div class="option-head"><span class="option-name">Aubergine</span><span class="flag trial">deeper</span></div>
+                <div class="option-row">
+                    <div style="background:#44181D">oxblood<br>#44181D</div>
+                    <div style="background:#5E2F5A">aubergine<br>#5E2F5A</div>
+                    <div style="background:#566B58">sage<br>#566B58</div>
+                    <div class="lt" style="background:#FEFBFD; border-left:1px solid var(--rule-soft)">paper<br>#FEFBFD</div>
+                </div>
+                <div class="preview">
+                    <span class="p-label">05 Education &amp; Training</span>
+                    <div class="p-head">Building the <em>structures and systems</em> that support research.</div>
+                    <p class="p-body">As an <a href="#">NSF Graduate Research Fellow</a>, I studied how aging changes the brain's navigation systems.</p>
+                    <span class="p-badge">open to work &middot; open to relocation</span>
+                    <div class="p-card"><b>Navigation Research Program</b><span>2020 &mdash; 2026 &middot; Founder</span></div>
+                </div>
+                <div class="option-note"><strong>Contrast on paper:</strong> aubergine 10.1:1.<br>A touch more violet than mulberry and darker. Rich, but the closest in depth to oxblood, so emphasis stands out least.</div>
+            </div>
+            <div class="option deep" style="--o-deep:#44181D; --o-accent:#7D5876; --o-second:#566B58; --o-tint:rgba(125, 88, 118, 0.09); --o-line:rgba(125, 88, 118, 0.35);">
+                <div class="option-head"><span class="option-name">Mauve</span><span class="flag trial">softer</span></div>
+                <div class="option-row">
+                    <div style="background:#44181D">oxblood<br>#44181D</div>
+                    <div style="background:#7D5876">mauve<br>#7D5876</div>
+                    <div style="background:#566B58">sage<br>#566B58</div>
+                    <div class="lt" style="background:#FEFBFD; border-left:1px solid var(--rule-soft)">paper<br>#FEFBFD</div>
+                </div>
+                <div class="preview">
+                    <span class="p-label">05 Education &amp; Training</span>
+                    <div class="p-head">Building the <em>structures and systems</em> that support research.</div>
+                    <p class="p-body">As an <a href="#">NSF Graduate Research Fellow</a>, I studied how aging changes the brain's navigation systems.</p>
+                    <span class="p-badge">open to work &middot; open to relocation</span>
+                    <div class="p-card"><b>Navigation Research Program</b><span>2020 &mdash; 2026 &middot; Founder</span></div>
+                </div>
+                <div class="option-note"><strong>Contrast on paper:</strong> mauve 5.8:1.<br>Mulberry greyed and lightened. The gentlest of the set; links are quieter, and it is the nearest to the contrast minimum.</div>
+            </div>
+            <div class="option deep" style="--o-deep:#44181D; --o-accent:#6B5C7C; --o-second:#566B58; --o-tint:rgba(107, 92, 124, 0.09); --o-line:rgba(107, 92, 124, 0.35);">
+                <div class="option-head"><span class="option-name">Heather</span><span class="flag trial">greyer</span></div>
+                <div class="option-row">
+                    <div style="background:#44181D">oxblood<br>#44181D</div>
+                    <div style="background:#6B5C7C">heather<br>#6B5C7C</div>
+                    <div style="background:#566B58">sage<br>#566B58</div>
+                    <div class="lt" style="background:#FEFBFD; border-left:1px solid var(--rule-soft)">paper<br>#FEFBFD</div>
+                </div>
+                <div class="preview">
+                    <span class="p-label">05 Education &amp; Training</span>
+                    <div class="p-head">Building the <em>structures and systems</em> that support research.</div>
+                    <p class="p-body">As an <a href="#">NSF Graduate Research Fellow</a>, I studied how aging changes the brain's navigation systems.</p>
+                    <span class="p-badge">open to work &middot; open to relocation</span>
+                    <div class="p-card"><b>Navigation Research Program</b><span>2020 &mdash; 2026 &middot; Founder</span></div>
+                </div>
+                <div class="option-note"><strong>Contrast on paper:</strong> heather 5.9:1.<br>Plum with most of the blue taken out. Neutral enough not to fight oxblood, but also the least characterful.</div>
+            </div>
+            <div class="option deep" style="--o-deep:#44181D; --o-accent:#4F5285; --o-second:#566B58; --o-tint:rgba(79, 82, 133, 0.09); --o-line:rgba(79, 82, 133, 0.35);">
+                <div class="option-head"><span class="option-name">Slate violet</span><span class="flag trial">cooler</span></div>
+                <div class="option-row">
+                    <div style="background:#44181D">oxblood<br>#44181D</div>
+                    <div style="background:#4F5285">slate violet<br>#4F5285</div>
+                    <div style="background:#566B58">sage<br>#566B58</div>
+                    <div class="lt" style="background:#FEFBFD; border-left:1px solid var(--rule-soft)">paper<br>#FEFBFD</div>
+                </div>
+                <div class="preview">
+                    <span class="p-label">05 Education &amp; Training</span>
+                    <div class="p-head">Building the <em>structures and systems</em> that support research.</div>
+                    <p class="p-body">As an <a href="#">NSF Graduate Research Fellow</a>, I studied how aging changes the brain's navigation systems.</p>
+                    <span class="p-badge">open to work &middot; open to relocation</span>
+                    <div class="p-card"><b>Navigation Research Program</b><span>2020 &mdash; 2026 &middot; Founder</span></div>
+                </div>
+                <div class="option-note"><strong>Contrast on paper:</strong> slate violet 7.1:1.<br>The opposite approach: push the purple toward blue so it reads as a deliberate cool contrast, the way cobalt does.</div>
+            </div>
+        </div>
+
+        <!-- ============ 13 Backgrounds for oxblood & sage ============ -->
+        <h2 id="backgrounds"><span class="num">13</span> Backgrounds instead of bone</h2>
+        <p class="sub">The same oxblood, wine and sage on six page backgrounds. Bone gets its warmth from yellow; the alternatives stay near white or take their tint from the palette itself.</p>
+        <div class="options">
+            <div class="option deep" style="background:#FAF7F2; --o-deep:#44181D; --o-accent:#7B2D3B; --o-second:#566B58; --o-tint:#F3E6E3; --o-line:rgba(123, 45, 59, 0.35);">
+                <div class="option-head"><span class="option-name">Bone</span><span class="flag trial">for reference</span></div>
+                <div class="preview">
+                    <span class="p-label">05 Education &amp; Training</span>
+                    <div class="p-head">Building the <em>structures and systems</em> that support research.</div>
+                    <p class="p-body" style="color:#5E5557">As an <a href="#">NSF Graduate Research Fellow</a>, I studied how aging changes the brain's navigation systems.</p>
+                    <span class="p-badge">open to work &middot; open to relocation</span>
+                    <div class="p-card"><b>Navigation Research Program</b><span>2020 &mdash; 2026 &middot; Founder</span></div>
+                </div>
+                <div class="option-note"><strong>#FAF7F2</strong> &middot; wine 8.6:1, sage 5.4:1.<br>The one in question. Its warmth comes from yellow, which is what can read as aged or coffee-stained.</div>
+            </div>
+            <div class="option deep" style="background:#FBFAF8; --o-deep:#44181D; --o-accent:#7B2D3B; --o-second:#566B58; --o-tint:#F3E6E3; --o-line:rgba(123, 45, 59, 0.35);">
+                <div class="option-head"><span class="option-name">Porcelain</span><span class="flag core">my pick</span></div>
+                <div class="preview">
+                    <span class="p-label">05 Education &amp; Training</span>
+                    <div class="p-head">Building the <em>structures and systems</em> that support research.</div>
+                    <p class="p-body" style="color:#5E5557">As an <a href="#">NSF Graduate Research Fellow</a>, I studied how aging changes the brain's navigation systems.</p>
+                    <span class="p-badge">open to work &middot; open to relocation</span>
+                    <div class="p-card"><b>Navigation Research Program</b><span>2020 &mdash; 2026 &middot; Founder</span></div>
+                </div>
+                <div class="option-note"><strong>#FBFAF8</strong> &middot; wine 8.8:1, sage 5.5:1.<br>Almost white, with only a trace of warmth. Clean and bright; oxblood still looks rich on it without the page looking tinted.</div>
+            </div>
+            <div class="option deep" style="background:#FCF8F7; --o-deep:#44181D; --o-accent:#7B2D3B; --o-second:#566B58; --o-tint:#F3E6E3; --o-line:rgba(123, 45, 59, 0.35);">
+                <div class="option-head"><span class="option-name">Shell</span><span class="flag trial">rose-white</span></div>
+                <div class="preview">
+                    <span class="p-label">05 Education &amp; Training</span>
+                    <div class="p-head">Building the <em>structures and systems</em> that support research.</div>
+                    <p class="p-body" style="color:#5E5557">As an <a href="#">NSF Graduate Research Fellow</a>, I studied how aging changes the brain's navigation systems.</p>
+                    <span class="p-badge">open to work &middot; open to relocation</span>
+                    <div class="p-card"><b>Navigation Research Program</b><span>2020 &mdash; 2026 &middot; Founder</span></div>
+                </div>
+                <div class="option-note"><strong>#FCF8F7</strong> &middot; wine 8.7:1, sage 5.5:1.<br>Warmth from a hint of oxblood rather than yellow, so it ties to the palette and cannot read as stained. Slightly pink at large sizes.</div>
+            </div>
+            <div class="option deep" style="background:#F7F9F6; --o-deep:#44181D; --o-accent:#7B2D3B; --o-second:#566B58; --o-tint:#F3E6E3; --o-line:rgba(123, 45, 59, 0.35);">
+                <div class="option-head"><span class="option-name">Sage white</span><span class="flag trial">green-white</span></div>
+                <div class="preview">
+                    <span class="p-label">05 Education &amp; Training</span>
+                    <div class="p-head">Building the <em>structures and systems</em> that support research.</div>
+                    <p class="p-body" style="color:#5E5557">As an <a href="#">NSF Graduate Research Fellow</a>, I studied how aging changes the brain's navigation systems.</p>
+                    <span class="p-badge">open to work &middot; open to relocation</span>
+                    <div class="p-card"><b>Navigation Research Program</b><span>2020 &mdash; 2026 &middot; Founder</span></div>
+                </div>
+                <div class="option-note"><strong>#F7F9F6</strong> &middot; wine 8.7:1, sage 5.4:1.<br>A whisper of sage. The freshest option, and oxblood looks its sharpest against it; a little cooler in mood.</div>
+            </div>
+            <div class="option deep" style="background:#F5F4F2; --o-deep:#44181D; --o-accent:#7B2D3B; --o-second:#566B58; --o-tint:#F3E6E3; --o-line:rgba(123, 45, 59, 0.35);">
+                <div class="option-head"><span class="option-name">Stone</span><span class="flag trial">soft grey</span></div>
+                <div class="preview">
+                    <span class="p-label">05 Education &amp; Training</span>
+                    <div class="p-head">Building the <em>structures and systems</em> that support research.</div>
+                    <p class="p-body" style="color:#5E5557">As an <a href="#">NSF Graduate Research Fellow</a>, I studied how aging changes the brain's navigation systems.</p>
+                    <span class="p-badge">open to work &middot; open to relocation</span>
+                    <div class="p-card"><b>Navigation Research Program</b><span>2020 &mdash; 2026 &middot; Founder</span></div>
+                </div>
+                <div class="option-note"><strong>#F5F4F2</strong> &middot; wine 8.4:1, sage 5.2:1.<br>A pale neutral grey. The most understated and conventional; white cards on top of it stand out clearly.</div>
+            </div>
+            <div class="option deep" style="background:#FFFFFF; --o-deep:#44181D; --o-accent:#7B2D3B; --o-second:#566B58; --o-tint:#F3E6E3; --o-line:rgba(123, 45, 59, 0.35);">
+                <div class="option-head"><span class="option-name">White</span><span class="flag trial">pure</span></div>
+                <div class="preview">
+                    <span class="p-label">05 Education &amp; Training</span>
+                    <div class="p-head">Building the <em>structures and systems</em> that support research.</div>
+                    <p class="p-body" style="color:#5E5557">As an <a href="#">NSF Graduate Research Fellow</a>, I studied how aging changes the brain's navigation systems.</p>
+                    <span class="p-badge">open to work &middot; open to relocation</span>
+                    <div class="p-card"><b>Navigation Research Program</b><span>2020 &mdash; 2026 &middot; Founder</span></div>
+                </div>
+                <div class="option-note"><strong>#FFFFFF</strong> &middot; wine 9.2:1, sage 5.8:1.<br>The crispest and most neutral. Highest contrast, but it loses the softness the site has now.</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
