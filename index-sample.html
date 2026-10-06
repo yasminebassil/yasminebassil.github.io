@@ -173,22 +173,6 @@
         .copy-btn { background: none; border: none; cursor: pointer; color: var(--olive); padding: 0.2rem; display: flex; align-items: center; }
         .copy-btn:hover { opacity: 0.7; }
 
-        /* ---------- Particles (hero only) ---------- */
-        .particles { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 50; pointer-events: none; overflow: hidden; }
-        .particle { position: absolute; border-radius: 50%; opacity: 0; animation: float-explode linear infinite; }
-        .particle.olive { background: rgba(92, 107, 84, 0.9); box-shadow: 0 0 4px rgba(92, 107, 84, 0.6); }
-        .particle.terracotta { background: rgba(196, 117, 91, 0.85); box-shadow: 0 0 4px rgba(196, 117, 91, 0.6); }
-        .particle.muted { background: rgba(92, 85, 82, 0.8); box-shadow: 0 0 4px rgba(92, 85, 82, 0.5); }
-        .particle.purple { background: rgba(118, 111, 226, 0.9); box-shadow: 0 0 4px rgba(118, 111, 226, 0.6); }
-        @keyframes float-explode {
-            0%   { opacity: 1; transform: translateY(0) translateX(0) scale(0.3); box-shadow: 0 0 2px #766fe2; }
-            40%  { opacity: 1; transform: translateY(-20vh) translateX(calc(var(--drift) * 0.4)) scale(0.5); box-shadow: 0 0 4px #766fe2; }
-            50%  { opacity: 1; transform: translateY(-25vh) translateX(calc(var(--drift) * 0.5)) scale(0.8); box-shadow: 0 0 8px #766fe2, 0 0 15px #766fe2; }
-            65%  { opacity: 0.8; transform: translateY(-32vh) translateX(calc(var(--drift) * 0.65)) scale(1.2); box-shadow: 0 0 12px #766fe2, 0 0 25px #766fe2; }
-            100% { opacity: 0; transform: translateY(-45vh) translateX(var(--drift)) scale(1.5); box-shadow: 0 0 40px transparent; }
-        }
-
-
         footer {
             position: absolute;
             left: 0; right: 0; bottom: 1.25rem;
@@ -227,9 +211,6 @@
             .hero-links { justify-content: center; }
         }
 
-        @media (prefers-reduced-motion: reduce) {
-            .particle { animation: none; }
-        }
     </style>
 </head>
 <body>
@@ -251,20 +232,6 @@
 
     <main class="hero">
         <div class="hero-bg"></div>
-        <div class="particles">
-        <div class="particle terracotta" style="left: 52%; top: 45%; width: 6px; height: 6px; --drift: -80px; animation-duration: 4s; animation-delay: -1s;"></div>
-        <div class="particle terracotta" style="left: 50%; top: 45%; width: 5px; height: 5px; --drift: 100px; animation-duration: 5s; animation-delay: -3s;"></div>
-        <div class="particle purple" style="left: 51%; top: 45%; width: 7px; height: 7px; --drift: -50px; animation-duration: 6s; animation-delay: -2s;"></div>
-        <div class="particle olive" style="left: 51%; top: 45%; width: 4px; height: 4px; --drift: 70px; animation-duration: 4.5s; animation-delay: -4s;"></div>
-        <div class="particle terracotta" style="left: 52%; top: 45%; width: 6px; height: 6px; --drift: -90px; animation-duration: 5.5s; animation-delay: -1.5s;"></div>
-        <div class="particle muted" style="left: 50%; top: 45%; width: 5px; height: 5px; --drift: 85px; animation-duration: 4s; animation-delay: -3.5s;"></div>
-        <div class="particle terracotta" style="left: 52%; top: 45%; width: 8px; height: 8px; --drift: -110px; animation-duration: 6.5s; animation-delay: -2.5s;"></div>
-        <div class="particle terracotta" style="left: 52%; top: 45%; width: 4px; height: 4px; --drift: 95px; animation-duration: 5s; animation-delay: -4.5s;"></div>
-        <div class="particle purple" style="left: 51%; top: 45%; width: 6px; height: 6px; --drift: -65px; animation-duration: 4.5s; animation-delay: -1s;"></div>
-        <div class="particle olive" style="left: 51%; top: 45%; width: 5px; height: 5px; --drift: 55px; animation-duration: 5.5s; animation-delay: -3s;"></div>
-        <div class="particle terracotta" style="left: 52%; top: 45%; width: 7px; height: 7px; --drift: -110px; animation-duration: 6s; animation-delay: -2s;"></div>
-        <div class="particle muted" style="left: 50%; top: 45%; width: 4px; height: 4px; --drift: 40px; animation-duration: 4s; animation-delay: -4s;"></div>
-    </div>
         <div class="hero-content">
             <h1 class="hero-name">
                 <span class="wordmark"><span class="wm-line">yasmine</span><span class="wm-line">bassil<span class="wm-phd">, phd</span></span></span>
