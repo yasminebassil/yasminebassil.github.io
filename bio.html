@@ -229,10 +229,10 @@
         .prose a:hover, .rail a:hover { border-bottom-color: var(--mulberry); }
 
         /* a quote in a speech bubble, its tail pointing at the portrait, with a paragraph beside it */
-        .quote-pair { display: grid; grid-template-columns: 18rem minmax(0, 1fr); gap: 2.25rem; align-items: start; max-width: 56rem; }
+        .quote-pair { display: grid; grid-template-columns: 20.5rem minmax(0, 1fr); gap: 2.25rem; align-items: start; }
         .bubble { position: relative; background: var(--blush); border-radius: 16px; padding: 1.05rem 1.2rem 1.15rem; }
         .bubble::after { content: ''; position: absolute; left: 1.55rem; bottom: -8px; width: 18px; height: 18px; background: var(--blush); transform: rotate(45deg); border-radius: 3px; }
-        .prose .bubble p { font-family: var(--display); font-style: italic; font-size: 1.2rem; line-height: 1.35; color: var(--oxblood); }
+        .prose .bubble p { font-family: var(--display); font-style: italic; font-size: 1.2rem; line-height: 1.35; color: var(--oxblood); text-wrap: balance; }
         .bubble-who { display: flex; align-items: center; gap: 0.6rem; margin: 1rem 0 0 0.6rem; }
         .bubble-who img { width: 46px; height: 46px; border-radius: 50%; object-fit: cover; }
         .bubble-who span { font-family: var(--meta); font-size: 0.62rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
@@ -261,6 +261,7 @@
             align-items: start;
         }
         .split .prose { max-width: 44rem; }
+        .split .prose.wide { max-width: none; }
         .prose p.pull {
             font-family: var(--display);
             font-size: 1.75rem;
@@ -566,14 +567,6 @@
                         <p>Program and partnership roles in research institutes and science philanthropy.</p>
                     </div>
                     <div class="rail-item">
-                        <span class="num-label">At A Glance</span>
-                        <ul>
-                            <li><span class="k">originally from</span>Smar Jbeil, Batroun, Lebanon</li>
-                            <li><span class="k">pronouns</span>she/her &middot; &#1607;&#1610;</li>
-                            <li><span class="k">languages</span>English, Arabic, French</li>
-                        </ul>
-                    </div>
-                    <div class="rail-item">
                         <span class="num-label">Get In Touch</span>
                         <p>Say hello.<br><a href="#bio-contact">Places you can find me &darr;</a></p>
                     </div>
@@ -582,14 +575,26 @@
 
             <!-- 01 An aside -->
             <div class="section-head num-label" id="bio-aside"><span class="num">01</span> An Aside</div>
-            <div class="prose">
-                <div class="quote-pair">
-                    <div>
-                        <div class="bubble"><p>Often, we're encouraged to separate personal and professional identities, but science is inevitably shaped by the person conducting it.</p></div>
-                        <div class="bubble-who"><img src="img/profile.jpg" alt=""><span>yasmine</span></div>
+            <div class="split">
+                <div class="prose wide">
+                    <div class="quote-pair">
+                        <div>
+                            <div class="bubble"><p>Often, we're encouraged to separate personal and professional identities, but science is inevitably shaped by the person conducting it.</p></div>
+                            <div class="bubble-who"><img src="img/profile.jpg" alt=""><span>yasmine</span></div>
+                        </div>
+                        <p>As an Atlanta-based Lebanese scientist, plant enthusiast, amateur chef, musician, and community member, I believe science and life are better when we show up authentically as whole people &mdash; so feel free to explore a more holistic introduction of myself below.</p>
                     </div>
-                    <p>As an Atlanta-based Lebanese scientist, plant enthusiast, amateur chef, musician, and community member, I believe science and life are better when we show up authentically as whole people &mdash; so feel free to explore a more holistic introduction of myself below.</p>
                 </div>
+                <aside class="rail">
+                    <div class="rail-item">
+                        <span class="num-label">At A Glance</span>
+                        <ul>
+                            <li><span class="k">originally from</span>Smar Jbeil, Batroun, Lebanon</li>
+                            <li><span class="k">pronouns</span>she/her &middot; &#1607;&#1610;</li>
+                            <li><span class="k">languages</span>English, Arabic, French</li>
+                        </ul>
+                    </div>
+                </aside>
             </div>
 
             <!-- 02 Education -->
