@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Name card lab &mdash; Yasmine Bassil</title>
+    <!-- Temporary playground for the bio page's author card. Not linked from the site. -->
+    <meta name="robots" content="noindex">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&f[]=satoshi@400i&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Noto+Naskh+Arabic:wght@500;600;700&family=Markazi+Text:wght@500;600;700&family=Aref+Ruqaa:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/site.css">
+    <style>
+        body { background: var(--paper-warm); }
+        .sheet { max-width: 1000px; margin: 3rem auto 5rem; background: var(--paper); border-radius: 12px; padding: 2.5rem 3rem 3.5rem; box-shadow: 0 12px 32px rgba(43, 34, 36, 0.06); }
+        h1 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 2rem; color: var(--oxblood); letter-spacing: -0.015em; }
+        .intro { color: var(--muted); max-width: 40rem; margin-top: 0.4rem; }
+        .variant { margin-top: 2.75rem; padding-top: 1.4rem; border-top: 1px solid var(--rule); }
+        .v-title { font-family: var(--meta); font-size: 0.74rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink); }
+        .v-title b { color: var(--mulberry); font-weight: 600; margin-right: 0.5rem; }
+        .v-note { font-size: 0.88rem; color: var(--muted); margin: 0.25rem 0 0; max-width: 42rem; }
+        .stage { max-width: 46rem; padding: 2.4rem 0 1.4rem; }
+        .num-label { display: block; font-family: var(--meta); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mulberry); margin-bottom: 0.7rem; }
+
+        /* ---------- shared pieces ---------- */
+        .card { position: relative; }
+        .names { display: flex; align-items: baseline; flex-wrap: wrap; gap: 0.3rem 1.25rem; color: var(--oxblood); }
+        .nm-en { font-family: 'Fraunces', serif; font-variation-settings: 'SOFT' 45, 'WONK' 1; font-weight: 600; font-size: 1.65rem; line-height: 1.2; letter-spacing: -0.02em; }
+        .nm-en .phd { font-size: 0.62em; letter-spacing: 0.02em; color: var(--mulberry); }
+        .nm-ar { font-family: var(--arabic); font-weight: 500; font-size: 1.45rem; line-height: 1.2; }
+        .pron { font-family: var(--display); font-weight: 400; font-size: 1rem; letter-spacing: 0; color: var(--muted); }
+        .nm-ar .pron { font-family: var(--arabic); font-size: 0.85rem; }
+        .star { color: var(--mulberry); font-size: 1.1rem; }
+        .role { margin-top: 0.55rem; font-size: 1.02rem; color: var(--mulberry); }
+        .photo { border-radius: 50%; object-fit: cover; border: 4px solid var(--paper); }
+        .pill { display: inline-flex; align-items: center; gap: 0.55rem; font-family: var(--meta); font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: #fff; background: var(--sage); border-radius: 999px; padding: 0.5rem 1rem; white-space: nowrap; }
+        .pill i { width: 7px; height: 7px; border-radius: 50%; background: #A9D6A4; }
+
+        /* ---------- A: before ---------- */
+        .vA .card { display: flex; align-items: center; gap: 1.25rem; max-width: 30rem; padding: 0.9rem 1.1rem; border: 1px solid var(--mulberry); border-radius: 4px; }
+        .vA img { width: 92px; height: 92px; border-radius: 8px; object-fit: cover; flex-shrink: 0; }
+        .vA .a-name { font-family: 'Fraunces', serif; font-weight: 600; font-size: 1.2rem; line-height: 1.3; }
+        .vA .a-name span { font-family: var(--arabic); font-weight: 500; font-size: 1rem; color: var(--muted); margin-left: 0.5rem; }
+        .vA .a-role { font-family: var(--meta); font-size: 0.72rem; color: var(--sage); margin-top: 0.3rem; }
+        .vA .a-badge { display: inline-block; margin-top: 0.6rem; font-family: var(--meta); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mulberry); border-radius: 999px; padding: 0.25rem 0.7rem; background: var(--blush); }
+
+        /* ---------- B: current ---------- */
+        .vB .card, .vF .card { padding: 1.5rem 1.6rem 1.7rem; background: var(--blush); border: 1px solid rgba(110, 51, 88, 0.3); border-radius: 10px; }
+        .vB .photo { position: absolute; top: -1.6rem; right: 1.4rem; width: 124px; height: 124px; }
+        .vB .names, .vB .role { padding-right: 150px; }
+        .vB .names { justify-content: space-between; }
+        .vB .pill, .vF .pill, .vE .pill { position: absolute; right: 1.75rem; bottom: -0.95rem; }
+
+        /* ---------- C: portrait on the left edge, names stacked ---------- */
+        .vC .stage { padding-left: 1.75rem; }
+        .vC .card { padding: 1.3rem 1.6rem 1.4rem 6.6rem; border: 1px solid rgba(110, 51, 88, 0.45); border-radius: 10px; max-width: 38rem; }
+        .vC .photo { position: absolute; left: -1.75rem; top: 50%; transform: translateY(-50%); width: 116px; height: 116px; }
+        .vC .names { flex-direction: column; gap: 0.15rem; }
+        .vC .ar-row { display: flex; align-items: baseline; gap: 0.7rem; }
+        .vC .pill { position: absolute; right: 1.5rem; top: -0.95rem; }
+
+        /* ---------- D: no box ---------- */
+        .vD .card { display: flex; align-items: center; gap: 1.5rem; }
+        .vD .photo { width: 104px; height: 104px; border: none; flex-shrink: 0; }
+        .vD .text { flex: 1; }
+        .vD .rule { width: 3.25rem; height: 2px; background: var(--mulberry); margin-top: 0.9rem; }
+        .vD .pill { margin-top: 0.9rem; }
+
+        /* ---------- E: oxblood panel ---------- */
+        .vE .card { padding: 1.5rem 1.6rem 1.8rem; background: var(--oxblood); border-radius: 10px; }
+        .vE .photo { position: absolute; top: -1.6rem; right: 1.4rem; width: 124px; height: 124px; }
+        .vE .names, .vE .role { padding-right: 150px; }
+        .vE .names { justify-content: space-between; color: #fff; }
+        .vE .nm-en .phd, .vE .star, .vE .role { color: var(--blush); }
+        .vE .pron { color: rgba(255, 255, 255, 0.7); }
+
+        /* ---------- F: closest to the old card ---------- */
+        .vF .photo { position: absolute; top: -2.2rem; right: -1.2rem; width: 156px; height: 156px; }
+        .vF .names, .vF .role, .vF .line { padding-right: 150px; }
+        .vF .names { justify-content: space-between; }
+        .vF .line { margin-top: 0.7rem; font-style: italic; font-size: 0.98rem; line-height: 1.55; color: var(--ink); }
+        .vF .stage { padding-right: 1.2rem; }
+
+        /* ---------- shared: a hairline in place of the star ---------- */
+        .bar { display: inline-block; width: 1px; height: 1.25em; background: var(--mulberry); opacity: 0.6; align-self: center; }
+
+        /* ---------- G: masthead ---------- */
+        .vG .card { display: grid; grid-template-columns: 150px 1fr; max-width: 40rem; border: 1px solid rgba(110, 51, 88, 0.45); border-radius: 10px; overflow: hidden; }
+        .vG img { width: 100%; height: 100%; min-height: 190px; object-fit: cover; display: block; }
+        .vG .text { padding: 1.4rem 1.6rem 1.5rem; }
+        .vG .names { flex-direction: column; gap: 0.1rem; }
+        .vG .pill { margin-top: 1rem; }
+
+        /* ---------- H: banner ---------- */
+        .vH .card { max-width: 40rem; border: 1px solid var(--rule); border-radius: 10px; }
+        .vH .band { height: 62px; background: var(--oxblood); border-radius: 9px 9px 0 0; }
+        .vH .photo { position: absolute; left: 1.5rem; top: 16px; width: 100px; height: 100px; }
+        .vH .text { padding: 0.9rem 1.6rem 1.4rem 9.2rem; }
+        .vH .pill { position: absolute; right: 1.25rem; top: 16px; }
+
+        /* ---------- I: bilingual lockup ---------- */
+        .vI .card { display: flex; align-items: center; gap: 1.75rem; }
+        .vI .photo { width: 100px; height: 100px; border: none; flex-shrink: 0; }
+        .vI .lock { display: inline-flex; flex-direction: column; color: var(--oxblood); }
+        .vI .lock .nm-en { font-size: 1.9rem; }
+        .vI .lock .nm-ar { font-size: 1.75rem; text-align: right; }
+        .vI .lock hr { border: none; height: 1px; background: var(--mulberry); margin: 0.45rem 0 0.35rem; }
+        .vI .side { padding-left: 1.75rem; border-left: 1px solid var(--rule); }
+        .vI .role { margin-top: 0; max-width: 13.5rem; line-height: 1.45; font-weight: 500; }
+        /* tighter pill: same type size, less padding and letter-spacing */
+        .vI .pill { margin-top: 0.8rem; padding: 0.3rem 0.7rem; letter-spacing: 0.06em; gap: 0.4rem; }
+
+        /* ---------- J: byline ---------- */
+        .vJ .card { display: flex; align-items: center; gap: 1.1rem; padding: 0.95rem 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+        .vJ .photo { width: 60px; height: 60px; border: none; flex-shrink: 0; }
+        .vJ .nm-en { font-size: 1.3rem; }
+        .vJ .nm-ar { font-size: 1.15rem; }
+        .vJ .names { gap: 0.2rem 0.9rem; }
+        .vJ .role { margin-top: 0.15rem; font-size: 0.92rem; }
+        .vJ .pill { margin-left: auto; }
+
+        /* ---------- I, in different Arabic typefaces ---------- */
+        .ar-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2.25rem 2.5rem; padding: 2rem 0 0.5rem; }
+        .ar-opt .cap { font-family: var(--meta); font-size: 0.64rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-top: 0.9rem; line-height: 1.6; }
+        .ar-opt .cap b { color: var(--ink); font-weight: 600; }
+        .lock2 { display: inline-flex; flex-direction: column; color: var(--oxblood); }
+        .lock2 .nm-en { font-size: 1.9rem; }
+        .lock2 hr { border: none; height: 1px; background: var(--mulberry); margin: 0.45rem 0 0.3rem; }
+        .lock2 .ar { text-align: right; line-height: 1.3; }
+        .lock2 .ar .dr { color: var(--mulberry); font-size: 0.8em; }
+        .f-plex    { font-family: 'IBM Plex Sans Arabic', sans-serif; font-weight: 500; font-size: 1.75rem; }
+        .f-amiri   { font-family: 'Amiri', serif; font-weight: 700; font-size: 2.05rem; }
+        .f-naskh   { font-family: 'Noto Naskh Arabic', serif; font-weight: 600; font-size: 1.85rem; }
+        .f-markazi { font-family: 'Markazi Text', serif; font-weight: 600; font-size: 2.35rem; }
+        .f-ruqaa   { font-family: 'Aref Ruqaa', serif; font-weight: 700; font-size: 1.95rem; }
+
+        /* ---------- I, with phd set into the rule between the names ---------- */
+        .lock3 { display: inline-flex; flex-direction: column; color: var(--oxblood); }
+        .lock3 .nm-en { font-size: 1.9rem; }
+        .lock3 .ar { text-align: right; line-height: 1.3; }
+        .lock3 .mid { display: flex; align-items: center; gap: 0.6rem; margin: 0.3rem 0 0.05rem; }
+        .lock3 .mid::before, .lock3 .mid.centre::after { content: ''; flex: 1; height: 1px; background: var(--mulberry); }
+        .lock3 .mid span { font-family: 'Fraunces', serif; font-variation-settings: 'SOFT' 45, 'WONK' 1; font-weight: 600; font-size: 1.02rem; letter-spacing: 0.02em; line-height: 1; color: var(--mulberry); }
+        .lock3 .mid.caps span { font-family: var(--meta); font-weight: 500; font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; }
+    </style>
+</head>
+<body>
+    <div class="sheet">
+        <h1>Name card lab</h1>
+        <p class="intro">Ten versions of the author card from the bio page, each at the width it has there. A is what it was before; B is what the bio page has now; G to J borrow from patterns used elsewhere on the web. Tell me a letter, or mix parts (&ldquo;C&rsquo;s layout with E&rsquo;s colour&rdquo;).</p>
+
+        <section class="variant vA">
+            <div class="v-title"><b>A</b>Before: outlined box</div>
+            <p class="v-note">Square photo on the left, name and Arabic on one line, small typewriter tagline. The version closest to the reference site.</p>
+            <div class="stage">
+                <span class="num-label">00 The Author</span>
+                <div class="card">
+                    <img src="../img/profile.jpg" alt="">
+                    <div>
+                        <div class="a-name">Yasmine Bassil, PhD<span>&#1610;&#1575;&#1587;&#1605;&#1610;&#1606; &#1576;&#1575;&#1587;&#1610;&#1604;</span></div>
+                        <div class="a-role">neuroscientist. research leader. program builder.</div>
+                        <span class="a-badge">open to work &middot; open to relocation</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="variant vB">
+            <div class="v-title"><b>B</b>Current: blush panel</div>
+            <p class="v-note">Both names either side of the star, round portrait breaking out of the top corner, green pill hanging off the bottom edge.</p>
+            <div class="stage">
+                <span class="num-label">00 The Author</span>
+                <div class="card">
+                    <img src="../img/profile.jpg" alt="" class="photo">
+                    <p class="names">
+                        <span class="nm-en">yasmine bassil<span class="phd">, phd</span> <span class="pron">(she/her)</span></span>
+                        <span class="star">&#10022;</span>
+                        <span class="nm-ar" dir="rtl" lang="ar">&#1610;&#1575;&#1587;&#1605;&#1610;&#1606; &#1576;&#1575;&#1587;&#1610;&#1604; <span class="pron">(&#1607;&#1610;)</span></span>
+                    </p>
+                    <p class="role">neuroscientist. research leader. program builder.</p>
+                    <span class="pill"><i></i>open to work &middot; open to relocation</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="variant vC">
+            <div class="v-title"><b>C</b>Portrait on the left edge</div>
+            <p class="v-note">No fill, just a mulberry outline. The portrait overlaps the left edge, the names stack with the Arabic under the English, and the pill sits on the top edge.</p>
+            <div class="stage">
+                <span class="num-label">00 The Author</span>
+                <div class="card">
+                    <img src="../img/profile.jpg" alt="" class="photo">
+                    <div class="names">
+                        <span class="nm-en">yasmine bassil<span class="phd">, phd</span> <span class="pron">(she/her)</span></span>
+                        <span class="ar-row"><span class="star">&#10022;</span><span class="nm-ar" dir="rtl" lang="ar">&#1610;&#1575;&#1587;&#1605;&#1610;&#1606; &#1576;&#1575;&#1587;&#1610;&#1604; <span class="pron">(&#1607;&#1610;)</span></span></span>
+                    </div>
+                    <p class="role">neuroscientist. research leader. program builder.</p>
+                    <span class="pill"><i></i>open to work &middot; open to relocation</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="variant vD">
+            <div class="v-title"><b>D</b>No box at all</div>
+            <p class="v-note">The quietest option: portrait, names and tagline sit directly on the page with the pill underneath.</p>
+            <div class="stage">
+                <span class="num-label">00 The Author</span>
+                <div class="card">
+                    <img src="../img/profile.jpg" alt="" class="photo">
+                    <div class="text">
+                        <p class="names">
+                            <span class="nm-en">yasmine bassil<span class="phd">, phd</span> <span class="pron">(she/her)</span></span>
+                            <span class="star">&#10022;</span>
+                            <span class="nm-ar" dir="rtl" lang="ar">&#1610;&#1575;&#1587;&#1605;&#1610;&#1606; &#1576;&#1575;&#1587;&#1610;&#1604; <span class="pron">(&#1607;&#1610;)</span></span>
+                        </p>
+                        <p class="role">neuroscientist. research leader. program builder.</p>
+                        <span class="pill"><i></i>open to work &middot; open to relocation</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="variant vE">
+            <div class="v-title"><b>E</b>Oxblood panel</div>
+            <p class="v-note">Same layout as B, filled with oxblood. The boldest option; the names are white and the tagline blush.</p>
+            <div class="stage">
+                <span class="num-label">00 The Author</span>
+                <div class="card">
+                    <img src="../img/profile.jpg" alt="" class="photo">
+                    <p class="names">
+                        <span class="nm-en">yasmine bassil<span class="phd">, phd</span> <span class="pron">(she/her)</span></span>
+                        <span class="star">&#10022;</span>
+                        <span class="nm-ar" dir="rtl" lang="ar">&#1610;&#1575;&#1587;&#1605;&#1610;&#1606; &#1576;&#1575;&#1587;&#1610;&#1604; <span class="pron">(&#1607;&#1610;)</span></span>
+                    </p>
+                    <p class="role">neuroscientist. research leader. program builder.</p>
+                    <span class="pill"><i></i>open to work &middot; open to relocation</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="variant vF">
+            <div class="v-title"><b>F</b>Closest to your old card</div>
+            <p class="v-note">B with the italic line from the old card put back and a larger portrait hanging off the corner, as it did before.</p>
+            <div class="stage">
+                <span class="num-label">00 The Author</span>
+                <div class="card">
+                    <img src="../img/profile.jpg" alt="" class="photo">
+                    <p class="names">
+                        <span class="nm-en">yasmine bassil<span class="phd">, phd</span> <span class="pron">(she/her)</span></span>
+                        <span class="star">&#10022;</span>
+                        <span class="nm-ar" dir="rtl" lang="ar">&#1610;&#1575;&#1587;&#1605;&#1610;&#1606; &#1576;&#1575;&#1587;&#1610;&#1604; <span class="pron">(&#1607;&#1610;)</span></span>
+                    </p>
+                    <p class="role">neuroscientist. research leader. program builder.</p>
+                    <p class="line">passionate about structure &amp; systems. building accessible, equitable neuroscience research infrastructure, from a local to global scale.</p>
+                    <span class="pill"><i></i>open to work &middot; open to relocation</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="variant vG">
+            <div class="v-title"><b>G</b>Masthead</div>
+            <p class="v-note">From editorial team pages: the portrait is a tall strip along the card's left edge, with the names stacked beside it.</p>
+            <div class="stage">
+                <span class="num-label">00 The Author</span>
+                <div class="card">
+                    <img src="../img/profile.jpg" alt="">
+                    <div class="text">
+                        <div class="names"><span class="nm-en">yasmine bassil<span class="phd">, phd</span></span><span class="nm-ar" dir="rtl" lang="ar">&#1610;&#1575;&#1587;&#1605;&#1610;&#1606; &#1576;&#1575;&#1587;&#1610;&#1604;</span></div>
+                        <p class="role">neuroscientist. research leader. program builder.</p>
+                        <span class="pill"><i></i>open to work &middot; open to relocation</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="variant vH">
+            <div class="v-title"><b>H</b>Banner</div>
+            <p class="v-note">From profile cards with a header band: an oxblood strip across the top, the portrait overlapping it, the pill sitting in the band.</p>
+            <div class="stage">
+                <span class="num-label">00 The Author</span>
+                <div class="card">
+                    <div class="band"></div>
+                    <img src="../img/profile.jpg" alt="" class="photo">
+                    <span class="pill"><i></i>open to work &middot; open to relocation</span>
+                    <div class="text">
+                        <p class="names"><span class="nm-en">yasmine bassil<span class="phd">, phd</span></span><span class="bar"></span><span class="nm-ar" dir="rtl" lang="ar">&#1610;&#1575;&#1587;&#1605;&#1610;&#1606; &#1576;&#1575;&#1587;&#1610;&#1604;</span></p>
+                        <p class="role">neuroscientist. research leader. program builder.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="variant vI">
+            <div class="v-title"><b>I</b>Bilingual lockup</div>
+            <p class="v-note">From bilingual brand marks: the two names stacked as one unit at equal weight, joined by a single rule, with the tagline and pill set to the side.</p>
+            <div class="stage">
+                <span class="num-label">00 The Author</span>
+                <div class="card">
+                    <img src="../img/profile.jpg" alt="" class="photo">
+                    <div class="lock"><span class="nm-en">yasmine bassil<span class="phd">, phd</span></span><hr><span class="nm-ar" dir="rtl" lang="ar">&#1610;&#1575;&#1587;&#1605;&#1610;&#1606; &#1576;&#1575;&#1587;&#1610;&#1604;</span></div>
+                    <div class="side">
+                        <p class="role">neuroscientist. research leader. program builder.</p>
+                        <span class="pill"><i></i>open to work &middot; open to relocation</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="variant">
+            <div class="v-title"><b>I</b>The lockup in five Arabic typefaces, with the doctoral title</div>
+            <p class="v-note">The Arabic line now opens with &#1583;. (the standard abbreviation for &ldquo;Doctor&rdquo;), set in mulberry to mirror &ldquo;, phd&rdquo; above it. Same lockup each time; only the Arabic typeface changes.</p>
+            <div class="ar-grid">
+                <div class="ar-opt">
+                    <div class="lock2"><span class="nm-en">yasmine bassil<span class="phd">, phd</span></span><hr><span class="ar f-plex" dir="rtl" lang="ar"><span class="dr">&#1583;.</span> &#1610;&#1575;&#1587;&#1605;&#1610;&#1606; &#1576;&#1575;&#1587;&#1610;&#1604;</span></div>
+                    <div class="cap"><b>IBM Plex Sans Arabic</b><br>Current. Sans-serif.</div>
+                </div>
+                <div class="ar-opt">
+                    <div class="lock2"><span class="nm-en">yasmine bassil<span class="phd">, phd</span></span><hr><span class="ar f-amiri" dir="rtl" lang="ar"><span class="dr">&#1583;.</span> &#1610;&#1575;&#1587;&#1605;&#1610;&#1606; &#1576;&#1575;&#1587;&#1610;&#1604;</span></div>
+                    <div class="cap"><b>Amiri</b><br>Classical Naskh, modelled on book type.</div>
+                </div>
+                <div class="ar-opt">
+                    <div class="lock2"><span class="nm-en">yasmine bassil<span class="phd">, phd</span></span><hr><span class="ar f-naskh" dir="rtl" lang="ar"><span class="dr">&#1583;.</span> &#1610;&#1575;&#1587;&#1605;&#1610;&#1606; &#1576;&#1575;&#1587;&#1610;&#1604;</span></div>
+                    <div class="cap"><b>Noto Naskh Arabic</b><br>A plainer, modern Naskh.</div>
+                </div>
+                <div class="ar-opt">
+                    <div class="lock2"><span class="nm-en">yasmine bassil<span class="phd">, phd</span></span><hr><span class="ar f-markazi" dir="rtl" lang="ar"><span class="dr">&#1583;.</span> &#1610;&#1575;&#1587;&#1605;&#1610;&#1606; &#1576;&#1575;&#1587;&#1610;&#1604;</span></div>
+                    <div class="cap"><b>Markazi Text</b><br>Naskh drawn to pair with a Latin serif.</div>
+                </div>
+                <div class="ar-opt">
+                    <div class="lock2"><span class="nm-en">yasmine bassil<span class="phd">, phd</span></span><hr><span class="ar f-ruqaa" dir="rtl" lang="ar"><span class="dr">&#1583;.</span> &#1610;&#1575;&#1587;&#1605;&#1610;&#1606; &#1576;&#1575;&#1587;&#1610;&#1604;</span></div>
+                    <div class="cap"><b>Aref Ruqaa</b><br>Ruqaa: a handwritten, calligraphic style.</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="variant">
+            <div class="v-title"><b>I</b>The lockup with phd set into the rule</div>
+            <p class="v-note">The title moves off the English line and onto the line between the two names, so it belongs to both. Arabic shown in Amiri, with no &#1583;.</p>
+            <div class="ar-grid">
+                <div class="ar-opt">
+                    <div class="lock3"><span class="nm-en">yasmine bassil</span><div class="mid "><span>phd</span></div><span class="ar f-amiri" dir="rtl" lang="ar">&#1610;&#1575;&#1587;&#1605;&#1610;&#1606; &#1576;&#1575;&#1587;&#1610;&#1604;</span></div>
+                    <div class="cap"><b>At the end of the rule</b><br>The line runs across and finishes in the title.</div>
+                </div>
+                <div class="ar-opt">
+                    <div class="lock3"><span class="nm-en">yasmine bassil</span><div class="mid centre"><span>phd</span></div><span class="ar f-amiri" dir="rtl" lang="ar">&#1610;&#1575;&#1587;&#1605;&#1610;&#1606; &#1576;&#1575;&#1587;&#1610;&#1604;</span></div>
+                    <div class="cap"><b>Centred in the rule</b><br>The line breaks around the title.</div>
+                </div>
+                <div class="ar-opt">
+                    <div class="lock3"><span class="nm-en">yasmine bassil</span><div class="mid caps"><span>phd</span></div><span class="ar f-amiri" dir="rtl" lang="ar">&#1610;&#1575;&#1587;&#1605;&#1610;&#1606; &#1576;&#1575;&#1587;&#1610;&#1604;</span></div>
+                    <div class="cap"><b>At the end, in small capitals</b><br>Same position, set like your labels.</div>
+                </div>
+                <div class="ar-opt">
+                    <div class="lock3"><span class="nm-en">yasmine bassil</span><div class="mid centre caps"><span>phd</span></div><span class="ar f-amiri" dir="rtl" lang="ar">&#1610;&#1575;&#1587;&#1605;&#1610;&#1606; &#1576;&#1575;&#1587;&#1610;&#1604;</span></div>
+                    <div class="cap"><b>Centred, in small capitals</b><br></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="variant vJ">
+            <div class="v-title"><b>J</b>Byline &mdash; kept for the thoughts page</div>
+            <p class="v-note">From newspaper columnist bylines: one slim line between two hairlines, small portrait, a thin bar between the names in place of the star.</p>
+            <div class="stage">
+                <span class="num-label">00 The Author</span>
+                <div class="card">
+                    <img src="../img/profile.jpg" alt="" class="photo">
+                    <div>
+                        <p class="names"><span class="nm-en">yasmine bassil<span class="phd">, phd</span></span><span class="bar"></span><span class="nm-ar" dir="rtl" lang="ar">&#1610;&#1575;&#1587;&#1605;&#1610;&#1606; &#1576;&#1575;&#1587;&#1610;&#1604;</span></p>
+                        <p class="role">neuroscientist. research leader. program builder.</p>
+                    </div>
+                    <span class="pill"><i></i>open to work &middot; open to relocation</span>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

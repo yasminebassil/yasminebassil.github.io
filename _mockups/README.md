@@ -1,0 +1,15 @@
+# Mockups
+
+Scratch pages for trying designs before they go onto the real site. Nothing here is linked
+from the site, and GitHub Pages does not publish folders that start with an underscore.
+
+- `brand.html` — the brand sheet: the working colour set (section 00), the audit of colours
+  and fonts across the site, and the palette, purple and background options that led to it.
+- `namecard-lab.html` — versions of the author card for the bio page (A to J), the bilingual
+  lockup in different Arabic typefaces, and the lockup with "phd" set into the rule.
+- `logo-preview.html` — earlier logo and wordmark trials.
+
+## Decisions parked here
+
+- **Version J (byline) in `namecard-lab.html` is to be used on the thoughts page**, as the
+  author line for posts.
