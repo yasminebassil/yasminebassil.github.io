@@ -12,19 +12,18 @@
 
 /* ---------- Tokens ---------- */
 :root {
-    --paper:       #FEFBFD;
-    --paper-warm:  #F0EBE3;
-    --ink:         #2C2825;
-    --muted:       #5C5552;
-    --purple:      #6B5B8E;
-    --terracotta:  #C4755B;
-    --olive:       #5C6B54;
-    --cup-blue:    #3F6FA8;   /* the cobalt from the coffee cup pattern */
-    --cup-clay:    #B5714A;   /* the terracotta the flowers are drawn in */
+    --paper:       #FCFAF8;   /* porcelain; matches the sky in the homepage photo */
+    --paper-warm:  #F1EFEC;   /* a neutral step darker, for panels and the desk */
+    --ink:         #2B2224;
+    --muted:       #5E5557;
+    --oxblood:     #44181D;   /* headlines, the wordmark, the main filled blocks */
+    --mulberry:    #6E3358;   /* links and emphasis: the one interactive colour */
+    --sage:        #566B58;   /* small labels and section numbers */
+    --slate:       #4F5285;   /* slate violet: blocks and illustration only, never text */
+    --blush:       #F3E6E3;   /* soft panels and badges */
 
-    --rule:        rgba(44, 40, 37, 0.14);
-    --rule-soft:   rgba(44, 40, 37, 0.07);
-    --purple-soft: rgba(107, 91, 142, 0.10);
+    --rule:        rgba(43, 34, 36, 0.14);
+    --rule-soft:   rgba(43, 34, 36, 0.07);
 
     --display: 'Cormorant Garamond', Georgia, serif;
     --body:    'Satoshi', -apple-system, system-ui, sans-serif;
@@ -85,6 +84,9 @@ body {
     color: var(--muted);
 }
 
+/* display type is set in oxblood; body text stays ink */
+.display-xl, .display-l, .lead, .page-title h1 { color: var(--oxblood); }
+
 /* ---------- The reading spine ---------- */
 .spine {
     max-width: 1180px;
@@ -111,7 +113,7 @@ body {
     font-size: 0.6rem;
     text-transform: uppercase;
     letter-spacing: 0.18em;
-    color: var(--purple);
+    color: var(--mulberry);
     margin-bottom: 0.9rem;
 }
 .aside-list { list-style: none; }
@@ -128,20 +130,20 @@ body {
 }
 .aside-v { display: block; font-size: 0.88rem; line-height: 1.45; }
 .aside-v .sub { display: block; color: var(--muted); font-size: 0.82rem; }
-.aside-list a { color: var(--purple); text-decoration: none; border-bottom: 1px solid rgba(107,91,142,0.3); }
-.aside-list a:hover { border-bottom-color: var(--purple); }
+.aside-list a { color: var(--mulberry); text-decoration: none; border-bottom: 1px solid rgba(107,91,142,0.3); }
+.aside-list a:hover { border-bottom-color: var(--mulberry); }
 
 .section-prose > * + * { margin-top: 1.15rem; }
 .section-prose p { font-size: 1rem; }
 /* .section-prose p out-specifies .lead on its own, so restate it here */
 .section-prose p.lead { font-size: 1.85rem; }
 .section-prose a {
-    color: var(--purple);
+    color: var(--mulberry);
     text-decoration: none;
-    border-bottom: 1px solid rgba(107, 91, 142, 0.35);
+    border-bottom: 1px solid rgba(110, 51, 88, 0.35);
     transition: border-color 0.25s ease;
 }
-.section-prose a:hover { border-bottom-color: var(--purple); }
+.section-prose a:hover { border-bottom-color: var(--mulberry); }
 .section-prose strong { font-weight: 500; }
 
 /* ---------- The signature: arch + bilingual label ---------- */
@@ -165,9 +167,9 @@ body {
     stroke-linejoin: round;
     vector-effect: non-scaling-stroke;
 }
-.motif .petal { stroke: var(--cup-clay); stroke-width: 1.6; }
-.motif .stem  { stroke: var(--cup-blue); stroke-width: 1.6; }
-.motif .blade { fill: var(--cup-blue); stroke: none; }
+.motif .petal { stroke: var(--mulberry); stroke-width: 1.6; }
+.motif .stem  { stroke: var(--slate); stroke-width: 1.6; }
+.motif .blade { fill: var(--slate); stroke: none; }
 
 .label-en {
     font-family: var(--meta);
@@ -222,7 +224,7 @@ body {
     font-size: 0.63rem;
     text-transform: uppercase;
     letter-spacing: 0.16em;
-    color: var(--purple);
+    color: var(--mulberry);
     display: block;
     margin-bottom: 0.2rem;
     font-weight: 500;
@@ -272,17 +274,17 @@ body {
     font-size: 0.7rem;
     text-transform: uppercase;
     letter-spacing: 0.14em;
-    color: var(--purple);
+    color: var(--mulberry);
     text-decoration: none;
     border-bottom: 1px solid transparent;
     padding-bottom: 2px;
     transition: border-color 0.25s ease;
 }
-.invitation-links a:hover { border-bottom-color: var(--purple); }
+.invitation-links a:hover { border-bottom-color: var(--mulberry); }
 
 /* ---------- Pull quote / aside ---------- */
 .aside {
-    border-left: 2px solid var(--purple-soft);
+    border-left: 2px solid var(--blush);
     padding: 0.2rem 0 0.2rem 1.5rem;
     color: var(--muted);
     font-family: var(--display);
@@ -298,13 +300,13 @@ body {
     text-transform: uppercase;
     letter-spacing: 0.16em;
     padding: 0.7rem 1.35rem;
-    border: 1px solid var(--purple);
+    border: 1px solid var(--mulberry);
     border-radius: 999px;
-    color: var(--purple);
+    color: var(--mulberry);
     text-decoration: none;
     transition: background-color 0.25s ease, color 0.25s ease;
 }
-.btn:hover { background: var(--purple); color: var(--paper); }
+.btn:hover { background: var(--mulberry); color: var(--paper); }
 
 /* ---------- Reveal ---------- */
 .reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.7s ease, transform 0.7s ease; }
@@ -312,7 +314,7 @@ body {
 
 /* ---------- Focus ---------- */
 a:focus-visible, button:focus-visible {
-    outline: 2px solid var(--purple);
+    outline: 2px solid var(--mulberry);
     outline-offset: 3px;
     border-radius: 2px;
 }

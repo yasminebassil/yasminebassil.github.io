@@ -5,8 +5,8 @@ What the site used before the oxblood / mulberry / sage trial, kept so it can be
 ## Files here
 
 - `hero-original.webp` — the homepage photo exactly as it was embedded in `index.html`
-  (2000 × 1333, sRGB, sky colour `#FCF7FB`). The trial version on `index-sample.html` has the
-  sky shifted to `#FCFAF8`; nothing else in the photo was changed.
+  (2000 × 1333, sRGB, sky colour `#FCF7FB`). The version now in `index.html` has the sky
+  shifted to `#FCFAF8`; nothing else in the photo was changed.
 - `site.css` — a copy of `css/site.css` with the original colour variables.
 
 The last commit on `main` before this work is `aae3330`; `git show aae3330:index.html` also
@@ -37,8 +37,11 @@ Other values in use on single pages:
 
 ## To go back
 
-- Colours: the live pages (`index.html`, `bio.html`, `css/site.css` and the rest) have not been
-  recoloured. Only `bio-sample.html`, `index-sample.html` and `brand.html` use the new set.
-- Photo: `index.html` still embeds the original. If the adjusted photo is ever moved into
-  `index.html`, restore by re-embedding `hero-original.webp`, or with
-  `git checkout aae3330 -- index.html` (which also reverts other homepage edits).
+The new colours and the adjusted photo were applied to the site on the `rebrand` branch.
+`main` still has the original site.
+
+- Everything: stay on, or return to, `main` (`git switch main`).
+- Colours only: copy `site.css` from this folder over `css/site.css`. The older pages
+  (cv, research, thoughts, creative, media, service) carry their own colour variables, so
+  restore those with `git checkout aae3330 -- cv.html` and so on.
+- Photo only: re-embed `hero-original.webp` in `index.html` in place of the adjusted one.

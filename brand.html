@@ -17,7 +17,7 @@
         .wrap { max-width: 1180px; margin: 0 auto; padding: 3.5rem 2.5rem 5rem; }
 
         .top { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 0.5rem 2rem; padding-bottom: 1rem; border-bottom: 1px solid var(--rule); }
-        .top a { color: var(--purple); text-decoration: none; }
+        .top a { color: var(--mulberry); text-decoration: none; }
         .mono {
             font-family: var(--meta);
             font-size: 0.68rem;
@@ -50,7 +50,7 @@
             padding-top: 1.2rem;
             border-top: 1px solid var(--rule);
         }
-        h2 .num { color: var(--purple); }
+        h2 .num { color: var(--mulberry); }
         .sub { max-width: 44rem; color: var(--muted); font-size: 0.95rem; margin-bottom: 1.5rem; }
 
         /* ---------- Swatches ---------- */
@@ -114,15 +114,15 @@
         .role { display: grid; grid-template-columns: 13rem minmax(0, 1fr); gap: 2rem; align-items: center; padding: 1.1rem 0; border-bottom: 1px solid var(--rule-soft); }
         .role-k { font-family: var(--meta); font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); line-height: 1.6; }
         .r-wordmark { font-family: 'Fraunces', serif; font-variation-settings: 'SOFT' 45, 'WONK' 1; font-weight: 600; font-size: 3.2rem; line-height: 0.95; letter-spacing: -0.03em; }
-        .r-wordmark span { font-size: 0.34em; color: var(--purple); letter-spacing: 0.02em; margin-left: 0.18em; }
+        .r-wordmark span { font-size: 0.34em; color: var(--mulberry); letter-spacing: 0.02em; margin-left: 0.18em; }
         .r-headline { font-family: 'Fraunces', serif; font-weight: 600; font-size: 2.2rem; line-height: 1.15; letter-spacing: -0.015em; }
-        .r-headline em { font-style: italic; color: var(--purple); }
+        .r-headline em { font-style: italic; color: var(--mulberry); }
         .r-lead { font-family: var(--display); font-size: 1.75rem; line-height: 1.25; }
         .r-body { font-family: var(--body); font-size: 1rem; line-height: 1.7; max-width: 38rem; }
-        .r-body a { color: var(--purple); text-decoration: none; border-bottom: 1px solid rgba(107, 91, 142, 0.3); }
+        .r-body a { color: var(--mulberry); text-decoration: none; border-bottom: 1px solid rgba(107, 91, 142, 0.3); }
         .r-nav { display: flex; gap: 2rem; font-family: var(--meta); font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
         .r-nav .on { color: var(--ink); }
-        .r-badge { display: inline-block; font-family: var(--meta); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); border: 1px solid var(--rule); border-radius: 999px; padding: 0.25rem 0.7rem; background: var(--purple-soft); }
+        .r-badge { display: inline-block; font-family: var(--meta); font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); border: 1px solid var(--rule); border-radius: 999px; padding: 0.25rem 0.7rem; background: var(--blush); }
         .r-ar { font-family: var(--arabic); font-size: 1.5rem; }
 
         /* ---------- Page-by-page table ---------- */
@@ -137,9 +137,9 @@
         /* ---------- Things to align ---------- */
         .todo { list-style: none; counter-reset: todo; max-width: 50rem; }
         .todo li { counter-increment: todo; position: relative; padding: 0.9rem 0 0.9rem 2.6rem; border-bottom: 1px solid var(--rule-soft); font-size: 0.95rem; line-height: 1.55; }
-        .todo li::before { content: counter(todo, decimal-leading-zero); position: absolute; left: 0; top: 1rem; font-family: var(--meta); font-size: 0.7rem; color: var(--purple); }
+        .todo li::before { content: counter(todo, decimal-leading-zero); position: absolute; left: 0; top: 1rem; font-family: var(--meta); font-size: 0.7rem; color: var(--mulberry); }
         .todo strong { font-weight: 500; }
-        code { font-family: var(--meta); font-size: 0.82em; background: var(--purple-soft); padding: 0.05em 0.35em; border-radius: 3px; }
+        code { font-family: var(--meta); font-size: 0.82em; background: var(--blush); padding: 0.05em 0.35em; border-radius: 3px; }
 
 
         /* ---------- Contrast table + principles ---------- */
@@ -220,7 +220,7 @@
 
         <!-- ============ 00 The working set ============ -->
         <h2 id="working" style="margin-top:2.5rem;"><span class="num">00</span> The working set</h2>
-        <p class="sub">Where things stand now: oxblood, mulberry and sage, with slate violet for blocks. Not yet applied to any live page. Everything further down this sheet is the audit and the options that led here.</p>
+        <p class="sub">Where things stand now: oxblood, mulberry and sage, with slate violet for blocks. Now applied across the site on the <code>rebrand</code> branch, on porcelain <code>#FCFAF8</code>. Everything further down this sheet is the audit and the options that led here.</p>
         <div class="swatches">
             <div class="swatch"><div class="chip" style="background:#44181D">oxblood</div><div class="swatch-body"><div class="swatch-name">Oxblood</div><div class="swatch-hex">#44181D</div><div class="swatch-use">Headlines, the logo, the main filled blocks. 14.7:1 on paper.</div><span class="flag core">in the set</span></div></div>
             <div class="swatch"><div class="chip" style="background:#6E3358">mulberry</div><div class="swatch-body"><div class="swatch-name">Mulberry</div><div class="swatch-hex">#6E3358</div><div class="swatch-use">Links and emphasis. The one colour that means clickable or important. 9.0:1.</div><span class="flag core">in the set</span></div></div>

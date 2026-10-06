@@ -44,7 +44,7 @@
             text-decoration: none;
             transition: color 0.3s ease;
         }
-        .nav-links a:hover { color: var(--purple); }
+        .nav-links a:hover { color: var(--mulberry); }
         .nav-links a.active { color: var(--ink); }
         .nav-links a.nav-past { opacity: 0.45; }
         .nav-links a.nav-past:hover { opacity: 0.7; }
@@ -52,21 +52,8 @@
         .mobile-nav-toggle span { display: block; width: 24px; height: 2px; background: var(--ink); margin: 5px 0; }
 
         /* ---------- The sheet: one card of paper on a warm desk ---------- */
-        /* Trial palette, scoped to this page only: oxblood, mulberry & sage, with slate
-           violet for blocks, on porcelain. The variable names are the site's existing
-           ones so the rest of the page needs no changes. */
-        :root {
-            --paper: #FCFAF8;            /* porcelain, as it lands in the homepage photo */
-            --ink: #2B2224;
-            --muted: #5E5557;
-            --oxblood: #44181D;          /* headlines and the main blocks */
-            --purple: #6E3358;           /* mulberry: links and emphasis */
-            --purple-soft: #F3E6E3;      /* blush */
-            --olive: #566B58;            /* sage: labels */
-            --cup-blue: #4F5285;         /* slate violet: blocks only */
-        }
         /* the desk: a neutral step darker than the sheet */
-        body { background: #F1EFEC; }
+        body { background: var(--paper-warm); }
         .page-inner {
             width: 92%;
             max-width: 1300px;
@@ -109,10 +96,10 @@
             font-weight: 600;
             letter-spacing: 0.12em;
             text-transform: uppercase;
-            color: var(--olive);
+            color: var(--sage);
             margin-bottom: 0.7rem;
         }
-        .num-label .num { color: var(--olive); }
+        .num-label .num { color: var(--sage); }
         .section-head {
             margin: 3.25rem 0 1.5rem;
             padding-top: 1.2rem;
@@ -138,7 +125,7 @@
             margin-bottom: 1.5rem;
             max-width: 17em;
         }
-        .hero-headline em { font-style: italic; color: var(--purple); }
+        .hero-headline em { font-style: italic; color: var(--mulberry); }
 
         .author { max-width: 30rem; margin-bottom: 1.6rem; }
         .author-card {
@@ -171,7 +158,7 @@
         .author-role {
             font-family: var(--meta);
             font-size: 0.72rem;
-            color: var(--olive);
+            color: var(--sage);
             margin-top: 0.3rem;
         }
         .status-badge {
@@ -181,22 +168,22 @@
             font-size: 0.6rem;
             letter-spacing: 0.12em;
             text-transform: uppercase;
-            color: var(--purple);
+            color: var(--mulberry);
             border: 1px solid transparent;
             border-radius: 999px;
             padding: 0.25rem 0.7rem;
-            background: var(--purple-soft);
+            background: var(--blush);
         }
 
         .prose p { font-size: 1.02rem; line-height: 1.65; color: var(--muted); }
         .prose p + p { margin-top: 0.85rem; }
         .prose a, .rail a {
-            color: var(--purple);
+            color: var(--mulberry);
             text-decoration: none;
             border-bottom: 1px solid rgba(110, 51, 88, 0.3);
             transition: border-color 0.25s ease;
         }
-        .prose a:hover, .rail a:hover { border-bottom-color: var(--purple); }
+        .prose a:hover, .rail a:hover { border-bottom-color: var(--mulberry); }
 
         /* handwritten margin note */
         .note {
@@ -262,8 +249,8 @@
             justify-content: flex-end;
         }
         .program:nth-child(1) .program-top { background: var(--oxblood); }
-        .program:nth-child(2) .program-top { background: var(--olive); }
-        .program:nth-child(3) .program-top { background: var(--cup-blue); }
+        .program:nth-child(2) .program-top { background: var(--sage); }
+        .program:nth-child(3) .program-top { background: var(--slate); }
         .program-when {
             font-family: var(--meta);
             font-size: 0.66rem;
@@ -341,7 +328,7 @@
             color: var(--muted);
             margin-bottom: 0.25rem;
         }
-        .now-item a { color: var(--purple); text-decoration: none; border-bottom: 1px solid rgba(110, 51, 88, 0.3); }
+        .now-item a { color: var(--mulberry); text-decoration: none; border-bottom: 1px solid rgba(110, 51, 88, 0.3); }
 
         /* ---------- Funding & awards ---------- */
         .awards { border-top: 1px solid var(--rule-soft); }
@@ -382,20 +369,20 @@
         .place .receipt-line { font-family: var(--meta); font-size: 0.68rem; letter-spacing: 0.06em; margin-top: 0.5rem; opacity: 0.9; }
         .place .cta { font-family: var(--meta); font-size: 0.7rem; margin-top: 0.8rem; border-bottom: 1px solid rgba(255, 255, 255, 0.5); padding-bottom: 1px; }
         .place--cv       { background: var(--oxblood); }
-        .place--research { background: var(--cup-blue); }
-        .place--creative { background: var(--olive); }
-        .place--band     { background: var(--purple); }
-        .place--thoughts { background: var(--olive); }
+        .place--research { background: var(--slate); }
+        .place--creative { background: var(--sage); }
+        .place--band     { background: var(--mulberry); }
+        .place--thoughts { background: var(--sage); }
         .place--photo {
             background: linear-gradient(rgba(68, 24, 29, 0.55), rgba(68, 24, 29, 0.72)), url('img/profile.jpg') center 30% / cover;
         }
         .place--light {
-            background: var(--purple-soft);
+            background: var(--blush);
             color: var(--ink);
             min-height: 6.5rem;
         }
         .place--light h3 { font-size: 1.1rem; }
-        .place--light .cta { border-bottom-color: rgba(110, 51, 88, 0.4); color: var(--purple); margin-top: 0.4rem; }
+        .place--light .cta { border-bottom-color: rgba(110, 51, 88, 0.4); color: var(--mulberry); margin-top: 0.4rem; }
         /* the finjan motif, ghosted into a card corner */
         .place .motif {
             position: absolute;
