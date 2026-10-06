@@ -198,7 +198,28 @@
         .rail a { color: var(--mulberry); text-decoration: none; border-bottom: 1px solid rgba(110, 51, 88, 0.3); }
         .rail a:hover { border-bottom-color: var(--mulberry); }
         @media (max-width: 1000px) { .contact-layout { grid-template-columns: minmax(0, 1fr); gap: 2rem; } .contact-headline { font-size: 2.4rem; } }
-        @media (max-width: 600px) { .contact-row { grid-template-columns: 1fr; } .contact-headline { font-size: 2rem; } }
+        @media (max-width: 900px) {
+            nav { padding: 1rem 1.5rem; }
+            .nav-links { display: none; }
+            .nav-links.open {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+                position: absolute;
+                top: 100%; left: 0; right: 0;
+                background: var(--paper);
+                padding: 1.25rem 1.5rem;
+                border-bottom: 1px solid var(--rule-soft);
+            }
+            .mobile-nav-toggle { display: block; }
+        }
+        @media (max-width: 600px) {
+            .page-inner { width: 100%; padding: 5.5rem 0.75rem 3rem; }
+            .sheet { padding: 1.75rem 1.25rem 2.25rem; }
+            .contact-row { grid-template-columns: 1fr; }
+            .contact-headline { font-size: 2rem; }
+        }
     </style>
 </head>
 <body>
