@@ -3,41 +3,130 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Music — Yasmine Bassil</title>
+    <title>Creative &mdash; Yasmine Bassil</title>
+    <link rel="canonical" href="https://yasminebassil.github.io/music.html">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:ital,wght@0,400;0,500;1,400&family=Noto+Sans+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Fraunces:ital,opsz,wght@1,9..144,400..700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/site.css">
+
     <style>
-        :root {
-            --bg-cream: #fdf8fc;
-            --bg-cream-dark: #F0EBE3;
-            --text-charcoal: #2C2825;
-            --text-muted: #5C5552;
-            --accent-terracotta: #C4755B;
-            --font-display: 'Cormorant Garamond', Georgia, serif;
-            --font-body: 'DM Sans', -apple-system, sans-serif;
-            --font-arabic: 'Noto Sans Arabic', sans-serif;
+        /* ---------- Page chrome: nav ---------- */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.4s ease, box-shadow 0.4s ease, padding 0.3s ease;
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { font-size: 16px; }
-        body { font-family: var(--font-body); background-color: var(--bg-cream); color: var(--text-charcoal); line-height: 1.6; min-height: 100vh; }
-        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.5rem 3rem; display: flex; justify-content: space-between; align-items: center; background: var(--bg-cream); }
-        .logo { font-family: var(--font-display); font-size: 1.5rem; font-weight: 500; color: var(--text-charcoal); text-decoration: none; }
+        /* same as the homepage: open at the top of the page, solid once content scrolls under it */
+        nav.scrolled {
+            background-color: var(--paper);
+            box-shadow: 0 1px 0 var(--rule-soft);
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+        .logo {
+            font-family: 'Fraunces', var(--display);
+            font-optical-sizing: auto;
+            font-variation-settings: 'SOFT' 45, 'WONK' 1;
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--ink);
+            text-decoration: none;
+        }
         .nav-links { display: flex; gap: 2rem; align-items: center; list-style: none; }
-        .nav-links a { font-size: 0.9rem; color: var(--text-muted); text-decoration: none; transition: color 0.3s ease; }
-        .nav-links a:hover { color: var(--accent-terracotta); }
-        .nav-links a.active { color: var(--text-charcoal); }
+        .nav-links a {
+            font-family: var(--meta);
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            color: var(--muted);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .nav-links a:hover { color: var(--mulberry); }
+        .nav-links a.active { color: var(--ink); }
         .nav-links a.nav-past { opacity: 0.45; }
         .nav-links a.nav-past:hover { opacity: 0.7; }
-        .lang-toggle { font-family: var(--font-arabic); font-size: 1rem; padding: 0.3rem 0.6rem; border: 1px solid var(--bg-cream-dark); border-radius: 4px; transition: all 0.3s ease; }
-        .lang-toggle:hover { border-color: var(--accent-terracotta); color: var(--accent-terracotta); }
+        /* contact: an envelope at the end of the nav; the word shows in the phone menu */
+        .nav-links a.nav-contact { display: inline-flex; align-items: center; gap: 0.5rem; }
+        .nav-links a.nav-contact svg { width: 17px; height: 17px; }
+        .nav-links a.nav-contact span { display: none; }
+        .nav-links.open a.nav-contact span { display: inline; }
         .mobile-nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
-        .mobile-nav-toggle span { display: block; width: 24px; height: 2px; background: var(--text-charcoal); margin: 5px 0; }
-        @media (max-width: 900px) { nav { padding: 1rem 1.5rem; } .nav-links { display: none; } .mobile-nav-toggle { display: block; } }
-        .coming-soon { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; text-align: center; padding: 2rem; }
-        .coming-soon h1 { font-family: var(--font-display); font-size: 2.5rem; font-weight: 500; margin-bottom: 0.75rem; }
-        .coming-soon p { color: var(--text-muted); font-size: 1rem; }
-        footer { text-align: center; padding: 3rem 2rem 2rem; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid var(--bg-cream-dark); }
+        .mobile-nav-toggle span { display: block; width: 24px; height: 2px; background: var(--ink); margin: 5px 0; }
+
+        /* ---------- The sheet: one card of paper on a warm desk ---------- */
+        /* the desk: a neutral step darker than the sheet */
+        body { background: var(--paper-warm); }
+        .page-inner {
+            width: 92%;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 6.25rem 0 4rem;
+        }
+        .sheet {
+            position: relative;
+            background: var(--paper);
+            border-radius: 12px;
+            padding: 3rem 3rem 3.5rem;
+            box-shadow: 0 1px 2px rgba(44, 40, 37, 0.04), 0 12px 32px rgba(44, 40, 37, 0.06);
+        }
+
+        /* ---------- Utility bar: who / where ---------- */
+        .utility-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem 1.5rem;
+            font-family: var(--meta);
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--muted);
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--rule);
+            margin-bottom: 2.5rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 0 2rem 2.5rem;
+            font-family: var(--meta);
+            font-size: 0.62rem;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            color: var(--muted);
+        }
+
+
+        /* ---------- Coming soon ---------- */
+        .soon { padding: 3.5rem 0 4.5rem; max-width: 40rem; }
+        .soon h1 { font-family: 'Fraunces', var(--display); font-optical-sizing: auto; font-weight: 600; font-size: 3.3rem; line-height: 1.12; letter-spacing: -0.015em; color: var(--oxblood); margin-bottom: 1.25rem; }
+        .soon h1 em { font-style: italic; color: var(--mulberry); }
+        .soon p { font-size: 1.05rem; line-height: 1.65; color: var(--muted); }
+        .soon a { color: var(--mulberry); text-decoration: none; border-bottom: 1px solid rgba(110, 51, 88, 0.3); }
+        .soon a:hover { border-bottom-color: var(--mulberry); }
+        @media (max-width: 900px) {
+            nav { padding: 1rem 1.5rem; }
+            .nav-links { display: none; }
+            .nav-links.open { display: flex; flex-direction: column; align-items: flex-start; gap: 1rem; position: absolute; top: 100%; left: 0; right: 0; background: var(--paper); padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--rule-soft); }
+            .mobile-nav-toggle { display: block; }
+        }
+        @media (max-width: 600px) {
+            .page-inner { width: 100%; padding: 5.5rem 0.75rem 3rem; }
+            .sheet { padding: 1.75rem 1.25rem 2.25rem; }
+            .soon { padding: 2rem 0 2.5rem; }
+            .soon h1 { font-size: 2.3rem; }
+        }
     </style>
 </head>
 <body>
@@ -47,7 +136,7 @@
             <li><a href="index.html">home</a></li>
             <li><a href="bio.html">bio</a></li>
             <li><a href="cv.html">cv</a></li>
-            <li><a href="science.html">science</a></li>
+            <li><a href="research.html">research</a></li>
             <li><a href="thoughts.html">thoughts</a></li>
             <li><a href="music.html" class="active">creative</a></li>
             <li><a href="/defense" class="nav-past">defense</a></li>
@@ -56,10 +145,42 @@
             <span></span><span></span><span></span>
         </button>
     </nav>
-    <main class="coming-soon">
-        <h1>Coming Soon</h1>
-        <p>This page is being updated. Check back soon!</p>
+
+    <main class="page-inner">
+        <div class="sheet">
+            <div class="utility-bar">
+                <span>Creative</span>
+                <span>Atlanta, GA</span>
+            </div>
+            <div class="soon">
+                <h1>Creative work. <em>Coming soon.</em></h1>
+                <p>This page is being rebuilt. In the meantime, my <a href="bio.html">bio</a> has the overview and my <a href="cv.html">cv</a> has the full record.</p>
+            </div>
+        </div>
     </main>
+
     <footer>&copy; 2026 Yasmine Bassil</footer>
+
+    <script>
+        // ---- Nav turns solid once the page scrolls ----
+        (function () {
+            var nav = document.querySelector('nav');
+            function update() { nav.classList.toggle('scrolled', window.pageYOffset > 8); }
+            window.addEventListener('scroll', update, { passive: true });
+            update();
+        })();
+
+        // ---- Mobile nav ----
+        (function () {
+            var toggle = document.querySelector('.mobile-nav-toggle');
+            var links = document.querySelector('.nav-links');
+            if (toggle && links) {
+                toggle.addEventListener('click', function () { links.classList.toggle('open'); });
+                links.addEventListener('click', function (e) {
+                    if (e.target.tagName === 'A') links.classList.remove('open');
+                });
+            }
+        })();
+    </script>
 </body>
 </html>

@@ -1,0 +1,355 @@
+/* ============================================================================
+   yasminebassil.github.io — shared design system
+   ----------------------------------------------------------------------------
+   Structure:  a reading spine. One column set at a comfortable measure, with
+               section labels hanging in the left margin so they never break
+               the flow of the text.
+   Signature:  the finjan motif — the tulip-and-leaf pattern from Lebanese
+               coffee cups, drawn as a line figure. Sections alternate flower
+               and leaf, the way the pattern itself alternates, above a
+               bilingual label.
+   ========================================================================== */
+
+/* ---------- Tokens ---------- */
+:root {
+    --paper:       #FCFAF8;   /* porcelain; matches the sky in the homepage photo */
+    --paper-warm:  #F1EFEC;   /* a neutral step darker, for panels and the desk */
+    --ink:         #2B2224;
+    --muted:       #5E5557;
+    --oxblood:     #44181D;   /* headlines, the wordmark, the main filled blocks */
+    --mulberry:    #6E3358;   /* links and emphasis: the one interactive colour */
+    --sage:        #566B58;   /* small labels and section numbers */
+    --slate:       #4F5285;   /* slate violet: blocks and illustration only, never text */
+    --blush:       #F3E6E3;   /* soft panels and badges */
+
+    --rule:        rgba(43, 34, 36, 0.14);
+    --rule-soft:   rgba(43, 34, 36, 0.07);
+
+    --display: 'Cormorant Garamond', Georgia, serif;
+    --body:    'Satoshi', -apple-system, system-ui, sans-serif;
+    --meta:    'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace;
+    --arabic:  'IBM Plex Sans Arabic', 'Noto Sans Arabic', sans-serif;
+
+    /* the reading measure: ~70 characters */
+    --measure: 36rem;
+    --label-col: 10rem;
+    --aside-col: 13rem;
+    --gutter: 3.25rem;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+    font-size: 17px;          /* up from 16 — the single biggest readability win */
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--body);
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+/* ---------- Type scale ---------- */
+.display-xl {
+    font-family: var(--display);
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    font-weight: 500;
+    line-height: 0.98;
+    letter-spacing: -0.02em;
+}
+.display-l {
+    font-family: var(--display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 500;
+    line-height: 1.08;
+    letter-spacing: -0.015em;
+}
+.lead {
+    font-family: var(--display);
+    font-size: 1.85rem;
+    font-weight: 500;
+    line-height: 1.22;
+    letter-spacing: -0.01em;
+    margin-bottom: 1.5rem;
+}
+.meta {
+    font-family: var(--meta);
+    font-size: 0.66rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--muted);
+}
+
+/* display type is set in oxblood; body text stays ink */
+.display-xl, .display-l, .lead, .page-title h1 { color: var(--oxblood); }
+
+/* ---------- The reading spine ---------- */
+.spine {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 3rem 6rem;
+}
+
+.section {
+    display: grid;
+    grid-template-columns: var(--label-col) minmax(0, var(--measure)) var(--aside-col);
+    gap: var(--gutter);
+    justify-content: center;
+    padding: 4.5rem 0 0;
+}
+
+/* ---------- Right column: the facts that belong to a section ---------- */
+.section-aside {
+    border-left: 1px solid var(--rule);
+    padding-left: 2rem;
+    align-self: start;
+}
+.aside-title {
+    font-family: var(--meta);
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--mulberry);
+    margin-bottom: 0.9rem;
+}
+.aside-list { list-style: none; }
+.aside-item { padding: 0.6rem 0; border-bottom: 1px solid var(--rule-soft); }
+.aside-item:last-child { border-bottom: none; }
+.aside-k {
+    display: block;
+    font-family: var(--meta);
+    font-size: 0.58rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    margin-bottom: 0.15rem;
+}
+.aside-v { display: block; font-size: 0.88rem; line-height: 1.45; }
+.aside-v .sub { display: block; color: var(--muted); font-size: 0.82rem; }
+.aside-list a { color: var(--mulberry); text-decoration: none; border-bottom: 1px solid rgba(107,91,142,0.3); }
+.aside-list a:hover { border-bottom-color: var(--mulberry); }
+
+.section-prose > * + * { margin-top: 1.15rem; }
+.section-prose p { font-size: 1rem; }
+/* .section-prose p out-specifies .lead on its own, so restate it here */
+.section-prose p.lead { font-size: 1.85rem; }
+.section-prose a {
+    color: var(--mulberry);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(110, 51, 88, 0.35);
+    transition: border-color 0.25s ease;
+}
+.section-prose a:hover { border-bottom-color: var(--mulberry); }
+.section-prose strong { font-weight: 500; }
+
+/* ---------- The signature: arch + bilingual label ---------- */
+.section-label {
+    position: sticky;
+    top: 7rem;
+    align-self: start;
+}
+
+.motif {
+    display: block;
+    width: 36px;
+    height: auto;
+    margin-bottom: 0.9rem;
+    overflow: visible;
+}
+.motif .petal,
+.motif .stem {
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    vector-effect: non-scaling-stroke;
+}
+.motif .petal { stroke: var(--mulberry); stroke-width: 1.6; }
+.motif .stem  { stroke: var(--slate); stroke-width: 1.6; }
+.motif .blade { fill: var(--slate); stroke: none; }
+
+.label-en {
+    font-family: var(--meta);
+    font-size: 0.66rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--ink);
+    line-height: 1.5;
+    display: block;
+}
+.label-ar {
+    font-family: var(--arabic);
+    font-size: 1rem;
+    color: var(--muted);
+    direction: rtl;
+    text-align: left;
+    unicode-bidi: isolate;
+    display: block;
+    margin-top: 0.35rem;
+    line-height: 1.4;
+}
+
+/* ---------- Data rows (degrees, awards, anything year + thing + place) ---------- */
+.rows { border-top: 1px solid var(--rule-soft); }
+.row {
+    display: grid;
+    grid-template-columns: 7.5rem 1fr;
+    gap: 1.5rem;
+    align-items: baseline;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--rule-soft);
+}
+.row-when {
+    font-family: var(--meta);
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    white-space: nowrap;
+}
+.row-what { font-weight: 500; }
+.row-who { color: var(--muted); font-size: 0.9rem; }
+
+/* ---------- Misc list (currently / facts) ---------- */
+.facts { border-top: 1px solid var(--rule-soft); }
+.fact {
+    padding: 0.85rem 0;
+    border-bottom: 1px solid var(--rule-soft);
+    font-size: 0.95rem;
+}
+.fact strong {
+    font-family: var(--meta);
+    font-size: 0.63rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--mulberry);
+    display: block;
+    margin-bottom: 0.2rem;
+    font-weight: 500;
+}
+
+/* ---------- Invitation: closes the intro and opens the rest of the page ---------- */
+.invitation {
+    margin-top: 2.5rem;
+    padding-top: 1.6rem;
+    border-top: 1px solid var(--rule);
+}
+.invitation-note {
+    font-family: var(--display);
+    font-size: 1.4rem;
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--ink);
+    margin-bottom: 1.4rem;
+}
+.invitation-head {
+    display: flex;
+    align-items: baseline;
+    gap: 0.9rem;
+    margin-bottom: 0.7rem;
+}
+.invitation-head .en {
+    font-family: var(--meta);
+    font-size: 0.63rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--muted);
+}
+.invitation-head .ar {
+    font-family: var(--arabic);
+    font-size: 0.95rem;
+    color: var(--muted);
+    direction: rtl;
+    unicode-bidi: isolate;
+}
+.invitation-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.4rem;
+}
+.invitation-links a {
+    font-family: var(--meta);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--mulberry);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 2px;
+    transition: border-color 0.25s ease;
+}
+.invitation-links a:hover { border-bottom-color: var(--mulberry); }
+
+/* ---------- Pull quote / aside ---------- */
+.aside {
+    border-left: 2px solid var(--blush);
+    padding: 0.2rem 0 0.2rem 1.5rem;
+    color: var(--muted);
+    font-family: var(--display);
+    font-size: 1.3rem;
+    line-height: 1.5;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+    display: inline-block;
+    font-family: var(--meta);
+    font-size: 0.66rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    padding: 0.7rem 1.35rem;
+    border: 1px solid var(--mulberry);
+    border-radius: 999px;
+    color: var(--mulberry);
+    text-decoration: none;
+    transition: background-color 0.25s ease, color 0.25s ease;
+}
+.btn:hover { background: var(--mulberry); color: var(--paper); }
+
+/* ---------- Reveal ---------- */
+.reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+
+/* ---------- Focus ---------- */
+a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--mulberry);
+    outline-offset: 3px;
+    border-radius: 2px;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1150px) {
+    .section {
+        grid-template-columns: var(--label-col) minmax(0, var(--measure));
+    }
+    .section-aside {
+        grid-column: 2;
+        border-left: none;
+        border-top: 1px solid var(--rule);
+        padding-left: 0;
+        padding-top: 1.25rem;
+        margin-top: 2rem;
+    }
+}
+
+@media (max-width: 900px) {
+    html { font-size: 16px; }
+    .spine { padding: 0 1.4rem 4rem; }
+    .section {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+        padding-top: 3.25rem;
+    }
+    .section-aside { grid-column: 1; }
+    .section-label { position: static; }
+    .motif { width: 30px; margin-bottom: 0.6rem; }
+    .row { grid-template-columns: 1fr; gap: 0.15rem; }
+    .lead { font-size: 1.5rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+}
