@@ -229,7 +229,7 @@
         .prose a:hover, .rail a:hover { border-bottom-color: var(--mulberry); }
 
         /* a quote in a speech bubble, its tail pointing at the portrait, with a paragraph beside it */
-        .quote-pair { display: grid; grid-template-columns: 18rem minmax(0, 1fr); gap: 2.25rem; align-items: start; margin-top: 1.5rem; }
+        .quote-pair { display: grid; grid-template-columns: 18rem minmax(0, 1fr); gap: 2.25rem; align-items: start; max-width: 56rem; }
         .bubble { position: relative; background: var(--blush); border-radius: 16px; padding: 1.05rem 1.2rem 1.15rem; }
         .bubble::after { content: ''; position: absolute; left: 1.55rem; bottom: -8px; width: 18px; height: 18px; background: var(--blush); transform: rotate(45deg); border-radius: 3px; }
         .prose .bubble p { font-family: var(--display); font-style: italic; font-size: 1.2rem; line-height: 1.35; color: var(--oxblood); }
@@ -531,7 +531,7 @@
                     <h1 class="hero-headline">Building the <em>structures and systems</em> that support neuroscience research.</h1>
 
                     <div class="author">
-                        <span class="num-label"><span class="num">00</span> The Author</span>
+                        <span class="num-label">The Author</span>
                         <a class="author-aside" href="#bio-education">Read about me below <span aria-hidden="true">&darr;</span></a>
                         <div class="author-card">
                             <img src="img/profile.jpg" alt="Yasmine Bassil" class="author-photo">
@@ -549,19 +549,12 @@
 
                     <div class="prose">
                         <p>Neuroscientist by trade, with a parallel record in program and partnership management &mdash; from lab research programs to nonprofits, hackathons, and graduate organizations. I build the structures and systems that support neuroscience research, from local to global scales.</p>
-                        <div class="quote-pair">
-                            <div>
-                                <div class="bubble"><p>Often, we're encouraged to separate personal and professional identities, but science is inevitably shaped by the person conducting it.</p></div>
-                                <div class="bubble-who"><img src="img/profile.jpg" alt=""><span>yasmine</span></div>
-                            </div>
-                            <p>As an Atlanta-based Lebanese scientist, plant enthusiast, amateur chef, musician, and community member, I believe science and life are better when we show up authentically as whole people &mdash; so feel free to explore a more holistic introduction of myself below.</p>
-                        </div>
                     </div>
                 </div>
 
                 <aside class="rail">
                     <div class="rail-item">
-                        <span class="num-label"><span class="num">01</span> Now</span>
+                        <span class="num-label">Now</span>
                         <ul>
                             <li>Atlanta, Georgia</li>
                             <li>Research Scientist, Emory University</li>
@@ -569,11 +562,11 @@
                         </ul>
                     </div>
                     <div class="rail-item">
-                        <span class="num-label"><span class="num">02</span> Focus</span>
+                        <span class="num-label">Focus</span>
                         <p>Program and partnership roles in research institutes and science philanthropy.</p>
                     </div>
                     <div class="rail-item">
-                        <span class="num-label"><span class="num">03</span> At A Glance</span>
+                        <span class="num-label">At A Glance</span>
                         <ul>
                             <li><span class="k">originally from</span>Smar Jbeil, Batroun, Lebanon</li>
                             <li><span class="k">pronouns</span>she/her &middot; &#1607;&#1610;</li>
@@ -581,14 +574,26 @@
                         </ul>
                     </div>
                     <div class="rail-item">
-                        <span class="num-label"><span class="num">04</span> Get In Touch</span>
+                        <span class="num-label">Get In Touch</span>
                         <p>Say hello.<br><a href="#bio-contact">Places you can find me &darr;</a></p>
                     </div>
                 </aside>
             </div>
 
-            <!-- 05 Education -->
-            <div class="section-head num-label" id="bio-education"><span class="num">05</span> Education &amp; Training</div>
+            <!-- 01 An aside -->
+            <div class="section-head num-label" id="bio-aside"><span class="num">01</span> An Aside</div>
+            <div class="prose">
+                <div class="quote-pair">
+                    <div>
+                        <div class="bubble"><p>Often, we're encouraged to separate personal and professional identities, but science is inevitably shaped by the person conducting it.</p></div>
+                        <div class="bubble-who"><img src="img/profile.jpg" alt=""><span>yasmine</span></div>
+                    </div>
+                    <p>As an Atlanta-based Lebanese scientist, plant enthusiast, amateur chef, musician, and community member, I believe science and life are better when we show up authentically as whole people &mdash; so feel free to explore a more holistic introduction of myself below.</p>
+                </div>
+            </div>
+
+            <!-- 02 Education -->
+            <div class="section-head num-label" id="bio-education"><span class="num">02</span> Education &amp; Training</div>
             <div class="split">
                 <div class="prose">
                     <p class="pull">I've moved back and forth between the US and Lebanon throughout my early life, ultimately settling in Atlanta in 2012.</p>
@@ -607,8 +612,8 @@
                 </aside>
             </div>
 
-            <!-- 06 Projects & Programs -->
-            <div class="section-head num-label" id="bio-programs"><span class="num">06</span> Projects &amp; Programs</div>
+            <!-- 03 Projects & Programs -->
+            <div class="section-head num-label" id="bio-programs"><span class="num">03</span> Projects &amp; Programs</div>
             <div class="prose" style="max-width:44rem; margin-bottom:1.6rem;">
                 <p>I establish shared research infrastructure and cross-institutional collaborations, have secured $260K+ in competitive funding, and serve as primary stakeholder liaison across students, faculty, and institutional leadership.</p>
             </div>
@@ -644,14 +649,14 @@
                 <div class="receipt"><span class="k">communities served</span><span class="v">120+ PhD students &middot; 110+ participants</span></div>
             </div>
 
-            <!-- 07 In my own words -->
-            <div class="section-head num-label"><span class="num">07</span> In My Own Words</div>
+            <!-- 04 In my own words -->
+            <div class="section-head num-label"><span class="num">04</span> In My Own Words</div>
             <blockquote class="quote">
                 <p>Most of what I'm proudest of started as a gap someone else had learned to live with.</p>
             </blockquote>
 
-            <!-- 08 Personal -->
-            <div class="section-head num-label" id="bio-personal"><span class="num">08</span> Personal</div>
+            <!-- 05 Personal -->
+            <div class="section-head num-label" id="bio-personal"><span class="num">05</span> Personal</div>
             <div class="split">
                 <div class="prose">
                     <p class="pull">The science and the scientist are inextricably intertwined.</p>
@@ -671,8 +676,8 @@
                 </aside>
             </div>
 
-            <!-- 09 Currently -->
-            <div class="section-head num-label" id="bio-currently"><span class="num">09</span> Currently</div>
+            <!-- 06 Currently -->
+            <div class="section-head num-label" id="bio-currently"><span class="num">06</span> Currently</div>
             <div class="now-grid">
                 <div class="now-item"><strong>currently reading</strong><a href="https://charisbooksandmore.com/book/9780295752297" target="_blank" rel="noopener">Queer World Making: Contemporary Middle Eastern Diasporic Art</a> by Andrew Gayed</div>
                 <div class="now-item"><strong>favorite flavors</strong>cardamom, jasmine, rose</div>
@@ -684,8 +689,8 @@
                 <div class="now-item"><strong>time sink</strong>color-coding and organizing my digital and physical life</div>
             </div>
 
-            <!-- 10 Funding & awards -->
-            <div class="section-head num-label" id="bio-awards"><span class="num">10</span> Funding &amp; Awards</div>
+            <!-- 07 Funding & awards -->
+            <div class="section-head num-label" id="bio-awards"><span class="num">07</span> Funding &amp; Awards</div>
             <div class="split">
                 <div>
                     <div class="awards">
@@ -716,8 +721,8 @@
                 </aside>
             </div>
 
-            <!-- 11 Places you can find me -->
-            <div class="section-head num-label" id="bio-contact"><span class="num">11</span> Places You Can Find Me</div>
+            <!-- 08 Places you can find me -->
+            <div class="section-head num-label" id="bio-contact"><span class="num">08</span> Places You Can Find Me</div>
             <div class="places">
                 <a href="cv.html" class="place place--wide place--cv">
                     <h3>CV</h3>
