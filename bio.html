@@ -157,7 +157,8 @@
             text-align: right;
         }
         .name-rule { display: flex; align-items: center; gap: 0.6rem; margin: 0.3rem 0 0.05rem; }
-        .name-rule::before, .name-rule::after { content: ''; flex: 1; height: 1px; background: var(--mulberry); }
+        /* the rule runs from the left and ends in the title, flush with the right edge both names share */
+        .name-rule::before { content: ''; flex: 1; height: 1px; background: var(--mulberry); }
         .name-rule span {
             font-family: var(--meta);
             font-weight: 500;
@@ -165,6 +166,7 @@
             letter-spacing: 0.16em;
             text-transform: uppercase;
             line-height: 1;
+            margin-right: -0.16em;         /* cancels the trailing letter-spacing */
             color: var(--mulberry);
         }
         .author-side { padding-left: 1.75rem; border-left: 1px solid var(--rule); }
