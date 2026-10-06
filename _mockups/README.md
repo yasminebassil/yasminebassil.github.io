@@ -9,6 +9,7 @@ from the site, and GitHub Pages does not publish folders that start with an unde
   lockup in different Arabic typefaces, and the lockup with "phd" set into the rule.
 - `handwriting-lab.html` — typeface options for the handwritten asides on the bio page.
 - `aside-lab.html` — ways to present the quote and closing paragraph of the bio intro (A to I).
+- `intro-lab.html` — versions of the short intro paragraph under the bio headline (A to H).
 - `logo-preview.html` — earlier logo and wordmark trials.
 
 ## Decisions parked here
