@@ -17,12 +17,18 @@
             position: fixed;
             top: 0; left: 0; right: 0;
             z-index: 100;
-            padding: 1rem 3rem;
+            padding: 1.5rem 3rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            transition: background-color 0.4s ease, box-shadow 0.4s ease, padding 0.3s ease;
+        }
+        /* same as the homepage: open at the top of the page, solid once content scrolls under it */
+        nav.scrolled {
             background-color: var(--paper);
             box-shadow: 0 1px 0 var(--rule-soft);
+            padding-top: 1rem;
+            padding-bottom: 1rem;
         }
         .logo {
             font-family: 'Fraunces', var(--display);
@@ -700,6 +706,14 @@
     <footer>&copy; 2026 Yasmine Bassil</footer>
 
     <script>
+        // ---- Nav turns solid once the page scrolls ----
+        (function () {
+            var nav = document.querySelector('nav');
+            function update() { nav.classList.toggle('scrolled', window.pageYOffset > 8); }
+            window.addEventListener('scroll', update, { passive: true });
+            update();
+        })();
+
         // ---- Mobile nav ----
         (function () {
             var toggle = document.querySelector('.mobile-nav-toggle');
