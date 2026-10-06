@@ -8,11 +8,6 @@ What the site used before the oxblood / mulberry / sage trial, kept so it can be
   (2000 × 1333, sRGB, sky colour `#FCF7FB`). The version now in `index.html` has the sky
   shifted to `#FCFAF8`; nothing else in the photo was changed.
 - `site.css` — a copy of `css/site.css` with the original colour variables.
-- `bio-old-layout.html` — the bio page as it was just before the card layout replaced it:
-  the reading-column layout with the flower icons, already in the new colours. It works with
-  the current `css/site.css`; copy it over `bio.html` to bring that layout back.
-- `bio-old-layout-original-colours.html` — the same layout in the original purple. It expects
-  the original stylesheet, so restore `site.css` from this folder along with it.
 
 The last commit on `main` before this work is `aae3330`; `git show aae3330:index.html` also
 returns the original homepage, photo included.
