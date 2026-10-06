@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact &mdash; Yasmine Bassil</title>
+    <link rel="canonical" href="https://yasminebassil.github.io/contact.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Fraunces:ital,opsz,wght@1,9..144,400..700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/site.css">
+
+    <style>
+        /* ---------- Page chrome: nav ---------- */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.4s ease, box-shadow 0.4s ease, padding 0.3s ease;
+        }
+        /* same as the homepage: open at the top of the page, solid once content scrolls under it */
+        nav.scrolled {
+            background-color: var(--paper);
+            box-shadow: 0 1px 0 var(--rule-soft);
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+        .logo {
+            font-family: 'Fraunces', var(--display);
+            font-optical-sizing: auto;
+            font-variation-settings: 'SOFT' 45, 'WONK' 1;
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--ink);
+            text-decoration: none;
+        }
+        .nav-links { display: flex; gap: 2rem; align-items: center; list-style: none; }
+        .nav-links a {
+            font-family: var(--meta);
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            color: var(--muted);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .nav-links a:hover { color: var(--mulberry); }
+        .nav-links a.active { color: var(--ink); }
+        .nav-links a.nav-past { opacity: 0.45; }
+        .nav-links a.nav-past:hover { opacity: 0.7; }
+        /* contact: an envelope at the end of the nav; the word shows in the phone menu */
+        .nav-links a.nav-contact { display: inline-flex; align-items: center; gap: 0.5rem; }
+        .nav-links a.nav-contact svg { width: 17px; height: 17px; }
+        .nav-links a.nav-contact span { display: none; }
+        .nav-links.open a.nav-contact span { display: inline; }
+        .mobile-nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
+        .mobile-nav-toggle span { display: block; width: 24px; height: 2px; background: var(--ink); margin: 5px 0; }
+
+        /* ---------- The sheet: one card of paper on a warm desk ---------- */
+        /* the desk: a neutral step darker than the sheet */
+        body { background: var(--paper-warm); }
+        .page-inner {
+            width: 92%;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 6.25rem 0 4rem;
+        }
+        .sheet {
+            position: relative;
+            background: var(--paper);
+            border-radius: 12px;
+            padding: 3rem 3rem 3.5rem;
+            box-shadow: 0 1px 2px rgba(44, 40, 37, 0.04), 0 12px 32px rgba(44, 40, 37, 0.06);
+        }
+
+        /* ---------- Utility bar: who / where ---------- */
+        .utility-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem 1.5rem;
+            font-family: var(--meta);
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--muted);
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--rule);
+            margin-bottom: 2.5rem;
+        }
+
+        /* ---------- Numbered labels (rail items and section heads share them) ---------- */
+        .num-label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: var(--meta);
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--mulberry);
+            margin-bottom: 0.7rem;
+        }
+        .num-label .num { color: var(--mulberry); }
+        .section-head {
+            margin: 3.25rem 0 1.5rem;
+            padding-top: 1.2rem;
+            border-top: 1px solid var(--rule);
+            scroll-margin-top: 5rem;
+        }
+
+        /* ---------- Facts rail ---------- */
+        .rail-item { padding: 1.3rem 0; border-bottom: 1px solid var(--rule); }
+        .rail-item:first-child { padding-top: 0; }
+        .rail-item p, .rail-item li { font-size: 0.9rem; line-height: 1.5; color: var(--ink); }
+        .rail-item ul { list-style: none; }
+        .rail-item li + li { margin-top: 0.35rem; }
+        .rail-item .k {
+            display: block;
+            font-family: var(--meta);
+            font-size: 0.6rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+        .rail-item.center ul { text-align: center; }
+        .rail-item li.status { color: var(--sage); }    /* the pill's green */
+
+        footer {
+            text-align: center;
+            padding: 0 2rem 2.5rem;
+            font-family: var(--meta);
+            font-size: 0.62rem;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            color: var(--muted);
+        }
+
+
+        /* ---------- Contact page ---------- */
+        .contact-headline {
+            font-family: 'Fraunces', var(--display);
+            font-optical-sizing: auto;
+            font-weight: 600;
+            font-size: 3rem;
+            line-height: 1.12;
+            letter-spacing: -0.015em;
+            color: var(--oxblood);
+            max-width: 17em;
+            margin-bottom: 2.25rem;
+        }
+        .contact-headline em { font-style: italic; color: var(--mulberry); }
+        .contact-layout { display: grid; grid-template-columns: minmax(0, 1fr) 280px; gap: 3rem; align-items: start; }
+        .contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
+        .contact-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+        .contact-form label { display: flex; flex-direction: column; gap: 0.4rem; font-family: var(--meta); font-size: 0.66rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+        .contact-form input, .contact-form textarea {
+            font-family: var(--body);
+            font-size: 0.98rem;
+            color: var(--ink);
+            background: #fff;
+            border: 1px solid var(--rule);
+            border-radius: 6px;
+            padding: 0.7rem 0.85rem;
+            resize: vertical;
+        }
+        .contact-form input:focus, .contact-form textarea:focus { outline: 2px solid var(--mulberry); outline-offset: 1px; border-color: transparent; }
+        .contact-form ::placeholder { color: #a39b9d; }
+        .contact-form .hp { position: absolute; left: -9999px; }     /* spam trap: people never see or fill this */
+        .contact-submit {
+            align-self: flex-start;
+            font-family: var(--meta);
+            font-size: 0.76rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #fff;
+            background: var(--oxblood);
+            border: none;
+            border-radius: 6px;
+            padding: 0.8rem 1.5rem;
+            cursor: pointer;
+            transition: background-color 0.25s ease;
+        }
+        .contact-submit:hover { background: var(--mulberry); }
+        .contact-submit:disabled { opacity: 0.6; cursor: default; }
+        .contact-status { font-size: 0.92rem; color: var(--sage); min-height: 1.4em; }
+        .contact-status.error { color: var(--mulberry); }
+        .rail a { color: var(--mulberry); text-decoration: none; border-bottom: 1px solid rgba(110, 51, 88, 0.3); }
+        .rail a:hover { border-bottom-color: var(--mulberry); }
+        @media (max-width: 1000px) { .contact-layout { grid-template-columns: minmax(0, 1fr); gap: 2rem; } .contact-headline { font-size: 2.4rem; } }
+        @media (max-width: 600px) { .contact-row { grid-template-columns: 1fr; } .contact-headline { font-size: 2rem; } }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="logo">yasmine bassil</a>
+        <ul class="nav-links">
+            <li><a href="index.html">home</a></li>
+            <li><a href="bio.html">bio</a></li>
+            <li><a href="cv.html">cv</a></li>
+            <li><a href="research.html">research</a></li>
+            <li><a href="thoughts.html">thoughts</a></li>
+            <li><a href="music.html">creative</a></li>
+            <li><a href="/defense" class="nav-past">defense</a></li>
+            <li><a href="contact.html" class="nav-contact active" aria-label="Contact"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"/></svg><span>contact</span></a></li>
+        </ul>
+        <button class="mobile-nav-toggle" aria-label="Toggle navigation">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <main class="page-inner">
+        <div class="sheet">
+            <div class="utility-bar">
+                <span>Contact</span>
+                <span>Atlanta, GA</span>
+            </div>
+
+            <h1 class="contact-headline">Have a program, a partnership or an idea in mind? <em>Let's talk.</em></h1>
+
+            <div class="contact-layout">
+                <form class="contact-form" id="contactForm" novalidate>
+                    <div class="contact-row">
+                        <label>Name *<input type="text" name="name" placeholder="Your name" autocomplete="name" required></label>
+                        <label>Email *<input type="email" name="email" placeholder="you@organization.org" autocomplete="email" required></label>
+                    </div>
+                    <label>Organization<input type="text" name="organization" placeholder="Optional" autocomplete="organization"></label>
+                    <label>Subject *<input type="text" name="subject" placeholder="What's this about?" required></label>
+                    <label>Message *<textarea name="message" rows="6" placeholder="Tell me about the role, the project, or what you're trying to build..." required></textarea></label>
+                    <label class="hp" aria-hidden="true">Leave this empty<input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+                    <button type="submit" class="contact-submit">Send message &rarr;</button>
+                    <p class="contact-status" id="contactStatus" role="status"></p>
+                </form>
+
+                <aside class="rail">
+                    <div class="rail-item">
+                        <span class="num-label">Direct Email</span>
+                        <p><a href="mailto:yasminebassil@gmail.com">yasminebassil@gmail.com</a></p>
+                    </div>
+                    <div class="rail-item">
+                        <span class="num-label">Based In</span>
+                        <p>Atlanta, GA<br>Open to relocation</p>
+                    </div>
+                    <div class="rail-item">
+                        <span class="num-label">Elsewhere</span>
+                        <ul>
+                            <li><a href="https://linkedin.com/in/yasminebassil" target="_blank" rel="noopener">LinkedIn &nearr;</a></li>
+                            <li><a href="https://scholar.google.com/citations?user=mcp_4HQAAAAJ" target="_blank" rel="noopener">Google Scholar &nearr;</a></li>
+                        </ul>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <footer>&copy; 2026 Yasmine Bassil</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>
+        // ---- Contact form ----
+        // Sends through EmailJS once a contact template exists. Until TEMPLATE_ID is filled in,
+        // submitting opens the visitor's own email app with the message already written.
+        (function () {
+            var TO = 'yasminebassil@gmail.com';
+            var PUBLIC_KEY = 'GOkQM-FcHb6v8REig';      // same EmailJS account as the defense RSVP
+            var SERVICE_ID = 'service_uiv8ong';
+            var TEMPLATE_ID = '';                      // create a "contact" template in EmailJS, then paste its id here
+
+            var form = document.getElementById('contactForm');
+            var status = document.getElementById('contactStatus');
+            var button = form.querySelector('.contact-submit');
+            function say(text, isError) { status.textContent = text; status.classList.toggle('error', !!isError); }
+
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                var f = form.elements;
+                if (f.website.value) return;                       // spam trap was filled
+                if (!form.checkValidity()) { say('Please fill in your name, a valid email, a subject and a message.', true); return; }
+                var data = { name: f.name.value.trim(), email: f.email.value.trim(), organization: f.organization.value.trim(), subject: f.subject.value.trim(), message: f.message.value.trim() };
+
+                if (!TEMPLATE_ID || !window.emailjs) {
+                    var body = data.message + '\n\n' + data.name + (data.organization ? ', ' + data.organization : '') + '\n' + data.email;
+                    window.location.href = 'mailto:' + TO + '?subject=' + encodeURIComponent(data.subject) + '&body=' + encodeURIComponent(body);
+                    say('Your email app should open with the message ready to send. If it doesn\u2019t, write to ' + TO + '.');
+                    return;
+                }
+                button.disabled = true; say('Sending\u2026');
+                emailjs.send(SERVICE_ID, TEMPLATE_ID, data, { publicKey: PUBLIC_KEY }).then(function () {
+                    form.reset(); say('Thank you. Your message is on its way, and I\u2019ll reply by email.');
+                }, function () {
+                    say('That didn\u2019t send. Please email me directly at ' + TO + '.', true);
+                }).then(function () { button.disabled = false; });
+            });
+        })();
+
+        // ---- Nav turns solid once the page scrolls ----
+        (function () {
+            var nav = document.querySelector('nav');
+            function update() { nav.classList.toggle('scrolled', window.pageYOffset > 8); }
+            window.addEventListener('scroll', update, { passive: true });
+            update();
+        })();
+
+        // ---- Mobile nav ----
+        (function () {
+            var toggle = document.querySelector('.mobile-nav-toggle');
+            var links = document.querySelector('.nav-links');
+            if (toggle && links) {
+                toggle.addEventListener('click', function () { links.classList.toggle('open'); });
+                links.addEventListener('click', function (e) {
+                    if (e.target.tagName === 'A') links.classList.remove('open');
+                });
+            }
+        })();
+    </script>
+</body>
+</html>
