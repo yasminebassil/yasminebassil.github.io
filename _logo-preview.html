@@ -1,0 +1,99 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>monogram options — temporary</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#FEFBFD;--ink:#2C2825;--muted:#5C5552;--purple:#6B5B8E;--rule:rgba(44,40,37,.14);
+ --meta:'IBM Plex Mono',ui-monospace,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--meta);padding:2.5rem 3rem 6rem}
+.t{font-size:.7rem;text-transform:uppercase;letter-spacing:.2em;color:var(--muted)}
+.sub{font-size:.68rem;color:var(--muted);margin:.7rem 0 2.5rem;line-height:1.7;max-width:70ch}
+.opt{border-top:1px solid var(--rule);padding:2rem 0 1.7rem}
+.hd{display:flex;gap:1.1rem;align-items:baseline;margin-bottom:1.2rem;flex-wrap:wrap}
+.hd .n{font-size:.62rem;text-transform:uppercase;letter-spacing:.2em;color:var(--purple);white-space:nowrap}
+.hd .d{font-size:.66rem;color:var(--muted);line-height:1.5}
+.stage{display:flex;align-items:center;gap:2.5rem;flex-wrap:wrap}
+.navbar{flex:1;min-width:360px;display:flex;justify-content:space-between;align-items:center;
+ padding:.85rem 1.2rem;border:1px solid var(--rule);border-radius:3px}
+.navbar ul{display:flex;gap:1.2rem;list-style:none}
+.navbar a.lnk{font-size:.6rem;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);text-decoration:none}
+.mark svg{width:46px;height:28px;display:block}
+svg.big{width:200px;height:120px;flex-shrink:0}
+svg.tiny{width:30px;height:18px;flex-shrink:0}
+svg path{fill:none;stroke:var(--ink);stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
+svg path.ac{stroke:var(--purple)}
+svg circle.ring{fill:none;stroke:var(--purple);stroke-width:2.5;opacity:.5}
+</style></head><body>
+<p class="t">monogram options — y looping into b</p>
+<p class="sub">Drawn as SVG rather than set in a typeface, so the join is a real ligature.
+Each row: <b>real nav size</b> in a mock bar, then <b>large</b> to see the curve, then <b>tiny</b> (30px) to check it survives at favicon scale.
+Purple marks the connecting stroke. Temporary file, not linked from the site.</p>
+<div class="opt">
+  <div class="hd"><span class="n">A · flowing loop</span><span class="d">one unbroken line: y curls under, sweeps right, rises into b’s stem</span></div>
+  <div class="stage">
+    <div class="navbar">
+      <a class="mark" href="#"><svg viewBox="0 0 130 78"><path class="ac" d="M27,28 C27,42 33,51 44,50 C52,49 57,43 58,31 C58,43 56,53 51,60 C45,68 37,70 33,66 C29,62 34,57 43,56 C57,54 70,55 80,51 C84,49 85,44 85,37 L85,10"/><path d="M85,29 C101,29 109,34 109,40 C109,46 101,51 85,51"/></svg></a>
+      <ul><li><a class="lnk" href="#">home</a></li><li><a class="lnk" href="#">bio</a></li><li><a class="lnk" href="#">cv</a></li><li><a class="lnk" href="#">research</a></li></ul>
+    </div>
+    <svg class="big" viewBox="0 0 130 78"><path class="ac" d="M27,28 C27,42 33,51 44,50 C52,49 57,43 58,31 C58,43 56,53 51,60 C45,68 37,70 33,66 C29,62 34,57 43,56 C57,54 70,55 80,51 C84,49 85,44 85,37 L85,10"/><path d="M85,29 C101,29 109,34 109,40 C109,46 101,51 85,51"/></svg>
+    <svg class="tiny" viewBox="0 0 130 78"><path class="ac" d="M27,28 C27,42 33,51 44,50 C52,49 57,43 58,31 C58,43 56,53 51,60 C45,68 37,70 33,66 C29,62 34,57 43,56 C57,54 70,55 80,51 C84,49 85,44 85,37 L85,10"/><path d="M85,29 C101,29 109,34 109,40 C109,46 101,51 85,51"/></svg>
+  </div>
+</div>
+<div class="opt">
+  <div class="hd"><span class="n">B · tight loop</span><span class="d">y and b stay separate letters; only the descender reaches across</span></div>
+  <div class="stage">
+    <div class="navbar">
+      <a class="mark" href="#"><svg viewBox="0 0 130 78"><path d="M27,28 C27,42 33,51 44,50 C52,49 57,43 58,31"/><path class="ac" d="M58,31 C58,43 56,52 52,58 C47,65 40,67 37,64 C34,61 38,57 45,56 C58,54 72,55 83,51"/><path d="M85,10 L85,51"/><path d="M85,29 C101,29 109,34 109,40 C109,46 101,51 85,51"/></svg></a>
+      <ul><li><a class="lnk" href="#">home</a></li><li><a class="lnk" href="#">bio</a></li><li><a class="lnk" href="#">cv</a></li><li><a class="lnk" href="#">research</a></li></ul>
+    </div>
+    <svg class="big" viewBox="0 0 130 78"><path d="M27,28 C27,42 33,51 44,50 C52,49 57,43 58,31"/><path class="ac" d="M58,31 C58,43 56,52 52,58 C47,65 40,67 37,64 C34,61 38,57 45,56 C58,54 72,55 83,51"/><path d="M85,10 L85,51"/><path d="M85,29 C101,29 109,34 109,40 C109,46 101,51 85,51"/></svg>
+    <svg class="tiny" viewBox="0 0 130 78"><path d="M27,28 C27,42 33,51 44,50 C52,49 57,43 58,31"/><path class="ac" d="M58,31 C58,43 56,52 52,58 C47,65 40,67 37,64 C34,61 38,57 45,56 C58,54 72,55 83,51"/><path d="M85,10 L85,51"/><path d="M85,29 C101,29 109,34 109,40 C109,46 101,51 85,51"/></svg>
+  </div>
+</div>
+<div class="opt">
+  <div class="hd"><span class="n">C · high arch</span><span class="d">the join arcs over the top instead of below — most distinctive at small size</span></div>
+  <div class="stage">
+    <div class="navbar">
+      <a class="mark" href="#"><svg viewBox="0 0 130 78"><path d="M27,28 C27,42 33,51 44,50 C52,49 57,43 58,31"/><path class="ac" d="M58,31 C62,26 70,24 78,27 C83,29 85,33 85,38"/><path d="M58,31 C57,45 54,56 48,63 C43,69 36,70 33,67 C30,64 34,59 42,58"/><path d="M85,10 L85,51"/><path d="M85,29 C101,29 109,34 109,40 C109,46 101,51 85,51"/></svg></a>
+      <ul><li><a class="lnk" href="#">home</a></li><li><a class="lnk" href="#">bio</a></li><li><a class="lnk" href="#">cv</a></li><li><a class="lnk" href="#">research</a></li></ul>
+    </div>
+    <svg class="big" viewBox="0 0 130 78"><path d="M27,28 C27,42 33,51 44,50 C52,49 57,43 58,31"/><path class="ac" d="M58,31 C62,26 70,24 78,27 C83,29 85,33 85,38"/><path d="M58,31 C57,45 54,56 48,63 C43,69 36,70 33,67 C30,64 34,59 42,58"/><path d="M85,10 L85,51"/><path d="M85,29 C101,29 109,34 109,40 C109,46 101,51 85,51"/></svg>
+    <svg class="tiny" viewBox="0 0 130 78"><path d="M27,28 C27,42 33,51 44,50 C52,49 57,43 58,31"/><path class="ac" d="M58,31 C62,26 70,24 78,27 C83,29 85,33 85,38"/><path d="M58,31 C57,45 54,56 48,63 C43,69 36,70 33,67 C30,64 34,59 42,58"/><path d="M85,10 L85,51"/><path d="M85,29 C101,29 109,34 109,40 C109,46 101,51 85,51"/></svg>
+  </div>
+</div>
+<div class="opt">
+  <div class="hd"><span class="n">D · fused</span><span class="d">y and b share one vertical stroke — most abstract, reads as a single glyph</span></div>
+  <div class="stage">
+    <div class="navbar">
+      <a class="mark" href="#"><svg viewBox="0 0 130 78"><path d="M28,28 C28,42 34,51 45,50 C51,49 55,46 57,42"/><path d="M57,10 L57,51"/><path class="ac" d="M57,51 C57,60 53,68 45,70 C39,71 35,67 38,63 C41,59 49,59 57,58"/><path d="M57,29 C74,29 82,34 82,40 C82,46 74,51 57,51"/></svg></a>
+      <ul><li><a class="lnk" href="#">home</a></li><li><a class="lnk" href="#">bio</a></li><li><a class="lnk" href="#">cv</a></li><li><a class="lnk" href="#">research</a></li></ul>
+    </div>
+    <svg class="big" viewBox="0 0 130 78"><path d="M28,28 C28,42 34,51 45,50 C51,49 55,46 57,42"/><path d="M57,10 L57,51"/><path class="ac" d="M57,51 C57,60 53,68 45,70 C39,71 35,67 38,63 C41,59 49,59 57,58"/><path d="M57,29 C74,29 82,34 82,40 C82,46 74,51 57,51"/></svg>
+    <svg class="tiny" viewBox="0 0 130 78"><path d="M28,28 C28,42 34,51 45,50 C51,49 55,46 57,42"/><path d="M57,10 L57,51"/><path class="ac" d="M57,51 C57,60 53,68 45,70 C39,71 35,67 38,63 C41,59 49,59 57,58"/><path d="M57,29 C74,29 82,34 82,40 C82,46 74,51 57,51"/></svg>
+  </div>
+</div>
+<div class="opt">
+  <div class="hd"><span class="n">E · flowing, balanced</span><span class="d">same idea as A with a smaller bowl — the most even colour overall</span></div>
+  <div class="stage">
+    <div class="navbar">
+      <a class="mark" href="#"><svg viewBox="0 0 130 78"><path class="ac" d="M29,28 C29,41 34,49 44,48 C51,47 56,42 57,32 C57,43 55,52 51,58 C46,65 39,67 36,64 C33,61 37,57 44,56 C57,54 71,55 82,50 C86,48 87,43 87,37 L87,12"/><path d="M87,31 C99,31 105,35 105,40 C105,45 99,50 87,50"/></svg></a>
+      <ul><li><a class="lnk" href="#">home</a></li><li><a class="lnk" href="#">bio</a></li><li><a class="lnk" href="#">cv</a></li><li><a class="lnk" href="#">research</a></li></ul>
+    </div>
+    <svg class="big" viewBox="0 0 130 78"><path class="ac" d="M29,28 C29,41 34,49 44,48 C51,47 56,42 57,32 C57,43 55,52 51,58 C46,65 39,67 36,64 C33,61 37,57 44,56 C57,54 71,55 82,50 C86,48 87,43 87,37 L87,12"/><path d="M87,31 C99,31 105,35 105,40 C105,45 99,50 87,50"/></svg>
+    <svg class="tiny" viewBox="0 0 130 78"><path class="ac" d="M29,28 C29,41 34,49 44,48 C51,47 56,42 57,32 C57,43 55,52 51,58 C46,65 39,67 36,64 C33,61 37,57 44,56 C57,54 71,55 82,50 C86,48 87,43 87,37 L87,12"/><path d="M87,31 C99,31 105,35 105,40 C105,45 99,50 87,50"/></svg>
+  </div>
+</div>
+<div class="opt">
+  <div class="hd"><span class="n">F · in a ring</span><span class="d">badge version of A — also the one that works as a favicon or avatar</span></div>
+  <div class="stage">
+    <div class="navbar">
+      <a class="mark" href="#"><svg viewBox="0 0 130 78"><circle cx="65" cy="40" r="34" class="ring"/><path class="ac" d="M40,32 C40,42 44,48 51,47 C57,46 60,42 61,34 C61,43 60,50 56,55 C52,60 47,61 45,58 C43,55 46,52 52,51 C61,50 70,50 77,47 C80,46 81,42 81,38 L81,22"/><path d="M81,34 C90,34 95,37 95,41 C95,45 90,47 81,47"/></svg></a>
+      <ul><li><a class="lnk" href="#">home</a></li><li><a class="lnk" href="#">bio</a></li><li><a class="lnk" href="#">cv</a></li><li><a class="lnk" href="#">research</a></li></ul>
+    </div>
+    <svg class="big" viewBox="0 0 130 78"><circle cx="65" cy="40" r="34" class="ring"/><path class="ac" d="M40,32 C40,42 44,48 51,47 C57,46 60,42 61,34 C61,43 60,50 56,55 C52,60 47,61 45,58 C43,55 46,52 52,51 C61,50 70,50 77,47 C80,46 81,42 81,38 L81,22"/><path d="M81,34 C90,34 95,37 95,41 C95,45 90,47 81,47"/></svg>
+    <svg class="tiny" viewBox="0 0 130 78"><circle cx="65" cy="40" r="34" class="ring"/><path class="ac" d="M40,32 C40,42 44,48 51,47 C57,46 60,42 61,34 C61,43 60,50 56,55 C52,60 47,61 45,58 C43,55 46,52 52,51 C61,50 70,50 77,47 C80,46 81,42 81,38 L81,22"/><path d="M81,34 C90,34 95,37 95,41 C95,45 90,47 81,47"/></svg>
+  </div>
+</div>
+</body></html>

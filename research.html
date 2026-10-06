@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research — Yasmine Bassil</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-cream: #fefbfd;
+            --bg-cream-dark: #F0EBE3;
+            --text-charcoal: #2C2825;
+            --text-muted: #5C5552;
+            --accent-terracotta: #4A4544;
+            --accent-olive: #6B5B8E;
+            --font-display: 'Cormorant Garamond', Georgia, serif;
+            --font-body: 'Satoshi', -apple-system, system-ui, sans-serif;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { font-size: 16px; scroll-behavior: smooth; }
+        body { font-family: var(--font-body); background-color: var(--bg-cream); color: var(--text-charcoal); line-height: 1.7; min-height: 100vh; }
+
+        /* Navigation */
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.5rem 3rem; display: flex; justify-content: space-between; align-items: center; background: linear-gradient(to bottom, var(--bg-cream) 0%, var(--bg-cream) 70%, transparent 100%); }
+        .logo { font-family: 'Fraunces', var(--font-display); font-optical-sizing: auto; font-variation-settings: 'SOFT' 45, 'WONK' 1; font-size: 1.5rem; font-weight: 500; color: var(--text-charcoal); text-decoration: none; }
+        .nav-links { display: flex; gap: 2rem; align-items: center; list-style: none; }
+        .nav-links a { font-size: 0.9rem; color: var(--text-muted); text-decoration: none; transition: color 0.3s ease; }
+        .nav-links a:hover { color: var(--accent-terracotta); }
+        .nav-links a.active { color: var(--text-charcoal); }
+        .nav-links a.nav-past { opacity: 0.45; }
+        .nav-links a.nav-past:hover { opacity: 0.7; }
+        .mobile-nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
+        .mobile-nav-toggle span { display: block; width: 24px; height: 2px; background: var(--text-charcoal); margin: 5px 0; }
+
+        main { max-width: 820px; margin: 0 auto; padding: 7rem 2rem 4rem; }
+
+        h1 { font-family: var(--font-display); font-size: 2.5rem; font-weight: 600; letter-spacing: -0.02em; margin-bottom: 0.75rem; }
+
+        .page-lede {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            line-height: 1.4;
+            color: var(--accent-olive);
+            margin-bottom: 1.25rem;
+        }
+
+        .page-sub { color: var(--text-muted); font-size: 1rem; max-width: 60ch; }
+
+        h2 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            color: var(--accent-olive);
+            margin-top: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        p { margin-bottom: 1.15rem; }
+
+        a { color: var(--accent-olive); text-decoration: none; transition: opacity 0.2s ease; }
+        a:hover { opacity: 0.7; }
+
+        /* Plain-language / technical layering */
+        .tech-note {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            border-left: 2px solid var(--bg-cream-dark);
+            padding-left: 0.9rem;
+            margin: -0.35rem 0 1.5rem;
+        }
+        .tech-note strong { font-weight: 500; color: var(--text-charcoal); }
+
+        /* Method / tool cards */
+        .card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.85rem; margin: 1.5rem 0 0.5rem; }
+        .card {
+            background: #fff;
+            border: 1px solid rgba(107, 91, 142, 0.15);
+            border-radius: 8px;
+            padding: 1rem;
+            box-shadow: 0 1px 4px rgba(107, 91, 142, 0.05);
+        }
+        .card-label {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            color: var(--accent-olive);
+            font-weight: 500;
+            margin-bottom: 0.35rem;
+        }
+        .card-title { font-weight: 500; margin-bottom: 0.3rem; }
+        .card-body { font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; }
+
+        /* Findings */
+        .finding {
+            padding: 1.25rem 0;
+            border-bottom: 1px solid var(--bg-cream-dark);
+        }
+        .finding:last-of-type { border-bottom: none; }
+        .finding-plain { font-size: 1.05rem; margin-bottom: 0.4rem; }
+        .finding-cite { font-size: 0.85rem; color: var(--text-muted); }
+        .finding-cite em { font-style: italic; }
+
+        /* Tools list */
+        .tool-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 1rem;
+            padding: 0.6rem 0;
+            border-bottom: 1px solid var(--bg-cream-dark);
+            flex-wrap: wrap;
+        }
+        .tool-item:last-child { border-bottom: none; }
+        .tool-name { font-weight: 500; }
+        .tool-desc { font-size: 0.88rem; color: var(--text-muted); flex: 1; }
+        .tool-link { font-size: 0.8rem; white-space: nowrap; }
+
+        /* Figure placeholders — replace with real images */
+        .figure-placeholder {
+            border: 1px dashed rgba(107, 91, 142, 0.4);
+            border-radius: 8px;
+            padding: 2.5rem 1rem;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin: 1.5rem 0;
+            background: rgba(107, 91, 142, 0.03);
+        }
+        figure { margin: 1.5rem 0; }
+        figure img { width: 100%; border-radius: 8px; display: block; }
+        figcaption { font-size: 0.82rem; color: var(--text-muted); margin-top: 0.5rem; text-align: center; }
+
+        /* CTA */
+        .cta-row { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1.5rem; }
+        .cta-btn {
+            display: inline-block;
+            padding: 0.55rem 1.25rem;
+            border: 1px solid var(--accent-olive);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: var(--accent-olive);
+            transition: all 0.3s ease;
+        }
+        .cta-btn:hover { background: var(--accent-olive); color: var(--bg-cream); opacity: 1; }
+
+        footer { text-align: center; padding: 3rem 2rem 2rem; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid var(--bg-cream-dark); }
+
+        @media (max-width: 900px) {
+            nav { padding: 1rem 1.5rem; }
+            .nav-links { display: none; }
+            .mobile-nav-toggle { display: block; }
+            main { padding: 5rem 1.5rem 3rem; }
+            .card-grid { grid-template-columns: 1fr; }
+            .page-lede { font-size: 1.3rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="logo">yasmine bassil</a>
+        <ul class="nav-links">
+            <li><a href="index.html">home</a></li>
+            <li><a href="bio.html">bio</a></li>
+            <li><a href="cv.html">cv</a></li>
+            <li><a href="research.html" class="active">research</a></li>
+            <li><a href="thoughts.html">thoughts</a></li>
+            <li><a href="music.html">creative</a></li>
+            <li><a href="/defense" class="nav-past">defense</a></li>
+        </ul>
+        <button class="mobile-nav-toggle" aria-label="Toggle navigation">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <main>
+        <h1>research</h1>
+        <p class="page-lede">How do we find our way &mdash; and what changes as we age?</p>
+        <p class="page-sub">My doctoral research asked how the aging brain builds and uses maps of the world, using immersive virtual reality, neuroimaging, and brain stimulation. Along the way, I built the tools and infrastructure that made those questions answerable.</p>
+
+        <!-- ============================================================
+             THE QUESTION
+             ============================================================ -->
+        <h2>The question</h2>
+
+        <p>Getting lost in a familiar place is one of the earliest and most distressing changes many people notice as they age. But navigation isn't one skill &mdash; it's several, working together. You can find your way by remembering a sequence of turns, or by holding a map-like sense of how places relate to each other. These two strategies rely on different brain systems, and they don't age the same way.</p>
+
+        <p>My dissertation, <em>Navigating Aging: Characterizing Behavioral and Neural Correlates of Aging-Related Deficits in Human Spatial Navigation</em>, asked which parts of navigation change with age, and what's happening in the brain when they do.</p>
+
+        <p class="tech-note"><strong>The technical version:</strong> I studied age-related differences in reference frame utilization &mdash; specifically the formation and recall of allocentric (map-like) versus egocentric (route-based) spatial representations &mdash; and the cortical circuits supporting them.</p>
+
+        <!-- ============================================================
+             THE APPROACH
+             ============================================================ -->
+        <h2>The approach</h2>
+
+        <p>Studying navigation in a lab is hard: the environments people navigate in real life are large, messy, and full of landmarks, while most lab tasks are small and abstract. So I built a city.</p>
+
+        <div class="card-grid">
+            <div class="card">
+                <div class="card-label">Behavior</div>
+                <div class="card-title">Immersive VR</div>
+                <div class="card-body">A city-scale virtual environment participants explore freely, paired with standardized clinical and cognitive assessments.</div>
+            </div>
+            <div class="card">
+                <div class="card-label">Structure &amp; function</div>
+                <div class="card-title">Neuroimaging</div>
+                <div class="card-body">fMRI and structural MRI to map the networks engaged during spatial memory and recall.</div>
+            </div>
+            <div class="card">
+                <div class="card-label">Causal test</div>
+                <div class="card-title">TMS-fMRI</div>
+                <div class="card-body">Concurrent brain stimulation and imaging &mdash; perturbing a region and watching how the rest of the network responds.</div>
+            </div>
+        </div>
+
+        <p class="tech-note"><strong>Scale:</strong> 110+ older adult participants, recruited through community partnerships and shared across 5 labs.</p>
+
+        <!-- ============================================================
+             FIGURE PLACEHOLDER — NavCity
+             Replace this block with something like:
+             <figure>
+               <img src="img/navcity.jpg" alt="The NavCity virtual environment">
+               <figcaption>NavCity, the city-scale VR environment.</figcaption>
+             </figure>
+             ============================================================ -->
+        <div class="figure-placeholder">
+            [ figure: a screenshot or still from NavCity ]<br>
+            Drop the image in <code>img/</code> and swap this block for a &lt;figure&gt;.
+        </div>
+
+        <!-- ============================================================
+             WHAT WE'RE LEARNING
+             NOTE: the two entries below are drawn directly from the
+             published paper titles. Replace the plain-language lines with
+             your own one-sentence summary of each result.
+             ============================================================ -->
+        <h2>What we're learning</h2>
+
+        <div class="finding">
+            <p class="finding-plain">People do form map-like knowledge of a brand-new city after only a short time exploring it &mdash; even when nothing asked them to.</p>
+            <p class="finding-cite"><strong>Bassil, Y.</strong>, Kanukolanu, A., Funderburg, E., Brown, T. I., &amp; Borich, M. R. (2025). Formation of allocentric representations after exposure to a novel, naturalistic, city-like, virtual reality environment. <em>Neuropsychologia</em>. <a href="https://doi.org/10.1016/j.neuropsychologia.2025.109290" target="_blank" rel="noopener">Read &rarr;</a></p>
+        </div>
+
+        <div class="finding">
+            <p class="finding-plain">Aging doesn't erase that map-like knowledge uniformly &mdash; older adults fall into distinct profiles of what they recall and how.</p>
+            <p class="finding-cite"><strong>Bassil, Y.</strong>, Kanukolanu, A., Funderburg, E., Cui, E. Z., Brown, T. I., &amp; Borich, M. R. (2026). Distinct aging-related profiles of allocentric knowledge recall following navigation in an immersive, naturalistic, city-like environment. <em>Frontiers in Aging Neuroscience</em>. <a href="https://doi.org/10.3389/fnagi.2026.1746016" target="_blank" rel="noopener">Read &rarr;</a></p>
+        </div>
+
+        <div class="finding">
+            <p class="finding-plain">Concurrent TMS-fMRI is powerful but notoriously difficult to run well &mdash; so an international group of us wrote the field's first consensus guidelines for doing it rigorously.</p>
+            <p class="finding-cite">Woolgar, A., Feredoes, E., Assem, M., <strong>Bassil, Y.</strong>, Bergmann, T. O., Beynel, L., ... &amp; Sack, A. T. (2026). Consensus guidelines for the use of concurrent TMS-fMRI in cognitive and clinical neuroscience. <em>Nature Protocols</em>. <a href="https://doi.org/10.1038/s41596-025-01182-4" target="_blank" rel="noopener">Read &rarr;</a></p>
+        </div>
+
+        <!-- ============================================================
+             WHAT I BUILT
+             ============================================================ -->
+        <h2>What I built</h2>
+
+        <p>Answering these questions meant building the infrastructure to ask them. All of it is open-source.</p>
+
+        <div class="tool-item">
+            <span class="tool-name">NavCity</span>
+            <span class="tool-desc">A city-scale virtual environment and navigation task toolkit, built in Unity.</span>
+            <a class="tool-link" href="https://github.com/npresearchlab/navcity" target="_blank" rel="noopener">GitHub &rarr;</a>
+        </div>
+        <div class="tool-item">
+            <span class="tool-name">NavCity Analysis</span>
+            <span class="tool-desc">The analysis pipeline for NavCity behavioral data.</span>
+            <a class="tool-link" href="https://github.com/npresearchlab/navcity-analysis" target="_blank" rel="noopener">GitHub &rarr;</a>
+        </div>
+        <div class="tool-item">
+            <span class="tool-name">MR.Flow</span>
+            <span class="tool-desc">A GUI-based neuroimaging workbench for fMRI preprocessing and analysis. I owned the front-end and UX/UI design.</span>
+            <a class="tool-link" href="https://gitlab.com/neurotrophy-git/mrflow" target="_blank" rel="noopener">GitLab &rarr;</a>
+        </div>
+        <div class="tool-item">
+            <span class="tool-name">Concurrent TMS-fMRI</span>
+            <span class="tool-desc">Established as a shared institutional capability at Emory, opening the method to the broader Atlanta research community.</span>
+            <span class="tool-link"></span>
+        </div>
+
+        <p class="tech-note" style="margin-top: 1.5rem;"><strong>Also built:</strong> lab-wide documentation systems, standard operating procedures, and data pipelines (Python, R, bash/zsh) across 7 GitHub repositories &mdash; the unglamorous infrastructure that lets a lab keep working after any one person leaves.</p>
+
+        <!-- ============================================================
+             MORE
+             ============================================================ -->
+        <h2>More</h2>
+
+        <p>Seven peer-reviewed publications, 20 conference presentations, and 17 invited talks &mdash; the full list lives on my CV.</p>
+
+        <div class="cta-row">
+            <a class="cta-btn" href="cv.html#publications">Publications on my CV &rarr;</a>
+            <a class="cta-btn" href="https://scholar.google.com/citations?user=mcp_4HQAAAAJ" target="_blank" rel="noopener">Google Scholar &rarr;</a>
+        </div>
+    </main>
+
+    <footer>&copy; 2026 Yasmine Bassil</footer>
+</body>
+</html>

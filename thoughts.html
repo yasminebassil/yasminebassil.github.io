@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- Index layout inspired by scottypeterson.net/blog; type, color, and code are original. -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,14 +7,16 @@
     <title>Thoughts — Yasmine Bassil</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:ital,wght@0,400;0,500;1,400&family=Noto+Sans+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:ital,wght@0,400;0,500;1,400&family=Noto+Sans+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-cream: #fdf8fc;
+            --bg-cream: #fefbfd;
             --bg-cream-dark: #F0EBE3;
             --text-charcoal: #2C2825;
             --text-muted: #5C5552;
-            --accent-terracotta: #C4755B;
+            --accent-terracotta: #4A4544;
+            --accent-purple: #6B5B8E;
+            --rule: rgba(44, 40, 37, 0.14);
             --font-display: 'Cormorant Garamond', Georgia, serif;
             --font-body: 'DM Sans', -apple-system, sans-serif;
             --font-arabic: 'Noto Sans Arabic', sans-serif;
@@ -21,8 +24,10 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { font-size: 16px; }
         body { font-family: var(--font-body); background-color: var(--bg-cream); color: var(--text-charcoal); line-height: 1.6; min-height: 100vh; }
+
+        /* ---- Nav (shared across site) ---- */
         nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.5rem 3rem; display: flex; justify-content: space-between; align-items: center; background: var(--bg-cream); }
-        .logo { font-family: var(--font-display); font-size: 1.5rem; font-weight: 500; color: var(--text-charcoal); text-decoration: none; }
+        .logo { font-family: 'Fraunces', var(--font-display); font-optical-sizing: auto; font-variation-settings: 'SOFT' 45, 'WONK' 1; font-size: 1.5rem; font-weight: 500; color: var(--text-charcoal); text-decoration: none; }
         .nav-links { display: flex; gap: 2rem; align-items: center; list-style: none; }
         .nav-links a { font-size: 0.9rem; color: var(--text-muted); text-decoration: none; transition: color 0.3s ease; }
         .nav-links a:hover { color: var(--accent-terracotta); }
@@ -33,11 +38,129 @@
         .lang-toggle:hover { border-color: var(--accent-terracotta); color: var(--accent-terracotta); }
         .mobile-nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
         .mobile-nav-toggle span { display: block; width: 24px; height: 2px; background: var(--text-charcoal); margin: 5px 0; }
-        @media (max-width: 900px) { nav { padding: 1rem 1.5rem; } .nav-links { display: none; } .mobile-nav-toggle { display: block; } }
-        .coming-soon { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; text-align: center; padding: 2rem; }
-        .coming-soon h1 { font-family: var(--font-display); font-size: 2.5rem; font-weight: 500; margin-bottom: 0.75rem; }
-        .coming-soon p { color: var(--text-muted); font-size: 1rem; }
+
+        /* ---- Page shell ---- */
+        main { max-width: 1080px; margin: 0 auto; padding: 7rem 3rem 6rem; }
+
+        /* Small caps metadata type — the connective tissue of the layout */
+        .meta-type {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--text-muted);
+        }
+        .meta-type .kicker { color: var(--accent-purple); margin-right: 0.6rem; }
+
+        /* Top rail: section label left, entry count right */
+        .page-rail {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-top: 1px solid var(--rule);
+            margin-bottom: 3.5rem;
+        }
+
+        /* Split hero */
+        .page-head {
+            display: grid;
+            grid-template-columns: 7fr 5fr;
+            margin-bottom: 4rem;
+        }
+        .page-head h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+            font-weight: 500;
+            line-height: 1.02;
+            letter-spacing: -0.01em;
+            padding-right: 3rem;
+        }
+        .page-head h1 em { font-style: italic; color: var(--accent-purple); }
+        .page-head .lede {
+            border-left: 1px solid var(--rule);
+            padding-left: 2rem;
+            display: flex;
+            align-items: flex-end;
+            color: var(--text-muted);
+            font-size: 0.98rem;
+        }
+
+        /* ---- Post list ---- */
+        .index-label { margin-bottom: 0.6rem; }
+        .post-list { border-top: 1px solid var(--rule); }
+        .post { border-bottom: 1px solid var(--rule); }
+        .post > a {
+            display: grid;
+            grid-template-columns: 3fr 9fr;
+            padding: 2rem 0;
+            text-decoration: none;
+            color: inherit;
+        }
+        .post-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            padding-right: 2rem;
+        }
+        .post-num { font-size: 0.75rem; color: var(--accent-purple); letter-spacing: 0.05em; }
+        .post-body { border-left: 1px solid var(--rule); padding-left: 2rem; }
+        .post-title {
+            font-family: var(--font-display);
+            font-size: 1.9rem;
+            font-weight: 500;
+            line-height: 1.2;
+            letter-spacing: -0.01em;
+            margin-bottom: 0.6rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+            transition: color 0.3s ease;
+        }
+        .post > a:hover .post-title { color: var(--accent-purple); }
+        .post-title .arrow {
+            font-size: 0.9rem;
+            line-height: 2;
+            flex-shrink: 0;
+            color: var(--accent-purple);
+            opacity: 0;
+            transform: translateX(-4px);
+            transition: all 0.3s ease;
+        }
+        .post > a:hover .post-title .arrow { opacity: 1; transform: translateX(0); }
+        .post-excerpt { color: var(--text-muted); max-width: 42rem; margin-bottom: 1rem; font-size: 0.95rem; }
+        .post-tags { font-size: 0.72rem; letter-spacing: 0.08em; color: var(--text-muted); text-transform: uppercase; }
+
+        .list-empty { padding: 3rem 0; color: var(--text-muted); font-size: 0.95rem; }
+
+        /* Reveal on scroll */
+        .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.7s ease, transform 0.7s ease; }
+        .reveal.visible { opacity: 1; transform: none; }
+        @media (prefers-reduced-motion: reduce) {
+            .reveal { opacity: 1; transform: none; transition: none; }
+        }
+
         footer { text-align: center; padding: 3rem 2rem 2rem; color: var(--text-muted); font-size: 0.9rem; border-top: 1px solid var(--bg-cream-dark); }
+
+        @media (max-width: 900px) {
+            nav { padding: 1rem 1.5rem; }
+            .nav-links { display: none; }
+            .nav-links.open {
+                display: flex; flex-direction: column; align-items: flex-start; gap: 1rem;
+                position: absolute; top: 100%; left: 0; right: 0;
+                background: var(--bg-cream); padding: 1.25rem 1.5rem;
+                border-bottom: 1px solid var(--rule);
+            }
+            .mobile-nav-toggle { display: block; }
+            main { padding: 5.5rem 1.5rem 4rem; }
+            .page-head { grid-template-columns: 1fr; gap: 1.5rem; margin-bottom: 3rem; }
+            .page-head h1 { padding-right: 0; }
+            .page-head .lede { border-left: none; padding-left: 0; }
+            .post > a { grid-template-columns: 1fr; gap: 0.75rem; padding: 1.75rem 0; }
+            .post-meta { flex-direction: row; align-items: baseline; gap: 1rem; padding-right: 0; }
+            .post-body { border-left: none; padding-left: 0; }
+            .post-title { font-size: 1.55rem; }
+            .post-title .arrow { display: none; }
+        }
     </style>
 </head>
 <body>
@@ -47,7 +170,7 @@
             <li><a href="index.html">home</a></li>
             <li><a href="bio.html">bio</a></li>
             <li><a href="cv.html">cv</a></li>
-            <li><a href="science.html">science</a></li>
+            <li><a href="research.html">research</a></li>
             <li><a href="thoughts.html" class="active">thoughts</a></li>
             <li><a href="music.html">creative</a></li>
             <li><a href="/defense" class="nav-past">defense</a></li>
@@ -56,10 +179,130 @@
             <span></span><span></span><span></span>
         </button>
     </nav>
-    <main class="coming-soon">
-        <h1>Coming Soon</h1>
-        <p>This page is being updated. Check back soon!</p>
+
+    <main>
+        <div class="page-rail meta-type reveal">
+            <span><span class="kicker">Thoughts</span>Writing</span>
+            <span id="entry-count"></span>
+        </div>
+
+        <div class="page-head">
+            <div class="reveal">
+                <h1>Notes between <em>experiments.</em></h1>
+            </div>
+            <div class="lede reveal">
+                <p>Neuroscience, academia, and the parts of the work that don't make it into a paper. Plus music, language, and whatever else has my attention.</p>
+            </div>
+        </div>
+
+        <div class="index-label meta-type reveal"><span class="kicker">Index</span>All posts</div>
+
+        <!-- ============================================================
+             POST LIST
+             Each entry is one <article class="post"> block. To add a post,
+             copy a block, update the href, number, date, read time, title,
+             excerpt, and tags. Numbering runs newest (highest) first.
+             The "N entries" count in the rail above updates automatically.
+             The three entries below are PLACEHOLDERS — replace or delete.
+             ============================================================ -->
+        <div class="post-list">
+
+            <article class="post reveal">
+                <a href="#">
+                    <div class="post-meta">
+                        <span class="post-num">3</span>
+                        <span class="meta-type">Month 00, 2026</span>
+                        <span class="meta-type">0 min read</span>
+                    </div>
+                    <div class="post-body">
+                        <h2 class="post-title">
+                            <span>Placeholder: first post title goes here</span>
+                            <span class="arrow" aria-hidden="true">&#8599;</span>
+                        </h2>
+                        <p class="post-excerpt">Two or three sentences of setup — what the piece is about and why it's worth the reader's time. Keep it concrete; this is the only thing standing between the title and a click.</p>
+                        <p class="post-tags">Topic &middot; Topic &middot; Topic</p>
+                    </div>
+                </a>
+            </article>
+
+            <article class="post reveal">
+                <a href="#">
+                    <div class="post-meta">
+                        <span class="post-num">2</span>
+                        <span class="meta-type">Month 00, 2026</span>
+                        <span class="meta-type">0 min read</span>
+                    </div>
+                    <div class="post-body">
+                        <h2 class="post-title">
+                            <span>Placeholder: second post title goes here</span>
+                            <span class="arrow" aria-hidden="true">&#8599;</span>
+                        </h2>
+                        <p class="post-excerpt">Two or three sentences of setup — what the piece is about and why it's worth the reader's time. Keep it concrete; this is the only thing standing between the title and a click.</p>
+                        <p class="post-tags">Topic &middot; Topic &middot; Topic</p>
+                    </div>
+                </a>
+            </article>
+
+            <article class="post reveal">
+                <a href="#">
+                    <div class="post-meta">
+                        <span class="post-num">1</span>
+                        <span class="meta-type">Month 00, 2026</span>
+                        <span class="meta-type">0 min read</span>
+                    </div>
+                    <div class="post-body">
+                        <h2 class="post-title">
+                            <span>Placeholder: third post title goes here</span>
+                            <span class="arrow" aria-hidden="true">&#8599;</span>
+                        </h2>
+                        <p class="post-excerpt">Two or three sentences of setup — what the piece is about and why it's worth the reader's time. Keep it concrete; this is the only thing standing between the title and a click.</p>
+                        <p class="post-tags">Topic &middot; Topic &middot; Topic</p>
+                    </div>
+                </a>
+            </article>
+
+        </div>
     </main>
+
     <footer>&copy; 2026 Yasmine Bassil</footer>
+
+    <script>
+        // ---- Entry count ----
+        (function () {
+            var posts = document.querySelectorAll('.post-list .post').length;
+            var el = document.getElementById('entry-count');
+            if (el) el.textContent = posts + (posts === 1 ? ' entry' : ' entries');
+        })();
+
+        // ---- Reveal on scroll ----
+        (function () {
+            var items = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
+            if (!('IntersectionObserver' in window)) {
+                items.forEach(function (el) { el.classList.add('visible'); });
+                return;
+            }
+            var observer = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+            items.forEach(function (el, i) {
+                el.style.transitionDelay = Math.min(i, 6) * 60 + 'ms';
+                observer.observe(el);
+            });
+        })();
+
+        // ---- Mobile nav ----
+        (function () {
+            var toggle = document.querySelector('.mobile-nav-toggle');
+            var links = document.querySelector('.nav-links');
+            if (toggle && links) {
+                toggle.addEventListener('click', function () { links.classList.toggle('open'); });
+            }
+        })();
+    </script>
 </body>
 </html>
