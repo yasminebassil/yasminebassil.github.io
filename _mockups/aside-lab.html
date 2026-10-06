@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aside lab &mdash; Yasmine Bassil</title>
+    <!-- Mockup: ways to present the short personal asides on the bio page -->
+    <meta name="robots" content="noindex">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,500&family=Cormorant+Garamond:ital,wght@0,500;1,400;1,500&family=IBM+Plex+Mono:wght@400;500;600&family=Caveat:wght@500&display=swap" rel="stylesheet">
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/site.css">
+    <style>
+        body { background: var(--paper-warm); }
+        .sheet { max-width: 1000px; margin: 3rem auto 5rem; background: var(--paper); border-radius: 12px; padding: 2.5rem 3rem 3.5rem; box-shadow: 0 12px 32px rgba(43, 34, 36, 0.06); }
+        h1 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 2rem; color: var(--oxblood); letter-spacing: -0.015em; }
+        .intro { color: var(--muted); max-width: 42rem; margin-top: 0.4rem; }
+        .variant { margin-top: 2.75rem; padding-top: 1.4rem; border-top: 1px solid var(--rule); }
+        .v-title { font-family: var(--meta); font-size: 0.74rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink); }
+        .v-title b { color: var(--mulberry); margin-right: 0.5rem; }
+        .v-note { font-size: 0.88rem; color: var(--muted); margin: 0.25rem 0 1.6rem; max-width: 42rem; }
+        .stage { max-width: 48rem; }
+        p.body { font-size: 1.02rem; line-height: 1.65; color: var(--muted); }
+        p.pre { opacity: 0.55; margin-bottom: 1.2rem; }
+        .serif-i { font-family: var(--display); font-style: italic; }
+        .mono { font-family: var(--meta); font-size: 0.62rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; }
+
+        /* A: now */
+        .vA .note { font-family: 'Caveat', cursive; font-size: 1.3rem; line-height: 1.35; color: var(--muted); margin: 0 0 1.4rem; padding-top: 1.2rem; border-top: 1px solid var(--rule); }
+        .vA .note span { display: block; padding-left: 0.9rem; border-left: 2px solid var(--rule); }
+
+        /* B: margin aside */
+        .vB .pair { display: grid; grid-template-columns: minmax(0, 1fr) 13.5rem; gap: 2.25rem; align-items: start; }
+        .vB aside { border-top: 2px solid var(--mulberry); padding-top: 0.7rem; }
+        .vB aside .mono { color: var(--mulberry); }
+        .vB aside p { font-size: 1.3rem; line-height: 1.3; color: var(--oxblood); margin-top: 0.45rem; }
+
+        /* C: pull quote */
+        .vC blockquote { max-width: 30rem; margin: 1.6rem auto 1.5rem; text-align: center; }
+        .vC blockquote::before { content: '\201C'; display: block; font-family: 'Fraunces', serif; font-weight: 600; font-size: 3.6rem; line-height: 0.6; color: var(--mulberry); margin-bottom: 0.2rem; }
+        .vC blockquote p { font-size: 1.85rem; line-height: 1.25; color: var(--oxblood); }
+
+        /* D: speech bubble beside the text */
+        .vD .pair { display: grid; grid-template-columns: 15.5rem minmax(0, 1fr); gap: 2.25rem; align-items: start; }
+        .vD .bubble { position: relative; background: var(--blush); border-radius: 16px; padding: 1.05rem 1.2rem 1.15rem; }
+        .vD .bubble::after { content: ''; position: absolute; left: 1.55rem; bottom: -8px; width: 18px; height: 18px; background: var(--blush); transform: rotate(45deg); border-radius: 3px; }
+        .vD .bubble p { font-size: 1.35rem; line-height: 1.3; color: var(--oxblood); }
+        .vD .who { display: flex; align-items: center; gap: 0.6rem; margin: 1rem 0 0 0.6rem; }
+        .vD .who img { width: 46px; height: 46px; border-radius: 50%; object-fit: cover; }
+        .vD .who .mono { color: var(--muted); }
+
+        .vD2 .pair { grid-template-columns: 18rem minmax(0, 1fr); }
+        .vD2 .bubble p { font-size: 1.2rem; line-height: 1.35; }
+
+        /* E: banner card (version H in the name card lab) */
+        .vE .card { position: relative; border: 1px solid var(--rule); border-radius: 10px; }
+        .vE .band { height: 54px; background: var(--oxblood); border-radius: 9px 9px 0 0; display: flex; align-items: center; justify-content: flex-end; padding-right: 1.25rem; }
+        .vE .band .mono { color: var(--blush); }
+        .vE .card img { position: absolute; left: 1.4rem; top: 14px; width: 88px; height: 88px; border-radius: 50%; object-fit: cover; border: 4px solid var(--paper); }
+        .vE .text { padding: 1rem 1.6rem 1.4rem 8.2rem; }
+        .vE .text .q { font-size: 1.55rem; line-height: 1.25; color: var(--oxblood); margin-bottom: 0.6rem; }
+
+        /* F: highlighted in the running text */
+        .vF mark { background: linear-gradient(transparent 58%, var(--blush) 58%); color: var(--ink); font-weight: 500; padding: 0 0.1em; }
+
+        /* G: side rule */
+        .vG .bar { padding: 0.2rem 0 0.3rem 1.25rem; border-left: 3px solid var(--mulberry); }
+        .vG .bar .q { font-size: 1.6rem; line-height: 1.25; color: var(--oxblood); margin-bottom: 0.55rem; }
+
+        /* H: lead sentence, as the Education section already does */
+        .vH .lead-q { font-family: var(--display); font-size: 1.75rem; line-height: 1.25; color: var(--oxblood); margin-bottom: 0.9rem; max-width: 40rem; }
+
+        /* I: tinted panel */
+        .vI .panel { background: var(--blush); border-radius: 10px; padding: 1.4rem 1.6rem 1.5rem; display: grid; grid-template-columns: 14rem minmax(0, 1fr); gap: 2rem; align-items: center; }
+        .vI .panel .q { font-size: 1.5rem; line-height: 1.25; color: var(--oxblood); }
+        .vI .panel p.body { color: var(--ink); }
+    </style>
+</head>
+<body>
+    <div class="sheet">
+        <h1>Aside lab</h1>
+        <p class="intro">Nine ways to present the closing part of the bio intro: the one-line quote and the paragraph that follows it. The faded paragraph above each is the one that comes before it on the page. A is how it looks now. None of the new ones use the borrowed handwriting font.</p>
+
+        <section class="variant vA">
+            <div class="v-title"><b>A</b>Now: handwritten line, then the paragraph</div>
+            <p class="v-note">For reference.</p>
+            <div class="stage">
+                <p class="body pre">Neuroscientist by trade, with a parallel record in program and partnership management &mdash; from lab research programs to nonprofits, hackathons, and graduate organizations. I build the structures and systems that support neuroscience research, from local to global scales.</p>
+                <div class="note"><span>The science and the scientist are inextricably intertwined.</span></div>
+                <p class="body">As an Atlanta-based Lebanese scientist, plant enthusiast, amateur chef, musician, and community member, I believe science and life are better when we show up authentically as whole people &mdash; so feel free to explore a more holistic introduction of myself below.</p>
+            </div>
+        </section>
+
+        <section class="variant vB">
+            <div class="v-title"><b>B</b>Margin aside</div>
+            <p class="v-note">The paragraph runs on the left and the quote sits beside it in a narrow column, under a mulberry rule and a small label.</p>
+            <div class="stage">
+                <p class="body pre">Neuroscientist by trade, with a parallel record in program and partnership management &mdash; from lab research programs to nonprofits, hackathons, and graduate organizations. I build the structures and systems that support neuroscience research, from local to global scales.</p>
+                <div class="pair">
+                    <p class="body">As an Atlanta-based Lebanese scientist, plant enthusiast, amateur chef, musician, and community member, I believe science and life are better when we show up authentically as whole people &mdash; so feel free to explore a more holistic introduction of myself below.</p>
+                    <aside><span class="mono">Aside</span><p class="serif-i">The science and the scientist are inextricably intertwined.</p></aside>
+                </div>
+            </div>
+        </section>
+
+        <section class="variant vC">
+            <div class="v-title"><b>C</b>Pull quote</div>
+            <p class="v-note">The quote centred and large between the two paragraphs, with one mulberry quotation mark.</p>
+            <div class="stage">
+                <p class="body pre">Neuroscientist by trade, with a parallel record in program and partnership management &mdash; from lab research programs to nonprofits, hackathons, and graduate organizations. I build the structures and systems that support neuroscience research, from local to global scales.</p>
+                <blockquote><p class="serif-i">The science and the scientist are inextricably intertwined.</p></blockquote>
+                <p class="body">As an Atlanta-based Lebanese scientist, plant enthusiast, amateur chef, musician, and community member, I believe science and life are better when we show up authentically as whole people &mdash; so feel free to explore a more holistic introduction of myself below.</p>
+            </div>
+        </section>
+
+        <section class="variant vD">
+            <div class="v-title"><b>D</b>Quote bubble with the text next to it</div>
+            <p class="v-note">The quote in a blush speech bubble, its tail pointing to your portrait, with the paragraph alongside.</p>
+            <div class="stage">
+                <p class="body pre">Neuroscientist by trade, with a parallel record in program and partnership management &mdash; from lab research programs to nonprofits, hackathons, and graduate organizations. I build the structures and systems that support neuroscience research, from local to global scales.</p>
+                <div class="pair">
+                    <div>
+                        <div class="bubble"><p class="serif-i">The science and the scientist are inextricably intertwined.</p></div>
+                        <div class="who"><img src="../img/profile.jpg" alt=""><span class="mono">yasmine</span></div>
+                    </div>
+                    <p class="body">As an Atlanta-based Lebanese scientist, plant enthusiast, amateur chef, musician, and community member, I believe science and life are better when we show up authentically as whole people &mdash; so feel free to explore a more holistic introduction of myself below.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="variant vD vD2">
+            <div class="v-title"><b>D2</b>The bubble with the longer quote, in the intro</div>
+            <p class="v-note">Same bubble, holding &ldquo;Often, we&rsquo;re encouraged to separate&hellip;&rdquo; in place of the one-liner, beside the same intro paragraph.</p>
+            <div class="stage">
+                <p class="body pre">Neuroscientist by trade, with a parallel record in program and partnership management &mdash; from lab research programs to nonprofits, hackathons, and graduate organizations. I build the structures and systems that support neuroscience research, from local to global scales.</p>
+                <div class="pair">
+                    <div>
+                        <div class="bubble"><p class="serif-i">Often, we're encouraged to separate personal and professional identities, but science is inevitably shaped by the person conducting it.</p></div>
+                        <div class="who"><img src="../img/profile.jpg" alt=""><span class="mono">yasmine</span></div>
+                    </div>
+                    <p class="body">As an Atlanta-based Lebanese scientist, plant enthusiast, amateur chef, musician, and community member, I believe science and life are better when we show up authentically as whole people &mdash; so feel free to explore a more holistic introduction of myself below.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="variant vD vD2">
+            <div class="v-title"><b>D3</b>The bubble with the longer quote, where it lives now</div>
+            <p class="v-note">The same bubble in the Personal section, beside the paragraph it currently follows.</p>
+            <div class="stage">
+                <div class="pair">
+                    <div>
+                        <div class="bubble"><p class="serif-i">Often, we're encouraged to separate personal and professional identities, but science is inevitably shaped by the person conducting it.</p></div>
+                        <div class="who"><img src="../img/profile.jpg" alt=""><span class="mono">yasmine</span></div>
+                    </div>
+                    <p class="body">Being Lebanese is a central part of my identity, and I try to visit home (Smar Jbeil, Batroun, Lebanon) to see friends and family at least once a year. I always find a piece of Lebanon wherever I go &mdash; cooking family recipes, scavenging local record stores for Arabic music, leading the dabke line, or finding small pockets of community in whatever city I'm in.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="variant vE">
+            <div class="v-title"><b>E</b>Banner card (the H style from the name card lab)</div>
+            <p class="v-note">Oxblood band with your portrait overlapping it and a small label; the quote leads the card and the paragraph sits under it.</p>
+            <div class="stage">
+                <p class="body pre">Neuroscientist by trade, with a parallel record in program and partnership management &mdash; from lab research programs to nonprofits, hackathons, and graduate organizations. I build the structures and systems that support neuroscience research, from local to global scales.</p>
+                <div class="card">
+                    <div class="band"><span class="mono">In my own words</span></div>
+                    <img src="../img/profile.jpg" alt="">
+                    <div class="text">
+                        <p class="q serif-i">The science and the scientist are inextricably intertwined.</p>
+                        <p class="body">As an Atlanta-based Lebanese scientist, plant enthusiast, amateur chef, musician, and community member, I believe science and life are better when we show up authentically as whole people &mdash; so feel free to explore a more holistic introduction of myself below.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="variant vF">
+            <div class="v-title"><b>F</b>Highlighted in the text</div>
+            <p class="v-note">No separate element: the quote opens the paragraph and is marked with a blush highlighter stroke. The quietest option.</p>
+            <div class="stage">
+                <p class="body pre">Neuroscientist by trade, with a parallel record in program and partnership management &mdash; from lab research programs to nonprofits, hackathons, and graduate organizations. I build the structures and systems that support neuroscience research, from local to global scales.</p>
+                <p class="body"><mark>The science and the scientist are inextricably intertwined.</mark> As an Atlanta-based Lebanese scientist, plant enthusiast, amateur chef, musician, and community member, I believe science and life are better when we show up authentically as whole people &mdash; so feel free to explore a more holistic introduction of myself below.</p>
+            </div>
+        </section>
+
+        <section class="variant vG">
+            <div class="v-title"><b>G</b>Side rule</div>
+            <p class="v-note">Quote and paragraph together behind a solid mulberry bar.</p>
+            <div class="stage">
+                <p class="body pre">Neuroscientist by trade, with a parallel record in program and partnership management &mdash; from lab research programs to nonprofits, hackathons, and graduate organizations. I build the structures and systems that support neuroscience research, from local to global scales.</p>
+                <div class="bar">
+                    <p class="q serif-i">The science and the scientist are inextricably intertwined.</p>
+                    <p class="body">As an Atlanta-based Lebanese scientist, plant enthusiast, amateur chef, musician, and community member, I believe science and life are better when we show up authentically as whole people &mdash; so feel free to explore a more holistic introduction of myself below.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="variant vH">
+            <div class="v-title"><b>H</b>Lead sentence</div>
+            <p class="v-note">The quote set as a large opening line in oxblood, the same way the Education section already opens (&ldquo;I&rsquo;ve moved back and forth&hellip;&rdquo;).</p>
+            <div class="stage">
+                <p class="body pre">Neuroscientist by trade, with a parallel record in program and partnership management &mdash; from lab research programs to nonprofits, hackathons, and graduate organizations. I build the structures and systems that support neuroscience research, from local to global scales.</p>
+                <p class="lead-q">The science and the scientist are inextricably intertwined.</p>
+                <p class="body">As an Atlanta-based Lebanese scientist, plant enthusiast, amateur chef, musician, and community member, I believe science and life are better when we show up authentically as whole people &mdash; so feel free to explore a more holistic introduction of myself below.</p>
+            </div>
+        </section>
+
+        <section class="variant vI">
+            <div class="v-title"><b>I</b>Tinted panel</div>
+            <p class="v-note">A blush panel that sets the pair apart from the rest of the intro: quote on the left, paragraph on the right.</p>
+            <div class="stage">
+                <p class="body pre">Neuroscientist by trade, with a parallel record in program and partnership management &mdash; from lab research programs to nonprofits, hackathons, and graduate organizations. I build the structures and systems that support neuroscience research, from local to global scales.</p>
+                <div class="panel">
+                    <p class="q serif-i">The science and the scientist are inextricably intertwined.</p>
+                    <p class="body">As an Atlanta-based Lebanese scientist, plant enthusiast, amateur chef, musician, and community member, I believe science and life are better when we show up authentically as whole people &mdash; so feel free to explore a more holistic introduction of myself below.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

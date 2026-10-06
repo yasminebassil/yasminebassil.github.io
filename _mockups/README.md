@@ -7,6 +7,8 @@ from the site, and GitHub Pages does not publish folders that start with an unde
   and fonts across the site, and the palette, purple and background options that led to it.
 - `namecard-lab.html` — versions of the author card for the bio page (A to J), the bilingual
   lockup in different Arabic typefaces, and the lockup with "phd" set into the rule.
+- `handwriting-lab.html` — typeface options for the handwritten asides on the bio page.
+- `aside-lab.html` — ways to present the quote and closing paragraph of the bio intro (A to I).
 - `logo-preview.html` — earlier logo and wordmark trials.
 
 ## Decisions parked here
