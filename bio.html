@@ -7,7 +7,7 @@
     <link rel="canonical" href="https://yasminebassil.github.io/bio.html">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Fraunces:ital,opsz,wght@1,9..144,400..700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Fraunces:ital,opsz,wght@1,9..144,300..700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
     <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/site.css">
@@ -121,6 +121,8 @@
             border-top: 1px solid var(--rule);
             scroll-margin-top: 5rem;
         }
+        /* the first two dividers sit a little closer to what comes before them than the rest */
+        #bio-aside, #bio-education { margin-top: 2.2rem; }
 
         /* ---------- Hero: headline + author on the left, facts rail on the right ---------- */
         .hero {
@@ -144,19 +146,31 @@
 
         /* The author card: no box. The name is a bilingual lockup, English over Arabic at equal
            weight, joined by a rule that carries the title; tagline and status sit to the side. */
-        .author { max-width: 46rem; margin-bottom: 2.3rem; }
-        /* a handwritten aside that fills the gap beside the card; only shown when the card is tucked */
-        .author-aside {
-            display: none;
-            font-family: var(--display);
-            font-style: italic;
-            font-size: 1.3rem;
-            line-height: 1.2;
-            color: var(--muted);
-            text-decoration: none;
-            transition: color 0.25s ease;
-        }
-        .author-aside:hover { color: var(--mulberry); }
+        .author { max-width: 46rem; margin: 2.2rem 0 2.3rem; }
+        /* now playing: a small boxed player, like a music app's. It plays by itself; the buttons pause it or step forward and back. */
+        .rail-item.np { padding: 0; border-bottom: none; }
+        .player { display: flex; flex-direction: column; justify-content: space-between; border: 1px solid var(--rule); border-radius: 14px; padding: 0.75rem 1rem 0.7rem; }
+        .player-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.55rem; }
+        .player .num-label { margin-bottom: 0; }
+        .player-title { display: flex; flex-direction: column; align-items: center; text-align: center; min-width: 0; }
+        .player-word { font-family: 'Fraunces', var(--display); font-optical-sizing: auto; font-variation-settings: 'SOFT' 45, 'WONK' 1; font-style: italic; font-weight: 300; font-size: 1.12rem; line-height: 1.2; color: var(--mulberry); white-space: nowrap; transition: opacity 0.3s ease; }
+        .player-word.out { opacity: 0; }
+        .player-artist { margin-top: 0.15rem; font-family: var(--meta); font-size: 0.62rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+        /* the bar fills once per word */
+        .player-bar { height: 2px; margin: 0.6rem 0 0.55rem; background: var(--rule); border-radius: 2px; overflow: hidden; }
+        .player-bar i { display: block; height: 100%; width: 0; background: var(--mulberry); }
+        .player-bar i.run { animation: player-fill 2.8s linear forwards; }
+        .player.paused .player-bar i { animation-play-state: paused; }
+        @keyframes player-fill { to { width: 100%; } }
+        .player-controls { display: flex; align-items: center; justify-content: center; gap: 0.4rem; }
+        .player-btn { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; padding: 0; border: 1px solid var(--rule); border-radius: 50%; background: var(--paper); color: var(--muted); cursor: pointer; transition: color 0.2s ease, border-color 0.2s ease; }
+        .player-btn:hover { color: var(--mulberry); border-color: var(--mulberry); }
+        .player-btn svg { width: 12px; height: 12px; fill: currentColor; }
+        .player-toggle .i-play, .player.paused .player-toggle .i-pause { display: none; }
+        .player.paused .player-toggle .i-play { display: block; }
+        .player-count { font-family: var(--meta); font-size: 0.66rem; font-weight: 500; letter-spacing: 0.08em; color: var(--muted); }
+        @media (prefers-reduced-motion: reduce) { .player-word { transition: none; } .player-bar { display: none; } }
+        .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
         .author-card {
             position: relative;
             display: inline-flex;
@@ -229,6 +243,19 @@
 
         .prose p { font-size: 1.02rem; line-height: 1.65; color: var(--muted); }
         .prose p + p { margin-top: 0.85rem; }
+        /* the intro: its first sentence is the one line to take away, so it is set darker and heavier */
+        .prose p.opener { font-size: 1.1rem; }
+        .prose p.opener strong { font-weight: 500; color: var(--ink); }
+        /* the three words the work is built around: same typeface, picked out in mulberry */
+        .prose p.opener em, .prose em.key { font-style: normal; font-weight: 500; color: var(--mulberry); }
+        /* previously / now / next: a line with three points under the intro; it turns dashed for what hasn't happened yet */
+        .timeline { display: grid; grid-template-columns: 1.7fr 1fr 1fr; margin-top: 2.1rem; }
+        .timeline div { position: relative; padding: 1rem 1.6rem 0 0; border-top: 2px solid var(--mulberry); }
+        .timeline div:last-child { padding-right: 0; border-top-style: dashed; }
+        .timeline div::before { content: ''; position: absolute; left: 0; top: -7px; width: 12px; height: 12px; border-radius: 50%; background: var(--paper); border: 2px solid var(--mulberry); box-sizing: border-box; }
+        .timeline div.on::before { background: var(--mulberry); }
+        .timeline dt { font-family: 'Fraunces', var(--display); font-optical-sizing: auto; font-variation-settings: 'SOFT' 45, 'WONK' 1; font-weight: 600; font-size: 1.1rem; color: var(--oxblood); }
+        .timeline dd { font-size: 0.95rem; line-height: 1.55; color: var(--muted); }
         .prose a, .rail a {
             color: var(--mulberry);
             text-decoration: none;
@@ -250,6 +277,7 @@
         .rail-item { padding: 1.3rem 0; border-bottom: 1px solid var(--rule); }
         .rail-item:first-child { padding-top: 0; }
         .rail-item p, .rail-item li { font-size: 0.9rem; line-height: 1.5; color: var(--ink); }
+        .rail-item p + p { margin-top: 0.3rem; }
         .rail-item ul { list-style: none; }
         .rail-item li + li { margin-top: 0.35rem; }
         .rail-item .k {
@@ -459,8 +487,8 @@
            wraps differently and the card goes back under it. */
         @media (min-width: 1420px) {
             .author { display: flex; align-items: flex-end; justify-content: space-between; max-width: none; margin: -4.3rem 0 2rem; }
-            .author-aside { display: block; padding-bottom: 0.15rem; }
-            .author > .num-label { display: none; }
+            /* the label takes the gap beside the tucked card */
+            .author > .num-label { margin-bottom: -0.9rem; }
             .author-card { gap: 1.25rem; padding: 0.7rem 1.2rem 0.7rem 0.9rem; background: var(--paper); }
             .author-photo { width: 94px; height: 94px; }
             .name-en { font-size: 1.5rem; }
@@ -495,6 +523,11 @@
             .mobile-nav-toggle { display: block; }
         }
         @media (max-width: 600px) {
+            /* on a phone the line turns to run down the side */
+            .timeline { display: block; margin: 1.8rem 0 0 0.4rem; }
+            .timeline div { padding: 0 0 1.15rem 1.6rem; border-top: none; border-left: 2px solid var(--mulberry); }
+            .timeline div:last-child { padding-bottom: 0; border-top: none; border-left-style: dashed; }
+            .timeline div::before { left: -7px; top: 0.45rem; }
             .page-inner { width: 100%; padding: 5.5rem 0.75rem 3rem; }
             .sheet { padding: 1.75rem 1.25rem 2.25rem; }
             .hero-headline { font-size: 2.1rem; }
@@ -539,11 +572,10 @@
 
             <div class="hero" id="bio-intro">
                 <div class="hero-left">
-                    <h1 class="hero-headline">Building the <em>structures and systems</em> that support neuroscience research.</h1>
+                    <h1 class="hero-headline">Building the <em>structures and systems</em> that support scientific research.</h1>
 
                     <div class="author">
-                        <span class="num-label">The Author</span>
-                        <a class="author-aside" href="#bio-education">Read about me below <span aria-hidden="true">&darr;</span></a>
+                        <span class="num-label"><span class="num">00</span> The Author</span>
                         <div class="author-card">
                             <img src="img/profile.jpg" alt="Yasmine Bassil" class="author-photo">
                             <div class="lockup">
@@ -559,7 +591,12 @@
                     </div>
 
                     <div class="prose">
-                        <p>I'm a neuroscientist who builds what research runs on: programs, partnerships, tools and teams. So far that has meant a navigation research program started from scratch, a brain-imaging capability (concurrent TMS-fMRI) and open-source tools now shared across Atlanta labs, a research team of 15+, and three organizations given the structure to outlast their leaders &mdash; backed by $260K+ in competitive funding.</p>
+                        <p class="opener"><strong>I'm a neuroscientist who builds the structures behind scientific research: programs, partnerships, tools, and teams.</strong> I center <em>people</em>, <em>connection</em>, and <em>creativity</em> in my work, and I thrive when I can create something that outlasts me.</p>
+                        <dl class="timeline">
+                            <div><dt>previously</dt><dd>NSF Graduate Research Fellow. Founded a novel navigation research program. Held leadership roles in 7 academic &amp; nonprofit organizations. Created Brainhack ATL.</dd></div>
+                            <div class="on"><dt>now</dt><dd>Research Scientist, Neural Plasticity Research Lab, Emory University.</dd></div>
+                            <div><dt>next</dt><dd>Open to roles leading scientific programs and partnerships.</dd></div>
+                        </dl>
                     </div>
                 </div>
 
@@ -578,7 +615,11 @@
                     </div>
                     <div class="rail-item">
                         <span class="num-label">Get In Touch</span>
-                        <p>Say hello.<br><a href="#bio-contact">Places you can find me &darr;</a></p>
+                        <p>Say hello.<br><a href="mailto:yasminebassil@gmail.com">Send me an email &rarr;</a></p>
+                    </div>
+                    <div class="rail-item">
+                        <span class="num-label">Places You Can Find Me</span>
+                        <p>CV, research, creative work, and more.<br><a href="#bio-contact">See them all &darr;</a></p>
                     </div>
                 </aside>
             </div>
@@ -592,8 +633,49 @@
                             <div class="bubble"><p>Often, we're encouraged to separate personal and professional identities, but science is inevitably shaped by the person conducting it.</p></div>
                             <div class="bubble-who"><img src="img/profile.jpg" alt=""><span>yasmine</span></div>
                         </div>
-                        <p>As an Atlanta-based Lebanese scientist, plant enthusiast, amateur chef, musician, and community member, I believe science and life are better when we show up authentically as whole people &mdash; so feel free to explore a more holistic introduction of myself below.</p>
+                        <p>I believe science and life are better when we show up authentically as <em class="key">whole people</em>. Feel free to explore a holistic introduction of myself below: an Atlanta-based Lebanese scientist, plant enthusiast, home chef, musician, and community member.</p>
                     </div>
+                </div>
+                <aside class="rail">
+                    <div class="rail-item np">
+                        <div class="player">
+                            <div class="player-head">
+                                <span class="num-label">Now Playing</span>
+                                <span class="player-count" aria-hidden="true">1/18</span>
+                            </div>
+                            <div class="player-track">
+                                <div class="player-title">
+                                    <span class="player-word" aria-hidden="true">neuroscientist</span>
+                                    <span class="sr-only">neuroscientist, musician, program builder, organizer, mentor, plant parent, partnerships developer, research leader, science communicator, pianist, amateur chef, beginner potter, tool creator, community builder, color-coder, vocalist, dabke line leader, and oxford comma enthusiast</span>
+                                    <span class="player-artist">yasmine bassil</span>
+                                </div>
+                            </div>
+                            <div class="player-bar"><i></i></div>
+                            <div class="player-controls">
+                                <button type="button" class="player-btn player-back" aria-label="Back to the previous one">
+                                    <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M12.6 3.6v8.8a.5.5 0 0 1-.77.42l-6.4-4.4a.5.5 0 0 1 0-.84l6.4-4.4a.5.5 0 0 1 .77.42z"/><rect x="3" y="3.5" width="1.8" height="9" rx="0.6"/></svg>
+                                </button>
+                                <button type="button" class="player-btn player-toggle" aria-label="Pause">
+                                    <svg class="i-pause" viewBox="0 0 16 16" aria-hidden="true"><rect x="4" y="3.5" width="2.6" height="9" rx="0.6"/><rect x="9.4" y="3.5" width="2.6" height="9" rx="0.6"/></svg>
+                                    <svg class="i-play" viewBox="0 0 16 16" aria-hidden="true"><path d="M5.2 3.4v9.2a.5.5 0 0 0 .76.43l7.4-4.6a.5.5 0 0 0 0-.86l-7.4-4.6a.5.5 0 0 0-.76.43z"/></svg>
+                                </button>
+                                <button type="button" class="player-btn player-skip" aria-label="Skip to the next one">
+                                    <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.4 3.6v8.8a.5.5 0 0 0 .77.42l6.4-4.4a.5.5 0 0 0 0-.84l-6.4-4.4a.5.5 0 0 0-.77.42z"/><rect x="11.2" y="3.5" width="1.8" height="9" rx="0.6"/></svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+
+            <!-- 02 Education -->
+            <div class="section-head num-label" id="bio-education"><span class="num">02</span> Education &amp; Training</div>
+            <div class="split">
+                <div class="prose">
+                    <p class="pull">Cognitive neuroscientist by training, with research in brain dynamics &amp; networks, spatial navigation, and aging.</p>
+                    <p>My research asks how aging changes the brain's navigation systems, using neuroimaging, neurostimulation, virtual reality, and clinical assessments.</p>
+                    <p>As an <a href="https://www.nsfgrfp.org/" target="_blank" rel="noopener">NSF Graduate Research Fellow</a> in the <a href="https://npresearchlab.com" target="_blank" rel="noopener">Neural Plasticity Research Lab</a>, I built the lab's first navigation research program from the ground up, securing $260K+ in competitive funding to support it. Over 6 years, I led and mentored a team of 16, enrolled 116+ participants, and built 5+ lab partnerships. For more on this work, see <a href="research.html">research</a>.</p>
+                    <p>I hold a PhD in Neuroscience from Emory University and a BS in Neuroscience from the Georgia Institute of Technology, where I worked with Dr. Shella Keilholz in the <a href="https://sites.google.com/view/keilholz-lab/home" target="_blank" rel="noopener">Keilholz MIND Lab</a> on resting-state brain connectivity in ADHD, PTSD, and sleep disorders.</p>
                 </div>
                 <aside class="rail">
                     <div class="rail-item">
@@ -604,19 +686,6 @@
                             <li><span class="k">languages</span>English, Arabic, French</li>
                         </ul>
                     </div>
-                </aside>
-            </div>
-
-            <!-- 02 Education -->
-            <div class="section-head num-label" id="bio-education"><span class="num">02</span> Education &amp; Training</div>
-            <div class="split">
-                <div class="prose">
-                    <p class="pull">I've moved back and forth between the US and Lebanon throughout my early life, ultimately settling in Atlanta in 2012.</p>
-                    <p>I'm a cognitive neuroscientist who recently completed my PhD in Neuroscience at Emory University. As an <a href="https://www.nsfgrfp.org/" target="_blank" rel="noopener">NSF Graduate Research Fellow</a>, I worked in the <a href="https://npresearchlab.com" target="_blank" rel="noopener">Neural Plasticity Research Lab</a> to study how aging changes the brain's navigation systems using neuroimaging, neurostimulation, and virtual reality.</p>
-                    <p>Over the course of my PhD, I built a new core research capacity for the lab from the ground up &mdash; a navigation research program integrating clinical assessments, VR, and neuroimaging to study spatial navigation across the lifespan &mdash; tracking milestones and deliverables across 15+ team members, 110+ participants, and 5+ lab partnerships. For more on this work, see <a href="research.html">research</a>.</p>
-                    <p>Prior to my PhD, I completed my undergraduate degree at the Georgia Institute of Technology, as well as my undergraduate thesis with Dr. Shella Keilholz in the <a href="https://sites.google.com/view/keilholz-lab/home" target="_blank" rel="noopener">Keilholz MIND Lab</a>, analyzing resting-state brain connectivity in individuals with ADHD, PTSD, and sleep disorders.</p>
-                </div>
-                <aside class="rail">
                     <div class="rail-item">
                         <span class="num-label">Degrees</span>
                         <ul>
@@ -675,7 +744,7 @@
             <div class="split">
                 <div class="prose">
                     <p class="pull">The science and the scientist are inextricably intertwined.</p>
-                    <p>Being Lebanese is a central part of my identity, and I try to visit home (Smar Jbeil, Batroun, Lebanon) to see friends and family at least once a year. I always find a piece of Lebanon wherever I go &mdash; cooking family recipes, scavenging local record stores for Arabic music, leading the dabke line, or finding small pockets of community in whatever city I'm in.</p>
+                    <p>I've moved back and forth between the US and Lebanon throughout my early life, ultimately settling in Atlanta in 2012. Being Lebanese is a central part of my identity, and I try to visit home (Smar Jbeil, Batroun, Lebanon) to see friends and family at least once a year. I always find a piece of Lebanon wherever I go &mdash; cooking family recipes, scavenging local record stores for Arabic music, leading the dabke line, or finding small pockets of community in whatever city I'm in.</p>
                     <p>I love to cook, usually experimenting with dishes from all around the world. I'm an avid plant enthusiast and caretaker to 30+ indoor plants. When I'm exploring the city (by foot, bike, or public transit, preferably), you can usually find me at the discount section of my local plant store, thrift stores, book stores, or speciality grocery stores.</p>
                     <p>I'm a lover of all things <a href="music.html">creative</a>. I'm currently part of <a href="https://www.instagram.com/labratband/" target="_blank" rel="noopener">la brat band</a>, on piano and lead vocals (and occasionally bass!), putting my classical training to good use. We had our <a href="https://labratband.com/" target="_blank" rel="noopener">debut show</a> last year. Otherwise, I love artistic endeavors in all forms, with my new favorite medium of pottery.</p>
                 </div>
@@ -809,6 +878,54 @@
                     if (e.target.tagName === 'A') links.classList.remove('open');
                 });
             }
+        })();
+
+        // now playing: the word changes every few seconds; pause stops it, skip and back move at once
+        (function () {
+            var player = document.querySelector('.player');
+            if (!player) return;
+            var word = player.querySelector('.player-word');
+            var toggle = player.querySelector('.player-toggle');
+            var words = ['neuroscientist', 'musician', 'program builder', 'organizer', 'mentor', 'plant parent', 'partnerships developer', 'research leader', 'science communicator', 'pianist', 'amateur chef', 'beginner potter', 'tool creator', 'community builder', 'color-coder', 'vocalist', 'dabke line leader', 'oxford comma enthusiast'];
+            var i = 0, timer = null;
+            var count = player.querySelector('.player-count');
+            function showCount() { count.textContent = (i + 1) + '/' + words.length; }
+            var bar = player.querySelector('.player-bar i');
+            function restartBar() { bar.classList.remove('run'); void bar.offsetWidth; bar.classList.add('run'); }
+            showCount();
+            function next(step) {
+                step = step === -1 ? -1 : 1;
+                if (timer) restartBar();
+                word.classList.add('out');
+                setTimeout(function () {
+                    i = (i + step + words.length) % words.length;
+                    word.textContent = words[i];
+                    showCount();
+                    word.classList.remove('out');
+                }, 300);
+            }
+            function play() { timer = setInterval(next, 2800); restartBar(); player.classList.remove('paused'); toggle.setAttribute('aria-label', 'Pause'); }
+            function pause() { clearInterval(timer); timer = null; player.classList.add('paused'); toggle.setAttribute('aria-label', 'Play'); }
+            toggle.addEventListener('click', function () { timer ? pause() : play(); });
+            function jump(step) {
+                next(step);
+                if (timer) { clearInterval(timer); timer = setInterval(next, 2800); }
+            }
+            player.querySelector('.player-skip').addEventListener('click', function () { jump(1); });
+            player.querySelector('.player-back').addEventListener('click', function () { jump(-1); });
+            // the box takes the height of the quote bubble beside it, so their top and bottom edges line up
+            var bubble = document.querySelector('.bubble');
+            function matchBubble() {
+                player.style.minHeight = '';
+                if (!bubble) return;
+                var sideBySide = Math.abs(bubble.getBoundingClientRect().top - player.getBoundingClientRect().top) < 6;
+                if (sideBySide) player.style.minHeight = bubble.offsetHeight + 'px';
+            }
+            matchBubble();
+            window.addEventListener('resize', matchBubble);
+            if (document.fonts && document.fonts.ready) document.fonts.ready.then(matchBubble);
+            // starts playing, unless the visitor has asked their device for less motion
+            if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) pause(); else play();
         })();
     </script>
 </body>
