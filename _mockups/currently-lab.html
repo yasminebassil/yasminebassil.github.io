@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currently lab &mdash; Yasmine Bassil</title>
+    <!-- Mockup: ways to set the "Currently" section of the bio -->
+    <meta name="robots" content="noindex">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..900,0..100,0..1;1,9..144,300..900,0..100,0..1&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/site.css">
+    <style>
+        body { background: var(--paper-warm); }
+        .sheet { max-width: 1180px; margin: 3rem auto 5rem; background: var(--paper); border-radius: 12px; padding: 2.5rem 3rem 3rem; box-shadow: 0 12px 32px rgba(43, 34, 36, 0.06); }
+        h1 { font-family: 'Fraunces', serif; font-weight: 600; font-size: 2rem; color: var(--oxblood); letter-spacing: -0.015em; }
+        .intro { color: var(--muted); max-width: 44rem; margin-top: 0.4rem; }
+        .variant { margin-top: 2.6rem; padding-top: 1.2rem; border-top: 1px solid var(--rule); }
+        .v-title { font-family: var(--meta); font-size: 0.74rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink); }
+        .v-title b { color: var(--mulberry); margin-right: 0.5rem; }
+        .v-note { font-size: 0.88rem; color: var(--muted); margin: 0.25rem 0 1.4rem; max-width: 44rem; }
+        .fr { font-family: 'Fraunces', serif; font-variation-settings: 'SOFT' 45, 'WONK' 1; }
+        dl, dt, dd { margin: 0; }
+
+        /* A: what's on the page now */
+        .a { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.4rem 1.5rem; }
+        .a dt { font-family: var(--meta); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.2rem; }
+        .a dd { font-size: 0.92rem; line-height: 1.5; color: var(--ink); }
+
+        /* B: soft cards */
+        .b { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; }
+        .b div { background: var(--blush); border-radius: 12px; padding: 1.1rem 1.15rem 1.2rem; }
+        .b div:nth-child(3n+2) { background: var(--paper-warm); }
+        .b dt { font-family: 'Fraunces', serif; font-variation-settings: 'SOFT' 45, 'WONK' 1; font-style: italic; font-weight: 500; font-size: 1.02rem; color: var(--mulberry); margin-bottom: 0.45rem; }
+        .b dd { font-size: 0.9rem; line-height: 1.5; color: var(--ink); }
+
+        /* C: questions and answers */
+        .c { max-width: 50rem; }
+        .c div { display: grid; grid-template-columns: 15rem 1fr; gap: 1.5rem; align-items: baseline; padding: 0.7rem 0; }
+        .c div + div { border-top: 1px dotted var(--rule); }
+        .c dt { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.3rem; line-height: 1.2; color: var(--oxblood); }
+        .c dd { font-size: 0.95rem; line-height: 1.55; color: var(--muted); }
+
+        /* D: one running paragraph */
+        .d { max-width: 48rem; font-size: 1.05rem; line-height: 1.75; color: var(--muted); }
+        .d b { font-weight: 500; color: var(--mulberry); }
+
+        /* E: big type, two columns */
+        .e { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.7rem 3rem; }
+        .e dt { font-family: var(--meta); font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sage); margin-bottom: 0.3rem; }
+        .e dd { font-family: 'Cormorant Garamond', serif; font-size: 1.45rem; line-height: 1.25; color: var(--oxblood); }
+
+        /* F: one at a time, with arrows (like the quotes) */
+        .f { display: flex; align-items: center; justify-content: center; gap: 1.5rem; max-width: 46rem; margin: 0 auto; text-align: center; }
+        .f-btn { flex: none; width: 36px; height: 36px; border: 1px solid var(--rule); border-radius: 50%; background: none; color: var(--muted); cursor: pointer; font-size: 1rem; line-height: 1; }
+        .f-btn:hover { color: var(--mulberry); border-color: var(--mulberry); }
+        .f-body { flex: 1; min-height: 6.5rem; display: flex; flex-direction: column; justify-content: center; }
+        .f-k { font-family: var(--meta); font-size: 0.66rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mulberry); margin-bottom: 0.5rem; }
+        .f-v { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.6rem; line-height: 1.3; color: var(--oxblood); }
+        .f-count { text-align: center; margin-top: 0.8rem; font-family: var(--meta); font-size: 0.66rem; color: var(--muted); }
+
+        @media (max-width: 800px) { .a, .b { grid-template-columns: repeat(2, minmax(0, 1fr)); } .c div { grid-template-columns: 1fr; gap: 0.2rem; } .e { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <div class="sheet">
+        <h1>Currently lab</h1>
+        <p class="intro">Six ways to set the &ldquo;Currently&rdquo; section of the bio, all with the same eight facts.</p>
+
+        <section class="variant">
+            <div class="v-title"><b>A</b>Now: four-column grid of small labels</div>
+            <p class="v-note">On the bio page now. Tidy, but it reads like a spec sheet.</p>
+            <dl class="a" data-fill></dl>
+        </section>
+
+        <section class="variant">
+            <div class="v-title"><b>B</b>Soft cards</div>
+            <p class="v-note">Each fact on its own small card, with the label in italic mulberry. Friendlier, and it echoes the quote bubble in section 01.</p>
+            <dl class="b" data-fill></dl>
+        </section>
+
+        <section class="variant">
+            <div class="v-title"><b>C</b>Questions and answers</div>
+            <p class="v-note">The labels become questions in italic serif, as if someone were interviewing you. The most conversational.</p>
+            <dl class="c" data-fill="q"></dl>
+        </section>
+
+        <section class="variant">
+            <div class="v-title"><b>D</b>One running paragraph</div>
+            <p class="v-note">No labels or boxes: a short paragraph in your voice with the key words picked out in mulberry, like the intro.</p>
+            <p class="d">Right now I'm reading <b>Queer World Making</b> by Andrew Gayed. My favorite flavors are <b>cardamom, jasmine, and rose</b>, and my favorite ingredient to cook with is <b>pomegranate molasses</b>. I recently had the best cocktail of my life: gin, bergamot liqueur, sake, and matcha milk jam. My newest hobbies are <b>pottery and block printing</b>, I'm currently obsessed with learning to <b>count from 1 to 10 in as many languages as I can</b>, and my biggest time sink is <b>color-coding</b> my digital and physical life.</p>
+        </section>
+
+        <section class="variant">
+            <div class="v-title"><b>E</b>Big type, two columns</div>
+            <p class="v-note">The answers set large in the display serif under small sage labels, like a magazine sidebar.</p>
+            <dl class="e" data-fill></dl>
+        </section>
+
+        <section class="variant">
+            <div class="v-title"><b>F</b>One at a time, with arrows</div>
+            <p class="v-note">The same flip-through as the quotes in section 04. Compact, but it hides seven of the eight facts at any moment, and it would be a second flipper right after the first.</p>
+            <div class="f">
+                <button class="f-btn" type="button" aria-label="Previous">&lsaquo;</button>
+                <div class="f-body"><div class="f-k"></div><div class="f-v"></div></div>
+                <button class="f-btn" type="button" aria-label="Next">&rsaquo;</button>
+            </div>
+            <p class="f-count"></p>
+        </section>
+    </div>
+    <script>
+        var facts = [
+            ['currently reading', 'What are you reading?', 'Queer World Making: Contemporary Middle Eastern Diasporic Art by Andrew Gayed'],
+            ['favorite flavors', 'Favorite flavors?', 'cardamom, jasmine, rose'],
+            ['favorite drink', 'Favorite drink?', 'recently had the best cocktail I’ve ever had: gin, bergamot liqueur, sake, matcha milk jam'],
+            ['favorite ingredient to cook with', 'Favorite ingredient to cook with?', 'pomegranate molasses'],
+            ['languages', 'Which languages do you speak?', 'English (native), Arabic (native, Lebanese dialect), French (intermediate)'],
+            ['favorite new hobby recently', 'Newest hobby?', 'pottery, or block printing!'],
+            ['currently obsessed with', 'Current obsession?', 'learning how to count from 1 to 10 in as many languages as I can'],
+            ['time sink', 'Biggest time sink?', 'color-coding and organizing my digital and physical life']
+        ];
+        document.querySelectorAll('[data-fill]').forEach(function (dl) {
+            var q = dl.getAttribute('data-fill') === 'q';
+            facts.forEach(function (f) {
+                var d = document.createElement('div'), dt = document.createElement('dt'), dd = document.createElement('dd');
+                dt.textContent = q ? f[1] : f[0]; dd.textContent = f[2];
+                d.append(dt, dd); dl.append(d);
+            });
+        });
+        (function () {
+            var i = 0, k = document.querySelector('.f-k'), v = document.querySelector('.f-v'), c = document.querySelector('.f-count');
+            function show() { k.textContent = facts[i][0]; v.textContent = facts[i][2]; c.textContent = (i + 1) + '/' + facts.length; }
+            var b = document.querySelectorAll('.f-btn');
+            b[0].addEventListener('click', function () { i = (i - 1 + facts.length) % facts.length; show(); });
+            b[1].addEventListener('click', function () { i = (i + 1) % facts.length; show(); });
+            show();
+        })();
+    </script>
+</body>
+</html>

@@ -12,6 +12,7 @@ from the site, and GitHub Pages does not publish folders that start with an unde
 - `intro-lab.html` — versions of the short intro paragraph under the bio headline (A to T; I to O follow common online bio patterns, P to T are the literary ones).
 - `nav-lab.html` — typeface options for the top menu (A to G).
 - `timeline-lab.html` — ways to set now / previously / always under the bio intro, each shown beside the side rail (A to F).
+- `currently-lab.html` — ways to set the bio's "Currently" section (A to F).
 - `logo-preview.html` — earlier logo and wordmark trials.
 
 ## Decisions parked here
