@@ -199,16 +199,6 @@
             50% { opacity: 0.6; transform: scale(1.1); }
         }
 
-        .seeking-dot {
-            display: inline-block;
-            width: 8px;
-            height: 8px;
-            background: var(--accent-purple);
-            border-radius: 50%;
-            animation: pulse 2s ease-in-out infinite;
-            margin-right: 0.15rem;
-            vertical-align: middle;
-        }
 
         .cv-header-right .contact {
             font-size: 0.9rem;
@@ -305,11 +295,6 @@
             color: var(--ink);
         }
 
-        .summary p:last-child {
-            margin-bottom: 0;
-            font-style: italic;
-            color: var(--mulberry);
-        }
 
         h2 {
             font-family: var(--font-meta);
@@ -623,6 +608,7 @@
         .publication em {
             color: var(--accent-olive);
         }
+        .publication .pub-context { color: var(--muted); font-style: italic; }
 
         .pub-note {
             font-style: italic;
@@ -994,8 +980,7 @@
         </div>
 
         <div class="summary">
-            <p><strong>Neuroscientist with a parallel track record in program and partnership management</strong> — establishing shared research infrastructure and cross-institutional collaborations, securing <strong>$260K+ in competitive funding</strong>, and serving as primary stakeholder liaison across students, faculty, and institutional leadership. Built a lab-based research program from the ground up: tracking milestones and deliverables across <strong>15+ team members</strong>, <strong>110+ participants</strong>, and <strong>5+ lab partnerships</strong> — while leading <strong>5+ years of program and portfolio management beyond the lab</strong>, spanning academic, nonprofit, and industry-sponsored initiatives.</p>
-            <p><span class="seeking-dot"></span> Seeking to lead <strong>scientific partnership and program strategy</strong> — building structures for emerging projects and partnerships, with a community-minded approach to connecting people and ideas.</p>
+            <p><strong>Neuroscientist with a parallel track record in program and partnership management</strong> — establishing shared research infrastructure and cross-institutional collaborations, securing <strong>$260K+ in competitive funding</strong>, and serving as primary stakeholder liaison across students, faculty, and institutional leadership. Built a lab-based research program from the ground up: tracking milestones and deliverables across <strong>16 team members</strong>, <strong>110+ participants</strong>, and <strong>5+ lab partnerships</strong> — while leading <strong>5+ years of program and portfolio management beyond the lab</strong>, spanning academic, nonprofit, and industry-sponsored initiatives.</p>
         </div>
 
         <h2 id="experience">Experience <span class="h2-note">(select)</span></h2>
@@ -1013,17 +998,18 @@
                 <ul>
                     <li>Proposed and built a <span class="semi">multi-year research program</span> from the ground up: defining scope, structure, and operations to study aging and spatial cognition; <span class="semi">secured $260K in competitive funding</span> (NSF GRFP, NIH T32). Culminated in a dissertation defense and 7 peer-reviewed publications; now expanding into an interdepartmental, cross-species, multi-institution initiative.</li>
                     <li>Spearheaded building <span class="semi">lab operational infrastructure</span>: documentation systems (meeting agendas and schedules, storage drives, data and computational servers, lab wiki), standard operating procedures (method-specific protocols, room and equipment maintenance), and continuity protocols (onboarding, transitions).</li>
-                    <li>Formed community partnerships to create a <span class="semi">recruitment database</span> of <span class="semi">110+</span> older adult participants across <span class="semi">5</span> labs.</li>
+                    <li>Built community partnerships (Decatur Active Adults, Emory's Goizueta Alzheimer's Disease Research Center, local outreach) to create a <span class="semi">recruitment database</span> of <span class="semi">110+</span> older adult participants; served as primary contact and onboarded <span class="semi">5+</span> partner labs to use and contribute to it.</li>
                 </ul>
                 <h4>Mentorship</h4>
                 <ul>
-                    <li>Directed a <span class="semi">15+ member research team</span> across <span class="semi">6</span> years: mentored trainees to produce <span class="semi">9</span> presentations at local and national conferences (including <span class="semi">5</span> awards), <span class="semi">4</span> published theses (2 Highest Honors, Emory; 2 Research Option certificates, Georgia Tech), and <span class="semi">5</span> competitive fellowships (including Fulbright, DAAD-RISE, and the Georgia Tech President's Undergraduate Research Award).</li>
+                    <li>Directed a <span class="semi">16-member research team</span> across <span class="semi">6</span> years: mentored trainees to produce <span class="semi">9</span> presentations at local and national conferences (including <span class="semi">5</span> awards), <span class="semi">4</span> published theses (2 Highest Honors, Emory; 2 Research Option certificates, Georgia Tech), and <span class="semi">5</span> competitive fellowships (including Fulbright, DAAD-RISE, and the Georgia Tech President's Undergraduate Research Award).</li>
                     <li>Managed up to <span class="semi">4 concurrent sub-studies</span> (including deliverables, timelines, and operating plans), running weekly cross-project meetings to align on milestones, evaluations, and risk mitigation.</li>
                 </ul>
                 <h4>Technical Infrastructure</h4>
                 <ul>
-                    <li>Developed novel neuroimaging methodology (concurrent TMS-fMRI) and co-developed a GUI-based neuroimaging workbench (MR.Flow), <span class="semi">owning front-end and UX/UI design</span> and <span class="semi">establishing shared imaging capability</span> as an institutional resource at Emory and across the Atlanta scientific community.</li>
-                    <li>Built <span class="semi">program-related technical infrastructure</span>, including a city-scale VR environment built in Unity (NavCity), clinical assessments, and data visualization and analysis pipelines (Python, R, bash/zsh), <span class="semi">open-sourcing all tools</span> via <span class="semi">7</span> lab-wide GitHub repositories.</li>
+                    <li>Developed novel neuroimaging methodology (concurrent TMS-fMRI) and co-developed a GUI-based neuroimaging workbench (MR.Flow) with Claude Code, <span class="semi">owning front-end and UX/UI design</span> and <span class="semi">establishing shared imaging capability</span> as an institutional resource at Emory and across the Atlanta scientific community.</li>
+                    <li>Built <span class="semi">program-related technical infrastructure</span>, including a city-scale VR environment built in Unity (NavCity), clinical assessments, and data visualization and analysis pipelines (Python, R, bash/zsh), <span class="semi">open-sourcing all tools</span> via <span class="semi">7</span> lab-wide GitHub repositories and sharing research datasets via OSF, in line with FAIR data-sharing principles.</li>
+                    <li>Helped develop and formalize <span class="semi">lab policy for responsible AI tool adoption</span> (codified in the lab wiki): expert-in-the-loop review of all AI output and intentional, testable use; coached mentees on AI use and its limitations.</li>
                 </ul>
             </div>
         </div>
@@ -1055,7 +1041,7 @@
             </div>
             <div class="job-content">
                 <ul>
-                    <li>Served as <span class="semi">primary stakeholder liaison</span> between <span class="semi">120+</span> PhD students and program leadership, managing a <span class="semi">22-member</span> executive board across <span class="semi">12</span> positions and directing <span class="semi">10+</span> annual program events.</li>
+                    <li>Served as <span class="semi">primary stakeholder liaison</span> between <span class="semi">100+</span> PhD students and program leadership, managing a <span class="semi">22-member</span> executive board across <span class="semi">12</span> positions and directing <span class="semi">10+</span> annual program events.</li>
                     <li>Rebuilt <span class="semi">organizational operating infrastructure</span> from scratch: established the first internal documentation system, defined officer roles and transition protocols for continuity risk mitigation, implemented recurring meeting cadences, and developed operating plans and budget infrastructure — sustaining long-term institutional relationships beyond any single leadership term.</li>
                     <li>Founded (2020) and moderated the program-wide Neuroscience student Slack workspace: structured channels for announcements, new-student onboarding, events, professional development, and research discussion to sustain community, including through the pandemic.</li>
                 </ul>
@@ -1065,15 +1051,15 @@
         <div class="job-section">
             <div class="job-header">
                 <div>
-                    <span class="job-title">Scholar</span>
+                    <span class="job-title">Annual Events Committee Lead &amp; Scholar</span>
                     <span class="job-org">Computational Neural Engineering Training Program, Georgia Tech & Emory University</span>
                 </div>
                 <span class="job-date">Sep 2021 – Jun 2023</span>
             </div>
             <div class="job-content">
                 <ul>
-                    <li>Led the Annual Events Committee to plan and execute <span class="semi">cross-institutional programming</span> for <span class="semi">90+ trainees</span> across Georgia Tech and Emory, including an all-day Research Expo, new member orientation, and annual retreats.</li>
-                    <li>Led the organization of the annual <span class="semi">Advisory Board Visitation Day</span> — coordinating logistics for <span class="semi">50+</span> faculty, board members, and trainees, presenting directly to senior leadership and moderating a live Q&A that required balancing trainee and institutional interests.</li>
+                    <li>Led the Annual Events Committee to plan and execute <span class="semi">cross-institutional programming</span> for <span class="semi">80+ trainees &amp; faculty</span> across Georgia Tech and Emory, including an all-day Research Expo, new member orientation, and annual retreats.</li>
+                    <li>Led the organization of the annual <span class="semi">Advisory Board Visitation Day</span> — coordinating logistics for <span class="semi">50+</span> faculty, board members, and trainees, presenting directly to senior leadership and moderating a live Q&A that required balancing trainee and institutional interests; represented the program at ABRCMS 2022, recruiting prospective trainees.</li>
                 </ul>
             </div>
         </div>
@@ -1088,8 +1074,8 @@
             </div>
             <div class="job-content">
                 <ul>
-                    <li>Co-led a <span class="semi">17-member</span> DEI committee across <span class="semi">3</span> subcommittees and <span class="semi">2</span> faculty representatives, serving as institutional liaison between stakeholder groups — students, faculty, and Laney Graduate School administration.</li>
-                    <li>Led <span class="semi">program-level change management</span>: conducted admissions review to identify and reduce bias, revised curriculum modules for neurological inclusivity, and partnered with Emory's DEI office to launch a new unconscious bias certificate training program adopted program-wide.</li>
+                    <li>Co-led a <span class="semi">17-member</span> DEI committee across <span class="semi">3</span> subcommittees and <span class="semi">2</span> faculty representatives, representing Neuroscience on the division-wide committee and serving as institutional liaison between stakeholder groups — students, faculty, and Laney Graduate School administration.</li>
+                    <li>Led <span class="semi">program-level change management</span>: conducted admissions review to identify and reduce bias, revised curriculum modules for neurological inclusivity, and partnered with Emory's DEI office to launch a new unconscious bias certificate training program adopted program-wide; also launched an external financial-advising partnership funding 30 one-on-one sessions for students.</li>
                 </ul>
             </div>
         </div>
@@ -1104,8 +1090,8 @@
             </div>
             <div class="job-content">
                 <ul>
-                    <li>Built and led a <span class="semi">13-member interdisciplinary organizing committee</span> spanning <span class="semi">3+ Atlanta research institutions</span>, coordinating academic and industry stakeholders to design and execute a 3-day computational neuroscience hackathon.</li>
-                    <li><span class="semi">Managed external sponsor relationships</span>, <span class="semi">securing $35,000</span> in corporate and institutional funding; created <span class="semi">3</span> neuroimaging project tracks, recruited <span class="semi">6</span> faculty speakers, and attracted <span class="semi">90+</span> applications from <span class="semi">9</span> institutions, selecting <span class="semi">30</span> attendees.</li>
+                    <li>Established and directed the <span class="semi">first-ever Brainhack ATL</span> (part of Brainhack Global), building and leading a <span class="semi">13-member interdisciplinary organizing committee</span> spanning <span class="semi">3+ Atlanta research institutions</span>, coordinating academic and industry stakeholders to design and execute a 3-day computational neuroscience hackathon.</li>
+                    <li><span class="semi">Managed external sponsor relationships</span>, <span class="semi">securing $35,000</span> from <span class="semi">8</span> corporate and institutional sponsors (including NVIDIA, AWS, and the GSU Research Foundation); created <span class="semi">3</span> neuroimaging project tracks, recruited <span class="semi">6</span> faculty speakers, and attracted <span class="semi">90+</span> applications from <span class="semi">10</span> institutions across the U.S. and internationally, selecting <span class="semi">32</span> attendees via a scoring rubric.</li>
                 </ul>
             </div>
         </div>
@@ -1114,7 +1100,7 @@
         <div class="job-section">
             <div class="job-header">
                 <div>
-                    <span class="job-title">STEM Communications Fellow</span>
+                    <span class="job-title">Science Communications Assistant</span>
                     <span class="job-org">College of Sciences, Georgia Institute of Technology</span>
                 </div>
                 <span class="job-date">May 2019 – Aug 2020</span>
@@ -1168,7 +1154,7 @@
             </div>
             <div class="job-content">
                 <ul>
-                    <li>Established <span class="semi">full operational structure</span> of a <span class="semi">22-member</span> undergraduate research organization, building committees across <span class="semi">4</span> functional areas (Events, Campus Relations, Outreach, Advertising) and a <span class="semi">research opportunity portfolio</span> of <span class="semi">110+</span> entries across <span class="semi">34</span> majors.</li>
+                    <li>Established <span class="semi">full operational structure</span> of a <span class="semi">22-member</span> undergraduate research organization, selecting and onboarding members from <span class="semi">80+</span> applicants and building committees across <span class="semi">4</span> functional areas (Events, Campus Relations, Outreach, Advertising) and a <span class="semi">research opportunity portfolio</span> of <span class="semi">110+</span> entries across <span class="semi">34</span> majors.</li>
                     <li>Grew program reach to <span class="semi">1,000+</span> students per semester through an annual research fair, <span class="semi">2</span> monthly events (workshops, panels), and weekly office hours, connecting <span class="semi">150+</span> undergraduates to labs per semester.</li>
                 </ul>
             </div>
@@ -1292,10 +1278,10 @@
         <div class="cv-item">
             <div class="item-header">
                 <span class="item-title">PhD in Neuroscience</span>
-                <span class="item-date">Aug 2020 – May 2026</span>
+                <span class="item-date">Aug 2020 – Jun 2026</span>
             </div>
             <div class="item-org">Emory University</div>
-            <div class="item-description">Dissertation: Behavioral and neural mechanisms of aging-related deficits in human spatial navigation</div>
+            <div class="item-description">Dissertation: <em>Navigating Aging: Characterizing Behavioral and Neural Correlates of Aging-Related Deficits in Human Spatial Navigation</em></div>
         </div>
         <div class="cv-item">
             <div class="item-header">
@@ -1345,28 +1331,28 @@
                 <span class="item-title">Scientific Achievement Award</span>
                 <span class="item-date">2026</span>
             </div>
-            <div class="item-description">Emory Neuroscience Graduate Program · Selected by faculty committee from 120+ students</div>
+            <div class="item-description">Emory Neuroscience Graduate Program · Selected by faculty committee from 100+ students</div>
         </div>
         <div class="cv-item">
             <div class="item-header">
                 <span class="item-title">Teaching Award</span>
                 <span class="item-date">2025</span>
             </div>
-            <div class="item-description">Emory Neuroscience Graduate Program · Selected by faculty committee from 120+ students</div>
+            <div class="item-description">Emory Neuroscience Graduate Program · Selected by faculty committee from 100+ students</div>
         </div>
         <div class="cv-item">
             <div class="item-header">
                 <span class="item-title">Leadership Award</span>
                 <span class="item-date">2024</span>
             </div>
-            <div class="item-description">Emory Neuroscience Graduate Program · Selected by faculty committee from 120+ students</div>
+            <div class="item-description">Emory Neuroscience Graduate Program · Selected by faculty committee from 100+ students</div>
         </div>
         <div class="cv-item">
             <div class="item-header">
                 <span class="item-title">Excellence in Mentorship Award</span>
                 <span class="item-date">2023</span>
             </div>
-            <div class="item-description">Emory Neuroscience Graduate Program · Selected by faculty committee from 120+ students</div>
+            <div class="item-description">Emory Neuroscience Graduate Program · Selected by faculty committee from 100+ students</div>
         </div>
         <div class="cv-item">
             <div class="item-header">
@@ -1422,7 +1408,7 @@
             <p><strong>Bassil, Y.</strong>, Kanukolanu, A., Funderburg, E., Cui, E. Z., Brown, T. I., & Borich, M. R. (2026). Distinct aging-related profiles of allocentric knowledge recall following navigation in an immersive, naturalistic, city-like environment. <em>Frontiers in Aging Neuroscience</em>, 18. <a class="doi-link" href="https://doi.org/10.3389/fnagi.2026.1746016" target="_blank" rel="noopener">https://doi.org/10.3389/fnagi.2026.1746016</a></p>
         </div>
         <div class="publication">
-            <p>Woolgar, A., Feredoes, E., Assem, M., <strong>Bassil, Y.</strong>, Bergmann, T. O., Beynel, L., ... & Sack, A. T. (2026). Consensus guidelines for the use of concurrent TMS-fMRI in cognitive and clinical neuroscience. <em>Nature Protocols</em>, 21(1), 1–17. <a class="doi-link" href="https://doi.org/10.1038/s41596-025-01182-4" target="_blank" rel="noopener">https://doi.org/10.1038/s41596-025-01182-4</a></p>
+            <p>Woolgar, A., Feredoes, E., Assem, M., <strong>Bassil, Y.</strong>, Bergmann, T. O., Beynel, L., ... & Sack, A. T. (2026). Consensus guidelines for the use of concurrent TMS-fMRI in cognitive and clinical neuroscience. <em>Nature Protocols</em>, 21(1), 1–17. <a class="doi-link" href="https://doi.org/10.1038/s41596-025-01182-4" target="_blank" rel="noopener">https://doi.org/10.1038/s41596-025-01182-4</a> <span class="pub-context">Field-wide consensus paper with TMS-fMRI experts across 19 institutions in 8 countries.</span></p>
         </div>
         <div class="publication">
             <p><strong>Bassil, Y.</strong>, Kanukolanu, A., Funderburg, E., Brown, T. I., & Borich, M. R. (2025). Formation of allocentric representations after exposure to a novel, naturalistic, city-like, virtual reality environment. <em>Neuropsychologia</em>, 109290. <a class="doi-link" href="https://doi.org/10.1016/j.neuropsychologia.2025.109290" target="_blank" rel="noopener">https://doi.org/10.1016/j.neuropsychologia.2025.109290</a></p>
@@ -1632,6 +1618,18 @@
         </div>
 
         <h2 id="certificates">Certificates</h2>
+        <div class="cv-item cert-item">
+            <div class="item-header">
+                <span class="item-title">CITI Human Subjects Research: Biomedical Focus</span>
+            </div>
+            <div class="item-description">CITI Program certification</div>
+        </div>
+        <div class="cv-item cert-item">
+            <div class="item-header">
+                <span class="item-title">CITI Good Clinical Practice (GCP) &amp; ICH Guidelines</span>
+            </div>
+            <div class="item-description">CITI Program certification</div>
+        </div>
         <div class="cv-item cert-item">
             <div class="item-header">
                 <span class="item-title">NeuroMatch Academy: Computational Neuroscience Course</span>
