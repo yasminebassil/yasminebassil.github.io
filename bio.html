@@ -116,13 +116,13 @@
         }
         .num-label .num { color: var(--mulberry); }
         .section-head {
-            margin: 3.25rem 0 1.5rem;
-            padding-top: 1.2rem;
+            margin: 4.25rem 0 1.9rem;
+            padding-top: 1.3rem;
             border-top: 1px solid var(--rule);
             scroll-margin-top: 5rem;
         }
         /* the first two dividers sit a little closer to what comes before them than the rest */
-        #bio-aside, #bio-education { margin-top: 2.2rem; }
+        #bio-aside, #bio-education { margin-top: 3.25rem; }
 
         /* ---------- Hero: headline + author on the left, facts rail on the right ---------- */
         .hero {
@@ -263,6 +263,10 @@
             transition: border-color 0.25s ease;
         }
         .prose a:hover, .rail a:hover { border-bottom-color: var(--mulberry); }
+        /* a section's onward link, set as a small outlined button */
+        .prose p.more { margin-top: 1.3rem; }
+        .prose a.pill-link { display: inline-block; padding: 0.42rem 1rem 0.46rem; border: 1px solid var(--mulberry); border-radius: 999px; font-size: 0.9rem; font-weight: 500; color: var(--mulberry); transition: background-color 0.25s ease, color 0.25s ease; }
+        .prose a.pill-link:hover { background: var(--mulberry); color: var(--paper); }
 
         /* a quote in a speech bubble, its tail pointing at the portrait, with a paragraph beside it */
         .quote-pair { display: grid; grid-template-columns: 20.5rem minmax(0, 1fr); gap: 2.25rem; align-items: start; }
@@ -278,6 +282,7 @@
         .rail-item:first-child { padding-top: 0; }
         .rail-item p, .rail-item li { font-size: 0.9rem; line-height: 1.5; color: var(--ink); }
         .rail-item p + p { margin-top: 0.3rem; }
+        .rail-item li small { display: block; margin-top: 0.15rem; font-size: 0.8rem; line-height: 1.5; color: var(--muted); }
         .rail-item ul { list-style: none; }
         .rail-item li + li { margin-top: 0.35rem; }
         .rail-item .k {
@@ -317,11 +322,15 @@
             border-radius: 6px;
             overflow: hidden;
             background: var(--paper);
+            color: inherit;
+            text-decoration: none;
+            transition: border-color 0.25s ease, transform 0.25s ease;
         }
+        .program:hover { border-color: var(--mulberry); transform: translateY(-2px); }
         .program-top {
-            padding: 1.4rem 1.4rem 1.2rem;
+            padding: 1.1rem 1.25rem 1rem;
             color: #fff;
-            min-height: 8.5rem;
+            min-height: 6.4rem;
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
@@ -329,6 +338,9 @@
         .program:nth-child(1) .program-top { background: var(--oxblood); }
         .program:nth-child(2) .program-top { background: var(--sage); }
         .program:nth-child(3) .program-top { background: var(--slate); }
+        .program:nth-child(4) .program-top { background: var(--mulberry); }
+        .program:nth-child(5) .program-top { background: var(--oxblood); }
+        .program:nth-child(6) .program-top { background: var(--sage); }
         .program-when {
             font-family: var(--meta);
             font-size: 0.66rem;
@@ -339,7 +351,7 @@
         .program-top h3 {
             font-family: 'Fraunces', var(--display);
             font-weight: 600;
-            font-size: 1.35rem;
+            font-size: 1.18rem;
             line-height: 1.2;
             margin-top: 0.3rem;
         }
@@ -349,7 +361,16 @@
             margin-top: 0.35rem;
             opacity: 0.9;
         }
-        .program p { padding: 1.1rem 1.4rem 1.4rem; font-size: 0.9rem; line-height: 1.55; color: var(--muted); }
+        /* the section's intro runs the full width of the sheet, centred over the cards */
+        .programs-intro { margin-bottom: 1.9rem; text-align: center; }
+        .programs-intro p { font-size: 1.1rem; text-wrap: balance; }
+        /* each card carries three numbers; the story lives on the programs page */
+        .program-metrics { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.6rem; padding: 0.95rem 1.25rem 1.05rem; }
+        .program-metrics b { display: block; font-family: 'Fraunces', var(--display); font-optical-sizing: auto; font-variation-settings: 'SOFT' 45, 'WONK' 1; font-weight: 600; font-size: 1.3rem; line-height: 1.15; color: var(--oxblood); }
+        .program-metrics span { display: block; margin-top: 0.25rem; font-family: var(--meta); font-size: 0.6rem; line-height: 1.35; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+        .programs-more { margin-top: 1.6rem; text-align: center; }
+        .pill-link { display: inline-block; padding: 0.42rem 1rem 0.46rem; border: 1px solid var(--mulberry); border-radius: 999px; font-size: 0.9rem; font-weight: 500; color: var(--mulberry); text-decoration: none; transition: background-color 0.25s ease, color 0.25s ease; }
+        .pill-link:hover { background: var(--mulberry); color: var(--paper); }
         .receipts {
             display: grid;
             grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -544,6 +565,10 @@
             .award { grid-template-columns: minmax(0, 1fr); gap: 0.2rem; }
             .place--light { grid-column: span 6; }
         }
+        /* the menu tightens on narrower screens before it folds into the phone menu */
+        .logo { white-space: nowrap; }
+        @media (max-width: 1100px) { .nav-links { gap: 1.3rem; } }
+        @media (min-width: 901px) and (max-width: 990px) { nav { padding-left: 2rem; padding-right: 2rem; } .nav-links { gap: 1rem; } }
     </style>
 </head>
 <body>
@@ -674,18 +699,11 @@
                 <div class="prose">
                     <p class="pull">Cognitive neuroscientist by training, with research in brain dynamics &amp; networks, spatial navigation, and aging.</p>
                     <p>My research asks how aging changes the brain's navigation systems, using neuroimaging, neurostimulation, virtual reality, and clinical assessments.</p>
-                    <p>As an <a href="https://www.nsfgrfp.org/" target="_blank" rel="noopener">NSF Graduate Research Fellow</a> in the <a href="https://npresearchlab.com" target="_blank" rel="noopener">Neural Plasticity Research Lab</a>, I built the lab's first navigation research program from the ground up, securing $260K+ in competitive funding to support it. Over 6 years, I led and mentored a team of 16, enrolled 116+ participants, and built 5+ lab partnerships. For more on this work, see <a href="research.html">research</a>.</p>
+                    <p>As an <a href="https://www.nsfgrfp.org/" target="_blank" rel="noopener">NSF Graduate Research Fellow</a> in the <a href="https://npresearchlab.com" target="_blank" rel="noopener">Neural Plasticity Research Lab</a>, I built the lab's first navigation research program from the ground up, securing $260K+ in competitive funding to support it. Over 6 years, I led and mentored a team of 16, enrolled 116+ participants, and built 5+ lab partnerships.</p>
                     <p>I hold a PhD in Neuroscience from Emory University and a BS in Neuroscience from the Georgia Institute of Technology, where I worked with Dr. Shella Keilholz in the <a href="https://sites.google.com/view/keilholz-lab/home" target="_blank" rel="noopener">Keilholz MIND Lab</a> on resting-state brain connectivity in ADHD, PTSD, and sleep disorders.</p>
+                    <p>My research has led to 7 peer-reviewed publications, 20 conference presentations, and 17 invited talks, all listed on my <a href="cv.html">cv</a>.</p>
                 </div>
                 <aside class="rail">
-                    <div class="rail-item">
-                        <span class="num-label">At A Glance</span>
-                        <ul>
-                            <li><span class="k">originally from</span>Smar Jbeil, Batroun, Lebanon</li>
-                            <li><span class="k">pronouns</span>she/her &middot; &#1607;&#1610;</li>
-                            <li><span class="k">languages</span>English, Arabic, French</li>
-                        </ul>
-                    </div>
                     <div class="rail-item">
                         <span class="num-label">Degrees</span>
                         <ul>
@@ -693,22 +711,31 @@
                             <li><span class="k">2016 &mdash; 2020</span>BS in Neuroscience<br>Georgia Institute of Technology</li>
                         </ul>
                     </div>
+                    <div class="rail-item" id="bio-awards">
+                        <span class="num-label">Funding &amp; Awards</span>
+                        <ul>
+                            <li><span class="k">2022 &mdash; 2025</span>NSF Graduate Research Fellowship ($170K+)</li>
+                            <li><span class="k">2021 &mdash; 2022</span>NIH T32 Training Grant ($90K+)</li>
+                            <li><span class="k">2023 &mdash; 2026</span>Emory Neuroscience Awards<small>Scientific Achievement &middot; 2026<br>Teaching &middot; 2025<br>Leadership &middot; 2024<br>Mentorship &middot; 2023</small></li>
+                        </ul>
+                    </div>
                 </aside>
             </div>
 
             <!-- 03 Projects & Programs -->
             <div class="section-head num-label" id="bio-programs"><span class="num">03</span> Projects &amp; Programs</div>
-            <div class="prose" style="max-width:44rem; margin-bottom:1.6rem;">
-                <p>I establish shared research infrastructure and cross-institutional collaborations, have secured $260K+ in competitive funding, and serve as primary stakeholder liaison across students, faculty, and institutional leadership.</p>
+            <div class="prose programs-intro">
+                <p class="pull">Program builder by habit, with leadership across academic programs, nonprofits, and student communities.</p>
+                <p>I take on leadership roles to build what's missing. I tend to leave things more efficient, better documented, and easier to hand over than I found them. These are a few of the places I've done that.</p>
             </div>
             <div class="programs">
                 <article class="program">
                     <div class="program-top">
-                        <span class="program-when">2020 &mdash; 2026</span>
-                        <h3>Navigation Research Program</h3>
-                        <span class="program-role">Founder</span>
+                        <span class="program-when">2024 &mdash; 2025</span>
+                        <h3>Arabs in Neuroscience</h3>
+                        <span class="program-role">Internal Affairs Lead</span>
                     </div>
-                    <p>Built and ran a new research arm: 8 concurrent sub-studies, 110+ participants, 15+ team members over six years. Established concurrent TMS-fMRI as an institutional capability, opening the method to the wider Atlanta neuro community.</p>
+                    <div class="program-metrics"><div><b>3-tier</b><span>membership model</span></div><div><b>1st</b><span>conference social</span></div><div><b>biweekly</b><span>member reports</span></div></div>
                 </article>
                 <article class="program">
                     <div class="program-top">
@@ -716,15 +743,39 @@
                         <h3>Graduates in Neuroscience</h3>
                         <span class="program-role">Co-President</span>
                     </div>
-                    <p>Led a 22-member board across 12 roles as primary liaison between 120+ PhD students and program leadership. Built the organization's first documentation system, defined officer responsibilities, operationalized role transitions, and created its budget infrastructure &mdash; the things that let it survive turnover.</p>
+                    <div class="program-metrics"><div><b>120+</b><span>PhD students</span></div><div><b>22</b><span>board members</span></div><div><b>10+</b><span>events a year</span></div></div>
                 </article>
                 <article class="program">
                     <div class="program-top">
                         <span class="program-when">2019</span>
                         <h3>Brainhack ATL</h3>
-                        <span class="program-role">Organizing Committee Chair</span>
+                        <span class="program-role">Founder &amp; Organizing Committee Chair</span>
                     </div>
-                    <p>Led a 13-member committee across four Atlanta institutions to build a 3-day computational neuroscience hackathon &mdash; $35K in sponsorships, 3 project tracks, 6 faculty speakers, 90+ applications from 9 institutions.</p>
+                    <div class="program-metrics"><div><b>$35K</b><span>raised</span></div><div><b>90+</b><span>applications</span></div><div><b>9</b><span>institutions</span></div></div>
+                </article>
+                <article class="program">
+                    <div class="program-top">
+                        <span class="program-when">2021 &mdash; 2023</span>
+                        <h3>Diversity, Equity, &amp; Inclusion Committee</h3>
+                        <span class="program-role">Co-Chair</span>
+                    </div>
+                    <div class="program-metrics"><div><b>17</b><span>committee members</span></div><div><b>3</b><span>subcommittees</span></div><div><b>1</b><span>training launched</span></div></div>
+                </article>
+                <article class="program">
+                    <div class="program-top">
+                        <span class="program-when">2017 &mdash; 2020</span>
+                        <h3>Undergraduate Research Ambassadors</h3>
+                        <span class="program-role">President</span>
+                    </div>
+                    <div class="program-metrics"><div><b>1,000+</b><span>students a semester</span></div><div><b>150+</b><span>placed with labs</span></div><div><b>22</b><span>members</span></div></div>
+                </article>
+                <article class="program">
+                    <div class="program-top">
+                        <span class="program-when">2018 &mdash; 2019</span>
+                        <h3>International Ambassadors</h3>
+                        <span class="program-role">Vice President of External Affairs</span>
+                    </div>
+                    <div class="program-metrics"><div><b>2,000+</b><span>students reached</span></div><div><b>14</b><span>committee members</span></div><div><b>100+</b><span>at new gala</span></div></div>
                 </article>
             </div>
             <div class="receipts">
@@ -750,6 +801,14 @@
                 </div>
                 <aside class="rail">
                     <div class="rail-item">
+                        <span class="num-label">At A Glance</span>
+                        <ul>
+                            <li><span class="k">originally from</span>Smar Jbeil, Batroun, Lebanon</li>
+                            <li><span class="k">pronouns</span>she/her &middot; &#1607;&#1610;</li>
+                            <li><span class="k">languages</span>English, Arabic, French</li>
+                        </ul>
+                    </div>
+                    <div class="rail-item">
                         <span class="num-label">Elsewhere</span>
                         <ul>
                             <li><span class="k">on stage</span><a href="https://www.instagram.com/labratband/" target="_blank" rel="noopener">la brat band</a> &mdash; piano &amp; lead vocals</li>
@@ -773,40 +832,8 @@
                 <div class="now-item"><strong>time sink</strong>color-coding and organizing my digital and physical life</div>
             </div>
 
-            <!-- 07 Funding & awards -->
-            <div class="section-head num-label" id="bio-awards"><span class="num">07</span> Funding &amp; Awards</div>
-            <div class="split">
-                <div>
-                    <div class="awards">
-                        <div class="award">
-                            <span class="award-when">2022 &mdash; 2025</span>
-                            <span><span class="award-what">NSF Graduate Research Fellowship</span><span class="award-who">National Science Foundation ($170K+)</span></span>
-                        </div>
-                        <div class="award">
-                            <span class="award-when">2021 &mdash; 2022</span>
-                            <span><span class="award-what">NIH T32 Training Grant</span><span class="award-who">National Institutes of Health ($90K+)</span></span>
-                        </div>
-                        <div class="award">
-                            <span class="award-when">2023 &mdash; 2026</span>
-                            <span><span class="award-what">Emory Neuroscience Awards</span><span class="award-who">Scientific Achievement (2026) &middot; Teaching (2025) &middot; Leadership (2024) &middot; Excellence in Mentorship (2023)</span></span>
-                        </div>
-                    </div>
-                    <div class="prose" style="margin-top:1.25rem;"><p>The full list of publications, presentations, and invited talks lives on my <a href="cv.html">cv</a>.</p></div>
-                </div>
-                <aside class="rail">
-                    <div class="rail-item">
-                        <span class="num-label">Output</span>
-                        <ul>
-                            <li><span class="k">publications</span>7 peer-reviewed</li>
-                            <li><span class="k">presentations</span>20 conference</li>
-                            <li><span class="k">invited talks</span>17</li>
-                        </ul>
-                    </div>
-                </aside>
-            </div>
-
-            <!-- 08 Places you can find me -->
-            <div class="section-head num-label" id="bio-contact"><span class="num">08</span> Places You Can Find Me</div>
+            <!-- 07 Places you can find me -->
+            <div class="section-head num-label" id="bio-contact"><span class="num">07</span> Places You Can Find Me</div>
             <div class="places">
                 <a href="cv.html" class="place place--wide place--cv">
                     <h3>CV</h3>
