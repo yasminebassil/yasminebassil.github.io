@@ -490,6 +490,10 @@
         .place h3 { font-family: 'Fraunces', var(--display); font-weight: 600; font-size: 1.45rem; line-height: 1.2; }
         .place p { font-size: 0.88rem; line-height: 1.5; margin-top: 0.4rem; opacity: 0.92; max-width: 26rem; }
         .place .receipt-line { font-family: var(--meta); font-size: 0.68rem; letter-spacing: 0.06em; margin-top: 0.5rem; opacity: 0.9; }
+        /* a card with two links of its own: the links carry the colour and the second sits closer */
+        .place a.cta { color: inherit; text-decoration: none; }
+        .place a.cta:hover { border-bottom-color: #fff; }
+        .place .cta--second { margin-top: 0.45rem; opacity: 0.85; }
         .place .cta { font-family: var(--meta); font-size: 0.7rem; margin-top: 0.8rem; border-bottom: 1px solid rgba(255, 255, 255, 0.5); padding-bottom: 1px; }
         .place--cv       { background: var(--oxblood); }
         .place--research { background: var(--slate); }
@@ -840,7 +844,7 @@
                     <p class="pull">Lebanese by heritage, Atlantan by choice, with a life full of music, food, and plants.</p>
                     <p>I've moved back and forth between the US and Lebanon throughout my early life, ultimately settling in Atlanta in 2012. Being Lebanese is a central part of my identity, and I visit home yearly to see family and friends. I try to find a piece of Lebanon everywhere I go &mdash; cooking family recipes, scavenging local record stores for Arabic music, leading the dabke line, or finding small pockets of community in whatever city I'm in.</p>
                     <p>I love to cook, usually experimenting with dishes from all around the world. I'm an avid plant enthusiast and caretaker to 30+ indoor plants. When I'm exploring the city (by foot, bike, or public transit, preferably), you can usually find me at the discount section of my local plant store, thrift stores, book stores, or specialty grocery stores.</p>
-                    <p>I'm a lover of all things <a href="music.html">creative</a>. I was recently a part of <a href="https://www.instagram.com/labratband/" target="_blank" rel="noopener">la brat band</a>, on piano and lead vocals (and occasionally bass!), putting my classical training to good use. We had our <a href="https://labratband.com/" target="_blank" rel="noopener">debut show</a> last year. Otherwise, I love artistic endeavors in all forms, with my new favorite medium of pottery.</p>
+                    <p>I'm a lover of all things <a href="music.html">creative</a>. I was recently a part of <a href="https://www.labratband.com" target="_blank" rel="noopener">la brat band</a>, on piano and lead vocals (and occasionally bass!), putting my classical training to good use. We had our <a href="https://labratband.com/" target="_blank" rel="noopener">debut show</a> last year. Otherwise, I love artistic endeavors in all forms, with my new favorite medium of pottery.</p>
                     <p class="more"><a class="pill-link" href="music.html">See the creative work &rarr;</a></p>
                 </div>
                 <aside class="rail">
@@ -911,11 +915,12 @@
                     <p>Music, pottery, block printing, and everything else I make.</p>
                     <span class="cta">Creative work &rarr;</span>
                 </a>
-                <a href="https://www.instagram.com/labratband/" target="_blank" rel="noopener" class="place place--band">
+                <div class="place place--band">
                     <h3>la brat band</h3>
                     <p>Piano and lead vocals (and occasionally bass!).</p>
-                    <span class="cta">@labratband &rarr;</span>
-                </a>
+                    <a class="cta" href="https://www.labratband.com" target="_blank" rel="noopener">labratband.com &rarr;</a>
+                    <a class="cta cta--second" href="https://www.instagram.com/labratband/" target="_blank" rel="noopener">@labratband &rarr;</a>
+                </div>
                 <a href="mailto:yasminebassil@gmail.com" class="place place--light">
                     <h3>Email</h3>
                     <span class="cta">yasminebassil@gmail.com</span>
