@@ -147,13 +147,15 @@
         /* The author card: no box. The name is a bilingual lockup, English over Arabic at equal
            weight, joined by a rule that carries the title; tagline and status sit to the side. */
         .author { max-width: 46rem; margin: 2.2rem 0 2.3rem; }
-        /* the name tag: a small pill beside the aside whose last word changes every few seconds */
+        /* the name tag: a small pill under the aside paragraph whose last word changes every few seconds */
         .nametag { display: inline-flex; align-items: baseline; gap: 0.5rem; padding: 0.28rem 0.85rem 0.34rem; border: 1px solid var(--rule); border-radius: 999px; white-space: nowrap; }
         .nametag-k { font-family: var(--meta); font-size: 0.64rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
         .nametag-v { font-family: 'Fraunces', var(--display); font-optical-sizing: auto; font-variation-settings: 'SOFT' 45, 'WONK' 1; font-style: italic; font-weight: 500; font-size: 0.98rem; color: var(--mulberry); transition: opacity 0.3s ease; }
         .nametag-v.out { opacity: 0; }
         .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-        .rail-item.tag { border-bottom: none; }
+        /* section 01 has no rail: the quote and paragraph sit centred, with the name tag under the paragraph */
+        .aside-center { max-width: 56rem; margin: 0 auto; }
+        .aside-center .nametag { margin-top: 1.1rem; }
         @media (prefers-reduced-motion: reduce) { .nametag-v { transition: none; } }
         .author-card {
             position: relative;
@@ -611,21 +613,17 @@
 
             <!-- 01 An aside -->
             <div class="section-head num-label" id="bio-aside"><span class="num">01</span> An Aside</div>
-            <div class="split">
-                <div class="prose wide">
-                    <div class="quote-pair">
-                        <div>
-                            <div class="bubble"><p>Often, we're encouraged to separate personal and professional identities, but science is inevitably shaped by the person conducting it.</p></div>
-                            <div class="bubble-who"><img src="img/profile.jpg" alt=""><span>yasmine</span></div>
-                        </div>
-                        <p>I believe science and life are better when we show up authentically as whole people. Feel free to explore a holistic introduction of myself below: an Atlanta-based Lebanese scientist, plant enthusiast, home chef, musician, and community member.</p>
+            <div class="prose aside-center">
+                <div class="quote-pair">
+                    <div>
+                        <div class="bubble"><p>Often, we're encouraged to separate personal and professional identities, but science is inevitably shaped by the person conducting it.</p></div>
+                        <div class="bubble-who"><img src="img/profile.jpg" alt=""><span>yasmine</span></div>
                     </div>
-                </div>
-                <aside class="rail">
-                    <div class="rail-item tag">
+                    <div>
+                        <p>I believe science and life are better when we show up authentically as whole people. Feel free to explore a holistic introduction of myself below: an Atlanta-based Lebanese scientist, plant enthusiast, home chef, musician, and community member.</p>
                         <p class="nametag"><span class="nametag-k">off the clock</span> <span class="nametag-v" aria-hidden="true">pianist</span><span class="sr-only">pianist, lead vocalist, potter, dabke line leader, plant parent, block printer, home cook, and color-coder</span></p>
                     </div>
-                </aside>
+                </div>
             </div>
 
             <!-- 02 Education -->
@@ -840,7 +838,7 @@
             }
         })();
 
-        // the name tag beside the aside: swap its last word every few seconds
+        // the name tag under the aside paragraph: swap its last word every few seconds
         (function () {
             var el = document.querySelector('.nametag-v');
             if (!el) return;
