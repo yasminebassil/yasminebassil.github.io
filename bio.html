@@ -147,26 +147,7 @@
         /* The author card: no box. The name is a bilingual lockup, English over Arabic at equal
            weight, joined by a rule that carries the title; tagline and status sit to the side. */
         .author { max-width: 46rem; margin: 2.2rem 0 2.3rem; }
-        /* off the clock: a small cloud of words, greyed out, with one at a time picked out in oxblood */
-        .rail .cloud { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 0.1rem 0.8rem; }
-        .rail .cloud li { display: inline-flex; flex-direction: column; margin: 0; font-family: 'Fraunces', var(--display); font-optical-sizing: auto; font-variation-settings: 'SOFT' 45, 'WONK' 1; font-style: italic; font-size: 1rem; line-height: 1.35; color: #8C8486; transition: color 0.5s ease; }
-        /* sizes are set word by word so the cloud is uneven on purpose */
-        .rail .cloud li:nth-child(1) { font-size: 1.55rem; }
-        .rail .cloud li:nth-child(2) { font-size: 0.82rem; }
-        .rail .cloud li:nth-child(3) { font-size: 1.2rem; }
-        .rail .cloud li:nth-child(4) { font-size: 1.32rem; }
-        .rail .cloud li:nth-child(5) { font-size: 0.86rem; }
-        .rail .cloud li:nth-child(6) { font-size: 1.05rem; }
-        .rail .cloud li:nth-child(7) { font-size: 1.48rem; }
-        .rail .cloud li:nth-child(8) { font-size: 0.8rem; }
-        .rail .cloud li:nth-child(9) { font-size: 1.25rem; }
-        .rail .cloud li:nth-child(10) { font-size: 0.92rem; }
-        .rail-item.cloud-item .num-label { justify-content: center; }
-        /* a hidden bold copy holds each word's bold width, so the cloud doesn't shift when one lights up */
-        .rail .cloud li::after { content: attr(data-w); height: 0; overflow: hidden; visibility: hidden; font-weight: 600; }
-        .rail .cloud li.on { color: var(--oxblood); font-weight: 600; }
         .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-        @media (prefers-reduced-motion: reduce) { .rail .cloud li { transition: none; } }
         .author-card {
             position: relative;
             display: inline-flex;
@@ -634,9 +615,9 @@
                     </div>
                 </div>
                 <aside class="rail">
-                    <div class="rail-item cloud-item">
+                    <div class="rail-item">
                         <span class="num-label">Off The Clock</span>
-                        <ul class="cloud"><li data-w="pianist">pianist</li><li data-w="vocalist">vocalist</li><li data-w="potter">potter</li><li data-w="dabke line leader">dabke line leader</li><li data-w="plant parent">plant parent</li><li data-w="block printer">block printer</li><li data-w="home cook">home cook</li><li data-w="color-coder">color-coder</li><li data-w="thrifter">thrifter</li><li data-w="record hunter">record hunter</li></ul>
+                        <p>Pianist &middot; vocalist &middot; potter &middot; dabke line leader &middot; plant parent &middot; block printer &middot; home cook &middot; color-coder &middot; thrifter &middot; record hunter</p>
                     </div>
                 </aside>
             </div>
@@ -851,21 +832,6 @@
                     if (e.target.tagName === 'A') links.classList.remove('open');
                 });
             }
-        })();
-
-        // off the clock: light up one word of the cloud at a time, never the same one twice running
-        (function () {
-            var items = document.querySelectorAll('.cloud li');
-            if (!items.length) return;
-            var current = 0;
-            items[current].classList.add('on');
-            setInterval(function () {
-                var next;
-                do { next = Math.floor(Math.random() * items.length); } while (next === current);
-                items[current].classList.remove('on');
-                items[next].classList.add('on');
-                current = next;
-            }, 2600);
         })();
     </script>
 </body>
