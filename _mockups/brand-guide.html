@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brand guide &mdash; Yasmine Bassil</title>
+    <!-- The current brand in one page: colours, typefaces, components, and copy rules.
+         The tokens themselves live in css/site.css; brand.html holds the history of how we got here. -->
+    <meta name="robots" content="noindex">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..900,0..100,0..1;1,9..144,300..900,0..100,0..1&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Naskh+Arabic:wght@600&display=swap" rel="stylesheet">
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/site.css">
+    <style>
+        body { background: var(--paper-warm); }
+        .sheet { max-width: 1100px; margin: 3rem auto 5rem; background: var(--paper); border-radius: 12px; padding: 2.75rem 3rem 3.25rem; box-shadow: 0 1px 2px rgba(44, 40, 37, 0.04), 0 12px 32px rgba(44, 40, 37, 0.06); }
+        h1 { font-family: 'Fraunces', serif; font-variation-settings: 'SOFT' 45, 'WONK' 1; font-weight: 600; font-size: 2.4rem; letter-spacing: -0.015em; color: var(--oxblood); }
+        .intro { max-width: 44rem; margin-top: 0.5rem; color: var(--muted); }
+        .label { display: flex; gap: 0.5rem; font-family: var(--meta); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mulberry); margin: 3.25rem 0 1.5rem; padding-top: 1.2rem; border-top: 1px solid var(--rule); }
+        .note { font-size: 0.9rem; color: var(--muted); max-width: 46rem; margin-bottom: 1.4rem; }
+        code { font-family: var(--meta); font-size: 0.8em; color: var(--muted); }
+
+        /* colours */
+        .swatches { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.1rem; }
+        .swatch { border: 1px solid var(--rule); border-radius: 8px; overflow: hidden; background: var(--paper); }
+        .swatch .chip { height: 5.2rem; }
+        .swatch .meta { padding: 0.8rem 0.95rem 0.95rem; }
+        .swatch h3 { font-family: 'Fraunces', serif; font-variation-settings: 'SOFT' 45, 'WONK' 1; font-weight: 600; font-size: 1.05rem; color: var(--oxblood); }
+        .swatch .hex { font-family: var(--meta); font-size: 0.72rem; color: var(--muted); margin: 0.1rem 0 0.45rem; }
+        .swatch p { font-size: 0.85rem; line-height: 1.45; color: var(--ink); }
+        .swatch .dont { color: var(--muted); }
+
+        /* typefaces */
+        .faces { display: grid; gap: 1.3rem; }
+        .face { display: grid; grid-template-columns: 15rem minmax(0, 1fr); gap: 2rem; align-items: start; padding-bottom: 1.3rem; border-bottom: 1px solid var(--rule-soft); }
+        .face:last-child { border-bottom: none; }
+        .face h3 { font-family: var(--meta); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); }
+        .face .use { font-size: 0.85rem; line-height: 1.5; color: var(--muted); margin-top: 0.35rem; }
+        .spec-fraunces { font-family: 'Fraunces', serif; font-variation-settings: 'SOFT' 45, 'WONK' 1; font-weight: 600; font-size: 2.3rem; line-height: 1.1; letter-spacing: -0.015em; color: var(--oxblood); }
+        .spec-fraunces em { font-style: italic; color: var(--mulberry); }
+        .spec-cormorant { font-family: var(--display); font-size: 1.7rem; line-height: 1.25; color: var(--oxblood); }
+        .spec-cormorant i { display: block; margin-top: 0.3rem; }
+        .spec-satoshi { font-family: var(--body); font-size: 1.02rem; line-height: 1.65; color: var(--muted); max-width: 40rem; }
+        .spec-satoshi b { font-weight: 500; color: var(--mulberry); }
+        .spec-mono { font-family: var(--meta); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mulberry); }
+        .spec-arabic { font-family: 'Noto Naskh Arabic', serif; font-weight: 600; font-size: 2rem; line-height: 1.3; color: var(--oxblood); }
+        .small { font-family: var(--meta); font-size: 0.7rem; color: var(--muted); margin-top: 0.5rem; }
+
+        /* components */
+        .parts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.6rem 2.5rem; }
+        .part h3 { font-family: var(--meta); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); margin-bottom: 0.7rem; }
+        .part p.how { font-size: 0.85rem; color: var(--muted); margin-top: 0.7rem; }
+        .demo-label { font-family: var(--meta); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mulberry); padding-top: 1rem; border-top: 1px solid var(--rule); }
+        .demo-pill { display: inline-block; padding: 0.42rem 1rem 0.46rem; border: 1px solid var(--mulberry); border-radius: 999px; font-size: 0.9rem; font-weight: 500; color: var(--mulberry); text-decoration: none; }
+        .demo-badge { display: inline-flex; align-items: center; gap: 0.4rem; font-family: var(--meta); font-size: 0.62rem; letter-spacing: 0.06em; text-transform: uppercase; color: #fff; background: var(--sage); padding: 0.32rem 0.75rem; border-radius: 999px; }
+        .demo-badge i { width: 7px; height: 7px; border-radius: 50%; background: #A9D6A4; }
+        .demo-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem; }
+        .demo-cards div { border-radius: 6px; padding: 1.4rem 0.7rem 0.6rem; color: #fff; font-family: 'Fraunces', serif; font-variation-settings: 'SOFT' 45, 'WONK' 1; font-weight: 600; font-size: 0.95rem; }
+        .demo-link { color: var(--mulberry); text-decoration: none; border-bottom: 1px solid rgba(110, 51, 88, 0.3); }
+        .demo-blush { background: var(--blush); border-radius: 16px; padding: 1rem 1.2rem; font-family: var(--display); font-style: italic; font-size: 1.2rem; line-height: 1.35; color: var(--oxblood); }
+
+        .rules { max-width: 46rem; padding-left: 1.2rem; }
+        .rules li { font-size: 0.95rem; line-height: 1.6; color: var(--ink); margin-bottom: 0.45rem; }
+
+        @media (max-width: 800px) { .swatches { grid-template-columns: repeat(2, minmax(0, 1fr)); } .face, .parts { grid-template-columns: 1fr; gap: 0.8rem; } }
+    </style>
+</head>
+<body>
+    <div class="sheet">
+        <h1>Brand guide</h1>
+        <p class="intro">The colours, typefaces, and small rules the site is built on, as they stand today. The values themselves live in <code>css/site.css</code>; change them there and every page that uses the tokens follows.</p>
+
+        <div class="label"><span>01</span> Colours</div>
+        <p class="note">Oxblood, mulberry, and sage on porcelain, with slate violet kept for blocks. Any text colour should keep at least 4.5:1 contrast against its background.</p>
+        <div class="swatches">
+            <div class="swatch"><div class="chip" style="background:#44181D"></div><div class="meta"><h3>Oxblood</h3><div class="hex">#44181D &middot; --oxblood</div><p>Headlines, the wordmark, numbers on cards, the main filled blocks.</p></div></div>
+            <div class="swatch"><div class="chip" style="background:#6E3358"></div><div class="meta"><h3>Mulberry</h3><div class="hex">#6E3358 &middot; --mulberry</div><p>Links, buttons, section labels, and words picked out in a sentence. The one interactive colour.</p></div></div>
+            <div class="swatch"><div class="chip" style="background:#566B58"></div><div class="meta"><h3>Sage</h3><div class="hex">#566B58 &middot; --sage</div><p>The status badge, small secondary labels, and a block colour.</p></div></div>
+            <div class="swatch"><div class="chip" style="background:#4F5285"></div><div class="meta"><h3>Slate violet</h3><div class="hex">#4F5285 &middot; --slate</div><p>Blocks and illustration only. <span class="dont">Never text: it reads too close to mulberry.</span></p></div></div>
+            <div class="swatch"><div class="chip" style="background:#F3E6E3"></div><div class="meta"><h3>Blush</h3><div class="hex">#F3E6E3 &middot; --blush</div><p>Soft panels, the quote bubble, tags, and badges.</p></div></div>
+            <div class="swatch"><div class="chip" style="background:#FCFAF8; border-bottom:1px solid rgba(43,34,36,0.14)"></div><div class="meta"><h3>Porcelain</h3><div class="hex">#FCFAF8 &middot; --paper</div><p>The page, and the sheet a page's content sits on. Matches the sky in the homepage photo.</p></div></div>
+            <div class="swatch"><div class="chip" style="background:#F1EFEC"></div><div class="meta"><h3>Warm grey</h3><div class="hex">#F1EFEC &middot; --paper-warm</div><p>The &ldquo;desk&rdquo; behind a sheet, and quiet panels.</p></div></div>
+            <div class="swatch"><div class="chip" style="background:#2B2224"></div><div class="meta"><h3>Warm ink</h3><div class="hex">#2B2224 &middot; --ink</div><p>Body text that needs full strength: side-column facts, bold opening sentences.</p></div></div>
+            <div class="swatch"><div class="chip" style="background:#5E5557"></div><div class="meta"><h3>Warm grey text</h3><div class="hex">#5E5557 &middot; --muted</div><p>Running paragraphs, the menu, and secondary text.</p></div></div>
+        </div>
+        <p class="small">Hairlines: rgba(43, 34, 36, 0.14) as --rule, and 0.07 as --rule-soft. Status dot: #A9D6A4.</p>
+
+        <div class="label"><span>02</span> Typefaces</div>
+        <div class="faces">
+            <div class="face">
+                <div><h3>Fraunces</h3><p class="use">The wordmark, page headlines, the menu, card titles, and big numbers. Always with SOFT 45 and WONK 1. Lowercase for the wordmark and menu; weight 600 for headlines, 500 for the menu.</p></div>
+                <div><div class="spec-fraunces">Building the <em>structures and systems</em></div><div class="small">font-family: 'Fraunces' &middot; font-variation-settings: 'SOFT' 45, 'WONK' 1</div></div>
+            </div>
+            <div class="face">
+                <div><h3>Cormorant Garamond</h3><p class="use">A section's opening line, and quotes in italic. Not for body text or labels.</p></div>
+                <div><div class="spec-cormorant">Cognitive neuroscientist by training.<i>Science celebrates the unknown.</i></div><div class="small">var(--display) &middot; 1.5&ndash;2rem</div></div>
+            </div>
+            <div class="face">
+                <div><h3>Satoshi</h3><p class="use">All running text. Emphasis inside a sentence is medium weight in mulberry, not italic and not another typeface.</p></div>
+                <div><p class="spec-satoshi">I center <b>people</b>, <b>connection</b>, and <b>creativity</b> in my work, and I thrive when I can create something that outlasts me.</p><div class="small">var(--body) &middot; 1.02rem / 1.65</div></div>
+            </div>
+            <div class="face">
+                <div><h3>IBM Plex Mono</h3><p class="use">Small capital labels: section numbers, side-column headings, dates, counters, badges.</p></div>
+                <div><div class="spec-mono">03 Projects &amp; Programs</div><div class="small">var(--meta) &middot; 0.62&ndash;0.7rem &middot; uppercase &middot; letter-spacing 0.12em</div></div>
+            </div>
+            <div class="face">
+                <div><h3>Noto Naskh Arabic</h3><p class="use">The Arabic name in the bilingual lockup, at the same visual weight as the English above it.</p></div>
+                <div><div class="spec-arabic" dir="rtl" lang="ar">ياسمين باسيل</div><div class="small">'Noto Naskh Arabic' &middot; weight 600</div></div>
+            </div>
+        </div>
+
+        <div class="label"><span>03</span> Recurring pieces</div>
+        <div class="parts">
+            <div class="part"><h3>Section label</h3><div class="demo-label">02 Education &amp; Training</div><p class="how">Mono capitals in mulberry over a hairline. Sections are numbered from 00.</p></div>
+            <div class="part"><h3>Button</h3><a class="demo-pill" href="#">Read the research &rarr;</a><p class="how">An outlined mulberry pill that fills on hover. One per section at most.</p></div>
+            <div class="part"><h3>Link in text</h3><p><a class="demo-link" href="#">Neural Plasticity Research Lab</a></p><p class="how">Mulberry with a faint underline that darkens on hover.</p></div>
+            <div class="part"><h3>Status badge</h3><span class="demo-badge"><i></i>open to work &amp; relocation</span><p class="how">Sage pill, mono capitals, white text.</p></div>
+            <div class="part"><h3>Card headers, in order</h3><div class="demo-cards"><div style="background:#44181D">one</div><div style="background:#566B58">two</div><div style="background:#4F5285">three</div><div style="background:#6E3358">four</div></div><p class="how">Oxblood, sage, slate violet, mulberry, then repeat. White Fraunces titles.</p></div>
+            <div class="part"><h3>Soft panel</h3><div class="demo-blush">Science is inevitably shaped by the person conducting it.</div><p class="how">Blush with a generous radius, for a quote or an aside.</p></div>
+        </div>
+
+        <div class="label"><span>04</span> Layout</div>
+        <ul class="rules">
+            <li>Content sits on a porcelain sheet (12px corners, a very soft shadow) on the warm grey desk.</li>
+            <li>A section is a wide text column with a narrow side column of labelled facts beside it.</li>
+            <li>Generous space between sections; white space is part of the look.</li>
+            <li>Movement is used sparingly and only where a visitor can stop it.</li>
+        </ul>
+
+        <div class="label"><span>05</span> Writing</div>
+        <ul class="rules">
+            <li>The wordmark and menu are lowercase: &ldquo;yasmine bassil&rdquo;.</li>
+            <li>Use the Oxford comma: &ldquo;programs, partnerships, tools, and teams&rdquo;.</li>
+            <li>Write numbers as numerals: &ldquo;6 years&rdquo;, &ldquo;3 organizations&rdquo;, &ldquo;$260K+&rdquo;.</li>
+            <li>Say &ldquo;scientific research&rdquo; where the point is broader than neuroscience.</li>
+            <li>Plain, first-person sentences; avoid r&eacute;sum&eacute; phrasing and wording that dates the work (&ldquo;recently completed&rdquo;).</li>
+        </ul>
+    </div>
+</body>
+</html>
