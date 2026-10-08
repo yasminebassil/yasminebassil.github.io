@@ -157,6 +157,7 @@
         .player.paused .player-toggle .i-play { display: block; }
         .player-word { font-family: 'Fraunces', var(--display); font-optical-sizing: auto; font-variation-settings: 'SOFT' 45, 'WONK' 1; font-style: italic; font-weight: 400; font-size: 1.15rem; line-height: 1.2; color: var(--mulberry); white-space: nowrap; transition: opacity 0.3s ease; }
         .player-word.out { opacity: 0; }
+        .player-count { margin-left: 0.35rem; font-family: var(--meta); font-size: 0.66rem; font-weight: 500; letter-spacing: 0.08em; color: var(--muted); }
         @media (prefers-reduced-motion: reduce) { .player-word { transition: none; } }
         .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
         .author-card {
@@ -642,6 +643,7 @@
                                 <button type="button" class="player-btn player-skip" aria-label="Skip to the next one">
                                     <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.4 3.6v8.8a.5.5 0 0 0 .77.42l6.4-4.4a.5.5 0 0 0 0-.84l-6.4-4.4a.5.5 0 0 0-.77.42z"/><rect x="11.2" y="3.5" width="1.8" height="9" rx="0.6"/></svg>
                                 </button>
+                                <span class="player-count" aria-hidden="true">1/10</span>
                             </div>
                         </div>
                     </div>
@@ -869,12 +871,16 @@
             var toggle = player.querySelector('.player-toggle');
             var words = ['pianist', 'vocalist', 'potter', 'dabke line leader', 'plant parent', 'block printer', 'home cook', 'color-coder', 'thrifter', 'record hunter'];
             var i = 0, timer = null;
+            var count = player.querySelector('.player-count');
+            function showCount() { count.textContent = (i + 1) + '/' + words.length; }
+            showCount();
             function next(step) {
                 step = step === -1 ? -1 : 1;
                 word.classList.add('out');
                 setTimeout(function () {
                     i = (i + step + words.length) % words.length;
                     word.textContent = words[i];
+                    showCount();
                     word.classList.remove('out');
                 }, 300);
             }
