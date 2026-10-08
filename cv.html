@@ -89,15 +89,11 @@
             list-style: none;
         }
 
-        .nav-links a {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
+        /* the menu is set in the wordmark's typeface; the current page gets a mulberry underline */
+        .nav-links a { font-family: 'Fraunces', var(--font-display); font-optical-sizing: auto; font-variation-settings: 'SOFT' 45, 'WONK' 1; font-size: 1.05rem; font-weight: 500; color: var(--text-muted); text-decoration: none; padding-bottom: 2px; border-bottom: 2px solid transparent; transition: color 0.3s ease; }
 
-        .nav-links a:hover { color: var(--accent-terracotta); }
-        .nav-links a.active { color: var(--text-charcoal); }
+        .nav-links a:hover { color: #6E3358; }
+        .nav-links a.active { color: #44181D; border-bottom-color: #6E3358; }
         .nav-links a.nav-past { opacity: 0.45; }
         .nav-links a.nav-past:hover { opacity: 0.7; }
 
