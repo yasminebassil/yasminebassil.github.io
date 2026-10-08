@@ -228,6 +228,8 @@
         /* the intro: its first sentence is the one line to take away, so it is set darker and heavier */
         .prose p.opener { font-size: 1.1rem; }
         .prose p.opener strong { font-weight: 500; color: var(--ink); }
+        /* the three words the work is built around, set like the italic phrase in the headline */
+        .prose p.opener em { font-family: 'Fraunces', var(--display); font-optical-sizing: auto; font-variation-settings: 'SOFT' 45, 'WONK' 1; font-style: italic; font-weight: 500; font-size: 1.08em; color: var(--mulberry); }
         /* previously / now / next: a line with three points under the intro; it turns dashed for what hasn't happened yet */
         .timeline { display: grid; grid-template-columns: 1.2fr 1fr 1fr; margin-top: 2.1rem; }
         .timeline div { position: relative; padding: 1rem 1.6rem 0 0; border-top: 2px solid var(--mulberry); }
@@ -571,7 +573,7 @@
                     </div>
 
                     <div class="prose">
-                        <p class="opener"><strong>I'm a neuroscientist who builds the structures behind scientific research: programs, partnerships, tools, and teams.</strong> I center people, connection, and creativity in my work, and I thrive when I can create something that outlasts me.</p>
+                        <p class="opener"><strong>I'm a neuroscientist who builds the structures behind scientific research: programs, partnerships, tools, and teams.</strong> I center <em>people</em>, <em>connection</em>, and <em>creativity</em> in my work, and I thrive when I can create something that outlasts me.</p>
                         <dl class="timeline">
                             <div><dt>previously</dt><dd>Built a navigation research program from scratch, co-led Emory's neuroscience graduate student organization, and chaired Brainhack ATL.</dd></div>
                             <div class="on"><dt>now</dt><dd>Research Scientist, Neural Plasticity Research Lab, Emory University.</dd></div>
@@ -595,7 +597,7 @@
                     </div>
                     <div class="rail-item">
                         <span class="num-label">Get In Touch</span>
-                        <p>Say hello.<br><a href="#bio-contact">Places you can find me &darr;</a></p>
+                        <p>Say hello.<br><a href="contact.html">Send me a message &rarr;</a></p>
                     </div>
                     <div class="rail-item tag">
                         <p class="nametag"><span class="nametag-k">off the clock</span> <span class="nametag-v" aria-hidden="true">pianist</span><span class="sr-only">pianist, lead vocalist, potter, dabke line leader, plant parent, block printer, home cook, and color-coder</span></p>
