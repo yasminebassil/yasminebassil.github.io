@@ -229,11 +229,11 @@
 
         .prose p { font-size: 1.02rem; line-height: 1.65; color: var(--muted); }
         .prose p + p { margin-top: 0.85rem; }
-        /* now / previously / always: a line with three points under the intro */
-        .timeline { margin: 1.8rem 0 0 0.4rem; border-left: 2px solid var(--mulberry); }
-        .timeline div { position: relative; padding: 0 0 1.15rem 1.6rem; }
-        .timeline div:last-child { padding-bottom: 0; }
-        .timeline div::before { content: ''; position: absolute; left: -7px; top: 0.45rem; width: 12px; height: 12px; border-radius: 50%; background: var(--paper); border: 2px solid var(--mulberry); box-sizing: border-box; }
+        /* now / previously / always: a line with three points under the intro, running across */
+        .timeline { display: grid; grid-template-columns: 1fr 1.35fr 0.65fr; margin-top: 2.1rem; border-top: 2px solid var(--mulberry); }
+        .timeline div { position: relative; padding: 1rem 1.6rem 0 0; }
+        .timeline div:last-child { padding-right: 0; }
+        .timeline div::before { content: ''; position: absolute; left: 0; top: -7px; width: 12px; height: 12px; border-radius: 50%; background: var(--paper); border: 2px solid var(--mulberry); box-sizing: border-box; }
         .timeline div.on::before { background: var(--mulberry); }
         .timeline dt { font-family: 'Fraunces', var(--display); font-optical-sizing: auto; font-variation-settings: 'SOFT' 45, 'WONK' 1; font-weight: 600; font-size: 1.1rem; color: var(--oxblood); }
         .timeline dd { font-size: 0.95rem; line-height: 1.55; color: var(--muted); }
@@ -503,6 +503,11 @@
             .mobile-nav-toggle { display: block; }
         }
         @media (max-width: 600px) {
+            /* on a phone the line turns to run down the side */
+            .timeline { display: block; margin: 1.8rem 0 0 0.4rem; border-top: none; border-left: 2px solid var(--mulberry); }
+            .timeline div { padding: 0 0 1.15rem 1.6rem; }
+            .timeline div:last-child { padding-bottom: 0; }
+            .timeline div::before { left: -7px; top: 0.45rem; }
             .page-inner { width: 100%; padding: 5.5rem 0.75rem 3rem; }
             .sheet { padding: 1.75rem 1.25rem 2.25rem; }
             .hero-headline { font-size: 2.1rem; }
