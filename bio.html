@@ -148,13 +148,14 @@
            weight, joined by a rule that carries the title; tagline and status sit to the side. */
         .author { max-width: 46rem; margin: 2.2rem 0 2.3rem; }
         /* off the clock: a tiny player. It plays by itself; the buttons pause it or step forward and back. */
-        .player { display: flex; align-items: center; gap: 0.4rem; }
+        .player { display: flex; flex-direction: column; align-items: flex-start; gap: 0.55rem; }
+        .player-controls { display: flex; align-items: center; gap: 0.4rem; }
         .player-btn { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; padding: 0; border: 1px solid var(--rule); border-radius: 50%; background: none; color: var(--muted); cursor: pointer; transition: color 0.2s ease, border-color 0.2s ease; }
         .player-btn:hover { color: var(--mulberry); border-color: var(--mulberry); }
         .player-btn svg { width: 12px; height: 12px; fill: currentColor; }
         .player-toggle .i-play, .player.paused .player-toggle .i-pause { display: none; }
         .player.paused .player-toggle .i-play { display: block; }
-        .player-word { margin-left: 0.35rem; font-family: 'Fraunces', var(--display); font-optical-sizing: auto; font-variation-settings: 'SOFT' 45, 'WONK' 1; font-style: italic; font-weight: 500; font-size: 1.02rem; color: var(--mulberry); white-space: nowrap; transition: opacity 0.3s ease; }
+        .player-word { font-family: 'Fraunces', var(--display); font-optical-sizing: auto; font-variation-settings: 'SOFT' 45, 'WONK' 1; font-style: italic; font-weight: 500; font-size: 1.15rem; line-height: 1.2; color: var(--mulberry); white-space: nowrap; transition: opacity 0.3s ease; }
         .player-word.out { opacity: 0; }
         @media (prefers-reduced-motion: reduce) { .player-word { transition: none; } }
         .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
@@ -628,19 +629,22 @@
                     <div class="rail-item">
                         <span class="num-label">Off The Clock</span>
                         <div class="player">
-                            <button type="button" class="player-btn player-back" aria-label="Back to the previous one">
-                                <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M12.6 3.6v8.8a.5.5 0 0 1-.77.42l-6.4-4.4a.5.5 0 0 1 0-.84l6.4-4.4a.5.5 0 0 1 .77.42z"/><rect x="3" y="3.5" width="1.8" height="9" rx="0.6"/></svg>
-                            </button>
-                            <button type="button" class="player-btn player-toggle" aria-label="Pause">
-                                <svg class="i-pause" viewBox="0 0 16 16" aria-hidden="true"><rect x="4" y="3.5" width="2.6" height="9" rx="0.6"/><rect x="9.4" y="3.5" width="2.6" height="9" rx="0.6"/></svg>
-                                <svg class="i-play" viewBox="0 0 16 16" aria-hidden="true"><path d="M5.2 3.4v9.2a.5.5 0 0 0 .76.43l7.4-4.6a.5.5 0 0 0 0-.86l-7.4-4.6a.5.5 0 0 0-.76.43z"/></svg>
-                            </button>
-                            <button type="button" class="player-btn player-skip" aria-label="Skip to the next one">
-                                <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.4 3.6v8.8a.5.5 0 0 0 .77.42l6.4-4.4a.5.5 0 0 0 0-.84l-6.4-4.4a.5.5 0 0 0-.77.42z"/><rect x="11.2" y="3.5" width="1.8" height="9" rx="0.6"/></svg>
-                            </button>
                             <span class="player-word" aria-hidden="true">pianist</span>
                             <span class="sr-only">pianist, vocalist, potter, dabke line leader, plant parent, block printer, home cook, color-coder, thrifter, and record hunter</span>
+                            <div class="player-controls">
+                                <button type="button" class="player-btn player-back" aria-label="Back to the previous one">
+                                    <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M12.6 3.6v8.8a.5.5 0 0 1-.77.42l-6.4-4.4a.5.5 0 0 1 0-.84l6.4-4.4a.5.5 0 0 1 .77.42z"/><rect x="3" y="3.5" width="1.8" height="9" rx="0.6"/></svg>
+                                </button>
+                                <button type="button" class="player-btn player-toggle" aria-label="Pause">
+                                    <svg class="i-pause" viewBox="0 0 16 16" aria-hidden="true"><rect x="4" y="3.5" width="2.6" height="9" rx="0.6"/><rect x="9.4" y="3.5" width="2.6" height="9" rx="0.6"/></svg>
+                                    <svg class="i-play" viewBox="0 0 16 16" aria-hidden="true"><path d="M5.2 3.4v9.2a.5.5 0 0 0 .76.43l7.4-4.6a.5.5 0 0 0 0-.86l-7.4-4.6a.5.5 0 0 0-.76.43z"/></svg>
+                                </button>
+                                <button type="button" class="player-btn player-skip" aria-label="Skip to the next one">
+                                    <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.4 3.6v8.8a.5.5 0 0 0 .77.42l6.4-4.4a.5.5 0 0 0 0-.84l-6.4-4.4a.5.5 0 0 0-.77.42z"/><rect x="11.2" y="3.5" width="1.8" height="9" rx="0.6"/></svg>
+                                </button>
+                            </div>
                         </div>
+                    </div>
                     </div>
                 </aside>
             </div>
