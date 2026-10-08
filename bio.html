@@ -282,6 +282,10 @@
         .rail-item:first-child { padding-top: 0; }
         .rail-item p, .rail-item li { font-size: 0.9rem; line-height: 1.5; color: var(--ink); }
         .rail-item p + p { margin-top: 0.3rem; }
+        /* a short numbered list inside a rail entry */
+        .rail-item ol.top3 { list-style: none; counter-reset: top3; }
+        .rail-item ol.top3 li { counter-increment: top3; margin-top: 0.15rem; padding-left: 1.3rem; position: relative; }
+        .rail-item ol.top3 li::before { content: counter(top3); position: absolute; left: 0; top: 0.2em; font-family: var(--meta); font-size: 0.66rem; font-weight: 600; color: var(--mulberry); }
         .rail-item li small { display: block; margin-top: 0.15rem; font-size: 0.8rem; line-height: 1.5; color: var(--muted); }
         .rail-item ul { list-style: none; }
         .rail-item li + li { margin-top: 0.35rem; }
@@ -850,9 +854,13 @@
                     <div class="rail-item">
                         <span class="num-label">Elsewhere</span>
                         <ul>
-                            <li><span class="k">on stage</span><a href="https://www.instagram.com/labratband/" target="_blank" rel="noopener">la brat band</a> &mdash; piano &amp; lead vocals</li>
-                            <li><span class="k">making</span>pottery, block printing</li>
-                            <li><span class="k">growing</span>30+ indoor plants</li>
+                            <li><span class="k">top 3 hobbies</span>
+                                <ol class="top3">
+                                    <li>playing music (piano &amp; vocals)</li>
+                                    <li>pottery &amp; block printing</li>
+                                    <li>growing 30+ indoor plants</li>
+                                </ol>
+                            </li>
                         </ul>
                     </div>
                 </aside>
