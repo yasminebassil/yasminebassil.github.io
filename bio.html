@@ -229,11 +229,14 @@
 
         .prose p { font-size: 1.02rem; line-height: 1.65; color: var(--muted); }
         .prose p + p { margin-top: 0.85rem; }
-        /* now / previously / always: a short timeline under the intro */
-        .timeline { margin-top: 1.5rem; border-top: 1px solid var(--rule); }
-        .timeline div { display: grid; grid-template-columns: 7rem 1fr; gap: 1rem; align-items: baseline; padding: 0.7rem 0; border-bottom: 1px solid var(--rule); }
-        .timeline dt { font-family: var(--meta); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mulberry); }
-        .timeline dd { font-size: 0.95rem; line-height: 1.55; color: var(--ink); }
+        /* now / previously / always: a line with three points under the intro */
+        .timeline { margin: 1.8rem 0 0 0.4rem; border-left: 2px solid var(--mulberry); }
+        .timeline div { position: relative; padding: 0 0 1.15rem 1.6rem; }
+        .timeline div:last-child { padding-bottom: 0; }
+        .timeline div::before { content: ''; position: absolute; left: -7px; top: 0.45rem; width: 12px; height: 12px; border-radius: 50%; background: var(--paper); border: 2px solid var(--mulberry); box-sizing: border-box; }
+        .timeline div.on::before { background: var(--mulberry); }
+        .timeline dt { font-family: 'Fraunces', var(--display); font-optical-sizing: auto; font-variation-settings: 'SOFT' 45, 'WONK' 1; font-weight: 600; font-size: 1.1rem; color: var(--oxblood); }
+        .timeline dd { font-size: 0.95rem; line-height: 1.55; color: var(--muted); }
         .prose a, .rail a {
             color: var(--mulberry);
             text-decoration: none;
@@ -500,7 +503,6 @@
             .mobile-nav-toggle { display: block; }
         }
         @media (max-width: 600px) {
-            .timeline div { grid-template-columns: 1fr; gap: 0.2rem; }
             .page-inner { width: 100%; padding: 5.5rem 0.75rem 3rem; }
             .sheet { padding: 1.75rem 1.25rem 2.25rem; }
             .hero-headline { font-size: 2.1rem; }
@@ -568,9 +570,9 @@
                     <div class="prose">
                         <p>I'm a neuroscientist who builds the structures behind scientific research: programs, partnerships, tools, and teams. Along the way I realized that research only goes so far without a foundation built to last, so that's what I build.</p>
                         <dl class="timeline">
-                            <div><dt>Now</dt><dd>Research Scientist at Emory, looking for a role leading scientific programs and partnerships.</dd></div>
-                            <div><dt>Previously</dt><dd>Built a navigation research program from scratch, co-led Emory's neuroscience graduate student organization, and chaired Brainhack ATL.</dd></div>
-                            <div><dt>Always</dt><dd>A neuroscientist.</dd></div>
+                            <div class="on"><dt>now</dt><dd>Research Scientist at Emory, looking for a role leading scientific programs and partnerships.</dd></div>
+                            <div><dt>previously</dt><dd>Built a navigation research program from scratch, co-led Emory's neuroscience graduate student organization, and chaired Brainhack ATL.</dd></div>
+                            <div><dt>always</dt><dd>A neuroscientist.</dd></div>
                         </dl>
                     </div>
                 </div>
