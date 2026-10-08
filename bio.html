@@ -229,6 +229,11 @@
 
         .prose p { font-size: 1.02rem; line-height: 1.65; color: var(--muted); }
         .prose p + p { margin-top: 0.85rem; }
+        /* now / previously / always: a short timeline under the intro */
+        .timeline { margin-top: 1.5rem; border-top: 1px solid var(--rule); }
+        .timeline div { display: grid; grid-template-columns: 7rem 1fr; gap: 1rem; align-items: baseline; padding: 0.7rem 0; border-bottom: 1px solid var(--rule); }
+        .timeline dt { font-family: var(--meta); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mulberry); }
+        .timeline dd { font-size: 0.95rem; line-height: 1.55; color: var(--ink); }
         .prose a, .rail a {
             color: var(--mulberry);
             text-decoration: none;
@@ -495,6 +500,7 @@
             .mobile-nav-toggle { display: block; }
         }
         @media (max-width: 600px) {
+            .timeline div { grid-template-columns: 1fr; gap: 0.2rem; }
             .page-inner { width: 100%; padding: 5.5rem 0.75rem 3rem; }
             .sheet { padding: 1.75rem 1.25rem 2.25rem; }
             .hero-headline { font-size: 2.1rem; }
@@ -561,6 +567,11 @@
 
                     <div class="prose">
                         <p>I'm a neuroscientist who builds the structures behind scientific research: programs, partnerships, tools and teams. Along the way I realized that research only goes so far without a foundation built to last, so that's what I build.</p>
+                        <dl class="timeline">
+                            <div><dt>Now</dt><dd>Research Scientist at Emory, looking for a role leading scientific programs and partnerships.</dd></div>
+                            <div><dt>Previously</dt><dd>Built a navigation research program from scratch, co-led Emory's neuroscience graduate student organization, and chaired Brainhack ATL.</dd></div>
+                            <div><dt>Always</dt><dd>A neuroscientist.</dd></div>
+                        </dl>
                     </div>
                 </div>
 
