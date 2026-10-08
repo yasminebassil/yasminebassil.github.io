@@ -147,16 +147,16 @@
         /* The author card: no box. The name is a bilingual lockup, English over Arabic at equal
            weight, joined by a rule that carries the title; tagline and status sit to the side. */
         .author { max-width: 46rem; margin: 2.2rem 0 2.3rem; }
-        /* the name tag: a small pill under the aside paragraph whose last word changes every few seconds */
-        .nametag { display: inline-flex; align-items: baseline; gap: 0.5rem; padding: 0.28rem 0.85rem 0.34rem; border: 1px solid var(--rule); border-radius: 999px; white-space: nowrap; }
-        .nametag-k { font-family: var(--meta); font-size: 0.64rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
-        .nametag-v { display: inline-block; font-family: 'Fraunces', var(--display); font-optical-sizing: auto; font-variation-settings: 'SOFT' 45, 'WONK' 1; font-style: italic; font-weight: 500; font-size: 0.98rem; color: var(--mulberry); transition: opacity 0.3s ease; }
-        .nametag-v.out { opacity: 0; }
+        /* off the clock: a small cloud of words, greyed out, with one at a time picked out in oxblood */
+        .rail .cloud { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.15rem 0.85rem; }
+        .rail .cloud li { display: inline-flex; flex-direction: column; margin: 0; font-family: 'Fraunces', var(--display); font-optical-sizing: auto; font-variation-settings: 'SOFT' 45, 'WONK' 1; font-style: italic; font-size: 1.02rem; line-height: 1.45; color: #8C8486; transition: color 0.5s ease; }
+        .rail .cloud li:nth-child(3n+1) { font-size: 1.18rem; }
+        .rail .cloud li:nth-child(4n+2) { font-size: 0.92rem; }
+        /* a hidden bold copy holds each word's bold width, so the cloud doesn't shift when one lights up */
+        .rail .cloud li::after { content: attr(data-w); height: 0; overflow: hidden; visibility: hidden; font-weight: 600; }
+        .rail .cloud li.on { color: var(--oxblood); font-weight: 600; }
         .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-        /* section 01 has no rail: the quote and paragraph sit centred, with the name tag under the paragraph */
-        .aside-center { max-width: 56rem; margin: 0 auto; }
-        .aside-center .nametag { margin-top: 1.1rem; }
-        @media (prefers-reduced-motion: reduce) { .nametag-v { transition: none; } }
+        @media (prefers-reduced-motion: reduce) { .rail .cloud li { transition: none; } }
         .author-card {
             position: relative;
             display: inline-flex;
@@ -613,17 +613,22 @@
 
             <!-- 01 An aside -->
             <div class="section-head num-label" id="bio-aside"><span class="num">01</span> An Aside</div>
-            <div class="prose aside-center">
-                <div class="quote-pair">
-                    <div>
-                        <div class="bubble"><p>Often, we're encouraged to separate personal and professional identities, but science is inevitably shaped by the person conducting it.</p></div>
-                        <div class="bubble-who"><img src="img/profile.jpg" alt=""><span>yasmine</span></div>
-                    </div>
-                    <div>
+            <div class="split">
+                <div class="prose wide">
+                    <div class="quote-pair">
+                        <div>
+                            <div class="bubble"><p>Often, we're encouraged to separate personal and professional identities, but science is inevitably shaped by the person conducting it.</p></div>
+                            <div class="bubble-who"><img src="img/profile.jpg" alt=""><span>yasmine</span></div>
+                        </div>
                         <p>I believe science and life are better when we show up authentically as whole people. Feel free to explore a holistic introduction of myself below: an Atlanta-based Lebanese scientist, plant enthusiast, home chef, musician, and community member.</p>
-                        <p class="nametag"><span class="nametag-k">off the clock</span> <span class="nametag-v" aria-hidden="true">pianist</span><span class="sr-only">pianist, lead vocalist, potter, dabke line leader, plant parent, block printer, home cook, and color-coder</span></p>
                     </div>
                 </div>
+                <aside class="rail">
+                    <div class="rail-item">
+                        <span class="num-label">Off The Clock</span>
+                        <ul class="cloud"><li data-w="pianist">pianist</li><li data-w="lead vocalist">lead vocalist</li><li data-w="potter">potter</li><li data-w="dabke line leader">dabke line leader</li><li data-w="plant parent">plant parent</li><li data-w="block printer">block printer</li><li data-w="home cook">home cook</li><li data-w="color-coder">color-coder</li><li data-w="thrifter">thrifter</li><li data-w="record hunter">record hunter</li></ul>
+                    </div>
+                </aside>
             </div>
 
             <!-- 02 Education -->
@@ -838,30 +843,19 @@
             }
         })();
 
-        // the name tag under the aside paragraph: swap its last word every few seconds
+        // off the clock: light up one word of the cloud at a time, never the same one twice running
         (function () {
-            var el = document.querySelector('.nametag-v');
-            if (!el) return;
-            var words = ['pianist', 'lead vocalist', 'potter', 'dabke line leader', 'plant parent', 'block printer', 'home cook', 'color-coder'];
-            var i = 0;
-            // hold the pill at the width of its longest word, so it doesn't resize as the word changes
-            function fit() {
-                var widest = 0;
-                el.style.minWidth = '';
-                words.forEach(function (w) { el.textContent = w; widest = Math.max(widest, el.offsetWidth); });
-                el.textContent = words[i];
-                el.style.minWidth = widest + 'px';
-            }
-            fit();
-            if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+            var items = document.querySelectorAll('.cloud li');
+            if (!items.length) return;
+            var current = 0;
+            items[current].classList.add('on');
             setInterval(function () {
-                el.classList.add('out');
-                setTimeout(function () {
-                    i = (i + 1) % words.length;
-                    el.textContent = words[i];
-                    el.classList.remove('out');
-                }, 300);
-            }, 2800);
+                var next;
+                do { next = Math.floor(Math.random() * items.length); } while (next === current);
+                items[current].classList.remove('on');
+                items[next].classList.add('on');
+                current = next;
+            }, 2600);
         })();
     </script>
 </body>
