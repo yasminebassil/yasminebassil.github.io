@@ -327,6 +327,10 @@
             transition: border-color 0.25s ease, transform 0.25s ease;
         }
         .program:hover { border-color: var(--mulberry); transform: translateY(-2px); }
+        /* cards in a row share their row lines, so the coloured headers end level even when one title wraps */
+        @supports (grid-template-rows: subgrid) {
+            .program { display: grid; grid-template-rows: subgrid; grid-row: span 2; row-gap: 0; }
+        }
         .program-top {
             padding: 1.1rem 1.25rem 1rem;
             color: #fff;
