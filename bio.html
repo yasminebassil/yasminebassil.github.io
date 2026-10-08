@@ -115,6 +115,7 @@
             margin-bottom: 0.7rem;
         }
         .num-label .num { color: var(--mulberry); }
+        .num-label .label-note { font-weight: 400; color: var(--muted); opacity: 0.75; }
         .section-head {
             margin: 4.25rem 0 1.9rem;
             padding-top: 1.3rem;
@@ -282,6 +283,10 @@
         .rail-item:first-child { padding-top: 0; }
         .rail-item p, .rail-item li { font-size: 0.9rem; line-height: 1.5; color: var(--ink); }
         .rail-item p + p { margin-top: 0.3rem; }
+        /* a short numbered list inside a rail entry */
+        .rail-item ol.top3 { list-style: none; counter-reset: top3; }
+        .rail-item ol.top3 li { counter-increment: top3; margin-top: 0.15rem; padding-left: 1.3rem; position: relative; }
+        .rail-item ol.top3 li::before { content: counter(top3); position: absolute; left: 0; top: 0.2em; font-family: var(--meta); font-size: 0.66rem; font-weight: 600; color: var(--mulberry); }
         .rail-item li small { display: block; margin-top: 0.15rem; font-size: 0.8rem; line-height: 1.5; color: var(--muted); }
         .rail-item ul { list-style: none; }
         .rail-item li + li { margin-top: 0.35rem; }
@@ -639,7 +644,7 @@
                     <div class="prose">
                         <p class="opener"><strong>I'm a neuroscientist who builds the structures behind scientific research: programs, partnerships, tools, and teams.</strong> I center <em>people</em>, <em>connection</em>, and <em>creativity</em> in my work, and I thrive when I can create something that outlasts me.</p>
                         <dl class="timeline">
-                            <div><dt>previously</dt><dd>NSF Graduate Research Fellow. Founded a novel navigation research program. Held leadership roles in 7 academic &amp; nonprofit organizations. Created Brainhack ATL.</dd></div>
+                            <div><dt>previously</dt><dd>NSF Graduate Research Fellow. Founded a novel navigation research program and Brainhack ATL. Built or led 6 more academic &amp; nonprofit organizations.</dd></div>
                             <div class="on"><dt>now</dt><dd>Research Scientist, Neural Plasticity Research Lab, Emory University.</dd></div>
                             <div><dt>next</dt><dd>Open to roles leading scientific programs and partnerships.</dd></div>
                         </dl>
@@ -733,7 +738,7 @@
                         </ul>
                     </div>
                     <div class="rail-item" id="bio-awards">
-                        <span class="num-label">Funding &amp; Awards</span>
+                        <span class="num-label">Funding &amp; Awards <span class="label-note">(selected)</span></span>
                         <ul>
                             <li><span class="k">2022 &mdash; 2025</span>NSF Graduate Research Fellowship ($170K+)</li>
                             <li><span class="k">2021 &mdash; 2022</span>NIH T32 Training Grant ($90K+)</li>
@@ -831,23 +836,27 @@
                     <p class="pull">Lebanese by heritage, Atlantan by choice, with a life full of music, food, and plants.</p>
                     <p>I've moved back and forth between the US and Lebanon throughout my early life, ultimately settling in Atlanta in 2012. Being Lebanese is a central part of my identity, and I visit home yearly to see family and friends. I try to find a piece of Lebanon everywhere I go &mdash; cooking family recipes, scavenging local record stores for Arabic music, leading the dabke line, or finding small pockets of community in whatever city I'm in.</p>
                     <p>I love to cook, usually experimenting with dishes from all around the world. I'm an avid plant enthusiast and caretaker to 30+ indoor plants. When I'm exploring the city (by foot, bike, or public transit, preferably), you can usually find me at the discount section of my local plant store, thrift stores, book stores, or specialty grocery stores.</p>
-                    <p>I'm a lover of all things <a href="music.html">creative</a>. I'm currently part of <a href="https://www.instagram.com/labratband/" target="_blank" rel="noopener">la brat band</a>, on piano and lead vocals (and occasionally bass!), putting my classical training to good use. We had our <a href="https://labratband.com/" target="_blank" rel="noopener">debut show</a> last year. Otherwise, I love artistic endeavors in all forms, with my new favorite medium of pottery.</p>
+                    <p>I'm a lover of all things <a href="music.html">creative</a>. I was recently a part of <a href="https://www.labratband.com" target="_blank" rel="noopener">la brat band</a>, on piano and lead vocals (and occasionally bass!), putting my classical training to good use. We had our <a href="https://labratband.com/" target="_blank" rel="noopener">debut show</a> last year. Otherwise, I love artistic endeavors in all forms, with my new favorite medium of pottery.</p>
                 </div>
                 <aside class="rail">
                     <div class="rail-item">
                         <span class="num-label">At A Glance</span>
                         <ul>
-                            <li><span class="k">originally from</span>Smar Jbeil, Batroun, Lebanon</li>
                             <li><span class="k">pronouns</span>she/her &middot; &#1607;&#1610;</li>
-                            <li><span class="k">languages</span>English, Arabic, French</li>
+                            <li><span class="k">originally from</span>Smar Jbeil, Batroun, Lebanon</li>
+                            <li><span class="k">languages</span>English (native), Lebanese Arabic (native), French (intermediate)</li>
                         </ul>
                     </div>
                     <div class="rail-item">
                         <span class="num-label">Elsewhere</span>
                         <ul>
-                            <li><span class="k">on stage</span><a href="https://www.instagram.com/labratband/" target="_blank" rel="noopener">la brat band</a> &mdash; piano &amp; lead vocals</li>
-                            <li><span class="k">making</span>pottery, block printing</li>
-                            <li><span class="k">growing</span>30+ indoor plants</li>
+                            <li><span class="k">top 3 hobbies</span>
+                                <ol class="top3">
+                                    <li>playing music (piano &amp; vocals)</li>
+                                    <li>plants &amp; gardening</li>
+                                    <li>biking &amp; roller skating</li>
+                                </ol>
+                            </li>
                         </ul>
                     </div>
                 </aside>
@@ -856,14 +865,14 @@
             <!-- 06 Currently -->
             <div class="section-head num-label" id="bio-currently"><span class="num">06</span> Currently</div>
             <div class="now-grid">
-                <div class="now-item"><strong>currently reading</strong><a href="https://charisbooksandmore.com/book/9780295752297" target="_blank" rel="noopener">Queer World Making: Contemporary Middle Eastern Diasporic Art</a> by Andrew Gayed</div>
-                <div class="now-item"><strong>favorite flavors</strong>cardamom, jasmine, rose</div>
-                <div class="now-item"><strong>favorite drink</strong>recently had the best cocktail I've ever had &mdash; gin, bergamot liqueur, sake, matcha milk jam</div>
-                <div class="now-item"><strong>favorite ingredient to cook with</strong>pomegranate molasses</div>
-                <div class="now-item"><strong>languages</strong>English (native), Arabic (native, Lebanese dialect), French (intermediate)</div>
-                <div class="now-item"><strong>favorite new hobby recently</strong>pottery, or block printing!</div>
-                <div class="now-item"><strong>currently obsessed with</strong>learning how to count from 1 to 10 in as many languages as I can</div>
-                <div class="now-item"><strong>time sink</strong>color-coding and organizing my digital and physical life</div>
+                <div class="now-item"><strong>What are you reading?</strong><a href="https://charisbooksandmore.com/book/9780295752297" target="_blank" rel="noopener">Queer World Making: Contemporary Middle Eastern Diasporic Art</a> by Andrew Gayed</div>
+                <div class="now-item"><strong>Current obsession?</strong>learning how to count from 1 to 10 in as many languages as I can</div>
+                <div class="now-item"><strong>Favorite flavors?</strong>too many to name, but a short list: orange blossom, passion fruit, cardamom, fig</div>
+                <div class="now-item"><strong>Newest hobby?</strong>pottery and block printing, with more to come</div>
+                <div class="now-item"><strong>Best thing you've tasted lately?</strong>the best cocktail I've ever had: gin, bergamot liqueur, sake, matcha milk jam</div>
+                <div class="now-item"><strong>Favorite ingredients to cook with?</strong>pomegranate molasses, curry leaf, and Sichuan peppercorn</div>
+                <div class="now-item"><strong>Favorite places you've traveled?</strong>Rio de Janeiro, Singapore, and Cyprus</div>
+                <div class="now-item"><strong>Biggest time sink?</strong>making an app to organize my finances, but it was worth it!</div>
             </div>
 
             <!-- 07 Places you can find me -->
@@ -897,10 +906,10 @@
                     <p>Music, pottery, block printing, and everything else I make.</p>
                     <span class="cta">Creative work &rarr;</span>
                 </a>
-                <a href="https://www.instagram.com/labratband/" target="_blank" rel="noopener" class="place place--band">
+                <a href="https://www.labratband.com" target="_blank" rel="noopener" class="place place--band">
                     <h3>la brat band</h3>
                     <p>Piano and lead vocals (and occasionally bass!).</p>
-                    <span class="cta">@labratband &rarr;</span>
+                    <span class="cta">labratband.com &rarr;</span>
                 </a>
                 <a href="mailto:yasminebassil@gmail.com" class="place place--light">
                     <h3>Email</h3>
