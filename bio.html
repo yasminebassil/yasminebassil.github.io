@@ -423,7 +423,12 @@
         .quotes-btn { flex: none; display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; padding: 0; border: 1px solid var(--rule); border-radius: 50%; background: none; color: var(--muted); cursor: pointer; transition: color 0.2s ease, border-color 0.2s ease; }
         .quotes-btn:hover { color: var(--mulberry); border-color: var(--mulberry); }
         .quotes-btn svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
-        .quotes-count { margin: 2.4rem 0 3rem; text-align: center; font-family: var(--meta); font-size: 0.66rem; font-weight: 500; letter-spacing: 0.08em; color: var(--muted); }
+        /* some quotes lead somewhere: a small link under the quote, kept as a blank line when there is none */
+        .quotes-more { min-height: 1.5rem; margin-top: 1.6rem; text-align: center; font-size: 0.9rem; transition: opacity 0.3s ease; }
+        .quotes-more.out { opacity: 0; }
+        .quotes-more a { color: var(--mulberry); text-decoration: none; border-bottom: 1px solid rgba(110, 51, 88, 0.3); }
+        .quotes-more a:hover { border-bottom-color: var(--mulberry); }
+        .quotes-count { margin: 1rem 0 3rem; text-align: center; font-family: var(--meta); font-size: 0.66rem; font-weight: 500; letter-spacing: 0.08em; color: var(--muted); }
         @media (prefers-reduced-motion: reduce) { .quotes .quote p { transition: none; } }
         .quote::before { content: '\201C'; left: 0; top: -0.6rem; }
         .quote::after  { content: '\201D'; right: 0; bottom: -1.8rem; }
@@ -820,6 +825,7 @@
                 </blockquote>
                 <button type="button" class="quotes-btn quotes-next" aria-label="Next quote"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></button>
             </div>
+            <p class="quotes-more"><a href="programs.html#dei-committee">My work in equity &amp; inclusion &rarr;</a></p>
             <p class="quotes-count" aria-hidden="true">1/4</p>
 
             <!-- 05 Personal -->
@@ -994,27 +1000,43 @@
             var box = wrap.querySelector('.quote');
             var p = box.querySelector('p');
             var count = document.querySelector('.quotes-count');
+            // each quote can carry a link to where that idea is worked out; leave `more` off until the page exists
             var quotes = [
-                'We, as a scientific community, cannot achieve our highest aspirations without the contribution of every one of its members.',
-                'Science celebrates the unknown, embraces uncertainty, and continuously questions what is thought to be true.',
-                'To understand the human brain is to understand the human experience.',
-                'Scientific research is not simply a series of actions to acquire experimental results; it is a mindset and a lens through which we perceive the world.'
+                { text: 'We, as a scientific community, cannot achieve our highest aspirations without the contribution of every one of its members.',
+                  more: { href: 'programs.html#dei-committee', label: 'My work in equity & inclusion' } },
+                { text: 'Science celebrates the unknown, embraces uncertainty, and continuously questions what is thought to be true.' },
+                { text: 'To understand the human brain is to understand the human experience.',
+                  more: { href: 'research.html', label: 'Read the research' } },
+                { text: 'Scientific research is not simply a series of actions to acquire experimental results; it is a mindset and a lens through which we perceive the world.' }
             ];
+            var more = document.querySelector('.quotes-more');
+            function showMore() {
+                var m = quotes[i].more;
+                more.textContent = '';
+                if (!m) return;
+                var a = document.createElement('a');
+                a.href = m.href;
+                a.textContent = m.label + ' \u2192';
+                more.appendChild(a);
+            }
             var i = 0;
             function fit() {
                 var tallest = 0;
                 box.style.minHeight = '';
-                quotes.forEach(function (q) { p.textContent = q; tallest = Math.max(tallest, p.offsetHeight); });
-                p.textContent = quotes[i];
+                quotes.forEach(function (q) { p.textContent = q.text; tallest = Math.max(tallest, p.offsetHeight); });
+                p.textContent = quotes[i].text;
                 box.style.minHeight = tallest + 'px';
             }
             function show(step) {
                 p.classList.add('out');
+                more.classList.add('out');
                 setTimeout(function () {
                     i = (i + step + quotes.length) % quotes.length;
-                    p.textContent = quotes[i];
+                    p.textContent = quotes[i].text;
+                    showMore();
                     count.textContent = (i + 1) + '/' + quotes.length;
                     p.classList.remove('out');
+                    more.classList.remove('out');
                 }, 300);
             }
             wrap.querySelector('.quotes-prev').addEventListener('click', function () { show(-1); });
