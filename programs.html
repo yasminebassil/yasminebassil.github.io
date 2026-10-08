@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bio &mdash; Yasmine Bassil</title>
+    <title>Programs &mdash; Yasmine Bassil</title>
     <link rel="canonical" href="https://yasminebassil.github.io/bio.html">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -559,13 +559,25 @@
             .place--light { grid-column: span 6; }
         }
     </style>
+    <style>
+        /* programs page: one block per program, on the bio page's sheet, rail and labels */
+        .prog-head { max-width: 46rem; margin-bottom: 0.5rem; }
+        .prog-head .hero-headline { margin-bottom: 1.1rem; }
+        .prog-role { font-family: var(--meta); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--sage); margin: -0.5rem 0 0.8rem; }
+        .prose p.prog-role { font-size: 0.72rem; color: var(--sage); }
+        /* what kind of work each program was */
+        .prog-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; list-style: none; margin: 0 0 1.1rem; }
+        .prog-tags li { padding: 0.2rem 0.65rem 0.24rem; border-radius: 999px; background: var(--blush); font-size: 0.78rem; color: var(--oxblood); }
+        .prog-media { margin-top: 1.4rem; padding: 1.6rem 1rem; border: 1px dashed var(--rule); border-radius: 10px; text-align: center; font-family: var(--meta); font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+        .prose p.prog-media { font-size: 0.66rem; }
+    </style>
 </head>
 <body>
     <nav>
         <a href="index.html" class="logo">yasmine bassil</a>
         <ul class="nav-links">
             <li><a href="index.html">home</a></li>
-            <li><a href="bio.html" class="active">bio</a></li>
+            <li><a href="bio.html">bio</a></li>
             <li><a href="cv.html">cv</a></li>
             <li><a href="research.html">research</a></li>
             <li><a href="thoughts.html">thoughts</a></li>
@@ -585,292 +597,130 @@
                 <span>Atlanta, GA</span>
             </div>
 
-            <div class="hero" id="bio-intro">
-                <div class="hero-left">
-                    <h1 class="hero-headline">Building the <em>structures and systems</em> that support scientific research.</h1>
-
-                    <div class="author">
-                        <span class="num-label"><span class="num">00</span> The Author</span>
-                        <div class="author-card">
-                            <img src="img/profile.jpg" alt="Yasmine Bassil" class="author-photo">
-                            <div class="lockup">
-                                <span class="name-en">yasmine bassil</span>
-                                <div class="name-rule"><span>phd</span></div>
-                                <span class="name-ar" dir="rtl" lang="ar">&#1610;&#1575;&#1587;&#1605;&#1610;&#1606; &#1576;&#1575;&#1587;&#1610;&#1604;</span>
-                            </div>
-                            <div class="author-side">
-                                <p class="author-role">neuroscientist. research leader. program builder.</p>
-                            </div>
-                            <span class="status-badge"><span class="dot"></span>open to work &amp; relocation</span>
-                        </div>
-                    </div>
-
-                    <div class="prose">
-                        <p class="opener"><strong>I'm a neuroscientist who builds the structures behind scientific research: programs, partnerships, tools, and teams.</strong> I center <em>people</em>, <em>connection</em>, and <em>creativity</em> in my work, and I thrive when I can create something that outlasts me.</p>
-                        <dl class="timeline">
-                            <div><dt>previously</dt><dd>NSF Graduate Research Fellow. Founded a novel navigation research program. Held leadership roles in 7 academic &amp; nonprofit organizations. Created Brainhack ATL.</dd></div>
-                            <div class="on"><dt>now</dt><dd>Research Scientist, Neural Plasticity Research Lab, Emory University.</dd></div>
-                            <div><dt>next</dt><dd>Open to roles leading scientific programs and partnerships.</dd></div>
-                        </dl>
-                    </div>
-                </div>
-
-                <aside class="rail">
-                    <div class="rail-item">
-                        <span class="num-label">Now</span>
-                        <ul>
-                            <li>Atlanta, Georgia</li>
-                            <li>Research Scientist, <a href="https://npresearchlab.com" target="_blank" rel="noopener">Neural Plasticity Research Lab</a>, Emory University</li>
-                            <li class="status">Open to work &middot; open to relocation</li>
-                        </ul>
-                    </div>
-                    <div class="rail-item">
-                        <span class="num-label">Focus</span>
-                        <p>Scientific program leadership and partnerships in neuroscience and the life sciences.</p>
-                    </div>
-                    <div class="rail-item">
-                        <span class="num-label">Get In Touch</span>
-                        <p>Say hello.<br><a href="contact.html">Send me a message &rarr;</a></p>
-                    </div>
-                    <div class="rail-item">
-                        <span class="num-label">Places You Can Find Me</span>
-                        <p>CV, research, creative work, and more.<br><a href="#bio-contact">See them all &darr;</a></p>
-                    </div>
-                </aside>
+            <div class="prog-head">
+                <h1 class="hero-headline">The programs, teams, and communities I've <em>built and led</em>.</h1>
+                <div class="prose"><p>Seven organizations across Emory, Georgia Tech, and the wider neuroscience community, newest first. Each one was left with more structure than it started with.</p></div>
             </div>
 
-            <!-- 01 An aside -->
-            <div class="section-head num-label" id="bio-aside"><span class="num">01</span> An Aside</div>
-            <div class="split">
-                <div class="prose wide">
-                    <div class="quote-pair">
-                        <div>
-                            <div class="bubble"><p>Often, we're encouraged to separate personal and professional identities, but science is inevitably shaped by the person conducting it.</p></div>
-                            <div class="bubble-who"><img src="img/profile.jpg" alt=""><span>yasmine</span></div>
-                        </div>
-                        <p>I believe science and life are better when we show up authentically as <em class="key">whole people</em>. Feel free to explore a holistic introduction of myself below: an Atlanta-based Lebanese scientist, plant enthusiast, home chef, musician, and community member.</p>
-                    </div>
-                </div>
-                <aside class="rail">
-                    <div class="rail-item np">
-                        <div class="player">
-                            <div class="player-head">
-                                <span class="num-label">Now Playing</span>
-                                <span class="player-count" aria-hidden="true">1/18</span>
-                            </div>
-                            <div class="player-track">
-                                <div class="player-title">
-                                    <span class="player-word" aria-hidden="true">neuroscientist</span>
-                                    <span class="sr-only">neuroscientist, musician, program builder, organizer, mentor, plant parent, partnerships developer, research leader, science communicator, pianist, amateur chef, beginner potter, tool creator, community builder, color-coder, vocalist, dabke line leader, and oxford comma enthusiast</span>
-                                    <span class="player-artist">yasmine bassil</span>
-                                </div>
-                            </div>
-                            <div class="player-bar"><i></i></div>
-                            <div class="player-controls">
-                                <button type="button" class="player-btn player-back" aria-label="Back to the previous one">
-                                    <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M12.6 3.6v8.8a.5.5 0 0 1-.77.42l-6.4-4.4a.5.5 0 0 1 0-.84l6.4-4.4a.5.5 0 0 1 .77.42z"/><rect x="3" y="3.5" width="1.8" height="9" rx="0.6"/></svg>
-                                </button>
-                                <button type="button" class="player-btn player-toggle" aria-label="Pause">
-                                    <svg class="i-pause" viewBox="0 0 16 16" aria-hidden="true"><rect x="4" y="3.5" width="2.6" height="9" rx="0.6"/><rect x="9.4" y="3.5" width="2.6" height="9" rx="0.6"/></svg>
-                                    <svg class="i-play" viewBox="0 0 16 16" aria-hidden="true"><path d="M5.2 3.4v9.2a.5.5 0 0 0 .76.43l7.4-4.6a.5.5 0 0 0 0-.86l-7.4-4.6a.5.5 0 0 0-.76.43z"/></svg>
-                                </button>
-                                <button type="button" class="player-btn player-skip" aria-label="Skip to the next one">
-                                    <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.4 3.6v8.8a.5.5 0 0 0 .77.42l6.4-4.4a.5.5 0 0 0 0-.84l-6.4-4.4a.5.5 0 0 0-.77.42z"/><rect x="11.2" y="3.5" width="1.8" height="9" rx="0.6"/></svg>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </aside>
-            </div>
-
-            <!-- 02 Education -->
-            <div class="section-head num-label" id="bio-education"><span class="num">02</span> Education &amp; Training</div>
+            <div class="section-head num-label" id="arabs-in-neuroscience"><span class="num">01</span> 2024 &mdash; 2025</div>
             <div class="split">
                 <div class="prose">
-                    <p class="pull">Cognitive neuroscientist by training, with research in brain dynamics &amp; networks, spatial navigation, and aging.</p>
-                    <p>My research asks how aging changes the brain's navigation systems, using neuroimaging, neurostimulation, virtual reality, and clinical assessments.</p>
-                    <p>As an <a href="https://www.nsfgrfp.org/" target="_blank" rel="noopener">NSF Graduate Research Fellow</a> in the <a href="https://npresearchlab.com" target="_blank" rel="noopener">Neural Plasticity Research Lab</a>, I built the lab's first navigation research program from the ground up, securing $260K+ in competitive funding to support it. Over 6 years, I led and mentored a team of 16, enrolled 116+ participants, and built 5+ lab partnerships.</p>
-                    <p>I hold a PhD in Neuroscience from Emory University and a BS in Neuroscience from the Georgia Institute of Technology, where I worked with Dr. Shella Keilholz in the <a href="https://sites.google.com/view/keilholz-lab/home" target="_blank" rel="noopener">Keilholz MIND Lab</a> on resting-state brain connectivity in ADHD, PTSD, and sleep disorders.</p>
-                    <p class="more"><a class="pill-link" href="research.html">Read the research &rarr;</a></p>
+                    <p class="pull">Arabs in Neuroscience</p>
+                    <p class="prog-role">Internal Affairs Lead</p>
+                    <ul class="prog-tags"><li>organizational design</li><li>community building</li><li>communications</li></ul>
+                    <p>Proposed and established this role on the executive board of an international nonprofit connecting Arab neuroscientists. Led its restructuring into a 3-tier membership model, set up regular communication from leadership to members, and co-led its first conference social at the Society for Neuroscience meeting.</p>
+                    <p class="prog-media">Photos and video to come</p>
                 </div>
                 <aside class="rail">
                     <div class="rail-item">
-                        <span class="num-label">Degrees</span>
-                        <ul>
-                            <li><span class="k">2020 &mdash; 2026</span>PhD in Neuroscience<br>Emory University</li>
-                            <li><span class="k">2016 &mdash; 2020</span>BS in Neuroscience<br>Georgia Institute of Technology</li>
-                        </ul>
+                        <span class="num-label">By The Numbers</span>
+                        <ul><li><span class="k">membership model</span>3-tier</li><li><span class="k">conference social</span>1st</li><li><span class="k">member reports</span>biweekly</li></ul>
                     </div>
                 </aside>
             </div>
 
-            <!-- 03 Projects & Programs -->
-            <div class="section-head num-label" id="bio-programs"><span class="num">03</span> Projects &amp; Programs</div>
-            <div class="prose" style="max-width:44rem; margin-bottom:1.6rem;">
-                <p>I establish shared research infrastructure and cross-institutional collaborations, have secured $260K+ in competitive funding, and serve as primary stakeholder liaison across students, faculty, and institutional leadership.</p>
-            </div>
-            <div class="programs">
-                <a class="program" href="programs.html#arabs-in-neuroscience">
-                    <div class="program-top">
-                        <span class="program-when">2024 &mdash; 2025</span>
-                        <h3>Arabs in Neuroscience</h3>
-                        <span class="program-role">Internal Affairs Lead</span>
-                    </div>
-                    <div class="program-metrics"><div><b>3-tier</b><span>membership model</span></div><div><b>1st</b><span>conference social</span></div><div><b>biweekly</b><span>member reports</span></div></div>
-                </a>
-                <a class="program" href="programs.html#graduates-in-neuroscience">
-                    <div class="program-top">
-                        <span class="program-when">2023 &mdash; 2025</span>
-                        <h3>Graduates in Neuroscience</h3>
-                        <span class="program-role">Co-President</span>
-                    </div>
-                    <div class="program-metrics"><div><b>120+</b><span>PhD students</span></div><div><b>22</b><span>board members</span></div><div><b>10+</b><span>events a year</span></div></div>
-                </a>
-                <a class="program" href="programs.html#brainhack-atl">
-                    <div class="program-top">
-                        <span class="program-when">2019</span>
-                        <h3>Brainhack ATL</h3>
-                        <span class="program-role">Founder &amp; Organizing Committee Chair</span>
-                    </div>
-                    <div class="program-metrics"><div><b>$35K</b><span>raised</span></div><div><b>90+</b><span>applications</span></div><div><b>9</b><span>institutions</span></div></div>
-                </a>
-            </div>
-            <p class="programs-more"><a class="pill-link" href="programs.html">See the programs &rarr;</a></p>
-            <div class="receipts">
-                <div class="receipt"><span class="k">funding secured</span><span class="v">$260K+ competitive<small>plus $35K in sponsorships</small></span></div>
-                <div class="receipt"><span class="k">teams led</span><span class="v">15+ researchers &middot; 22-member board &middot; 13-member committee</span></div>
-                <div class="receipt"><span class="k">communities served</span><span class="v">120+ PhD students &middot; 110+ participants</span></div>
-            </div>
-
-            <!-- 04 In my own words -->
-            <div class="section-head num-label"><span class="num">04</span> In My Own Words</div>
-            <blockquote class="quote">
-                <p>Most of what I'm proudest of started as a gap someone else had learned to live with.</p>
-            </blockquote>
-
-            <!-- 05 Personal -->
-            <div class="section-head num-label" id="bio-personal"><span class="num">05</span> Personal</div>
+            <div class="section-head num-label" id="graduates-in-neuroscience"><span class="num">02</span> 2023 &mdash; 2025</div>
             <div class="split">
                 <div class="prose">
-                    <p class="pull">The science and the scientist are inextricably intertwined.</p>
-                    <p>I've moved back and forth between the US and Lebanon throughout my early life, ultimately settling in Atlanta in 2012. Being Lebanese is a central part of my identity, and I try to visit home (Smar Jbeil, Batroun, Lebanon) to see friends and family at least once a year. I always find a piece of Lebanon wherever I go &mdash; cooking family recipes, scavenging local record stores for Arabic music, leading the dabke line, or finding small pockets of community in whatever city I'm in.</p>
-                    <p>I love to cook, usually experimenting with dishes from all around the world. I'm an avid plant enthusiast and caretaker to 30+ indoor plants. When I'm exploring the city (by foot, bike, or public transit, preferably), you can usually find me at the discount section of my local plant store, thrift stores, book stores, or speciality grocery stores.</p>
-                    <p>I'm a lover of all things <a href="music.html">creative</a>. I'm currently part of <a href="https://www.instagram.com/labratband/" target="_blank" rel="noopener">la brat band</a>, on piano and lead vocals (and occasionally bass!), putting my classical training to good use. We had our <a href="https://labratband.com/" target="_blank" rel="noopener">debut show</a> last year. Otherwise, I love artistic endeavors in all forms, with my new favorite medium of pottery.</p>
+                    <p class="pull">Graduates in Neuroscience</p>
+                    <p class="prog-role">Co-President</p>
+                    <ul class="prog-tags"><li>team leadership</li><li>organizational design</li><li>stakeholder liaison</li></ul>
+                    <p>Led a 22-member board across 12 roles as primary liaison between 120+ PhD students and program leadership. Built the organization's first documentation system, defined officer responsibilities, operationalized role transitions, and created its budget infrastructure &mdash; the things that let it survive turnover.</p>
+                    <p class="prog-media">Photos and video to come</p>
                 </div>
                 <aside class="rail">
                     <div class="rail-item">
-                        <span class="num-label">At A Glance</span>
-                        <ul>
-                            <li><span class="k">originally from</span>Smar Jbeil, Batroun, Lebanon</li>
-                            <li><span class="k">pronouns</span>she/her &middot; &#1607;&#1610;</li>
-                            <li><span class="k">languages</span>English, Arabic, French</li>
-                        </ul>
-                    </div>
-                    <div class="rail-item">
-                        <span class="num-label">Elsewhere</span>
-                        <ul>
-                            <li><span class="k">on stage</span><a href="https://www.instagram.com/labratband/" target="_blank" rel="noopener">la brat band</a> &mdash; piano &amp; lead vocals</li>
-                            <li><span class="k">making</span>pottery, block printing</li>
-                            <li><span class="k">growing</span>30+ indoor plants</li>
-                        </ul>
+                        <span class="num-label">By The Numbers</span>
+                        <ul><li><span class="k">PhD students</span>120+</li><li><span class="k">board members</span>22</li><li><span class="k">events a year</span>10+</li></ul>
                     </div>
                 </aside>
             </div>
 
-            <!-- 06 Currently -->
-            <div class="section-head num-label" id="bio-currently"><span class="num">06</span> Currently</div>
-            <div class="now-grid">
-                <div class="now-item"><strong>currently reading</strong><a href="https://charisbooksandmore.com/book/9780295752297" target="_blank" rel="noopener">Queer World Making: Contemporary Middle Eastern Diasporic Art</a> by Andrew Gayed</div>
-                <div class="now-item"><strong>favorite flavors</strong>cardamom, jasmine, rose</div>
-                <div class="now-item"><strong>favorite drink</strong>recently had the best cocktail I've ever had &mdash; gin, bergamot liqueur, sake, matcha milk jam</div>
-                <div class="now-item"><strong>favorite ingredient to cook with</strong>pomegranate molasses</div>
-                <div class="now-item"><strong>languages</strong>English (native), Arabic (native, Lebanese dialect), French (intermediate)</div>
-                <div class="now-item"><strong>favorite new hobby recently</strong>pottery, or block printing!</div>
-                <div class="now-item"><strong>currently obsessed with</strong>learning how to count from 1 to 10 in as many languages as I can</div>
-                <div class="now-item"><strong>time sink</strong>color-coding and organizing my digital and physical life</div>
-            </div>
-
-            <!-- 07 Funding & awards -->
-            <div class="section-head num-label" id="bio-awards"><span class="num">07</span> Funding &amp; Awards</div>
+            <div class="section-head num-label" id="training-program"><span class="num">03</span> 2021 &mdash; 2023</div>
             <div class="split">
-                <div>
-                    <div class="awards">
-                        <div class="award">
-                            <span class="award-when">2022 &mdash; 2025</span>
-                            <span><span class="award-what">NSF Graduate Research Fellowship</span><span class="award-who">National Science Foundation ($170K+)</span></span>
-                        </div>
-                        <div class="award">
-                            <span class="award-when">2021 &mdash; 2022</span>
-                            <span><span class="award-what">NIH T32 Training Grant</span><span class="award-who">National Institutes of Health ($90K+)</span></span>
-                        </div>
-                        <div class="award">
-                            <span class="award-when">2023 &mdash; 2026</span>
-                            <span><span class="award-what">Emory Neuroscience Awards</span><span class="award-who">Scientific Achievement (2026) &middot; Teaching (2025) &middot; Leadership (2024) &middot; Excellence in Mentorship (2023)</span></span>
-                        </div>
-                    </div>
-                    <div class="prose" style="margin-top:1.25rem;"><p>The full list of publications, presentations, and invited talks lives on my <a href="cv.html">cv</a>.</p></div>
+                <div class="prose">
+                    <p class="pull">Computational Neural Engineering Training Program</p>
+                    <p class="prog-role">Annual Events Committee Lead</p>
+                    <ul class="prog-tags"><li>event programming</li><li>partnership development</li></ul>
+                    <p>Led the Annual Events Committee, planning cross-institutional programming for 90+ trainees across Georgia Tech and Emory, including an all-day Research Expo, new member orientation, and annual retreats. Organized the annual Advisory Board Visitation Day for 50+ faculty, board members, and trainees.</p>
+                    <p class="prog-media">Photos and video to come</p>
                 </div>
                 <aside class="rail">
                     <div class="rail-item">
-                        <span class="num-label">Output</span>
-                        <ul>
-                            <li><span class="k">publications</span>7 peer-reviewed</li>
-                            <li><span class="k">presentations</span>20 conference</li>
-                            <li><span class="k">invited talks</span>17</li>
-                        </ul>
+                        <span class="num-label">By The Numbers</span>
+                        <ul><li><span class="k">trainees</span>90+</li><li><span class="k">at advisory board day</span>50+</li><li><span class="k">institutions</span>2</li></ul>
                     </div>
                 </aside>
             </div>
 
-            <!-- 08 Places you can find me -->
-            <div class="section-head num-label" id="bio-contact"><span class="num">08</span> Places You Can Find Me</div>
-            <div class="places">
-                <a href="cv.html" class="place place--wide place--cv">
-                    <h3>CV</h3>
-                    <span class="receipt-line">7 publications &middot; 20 presentations &middot; 17 invited talks &middot; $260K+ funding</span>
-                    <span class="cta">See the full cv &rarr;</span>
-                    <svg class="motif" viewBox="0 0 24 42" aria-hidden="true">
-                        <path class="petal" d="M12,25.5 C5.5,22.5 2.2,15 2.2,3.5 L7,12.5 L12,1.5 L17,12.5 L21.8,3.5 C21.8,15 18.5,22.5 12,25.5 Z"/>
-                        <path class="petal" d="M7,12.8 C7.7,18 9.3,22.6 12,25.4"/>
-                        <path class="petal" d="M17,12.8 C16.3,18 14.7,22.6 12,25.4"/>
-                        <path class="stem" d="M12,25.5 L12,41"/>
-                        <path class="stem" d="M12,29 C9,29 7,30 5.8,31.8"/>
-                        <path class="stem" d="M12,29 C15,29 17,30 18.2,31.8"/>
-                    </svg>
-                </a>
-                <a href="index.html" class="place place--photo">
-                    <h3>Home</h3>
-                    <p>The person behind the work.</p>
-                    <span class="cta">Back to the start &rarr;</span>
-                </a>
-                <a href="research.html" class="place place--research">
-                    <h3>Research</h3>
-                    <p>How aging changes the brain's navigation systems.</p>
-                    <span class="cta">Read the research &rarr;</span>
-                </a>
-                <a href="music.html" class="place place--creative">
-                    <h3>Creative</h3>
-                    <p>Music, pottery, block printing, and everything else I make.</p>
-                    <span class="cta">Creative work &rarr;</span>
-                </a>
-                <a href="https://www.instagram.com/labratband/" target="_blank" rel="noopener" class="place place--band">
-                    <h3>la brat band</h3>
-                    <p>Piano and lead vocals (and occasionally bass!).</p>
-                    <span class="cta">@labratband &rarr;</span>
-                </a>
-                <a href="mailto:yasminebassil@gmail.com" class="place place--light">
-                    <h3>Email</h3>
-                    <span class="cta">yasminebassil@gmail.com</span>
-                </a>
-                <a href="https://linkedin.com/in/yasminebassil" target="_blank" rel="noopener" class="place place--light">
-                    <h3>LinkedIn</h3>
-                    <span class="cta">/in/yasminebassil</span>
-                </a>
-                <a href="https://scholar.google.com/citations?user=mcp_4HQAAAAJ" target="_blank" rel="noopener" class="place place--light">
-                    <h3>Scholar</h3>
-                    <span class="cta">google scholar</span>
-                </a>
+            <div class="section-head num-label" id="dei-committee"><span class="num">04</span> 2021 &mdash; 2023</div>
+            <div class="split">
+                <div class="prose">
+                    <p class="pull">Diversity, Equity, &amp; Inclusion Committee</p>
+                    <p class="prog-role">Co-Chair</p>
+                    <ul class="prog-tags"><li>team leadership</li><li>change management</li><li>partnership development</li></ul>
+                    <p>Co-led a 17-member committee across 3 subcommittees and 2 faculty representatives in Emory's Neuroscience Graduate Program. Reviewed admissions to identify and reduce bias, revised curriculum modules, and partnered with Emory's DEI office to launch an unconscious bias certificate training adopted program-wide.</p>
+                    <p class="prog-media">Photos and video to come</p>
+                </div>
+                <aside class="rail">
+                    <div class="rail-item">
+                        <span class="num-label">By The Numbers</span>
+                        <ul><li><span class="k">committee members</span>17</li><li><span class="k">subcommittees</span>3</li><li><span class="k">training adopted</span>program-wide</li></ul>
+                    </div>
+                </aside>
             </div>
+
+            <div class="section-head num-label" id="brainhack-atl"><span class="num">05</span> 2019</div>
+            <div class="split">
+                <div class="prose">
+                    <p class="pull">Brainhack ATL</p>
+                    <p class="prog-role">Founder &amp; Organizing Committee Chair</p>
+                    <ul class="prog-tags"><li>program building</li><li>partnership development</li><li>fundraising</li><li>team leadership</li></ul>
+                    <p>Created Atlanta's first Brainhack: led a 13-member committee across four Atlanta institutions to build a 3-day computational neuroscience hackathon, with 3 project tracks and 6 faculty speakers.</p>
+                    <p class="prog-media">Photos and video to come</p>
+                </div>
+                <aside class="rail">
+                    <div class="rail-item">
+                        <span class="num-label">By The Numbers</span>
+                        <ul><li><span class="k">raised</span>$35K</li><li><span class="k">applications</span>90+</li><li><span class="k">institutions</span>9</li></ul>
+                    </div>
+                </aside>
+            </div>
+
+            <div class="section-head num-label" id="international-ambassadors"><span class="num">06</span> 2018 &mdash; 2019</div>
+            <div class="split">
+                <div class="prose">
+                    <p class="pull">International Ambassadors, Georgia Tech</p>
+                    <p class="prog-role">Vice President of External Affairs</p>
+                    <ul class="prog-tags"><li>event programming</li><li>team leadership</li><li>community building</li></ul>
+                    <p>Led a committee of 14 to plan campus events for 2,000+ students, including Night Market and Culture Fest, each drawing 1,000+ students. Created the International Student Welcome Gala, a new annual event for 100+ newly accepted international students.</p>
+                    <p class="prog-media">Photos and video to come</p>
+                </div>
+                <aside class="rail">
+                    <div class="rail-item">
+                        <span class="num-label">By The Numbers</span>
+                        <ul><li><span class="k">students reached</span>2,000+</li><li><span class="k">committee members</span>14</li><li><span class="k">at the new welcome gala</span>100+</li></ul>
+                    </div>
+                </aside>
+            </div>
+
+            <div class="section-head num-label" id="undergraduate-research-ambassadors"><span class="num">07</span> 2017 &mdash; 2020</div>
+            <div class="split">
+                <div class="prose">
+                    <p class="pull">Undergraduate Research Ambassadors, Georgia Tech</p>
+                    <p class="prog-role">President</p>
+                    <ul class="prog-tags"><li>program building</li><li>organizational design</li><li>team leadership</li></ul>
+                    <p>Established the full operational structure of a 22-member undergraduate research organization, with committees across 4 functional areas and a portfolio of 110+ research opportunities across 34 majors.</p>
+                    <p class="prog-media">Photos and video to come</p>
+                </div>
+                <aside class="rail">
+                    <div class="rail-item">
+                        <span class="num-label">By The Numbers</span>
+                        <ul><li><span class="k">students a semester</span>1,000+</li><li><span class="k">placed with labs a semester</span>150+</li><li><span class="k">members</span>22</li></ul>
+                    </div>
+                </aside>
+            </div>
+
         </div>
     </main>
 
