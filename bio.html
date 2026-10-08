@@ -327,13 +327,17 @@
             transition: border-color 0.25s ease, transform 0.25s ease;
         }
         .program:hover { border-color: var(--mulberry); transform: translateY(-2px); }
+        /* cards in a row share their row lines, so the coloured headers end level even when one title wraps */
+        @supports (grid-template-rows: subgrid) {
+            .program { display: grid; grid-template-rows: subgrid; grid-row: span 2; row-gap: 0; }
+        }
         .program-top {
             padding: 1.1rem 1.25rem 1rem;
             color: #fff;
             min-height: 6.4rem;
             display: flex;
             flex-direction: column;
-            justify-content: flex-end;
+            justify-content: flex-start;
         }
         .program:nth-child(1) .program-top { background: var(--oxblood); }
         .program:nth-child(2) .program-top { background: var(--sage); }
@@ -358,12 +362,12 @@
         .program-role {
             font-family: var(--meta);
             font-size: 0.68rem;
-            margin-top: 0.35rem;
+            margin-top: auto;
+            padding-top: 0.35rem;
             opacity: 0.9;
         }
-        /* the section's intro runs the full width of the sheet, centred over the cards */
-        .programs-intro { margin-bottom: 1.9rem; text-align: center; }
-        .programs-intro p { font-size: 1.1rem; text-wrap: balance; }
+        /* the section opens like the ones above it: headline and intro on the left, a rail of totals on the right */
+        .programs-intro { margin-bottom: 2.1rem; }
         /* each card carries three numbers; the story lives on the programs page */
         .program-metrics { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.6rem; padding: 0.95rem 1.25rem 1.05rem; }
         .program-metrics b { display: block; font-family: 'Fraunces', var(--display); font-optical-sizing: auto; font-variation-settings: 'SOFT' 45, 'WONK' 1; font-weight: 600; font-size: 1.3rem; line-height: 1.15; color: var(--oxblood); }
@@ -373,7 +377,7 @@
         .pill-link:hover { background: var(--mulberry); color: var(--paper); }
         .receipts {
             display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
+            grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 1.25rem;
             margin-top: 1.5rem;
         }
@@ -411,6 +415,21 @@
             line-height: 1;
             color: var(--rule);
         }
+        /* several quotes, one at a time: an arrow on each side flips between them */
+        .quotes { display: flex; align-items: center; justify-content: center; gap: 1.5rem; max-width: 54rem; margin: 3.5rem auto 0; }
+        .quotes .quote { flex: 1; margin: 0; display: flex; align-items: center; justify-content: center; }
+        .quotes .quote p { transition: opacity 0.3s ease; text-wrap: balance; }
+        .quotes .quote p.out { opacity: 0; }
+        .quotes-btn { flex: none; display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; padding: 0; border: 1px solid var(--rule); border-radius: 50%; background: none; color: var(--muted); cursor: pointer; transition: color 0.2s ease, border-color 0.2s ease; }
+        .quotes-btn:hover { color: var(--mulberry); border-color: var(--mulberry); }
+        .quotes-btn svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+        /* some quotes lead somewhere: a small link under the quote, kept as a blank line when there is none */
+        .quotes-more { min-height: 1.5rem; margin-top: 0.7rem; text-align: center; font-size: 0.9rem; transition: opacity 0.3s ease; }
+        .quotes-more.out { opacity: 0; }
+        .quotes-more a { color: var(--mulberry); text-decoration: none; border-bottom: 1px solid rgba(110, 51, 88, 0.3); }
+        .quotes-more a:hover { border-bottom-color: var(--mulberry); }
+        .quotes-count { margin: 1rem 0 3rem; text-align: center; font-family: var(--meta); font-size: 0.66rem; font-weight: 500; letter-spacing: 0.08em; color: var(--muted); }
+        @media (prefers-reduced-motion: reduce) { .quotes .quote p { transition: none; } }
         .quote::before { content: '\201C'; left: 0; top: -0.6rem; }
         .quote::after  { content: '\201D'; right: 0; bottom: -1.8rem; }
 
@@ -560,6 +579,8 @@
             .author-role { max-width: none; }
             .quote-pair { grid-template-columns: minmax(0, 1fr); gap: 1.25rem; }
             .quote { padding: 0 1.5rem; }
+            .quotes { gap: 0.6rem; }
+            .quotes-btn { width: 30px; height: 30px; }
             .quote p { font-size: 1.5rem; }
             .now-grid { grid-template-columns: minmax(0, 1fr); }
             .award { grid-template-columns: minmax(0, 1fr); gap: 0.2rem; }
@@ -699,7 +720,7 @@
                 <div class="prose">
                     <p class="pull">Cognitive neuroscientist by training, with research in brain dynamics &amp; networks, spatial navigation, and aging.</p>
                     <p>My research asks how aging changes the brain's navigation systems, using neuroimaging, neurostimulation, virtual reality, and clinical assessments.</p>
-                    <p>As an <a href="https://www.nsfgrfp.org/" target="_blank" rel="noopener">NSF Graduate Research Fellow</a> in the <a href="https://npresearchlab.com" target="_blank" rel="noopener">Neural Plasticity Research Lab</a>, I built the lab's first navigation research program from the ground up, securing $260K+ in competitive funding to support it. Over 6 years, I led and mentored a team of 16, enrolled 116+ participants, and built 5+ lab partnerships.</p>
+                    <p>As an <a href="https://www.nsfgrfp.org/" target="_blank" rel="noopener">NSF Graduate Research Fellow</a> in the <a href="https://npresearchlab.com" target="_blank" rel="noopener">Neural Plasticity Research Lab</a>, I built the lab's first navigation research program from the ground up, securing $260K+ in competitive funding to support it. Over 6 years, I led and mentored a team of 16 researchers, enrolled 116+ participants, and built 5+ lab partnerships.</p>
                     <p>I hold a PhD in Neuroscience from Emory University and a BS in Neuroscience from the Georgia Institute of Technology, where I worked with Dr. Shella Keilholz in the <a href="https://sites.google.com/view/keilholz-lab/home" target="_blank" rel="noopener">Keilholz MIND Lab</a> on resting-state brain connectivity in ADHD, PTSD, and sleep disorders.</p>
                     <p>My research has led to 7 peer-reviewed publications, 20 conference presentations, and 17 invited talks, all listed on my <a href="cv.html">cv</a>.</p>
                 </div>
@@ -716,7 +737,7 @@
                         <ul>
                             <li><span class="k">2022 &mdash; 2025</span>NSF Graduate Research Fellowship ($170K+)</li>
                             <li><span class="k">2021 &mdash; 2022</span>NIH T32 Training Grant ($90K+)</li>
-                            <li><span class="k">2023 &mdash; 2026</span>Emory Neuroscience Awards<small>Scientific Achievement &middot; 2026<br>Teaching &middot; 2025<br>Leadership &middot; 2024<br>Mentorship &middot; 2023</small></li>
+                            <li><span class="k">2023 &mdash; 2026</span>Emory Neuroscience Awards<small>Scientific Achievement &middot; 2026<br>Teaching &middot; 2025<br>Leadership &middot; 2024<br>Excellence in Mentorship &middot; 2023</small></li>
                         </ul>
                     </div>
                 </aside>
@@ -724,79 +745,92 @@
 
             <!-- 03 Projects & Programs -->
             <div class="section-head num-label" id="bio-programs"><span class="num">03</span> Projects &amp; Programs</div>
-            <div class="prose programs-intro">
-                <p class="pull">Program builder by habit, with leadership across academic programs, nonprofits, and student communities.</p>
-                <p>I take on leadership roles to build what's missing. I tend to leave things more efficient, better documented, and easier to hand over than I found them. These are a few of the places I've done that.</p>
+            <div class="split programs-intro">
+                <div class="prose">
+                    <p class="pull">Program builder by design, with leadership across academic programs, nonprofits, hackathons, and student communities.</p>
+                    <p>I take on leadership roles to build what's missing. I try to leave things more efficient, better documented, and easier to hand over than I found them. Here are some ways I've done that.</p>
+                </div>
+                <aside class="rail">
+                    <div class="rail-item">
+                        <span class="num-label">By The Numbers</span>
+                        <ul>
+                            <li><span class="k">organizations</span>7 academic &amp; nonprofit</li>
+                            <li><span class="k">teams led</span>88 members across 5 teams</li>
+                            <li><span class="k">people reached</span>3,600+ trainees, faculty, &amp; members</li>
+                        </ul>
+                    </div>
+                </aside>
             </div>
             <div class="programs">
                 <article class="program">
                     <div class="program-top">
-                        <span class="program-when">2024 &mdash; 2025</span>
+                        <span class="program-when">2024 &mdash; 2025 &middot; Nonprofit</span>
                         <h3>Arabs in Neuroscience</h3>
                         <span class="program-role">Internal Affairs Lead</span>
                     </div>
-                    <div class="program-metrics"><div><b>3-tier</b><span>membership model</span></div><div><b>1st</b><span>conference social</span></div><div><b>biweekly</b><span>member reports</span></div></div>
+                    <div class="program-metrics"><div><b>350+</b><span>general<br>members</span></div><div><b>1st</b><span>conference<br>social</span></div><div><b>3-tier</b><span>membership<br>model</span></div></div>
                 </article>
                 <article class="program">
                     <div class="program-top">
-                        <span class="program-when">2023 &mdash; 2025</span>
+                        <span class="program-when">2023 &mdash; 2025 &middot; Emory</span>
                         <h3>Graduates in Neuroscience</h3>
                         <span class="program-role">Co-President</span>
                     </div>
-                    <div class="program-metrics"><div><b>120+</b><span>PhD students</span></div><div><b>22</b><span>board members</span></div><div><b>10+</b><span>events a year</span></div></div>
+                    <div class="program-metrics"><div><b>100+</b><span>PhD<br>students</span></div><div><b>22</b><span>board<br>members</span></div><div><b>10+</b><span>events<br>a year</span></div></div>
                 </article>
                 <article class="program">
                     <div class="program-top">
-                        <span class="program-when">2019</span>
+                        <span class="program-when">2019 &middot; Brainhack Global</span>
                         <h3>Brainhack ATL</h3>
                         <span class="program-role">Founder &amp; Organizing Committee Chair</span>
                     </div>
-                    <div class="program-metrics"><div><b>$35K</b><span>raised</span></div><div><b>90+</b><span>applications</span></div><div><b>9</b><span>institutions</span></div></div>
+                    <div class="program-metrics"><div><b>$35K</b><span>raised</span></div><div><b>90+</b><span>applications</span></div><div><b>10</b><span>institutions</span></div></div>
                 </article>
                 <article class="program">
                     <div class="program-top">
-                        <span class="program-when">2021 &mdash; 2023</span>
+                        <span class="program-when">2021 &mdash; 2023 &middot; Emory</span>
                         <h3>Diversity, Equity, &amp; Inclusion Committee</h3>
                         <span class="program-role">Co-Chair</span>
                     </div>
-                    <div class="program-metrics"><div><b>17</b><span>committee members</span></div><div><b>3</b><span>subcommittees</span></div><div><b>1</b><span>training launched</span></div></div>
+                    <div class="program-metrics"><div><b>17</b><span>committee<br>members</span></div><div><b>3</b><span>subcommittees</span></div><div><b>1</b><span>training<br>launched</span></div></div>
                 </article>
                 <article class="program">
                     <div class="program-top">
-                        <span class="program-when">2017 &mdash; 2020</span>
+                        <span class="program-when">2017 &mdash; 2020 &middot; Georgia Tech</span>
                         <h3>Undergraduate Research Ambassadors</h3>
                         <span class="program-role">President</span>
                     </div>
-                    <div class="program-metrics"><div><b>1,000+</b><span>students a semester</span></div><div><b>150+</b><span>placed with labs</span></div><div><b>22</b><span>members</span></div></div>
+                    <div class="program-metrics"><div><b>1,000+</b><span>students<br>a year</span></div><div><b>150+</b><span>placed<br>with labs</span></div><div><b>20+</b><span>ambassadors<br>a year</span></div></div>
                 </article>
                 <article class="program">
                     <div class="program-top">
-                        <span class="program-when">2018 &mdash; 2019</span>
+                        <span class="program-when">2018 &mdash; 2019 &middot; Georgia Tech</span>
                         <h3>International Ambassadors</h3>
                         <span class="program-role">Vice President of External Affairs</span>
                     </div>
-                    <div class="program-metrics"><div><b>2,000+</b><span>students reached</span></div><div><b>14</b><span>committee members</span></div><div><b>100+</b><span>at new gala</span></div></div>
+                    <div class="program-metrics"><div><b>2,000+</b><span>students<br>reached</span></div><div><b>14</b><span>committee<br>members</span></div><div><b>100+</b><span>attendees at<br>new gala</span></div></div>
                 </article>
-            </div>
-            <div class="receipts">
-                <div class="receipt"><span class="k">funding secured</span><span class="v">$260K+ competitive<small>plus $35K in sponsorships</small></span></div>
-                <div class="receipt"><span class="k">teams led</span><span class="v">15+ researchers &middot; 22-member board &middot; 13-member committee</span></div>
-                <div class="receipt"><span class="k">communities served</span><span class="v">120+ PhD students &middot; 110+ participants</span></div>
             </div>
 
             <!-- 04 In my own words -->
             <div class="section-head num-label"><span class="num">04</span> In My Own Words</div>
-            <blockquote class="quote">
-                <p>Most of what I'm proudest of started as a gap someone else had learned to live with.</p>
-            </blockquote>
+            <div class="quotes">
+                <button type="button" class="quotes-btn quotes-prev" aria-label="Previous quote"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3 5 8l5 5"/></svg></button>
+                <blockquote class="quote" aria-live="polite">
+                    <p>We, as a scientific community, cannot achieve our highest aspirations without the contribution of every one of its members.</p>
+                </blockquote>
+                <button type="button" class="quotes-btn quotes-next" aria-label="Next quote"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></button>
+            </div>
+            <p class="quotes-more"></p>
+            <p class="quotes-count" aria-hidden="true">1/4</p>
 
             <!-- 05 Personal -->
             <div class="section-head num-label" id="bio-personal"><span class="num">05</span> Personal</div>
             <div class="split">
                 <div class="prose">
-                    <p class="pull">The science and the scientist are inextricably intertwined.</p>
-                    <p>I've moved back and forth between the US and Lebanon throughout my early life, ultimately settling in Atlanta in 2012. Being Lebanese is a central part of my identity, and I try to visit home (Smar Jbeil, Batroun, Lebanon) to see friends and family at least once a year. I always find a piece of Lebanon wherever I go &mdash; cooking family recipes, scavenging local record stores for Arabic music, leading the dabke line, or finding small pockets of community in whatever city I'm in.</p>
-                    <p>I love to cook, usually experimenting with dishes from all around the world. I'm an avid plant enthusiast and caretaker to 30+ indoor plants. When I'm exploring the city (by foot, bike, or public transit, preferably), you can usually find me at the discount section of my local plant store, thrift stores, book stores, or speciality grocery stores.</p>
+                    <p class="pull">Lebanese by heritage, Atlantan by choice, with a life full of music, food, and plants.</p>
+                    <p>I've moved back and forth between the US and Lebanon throughout my early life, ultimately settling in Atlanta in 2012. Being Lebanese is a central part of my identity, and I visit home yearly to see family and friends. I try to find a piece of Lebanon everywhere I go &mdash; cooking family recipes, scavenging local record stores for Arabic music, leading the dabke line, or finding small pockets of community in whatever city I'm in.</p>
+                    <p>I love to cook, usually experimenting with dishes from all around the world. I'm an avid plant enthusiast and caretaker to 30+ indoor plants. When I'm exploring the city (by foot, bike, or public transit, preferably), you can usually find me at the discount section of my local plant store, thrift stores, book stores, or specialty grocery stores.</p>
                     <p>I'm a lover of all things <a href="music.html">creative</a>. I'm currently part of <a href="https://www.instagram.com/labratband/" target="_blank" rel="noopener">la brat band</a>, on piano and lead vocals (and occasionally bass!), putting my classical training to good use. We had our <a href="https://labratband.com/" target="_blank" rel="noopener">debut show</a> last year. Otherwise, I love artistic endeavors in all forms, with my new favorite medium of pottery.</p>
                 </div>
                 <aside class="rail">
@@ -953,6 +987,57 @@
             if (document.fonts && document.fonts.ready) document.fonts.ready.then(matchBubble);
             // starts playing, unless the visitor has asked their device for less motion
             if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) pause(); else play();
+        })();
+
+        // in my own words: the arrows flip between a few quotes; the block holds the height of the longest one
+        (function () {
+            var wrap = document.querySelector('.quotes');
+            if (!wrap) return;
+            var box = wrap.querySelector('.quote');
+            var p = box.querySelector('p');
+            var count = document.querySelector('.quotes-count');
+            // each quote can carry a link to where that idea is worked out; leave `more` off until the page exists
+            var quotes = [
+                { text: 'We, as a scientific community, cannot achieve our highest aspirations without the contribution of every one of its members.' },
+                { text: 'Science celebrates the unknown, embraces uncertainty, and continuously questions what is thought to be true.' },
+                { text: 'To understand the human brain is to understand the human experience.' },
+                { text: 'Scientific research is not simply a series of actions to acquire experimental results; it is a mindset and a lens through which we perceive the world.' }
+            ];
+            var more = document.querySelector('.quotes-more');
+            function showMore() {
+                var m = quotes[i].more;
+                more.textContent = '';
+                if (!m) return;
+                var a = document.createElement('a');
+                a.href = m.href;
+                a.textContent = m.label + ' \u2192';
+                more.appendChild(a);
+            }
+            var i = 0;
+            function fit() {
+                var tallest = 0;
+                box.style.minHeight = '';
+                quotes.forEach(function (q) { p.textContent = q.text; tallest = Math.max(tallest, p.offsetHeight); });
+                p.textContent = quotes[i].text;
+                box.style.minHeight = tallest + 'px';
+            }
+            function show(step) {
+                p.classList.add('out');
+                more.classList.add('out');
+                setTimeout(function () {
+                    i = (i + step + quotes.length) % quotes.length;
+                    p.textContent = quotes[i].text;
+                    showMore();
+                    count.textContent = (i + 1) + '/' + quotes.length;
+                    p.classList.remove('out');
+                    more.classList.remove('out');
+                }, 300);
+            }
+            wrap.querySelector('.quotes-prev').addEventListener('click', function () { show(-1); });
+            wrap.querySelector('.quotes-next').addEventListener('click', function () { show(1); });
+            fit();
+            window.addEventListener('resize', fit);
+            if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
         })();
     </script>
 </body>
