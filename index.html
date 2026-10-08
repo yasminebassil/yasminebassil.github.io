@@ -41,17 +41,21 @@
         }
         nav.scrolled .logo { color: var(--ink); }
         .nav-links { display: flex; gap: 2rem; align-items: center; list-style: none; }
+        /* the menu is set in the wordmark's typeface; the current page gets a mulberry underline */
         .nav-links a {
-            font-family: var(--meta);
-            font-size: 0.78rem;
-            text-transform: uppercase;
-            letter-spacing: 0.14em;
+            font-family: 'Fraunces', var(--display);
+            font-optical-sizing: auto;
+            font-variation-settings: 'SOFT' 45, 'WONK' 1;
+            font-size: 1.05rem;
+            font-weight: 500;
             color: var(--muted);
             text-decoration: none;
+            padding-bottom: 2px;
+            border-bottom: 2px solid transparent;
             transition: color 0.3s ease;
         }
         .nav-links a:hover { color: var(--mulberry); }
-        .nav-links a.active { color: var(--ink); }
+        .nav-links a.active { color: var(--oxblood); border-bottom-color: var(--mulberry); }
         .nav-links a.nav-past { opacity: 0.45; }
         .nav-links a.nav-past:hover { opacity: 0.7; }
         /* contact: an envelope at the end of the nav; the word shows in the phone menu */
