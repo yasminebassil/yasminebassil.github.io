@@ -631,7 +631,7 @@
                         <span class="num-label">Now Playing</span>
                         <div class="player">
                             <span class="player-word" aria-hidden="true">neuroscientist</span>
-                            <span class="sr-only">neuroscientist, musician, program builder, organizer, plant parent, partnerships developer, research leader, pianist, amateur chef, beginner potter, tool creator, color-coder, vocalist, dabke line leader, and oxford comma enthusiast</span>
+                            <span class="sr-only">neuroscientist, musician, program builder, organizer, mentor, plant parent, partnerships developer, research leader, science communicator, pianist, amateur chef, beginner potter, tool creator, community builder, color-coder, vocalist, dabke line leader, and oxford comma enthusiast</span>
                             <div class="player-controls">
                                 <button type="button" class="player-btn player-back" aria-label="Back to the previous one">
                                     <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M12.6 3.6v8.8a.5.5 0 0 1-.77.42l-6.4-4.4a.5.5 0 0 1 0-.84l6.4-4.4a.5.5 0 0 1 .77.42z"/><rect x="3" y="3.5" width="1.8" height="9" rx="0.6"/></svg>
@@ -643,7 +643,7 @@
                                 <button type="button" class="player-btn player-skip" aria-label="Skip to the next one">
                                     <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.4 3.6v8.8a.5.5 0 0 0 .77.42l6.4-4.4a.5.5 0 0 0 0-.84l-6.4-4.4a.5.5 0 0 0-.77.42z"/><rect x="11.2" y="3.5" width="1.8" height="9" rx="0.6"/></svg>
                                 </button>
-                                <span class="player-count" aria-hidden="true">1/15</span>
+                                <span class="player-count" aria-hidden="true">1/18</span>
                             </div>
                         </div>
                     </div>
@@ -868,7 +868,7 @@
             if (!player) return;
             var word = player.querySelector('.player-word');
             var toggle = player.querySelector('.player-toggle');
-            var words = ['neuroscientist', 'musician', 'program builder', 'organizer', 'plant parent', 'partnerships developer', 'research leader', 'pianist', 'amateur chef', 'beginner potter', 'tool creator', 'color-coder', 'vocalist', 'dabke line leader', 'oxford comma enthusiast'];
+            var words = ['neuroscientist', 'musician', 'program builder', 'organizer', 'mentor', 'plant parent', 'partnerships developer', 'research leader', 'science communicator', 'pianist', 'amateur chef', 'beginner potter', 'tool creator', 'community builder', 'color-coder', 'vocalist', 'dabke line leader', 'oxford comma enthusiast'];
             var i = 0, timer = null;
             var count = player.querySelector('.player-count');
             function showCount() { count.textContent = (i + 1) + '/' + words.length; }
