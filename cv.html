@@ -6,27 +6,43 @@
     <title>CV — Yasmine Bassil</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-cream: #fdf8fc;
-            --bg-cream-dark: #F0EBE3;
-            --text-charcoal: #2C2825;
-            --text-muted: #5C5552;
-            --accent-terracotta: #C4755B;
-            --accent-olive: #7671c4;
-            --accent-purple: #7671c4;
+            --bg-cream: #FCFAF8;
+            --bg-cream-dark: #F1EFEC;
+            --text-charcoal: #2B2224;
+            --text-muted: #5E5557;
+            --accent-terracotta: #6E3358;
+            --accent-olive: #6E3358;
+            --accent-purple: #6E3358;
             --font-display: 'Cormorant Garamond', Georgia, serif;
             --font-body: 'Satoshi', -apple-system, system-ui, sans-serif;
+            /* brand tokens, as in css/site.css */
+            --paper: #FCFAF8;
+            --paper-warm: #F1EFEC;
+            --ink: #2B2224;
+            --muted: #5E5557;
+            --oxblood: #44181D;
+            --mulberry: #6E3358;
+            --sage: #566B58;
+            --slate: #4F5285;
+            --blush: #F3E6E3;
+            --rule: rgba(43, 34, 36, 0.14);
+            --rule-soft: rgba(43, 34, 36, 0.07);
+            --font-meta: 'IBM Plex Mono', ui-monospace, SFMono-Regular, monospace;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { font-size: 16px; scroll-behavior: smooth; }
+        html {
+            font-size: 17px;
+            scroll-behavior: smooth;
+        }
         body {
             font-family: var(--font-body);
-            background-color: var(--bg-cream);
-            color: var(--text-charcoal);
+            background-color: var(--paper-warm);
+            color: var(--ink);
             line-height: 1.7;
             min-height: 100vh;
         }
@@ -39,10 +55,10 @@
         }
 
         .cv-page {
-            background: #ffffff;
+            background: var(--paper);
             padding: 3rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            border-radius: 12px;
+            box-shadow: 0 1px 2px rgba(44, 40, 37, 0.04), 0 12px 32px rgba(44, 40, 37, 0.06);
         }
 
         nav {
@@ -53,7 +69,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: linear-gradient(to bottom, var(--bg-cream) 0%, var(--bg-cream) 70%, transparent 100%);
+            background: linear-gradient(to bottom, var(--paper-warm) 0%, var(--paper-warm) 70%, transparent 100%);
         }
 
         .mobile-nav-toggle {
@@ -73,7 +89,9 @@
         }
 
         .logo {
-            font-family: var(--font-display);
+            font-family: 'Fraunces', var(--font-display);
+            font-optical-sizing: auto;
+            font-variation-settings: 'SOFT' 45, 'WONK' 1;
             font-size: 1.5rem;
             font-weight: 500;
             color: var(--text-charcoal);
@@ -87,15 +105,11 @@
             list-style: none;
         }
 
-        .nav-links a {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
+        /* the menu is set in the wordmark's typeface; the current page gets a mulberry underline */
+        .nav-links a { font-family: 'Fraunces', var(--font-display); font-optical-sizing: auto; font-variation-settings: 'SOFT' 45, 'WONK' 1; font-size: 1.05rem; font-weight: 500; color: var(--text-muted); text-decoration: none; padding-bottom: 2px; border-bottom: 2px solid transparent; transition: color 0.3s ease; }
 
-        .nav-links a:hover { color: var(--accent-terracotta); }
-        .nav-links a.active { color: var(--text-charcoal); }
+        .nav-links a:hover { color: #6E3358; }
+        .nav-links a.active { color: #44181D; border-bottom-color: #6E3358; }
         .nav-links a.nav-past { opacity: 0.45; }
         .nav-links a.nav-past:hover { opacity: 0.7; }
 
@@ -125,24 +139,29 @@
             align-items: flex-start;
             margin-bottom: 2rem;
             padding-bottom: 1.5rem;
-            border-bottom: 1px solid var(--bg-cream-dark);
+            border-bottom: 1px solid var(--rule);
         }
 
         .cv-header-left h1 {
-            font-family: var(--font-body);
-            font-size: 2.5rem;
-            font-weight: 400;
-            letter-spacing: -0.02em;
-            color: var(--text-charcoal);
-            margin-bottom: 0;
+            font-family: 'Fraunces', var(--font-display);
+            font-optical-sizing: auto;
+            font-variation-settings: 'SOFT' 45, 'WONK' 1;
+            font-size: 2.6rem;
+            font-weight: 600;
+            line-height: 1.1;
+            letter-spacing: -0.015em;
+            color: var(--oxblood);
+            margin-bottom: 0.45rem;
         }
 
         .cv-header-left .subtitle {
-            font-size: 1.1rem;
-            color: var(--accent-olive);
+            font-family: var(--font-meta);
+            font-size: 0.7rem;
             font-weight: 500;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--muted);
             margin-bottom: 0;
-            padding-left: 0.25rem;
         }
 
         .cv-header-right {
@@ -154,24 +173,25 @@
         .status-badge {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            padding: 0.4rem 0.85rem;
-            background: linear-gradient(135deg, #4a7c59 0%, #5a8f6a 100%);
-            color: white;
-            font-size: 0.8rem;
-            font-weight: 500;
-            border-radius: 20px;
-            letter-spacing: 0.02em;
-            margin-bottom: 0.4rem;
+            gap: 0.4rem;
+            padding: 0.32rem 0.75rem;
+            background: var(--sage);
+            color: #fff;
+            font-family: var(--font-meta);
+            font-size: 0.62rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            white-space: nowrap;
+            border-radius: 999px;
+            margin-bottom: 0.5rem;
         }
 
         .status-badge::before {
             content: '';
-            width: 8px;
-            height: 8px;
-            background: #90EE90;
+            width: 7px;
+            height: 7px;
+            background: #A9D6A4;
             border-radius: 50%;
-            animation: pulse 2s ease-in-out infinite;
         }
 
         @keyframes pulse {
@@ -179,16 +199,6 @@
             50% { opacity: 0.6; transform: scale(1.1); }
         }
 
-        .seeking-dot {
-            display: inline-block;
-            width: 8px;
-            height: 8px;
-            background: var(--accent-purple);
-            border-radius: 50%;
-            animation: pulse 2s ease-in-out infinite;
-            margin-right: 0.15rem;
-            vertical-align: middle;
-        }
 
         .cv-header-right .contact {
             font-size: 0.9rem;
@@ -210,20 +220,20 @@
             margin: 0 auto 1.5rem;
             align-items: center;
             gap: 0.5rem;
-            padding: 0.75rem 1.5rem;
-            background: var(--accent-olive);
-            color: white;
-            border-radius: 6px;
+            padding: 0.5rem 1.15rem 0.55rem;
+            border: 1px solid var(--mulberry);
+            border-radius: 999px;
+            background: none;
+            color: var(--mulberry);
             text-decoration: none;
-            font-size: 0.95rem;
-            transition: opacity 0.2s ease;
-            white-space: nowrap;
-            box-shadow: 0 2px 8px rgba(118, 113, 196, 0.25);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: background-color 0.25s ease, color 0.25s ease;
         }
 
         .download-btn:hover {
-            opacity: 0.85;
-            color: white;
+            background: var(--mulberry);
+            color: var(--paper);
         }
 
         .download-btn svg {
@@ -274,50 +284,46 @@
         }
 
         .summary {
-            background: rgba(118, 113, 196, 0.08);
+            background: var(--blush);
             padding: 1.25rem 1.5rem;
-            border-radius: 8px;
+            border-radius: 12px;
             margin-bottom: 2rem;
-            border-left: 3px solid var(--accent-olive);
         }
 
         .summary p {
             margin-bottom: 0.75rem;
-            color: var(--text-charcoal);
+            color: var(--ink);
         }
 
-        .summary p:last-child {
-            margin-bottom: 0;
-            font-style: italic;
-            color: var(--accent-olive);
-        }
 
         h2 {
-            font-family: var(--font-display);
-            font-size: 1.35rem;
+            font-family: var(--font-meta);
+            font-size: 0.68rem;
             font-weight: 600;
-            margin-top: 2.5rem;
-            margin-bottom: 1rem;
-            color: var(--accent-olive);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--mulberry);
             display: flex;
             align-items: center;
-            gap: 0.75rem;
+            gap: 0.5rem;
+            margin: 3rem 0 1.4rem;
+            padding-top: 1.2rem;
+            border-top: 1px solid var(--rule);
+            counter-increment: cv-section;
             scroll-margin-top: 6rem;
         }
 
         h2::after {
-            content: "";
-            flex-grow: 1;
-            height: 1px;
-            background: var(--bg-cream-dark);
+            content: none;
         }
 
         h2 .h2-note {
             font-weight: 400;
-            font-size: 0.7em;
-            opacity: 0.65;
-            margin-left: -0.4rem;
+            color: var(--muted);
+            opacity: 0.75;
         }
+        h2::before { content: counter(cv-section, decimal-leading-zero); }
+        .cv-page { counter-reset: cv-section; }
 
         .skills-grid {
             display: grid;
@@ -327,11 +333,12 @@
         }
 
         .skills-subhead {
-            font-size: 0.7rem;
+            font-family: var(--font-meta);
+            font-size: 0.62rem;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--text-muted);
+            letter-spacing: 0.12em;
+            color: var(--muted);
             margin: 1rem 0 0.6rem;
         }
 
@@ -364,37 +371,41 @@
         }
 
         .skills-languages-label {
+            font-family: var(--font-meta);
             font-style: normal;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 1.2px;
-            font-size: 0.65rem;
+            letter-spacing: 0.1em;
+            font-size: 0.6rem;
             margin-right: 0.35rem;
         }
 
         .skill-card {
-            background: var(--bg-cream);
-            border: 1px solid rgba(118, 113, 196, 0.15);
+            background: var(--paper);
+            border: 1px solid var(--rule);
             border-radius: 6px;
             overflow: hidden;
-            box-shadow: 0 1px 4px rgba(118, 113, 196, 0.06);
-            transition: box-shadow 0.2s ease, transform 0.2s ease;
+            transition: border-color 0.25s ease, transform 0.25s ease;
         }
 
         .skill-card:hover {
-            box-shadow: 0 3px 10px rgba(118, 113, 196, 0.12);
-            transform: translateY(-1px);
+            border-color: var(--mulberry);
+            transform: translateY(-2px);
         }
 
         .skill-card-header {
-            background: var(--accent-olive);
-            padding: 0.3rem 0.6rem;
-            font-size: 0.65rem;
+            background: var(--oxblood);
+            padding: 0.35rem 0.6rem;
+            font-family: var(--font-meta);
+            font-size: 0.6rem;
             font-weight: 600;
-            color: #ffffff;
+            color: #fff;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.1em;
         }
+        /* header colours follow the site's card order by group */
+        .lr-grid .skill-card-header { background: var(--sage); }
+        .tech-grid .skill-card-header { background: var(--slate); }
 
         .skill-card-body {
             padding: 0.45rem 0.6rem;
@@ -404,21 +415,21 @@
         }
 
         .job-section {
-            background: white;
-            border: 1px solid var(--bg-cream-dark);
-            border-radius: 8px;
+            background: var(--paper);
+            border: 1px solid var(--rule);
+            border-radius: 6px;
             margin-bottom: 1.5rem;
             overflow: hidden;
         }
 
         .job-header {
-            background: linear-gradient(135deg, rgba(118, 113, 196, 0.1) 0%, rgba(118, 113, 196, 0.05) 100%);
+            background: var(--blush);
             padding: 0.75rem 1rem;
             display: flex;
             justify-content: space-between;
             align-items: baseline;
             gap: 0.75rem;
-            border-bottom: 1px solid var(--bg-cream-dark);
+            border-bottom: 1px solid var(--rule-soft);
         }
 
         .job-header > div {
@@ -427,23 +438,28 @@
         }
 
         .job-title {
+            font-family: 'Fraunces', var(--font-display);
+            font-optical-sizing: auto;
+            font-variation-settings: 'SOFT' 45, 'WONK' 1;
             font-weight: 600;
-            color: var(--accent-olive);
-            font-size: 0.95rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            font-size: 1.08rem;
+            line-height: 1.25;
+            color: var(--oxblood);
         }
 
         .job-org {
             display: block;
             font-weight: 500;
-            color: var(--text-charcoal);
+            color: var(--ink);
             font-size: 0.85rem;
         }
 
         .job-date {
-            color: var(--text-muted);
-            font-size: 0.85rem;
+            font-family: var(--font-meta);
+            color: var(--muted);
+            font-size: 0.64rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
             white-space: nowrap;
             flex-shrink: 0;
         }
@@ -486,7 +502,7 @@
         .cv-item {
             margin-bottom: 0.65rem;
             padding-bottom: 0.65rem;
-            border-bottom: 1px solid rgba(240, 235, 227, 0.5);
+            border-bottom: 1px solid var(--rule-soft);
         }
 
         .cv-item:last-child {
@@ -511,12 +527,15 @@
         }
 
         .item-date {
-            color: var(--text-muted);
-            font-size: 0.9rem;
+            font-family: var(--font-meta);
+            color: var(--muted);
+            font-size: 0.64rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
         }
 
         .item-org {
-            color: var(--accent-olive);
+            color: var(--mulberry);
             font-size: 0.95rem;
             margin-bottom: 0.25rem;
         }
@@ -541,12 +560,14 @@
         }
 
         .funding-amount {
-            background: var(--accent-purple);
-            color: white;
-            padding: 0.2rem 0.5rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            font-weight: 500;
+            background: var(--blush);
+            color: var(--oxblood);
+            padding: 0.2rem 0.55rem;
+            border-radius: 999px;
+            font-family: var(--font-meta);
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
         }
 
         .tight-section .cv-item {
@@ -566,6 +587,7 @@
         .tight-section .item-description {
             font-size: 0.82rem;
         }
+        .tight-section .item-date { font-size: 0.64rem; }
 
         .publication {
             margin-bottom: 1rem;
@@ -586,15 +608,16 @@
         .publication em {
             color: var(--accent-olive);
         }
+        .publication .pub-context { color: var(--muted); font-style: italic; }
 
         .pub-note {
             font-style: italic;
-            color: var(--text-muted);
+            color: var(--muted);
             font-size: 0.9rem;
             margin-top: 1rem;
             padding: 0.75rem 1rem;
-            background: rgba(118, 113, 196, 0.05);
-            border-radius: 6px;
+            background: var(--paper-warm);
+            border-radius: 8px;
         }
 
         .pub-header {
@@ -679,8 +702,10 @@
         }
 
         .teaching-code {
-            color: var(--accent-olive);
-            font-size: 0.85rem;
+            font-family: var(--font-meta);
+            color: var(--muted);
+            font-size: 0.64rem;
+            letter-spacing: 0.08em;
         }
 
         .teaching-inst {
@@ -716,8 +741,10 @@
         }
 
         .service-date {
-            color: var(--accent-olive);
-            font-size: 0.85rem;
+            font-family: var(--font-meta);
+            color: var(--muted);
+            font-size: 0.64rem;
+            letter-spacing: 0.1em;
             white-space: nowrap;
         }
 
@@ -726,15 +753,16 @@
             border: none;
             padding: 0.25rem 0;
             margin-top: 0.35rem;
-            color: var(--accent-purple);
+            color: var(--mulberry);
             font-family: inherit;
             font-size: 0.85rem;
             font-weight: 500;
             cursor: pointer;
+            border-bottom: 1px solid rgba(110, 51, 88, 0.3);
         }
 
         .expand-toggle:hover {
-            text-decoration: underline;
+            border-bottom-color: var(--mulberry);
         }
 
         .expandable-more[hidden] {
@@ -742,11 +770,12 @@
         }
 
         .selected-label {
-            font-size: 0.75rem;
+            font-family: var(--font-meta);
+            font-size: 0.62rem;
             font-weight: 600;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.12em;
             text-transform: uppercase;
-            color: var(--accent-purple);
+            color: var(--muted);
             margin-bottom: 0.6rem;
         }
 
@@ -756,14 +785,16 @@
         }
 
         .mentorship-intro {
-            font-style: italic;
-            color: var(--accent-olive);
-            margin-bottom: 0.75rem;
+            font-family: var(--font-display);
+            font-size: 1.35rem;
+            line-height: 1.3;
+            color: var(--oxblood);
+            margin-bottom: 0.9rem;
         }
 
-        .pres-note {
-            font-size: 0.85rem;
-        }
+        .pres-note { font-size: 0.82rem; color: var(--muted); margin-bottom: 0.8rem; }
+        /* the presenting author: a thin underline set a little below the name */
+        .presenter { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; text-decoration-color: var(--mulberry); }
 
         .mentorship-list {
             padding-left: 1.25rem;
@@ -783,20 +814,22 @@
         }
 
         .mentorship-stat {
-            background: rgba(118, 113, 196, 0.04);
-            border: 1px solid rgba(118, 113, 196, 0.12);
+            background: var(--paper);
+            border: 1px solid var(--rule);
             border-radius: 6px;
-            padding: 0.6rem 0.5rem;
+            padding: 0.7rem 0.5rem;
             text-align: center;
         }
 
         .mentorship-stat .stat-num {
             display: block;
-            font-family: var(--font-display);
-            font-size: 1.4rem;
+            font-family: 'Fraunces', var(--font-display);
+            font-optical-sizing: auto;
+            font-variation-settings: 'SOFT' 45, 'WONK' 1;
+            font-size: 1.3rem;
             font-weight: 600;
-            line-height: 1;
-            color: var(--accent-olive);
+            line-height: 1.15;
+            color: var(--oxblood);
         }
 
         .mentorship-stat.wide {
@@ -806,11 +839,12 @@
         .mentorship-stat .stat-label {
             display: block;
             margin-top: 0.3rem;
-            font-size: 0.62rem;
+            font-family: var(--font-meta);
+            font-size: 0.56rem;
             text-transform: uppercase;
-            letter-spacing: 0.4px;
-            line-height: 1.25;
-            color: var(--text-muted);
+            letter-spacing: 0.08em;
+            line-height: 1.35;
+            color: var(--muted);
         }
 
         .mentorship-stat .stat-detail {
@@ -829,7 +863,7 @@
 
         .scholarships-line {
             font-size: 0.78rem;
-            color: #928c88;
+            color: var(--muted);
         }
 
         .mentees-label {
@@ -881,6 +915,10 @@
             .cv-page { padding: 0; box-shadow: none; border-radius: 0; }
             .job-section, .skill-card { break-inside: avoid; }
         }
+        /* the menu tightens on narrower screens before it folds into the phone menu */
+        .logo { white-space: nowrap; }
+        @media (max-width: 1100px) { .nav-links { gap: 1.3rem; } }
+        @media (min-width: 901px) and (max-width: 990px) { nav { padding-left: 2rem; padding-right: 2rem; } .nav-links { gap: 1rem; } }
     </style>
 </head>
 <body>
@@ -890,7 +928,7 @@
             <li><a href="index.html">home</a></li>
             <li><a href="bio.html">bio</a></li>
             <li><a href="cv.html" class="active">cv</a></li>
-            <li><a href="science.html">science</a></li>
+            <li><a href="research.html">research</a></li>
             <li><a href="thoughts.html">thoughts</a></li>
             <li><a href="music.html">creative</a></li>
             <li><a href="/defense" class="nav-past">defense</a></li>
@@ -941,8 +979,7 @@
         </div>
 
         <div class="summary">
-            <p><strong>Neuroscientist with a parallel track record in program and partnership management</strong> — establishing shared research infrastructure and cross-institutional collaborations, securing <strong>$260K+ in competitive funding</strong>, and serving as primary stakeholder liaison across students, faculty, and institutional leadership. Built a lab-based research program from the ground up: tracking milestones and deliverables across <strong>15+ team members</strong>, <strong>110+ participants</strong>, and <strong>5+ lab partnerships</strong> — while leading <strong>5+ years of program and portfolio management beyond the lab</strong>, spanning academic, nonprofit, and industry-sponsored initiatives.</p>
-            <p><span class="seeking-dot"></span> Seeking to lead <strong>scientific partnership and program strategy</strong> — building structures for emerging projects and partnerships, with a community-minded approach to connecting people and ideas.</p>
+            <p><strong>Neuroscientist with a parallel track record in program and partnership management</strong> — establishing shared research infrastructure and cross-institutional collaborations, securing <strong>$260K+ in competitive funding</strong>, and serving as primary stakeholder liaison across students, faculty, and institutional leadership. Built a lab-based research program from the ground up: tracking milestones and deliverables across <strong>16 team members</strong>, <strong>110+ participants</strong>, and <strong>5+ lab partnerships</strong> — while leading <strong>5+ years of program and portfolio management beyond the lab</strong>, spanning academic, nonprofit, and industry-sponsored initiatives.</p>
         </div>
 
         <h2 id="experience">Experience <span class="h2-note">(select)</span></h2>
@@ -960,17 +997,18 @@
                 <ul>
                     <li>Proposed and built a <span class="semi">multi-year research program</span> from the ground up: defining scope, structure, and operations to study aging and spatial cognition; <span class="semi">secured $260K in competitive funding</span> (NSF GRFP, NIH T32). Culminated in a dissertation defense and 7 peer-reviewed publications; now expanding into an interdepartmental, cross-species, multi-institution initiative.</li>
                     <li>Spearheaded building <span class="semi">lab operational infrastructure</span>: documentation systems (meeting agendas and schedules, storage drives, data and computational servers, lab wiki), standard operating procedures (method-specific protocols, room and equipment maintenance), and continuity protocols (onboarding, transitions).</li>
-                    <li>Formed community partnerships to create a <span class="semi">recruitment database</span> of <span class="semi">110+</span> older adult participants across <span class="semi">5</span> labs.</li>
+                    <li>Built community partnerships (Decatur Active Adults, Emory's Goizueta Alzheimer's Disease Research Center, local outreach) to create a <span class="semi">recruitment database</span> of <span class="semi">110+</span> older adult participants; served as primary contact and onboarded <span class="semi">5+</span> partner labs to use and contribute to it.</li>
                 </ul>
                 <h4>Mentorship</h4>
                 <ul>
-                    <li>Directed a <span class="semi">15+ member research team</span> across <span class="semi">6</span> years: mentored trainees to produce <span class="semi">9</span> presentations at local and national conferences (including <span class="semi">5</span> awards), <span class="semi">4</span> published theses (2 Highest Honors, Emory; 2 Research Option certificates, Georgia Tech), and <span class="semi">5</span> competitive fellowships (including Fulbright, DAAD-RISE, and the Georgia Tech President's Undergraduate Research Award).</li>
+                    <li>Directed a <span class="semi">16-member research team</span> across <span class="semi">6</span> years: mentored trainees to produce <span class="semi">9</span> presentations at local and national conferences (including <span class="semi">5</span> awards), <span class="semi">4</span> published theses (2 Highest Honors, Emory; 2 Research Option certificates, Georgia Tech), and <span class="semi">5</span> competitive fellowships (including Fulbright, DAAD-RISE, and the Georgia Tech President's Undergraduate Research Award).</li>
                     <li>Managed up to <span class="semi">4 concurrent sub-studies</span> (including deliverables, timelines, and operating plans), running weekly cross-project meetings to align on milestones, evaluations, and risk mitigation.</li>
                 </ul>
                 <h4>Technical Infrastructure</h4>
                 <ul>
-                    <li>Developed novel neuroimaging methodology (concurrent TMS-fMRI) and co-developed a GUI-based neuroimaging workbench (MR.Flow), <span class="semi">owning front-end and UX/UI design</span> and <span class="semi">establishing shared imaging capability</span> as an institutional resource at Emory and across the Atlanta scientific community.</li>
-                    <li>Built <span class="semi">program-related technical infrastructure</span>, including a city-scale VR environment built in Unity (NavCity), clinical assessments, and data visualization and analysis pipelines (Python, R, bash/zsh), <span class="semi">open-sourcing all tools</span> via <span class="semi">7</span> lab-wide GitHub repositories.</li>
+                    <li>Developed novel neuroimaging methodology (concurrent TMS-fMRI) and co-developed a GUI-based neuroimaging workbench (MR.Flow) with Claude Code, <span class="semi">owning front-end and UX/UI design</span> and <span class="semi">establishing shared imaging capability</span> as an institutional resource at Emory and across the Atlanta scientific community.</li>
+                    <li>Built <span class="semi">program-related technical infrastructure</span>, including a city-scale VR environment built in Unity (NavCity), clinical assessments, and data visualization and analysis pipelines (Python, R, bash/zsh), <span class="semi">open-sourcing all tools</span> via <span class="semi">7</span> lab-wide GitHub repositories and sharing research datasets via OSF, in line with FAIR data-sharing principles.</li>
+                    <li>Helped develop and formalize <span class="semi">lab policy for responsible AI tool adoption</span> (codified in the lab wiki): expert-in-the-loop review of all AI output and intentional, testable use; coached mentees on AI use and its limitations.</li>
                 </ul>
             </div>
         </div>
@@ -1002,7 +1040,7 @@
             </div>
             <div class="job-content">
                 <ul>
-                    <li>Served as <span class="semi">primary stakeholder liaison</span> between <span class="semi">120+</span> PhD students and program leadership, managing a <span class="semi">22-member</span> executive board across <span class="semi">12</span> positions and directing <span class="semi">10+</span> annual program events.</li>
+                    <li>Served as <span class="semi">primary stakeholder liaison</span> between <span class="semi">100+</span> PhD students and program leadership, managing a <span class="semi">22-member</span> executive board across <span class="semi">12</span> positions and directing <span class="semi">10+</span> annual program events.</li>
                     <li>Rebuilt <span class="semi">organizational operating infrastructure</span> from scratch: established the first internal documentation system, defined officer roles and transition protocols for continuity risk mitigation, implemented recurring meeting cadences, and developed operating plans and budget infrastructure — sustaining long-term institutional relationships beyond any single leadership term.</li>
                     <li>Founded (2020) and moderated the program-wide Neuroscience student Slack workspace: structured channels for announcements, new-student onboarding, events, professional development, and research discussion to sustain community, including through the pandemic.</li>
                 </ul>
@@ -1012,15 +1050,15 @@
         <div class="job-section">
             <div class="job-header">
                 <div>
-                    <span class="job-title">Scholar</span>
+                    <span class="job-title">Annual Events Committee Lead &amp; Scholar</span>
                     <span class="job-org">Computational Neural Engineering Training Program, Georgia Tech & Emory University</span>
                 </div>
                 <span class="job-date">Sep 2021 – Jun 2023</span>
             </div>
             <div class="job-content">
                 <ul>
-                    <li>Led the Annual Events Committee to plan and execute <span class="semi">cross-institutional programming</span> for <span class="semi">90+ trainees</span> across Georgia Tech and Emory, including an all-day Research Expo, new member orientation, and annual retreats.</li>
-                    <li>Led the organization of the annual <span class="semi">Advisory Board Visitation Day</span> — coordinating logistics for <span class="semi">50+</span> faculty, board members, and trainees, presenting directly to senior leadership and moderating a live Q&A that required balancing trainee and institutional interests.</li>
+                    <li>Led the Annual Events Committee to plan and execute <span class="semi">cross-institutional programming</span> for <span class="semi">80+ trainees &amp; faculty</span> across Georgia Tech and Emory, including an all-day Research Expo, new member orientation, and annual retreats.</li>
+                    <li>Led the organization of the annual <span class="semi">Advisory Board Visitation Day</span> — coordinating logistics for <span class="semi">50+</span> faculty, board members, and trainees, presenting directly to senior leadership and moderating a live Q&A that required balancing trainee and institutional interests; represented the program at ABRCMS 2022, recruiting prospective trainees.</li>
                 </ul>
             </div>
         </div>
@@ -1035,8 +1073,8 @@
             </div>
             <div class="job-content">
                 <ul>
-                    <li>Co-led a <span class="semi">17-member</span> DEI committee across <span class="semi">3</span> subcommittees and <span class="semi">2</span> faculty representatives, serving as institutional liaison between stakeholder groups — students, faculty, and Laney Graduate School administration.</li>
-                    <li>Led <span class="semi">program-level change management</span>: conducted admissions review to identify and reduce bias, revised curriculum modules for neurological inclusivity, and partnered with Emory's DEI office to launch a new unconscious bias certificate training program adopted program-wide.</li>
+                    <li>Co-led a <span class="semi">17-member</span> DEI committee across <span class="semi">3</span> subcommittees and <span class="semi">2</span> faculty representatives, representing Neuroscience on the division-wide committee and serving as institutional liaison between stakeholder groups — students, faculty, and Laney Graduate School administration.</li>
+                    <li>Led <span class="semi">program-level change management</span>: conducted admissions review to identify and reduce bias, revised curriculum modules for neurological inclusivity, and partnered with Emory's DEI office to launch a new unconscious bias certificate training program adopted program-wide; also launched an external financial-advising partnership funding 30 one-on-one sessions for students.</li>
                 </ul>
             </div>
         </div>
@@ -1051,8 +1089,8 @@
             </div>
             <div class="job-content">
                 <ul>
-                    <li>Built and led a <span class="semi">13-member interdisciplinary organizing committee</span> spanning <span class="semi">3+ Atlanta research institutions</span>, coordinating academic and industry stakeholders to design and execute a 3-day computational neuroscience hackathon.</li>
-                    <li><span class="semi">Managed external sponsor relationships</span>, <span class="semi">securing $35,000</span> in corporate and institutional funding; created <span class="semi">3</span> neuroimaging project tracks, recruited <span class="semi">6</span> faculty speakers, and attracted <span class="semi">90+</span> applications from <span class="semi">9</span> institutions, selecting <span class="semi">30</span> attendees.</li>
+                    <li>Established and directed the <span class="semi">first-ever Brainhack ATL</span> (part of Brainhack Global), building and leading a <span class="semi">13-member interdisciplinary organizing committee</span> spanning <span class="semi">3+ Atlanta research institutions</span>, coordinating academic and industry stakeholders to design and execute a 3-day computational neuroscience hackathon.</li>
+                    <li><span class="semi">Managed external sponsor relationships</span>, <span class="semi">securing $35,000</span> from <span class="semi">8</span> corporate and institutional sponsors (including NVIDIA, AWS, and the GSU Research Foundation); created <span class="semi">3</span> neuroimaging project tracks, recruited <span class="semi">6</span> faculty speakers, and attracted <span class="semi">90+</span> applications from <span class="semi">10</span> institutions across the U.S. and internationally, selecting <span class="semi">32</span> attendees via a scoring rubric.</li>
                 </ul>
             </div>
         </div>
@@ -1061,7 +1099,7 @@
         <div class="job-section">
             <div class="job-header">
                 <div>
-                    <span class="job-title">STEM Communications Fellow</span>
+                    <span class="job-title">Science Communications Assistant</span>
                     <span class="job-org">College of Sciences, Georgia Institute of Technology</span>
                 </div>
                 <span class="job-date">May 2019 – Aug 2020</span>
@@ -1115,7 +1153,7 @@
             </div>
             <div class="job-content">
                 <ul>
-                    <li>Established <span class="semi">full operational structure</span> of a <span class="semi">22-member</span> undergraduate research organization, building committees across <span class="semi">4</span> functional areas (Events, Campus Relations, Outreach, Advertising) and a <span class="semi">research opportunity portfolio</span> of <span class="semi">110+</span> entries across <span class="semi">34</span> majors.</li>
+                    <li>Established <span class="semi">full operational structure</span> of a <span class="semi">22-member</span> undergraduate research organization, selecting and onboarding members from <span class="semi">80+</span> applicants and building committees across <span class="semi">4</span> functional areas (Events, Campus Relations, Outreach, Advertising) and a <span class="semi">research opportunity portfolio</span> of <span class="semi">110+</span> entries across <span class="semi">34</span> majors.</li>
                     <li>Grew program reach to <span class="semi">1,000+</span> students per semester through an annual research fair, <span class="semi">2</span> monthly events (workshops, panels), and weekly office hours, connecting <span class="semi">150+</span> undergraduates to labs per semester.</li>
                 </ul>
             </div>
@@ -1150,7 +1188,7 @@
         <div class="skills-grid lr-grid">
             <div class="skill-card">
                 <div class="skill-card-header">Leadership</div>
-                <div class="skill-card-body">cross-functional leadership, stakeholder engagement, executive reporting, partnership development, sponsor &amp; vendor relations, mentorship (15+ trainees)</div>
+                <div class="skill-card-body">cross-functional leadership, stakeholder engagement, executive reporting, partnership development, sponsor &amp; vendor relations, mentorship (16 trainees)</div>
             </div>
             <div class="skill-card">
                 <div class="skill-card-header">Program</div>
@@ -1186,7 +1224,7 @@
             </div>
             <div class="skill-card">
                 <div class="skill-card-header">Tools</div>
-                <div class="skill-card-body">Airtable, Slack (workspace admin), Claude Code, Claude, Perplexity</div>
+                <div class="skill-card-body">Airtable, Slack, Claude Code, Claude, Perplexity</div>
             </div>
         </div>
 
@@ -1239,10 +1277,10 @@
         <div class="cv-item">
             <div class="item-header">
                 <span class="item-title">PhD in Neuroscience</span>
-                <span class="item-date">Aug 2020 – May 2026</span>
+                <span class="item-date">Aug 2020 – Jun 2026</span>
             </div>
             <div class="item-org">Emory University</div>
-            <div class="item-description">Dissertation: Behavioral and neural mechanisms of aging-related deficits in human spatial navigation</div>
+            <div class="item-description">Dissertation: <em>Navigating Aging: Characterizing Behavioral and Neural Correlates of Aging-Related Deficits in Human Spatial Navigation</em></div>
         </div>
         <div class="cv-item">
             <div class="item-header">
@@ -1292,28 +1330,28 @@
                 <span class="item-title">Scientific Achievement Award</span>
                 <span class="item-date">2026</span>
             </div>
-            <div class="item-description">Emory Neuroscience Graduate Program · Selected by faculty committee from 120+ students</div>
+            <div class="item-description">Emory Neuroscience Graduate Program · Selected by faculty committee from 100+ students</div>
         </div>
         <div class="cv-item">
             <div class="item-header">
                 <span class="item-title">Teaching Award</span>
                 <span class="item-date">2025</span>
             </div>
-            <div class="item-description">Emory Neuroscience Graduate Program · Selected by faculty committee from 120+ students</div>
+            <div class="item-description">Emory Neuroscience Graduate Program · Selected by faculty committee from 100+ students</div>
         </div>
         <div class="cv-item">
             <div class="item-header">
                 <span class="item-title">Leadership Award</span>
                 <span class="item-date">2024</span>
             </div>
-            <div class="item-description">Emory Neuroscience Graduate Program · Selected by faculty committee from 120+ students</div>
+            <div class="item-description">Emory Neuroscience Graduate Program · Selected by faculty committee from 100+ students</div>
         </div>
         <div class="cv-item">
             <div class="item-header">
                 <span class="item-title">Excellence in Mentorship Award</span>
                 <span class="item-date">2023</span>
             </div>
-            <div class="item-description">Emory Neuroscience Graduate Program · Selected by faculty committee from 120+ students</div>
+            <div class="item-description">Emory Neuroscience Graduate Program · Selected by faculty committee from 100+ students</div>
         </div>
         <div class="cv-item">
             <div class="item-header">
@@ -1328,7 +1366,7 @@
         <p class="mentorship-intro">Directly mentored high school, undergraduate, & doctoral trainees, producing:</p>
         <div class="mentorship-stats">
             <div class="mentorship-stat">
-                <span class="stat-num">15+</span>
+                <span class="stat-num">16</span>
                 <span class="stat-label">Trainees Mentored</span>
             </div>
             <div class="mentorship-stat">
@@ -1347,16 +1385,18 @@
         </div>
 
         <p class="mentees-label">Mentees</p>
-        <p class="mentee"><strong>Anisha Kanukolanu</strong> <span class="mentee-meta">— Neuroscience (undergrad), Georgia Tech · 2021–2023</span> — Georgia Tech Presidential Research Award &amp; DAAD-RISE (Berlin) awardee; 3 poster &amp; abstract awards and an ASNR Travel Award.</p>
+        <p class="mentee"><strong>Anisha Kanukolanu</strong> <span class="mentee-meta">— Neuroscience (undergrad), Georgia Tech · 2021–2023</span> — Fulbright Fellow; Georgia Tech Presidential Research Award &amp; DAAD-RISE (Berlin) awardee; 3 poster &amp; abstract awards and an ASNR Travel Award.</p>
         <p class="mentee"><strong>Emily Cui</strong> <span class="mentee-meta">— Neuroscience &amp; Behavioral Biology (undergrad), Emory → Research Specialist, NPRL, Emory · 2022–2024</span> — Highest Honors thesis; 100 Senior Honorary (top 100 graduating seniors, Emory).</p>
-        <p class="mentee"><strong>Emma Funderburg</strong> <span class="mentee-meta">— Neuroscience &amp; Behavioral Biology (undergrad), Emory → Research Specialist, NPRL, Emory · 2023–2025</span> — Highest Honors thesis; Pathways Center Internship Funding, Emory.</p>
+        <p class="mentee"><strong>Emma Funderburg</strong> <span class="mentee-meta">— Neuroscience &amp; Behavioral Biology (undergrad), Emory → Research Specialist, NPRL, Emory · 2023–2025</span> — Highest Honors thesis, <em>Establishing an fMRI-Compatible Y-Maze Task to Characterize Task-Related Hippocampal Activity</em> (defended March 2025; Funderburg, E., Bassil, Y., &amp; Borich, M.); posters at the Emory Undergraduate Bio/NBB Research Symposium (April 2024) and the Society for Neuroscience meeting, Chicago (October 2024); Pathways Center Internship Funding, Emory.</p>
         <div class="expandable-more" id="mentees-more" hidden>
         <p class="mentee"><strong>Ashley Pelton</strong> <span class="mentee-meta">— Neuroscience (undergrad), Georgia Tech · 2023–2025</span> — Georgia Tech Research Option.</p>
         <p class="mentee"><strong>Akarshana Arunkumar</strong> <span class="mentee-meta">— High-school volunteer (Denmark HS) → Neuroscience (undergrad), Georgia Tech · 2023–2025</span></p>
+        <p class="mentee"><strong>DPT Research Teams</strong> <span class="mentee-meta">— <span class="semi">Alexis Costlow, Emily Adams &amp; Van Tran</span> (2022–2023); <span class="semi">Katie Carter, Monica Ferrer &amp; Emma Hilten</span> (2021–2022), Emory</span> — recruited 40+ participants; 1st &amp; 3rd Place Posters, Annual DPT Research Poster Session.</p>
         <p class="mentee"><strong>Nicholas Hess</strong> <span class="mentee-meta">— Industrial Engineering (undergrad), Georgia Tech · 2023</span></p>
         <p class="mentee"><strong>Jacob Stein</strong> <span class="mentee-meta">— Neuroscience &amp; Behavioral Biology (undergrad), Emory · 2022</span></p>
+        <p class="mentee"><strong>Claire Dokko</strong> <span class="mentee-meta">— Neuroscience &amp; Behavioral Biology (undergrad), Emory</span></p>
+        <p class="mentee"><strong>Katelyn Kwak</strong> <span class="mentee-meta">— Neuroscience &amp; Behavioral Biology (undergrad), Emory</span></p>
         <p class="mentee"><strong>Moura Saad</strong> <span class="mentee-meta">— LGS SOAR Scholar (undergrad), Macalester College · 2023</span></p>
-        <p class="mentee"><strong>DPT Research Teams</strong> <span class="mentee-meta">— <span class="semi">Alexis Costlow, Emily Adams &amp; Van Tran</span> (2022–2023); <span class="semi">Katie Carter, Monica Ferrer &amp; Emma Hilten</span> (2021–2022), Emory</span> — recruited 40+ participants; 1st &amp; 3rd Place Posters, Annual DPT Research Poster Session.</p>
         </div>
         <button class="expand-toggle" data-target="mentees-more" data-more="Show all ({total}) ↓" data-less="Show less ↑">Show all ↓</button>
 
@@ -1369,7 +1409,7 @@
             <p><strong>Bassil, Y.</strong>, Kanukolanu, A., Funderburg, E., Cui, E. Z., Brown, T. I., & Borich, M. R. (2026). Distinct aging-related profiles of allocentric knowledge recall following navigation in an immersive, naturalistic, city-like environment. <em>Frontiers in Aging Neuroscience</em>, 18. <a class="doi-link" href="https://doi.org/10.3389/fnagi.2026.1746016" target="_blank" rel="noopener">https://doi.org/10.3389/fnagi.2026.1746016</a></p>
         </div>
         <div class="publication">
-            <p>Woolgar, A., Feredoes, E., Assem, M., <strong>Bassil, Y.</strong>, Bergmann, T. O., Beynel, L., ... & Sack, A. T. (2026). Consensus guidelines for the use of concurrent TMS-fMRI in cognitive and clinical neuroscience. <em>Nature Protocols</em>, 21(1), 1–17. <a class="doi-link" href="https://doi.org/10.1038/s41596-025-01182-4" target="_blank" rel="noopener">https://doi.org/10.1038/s41596-025-01182-4</a></p>
+            <p>Woolgar, A., Feredoes, E., Assem, M., <strong>Bassil, Y.</strong>, Bergmann, T. O., Beynel, L., ... & Sack, A. T. (2026). Consensus guidelines for the use of concurrent TMS-fMRI in cognitive and clinical neuroscience. <em>Nature Protocols</em>, 21(1), 1–17. <a class="doi-link" href="https://doi.org/10.1038/s41596-025-01182-4" target="_blank" rel="noopener">https://doi.org/10.1038/s41596-025-01182-4</a> <span class="pub-context">Field-wide consensus paper with TMS-fMRI experts across 19 institutions in 8 countries.</span></p>
         </div>
         <div class="publication">
             <p><strong>Bassil, Y.</strong>, Kanukolanu, A., Funderburg, E., Brown, T. I., & Borich, M. R. (2025). Formation of allocentric representations after exposure to a novel, naturalistic, city-like, virtual reality environment. <em>Neuropsychologia</em>, 109290. <a class="doi-link" href="https://doi.org/10.1016/j.neuropsychologia.2025.109290" target="_blank" rel="noopener">https://doi.org/10.1016/j.neuropsychologia.2025.109290</a></p>
@@ -1391,29 +1431,31 @@
         <button class="expand-toggle" data-target="pub-more" data-more="Show all ({total}) ↓" data-less="Show less ↑">Show all ↓</button>
 
         <h2 id="presentations">Presentations</h2>
-        <p class="mentorship-intro pres-note">* denotes presenting author</p>
-        <div class="presentation-item">*<strong>Bassil, Y.</strong>, Kanukolanu, A., Cui, E., Funderburg, E., Pelton, A., Arunkumar, A., &amp; Borich, M. (2024). "Reference frame utilization as a potential marker of aging-related deficits in human spatial navigation." Poster, <em>Interdisciplinary Navigation (iNAV) Symposium</em>, Merano, Italy.</div>
-        <div class="presentation-item">*<strong>Bassil, Y.</strong>, Kanukolanu, A., Cui, E., &amp; Borich, M. (2024). "Reference frame utilization as a potential marker of aging-related deficits in human spatial navigation." Poster, <em>Center for Research and Education in Navigation (CRaNE) Conference</em>, Atlanta, GA.</div>
-        <div class="presentation-item">*Funderburg, E., <strong>Bassil, Y.</strong>, Cui, E., Arunkumar, A., Pelton, A., &amp; Borich, M. (2024). "Effects of demographic factors on spatial navigation ability in aging." Poster, <em>CRaNE Conference</em>, Atlanta, GA.</div>
+        <p class="pres-note"><span class="presenter">Underline</span> marks the presenting author.</p>
+        <div class="presentation-item"><span class="presenter"><strong>Bassil, Y.</strong></span>, Kanukolanu, A., Cui, E., Funderburg, E., Pelton, A., Arunkumar, A., &amp; Borich, M. (2024). "Reference frame utilization as a potential marker of aging-related deficits in human spatial navigation." Poster, <em>Interdisciplinary Navigation (iNAV) Symposium</em>, Merano, Italy.</div>
+        <div class="presentation-item"><span class="presenter"><strong>Bassil, Y.</strong></span>, Kanukolanu, A., Cui, E., &amp; Borich, M. (2024). "Reference frame utilization as a potential marker of aging-related deficits in human spatial navigation." Poster, <em>Center for Research and Education in Navigation (CRaNE) Conference</em>, Atlanta, GA.</div>
+        <div class="presentation-item"><span class="presenter">Funderburg, E.</span>, <strong>Bassil, Y.</strong>, Cui, E., Arunkumar, A., Pelton, A., &amp; Borich, M. (2024). "Effects of demographic factors on spatial navigation ability in aging." Poster, <em>CRaNE Conference</em>, Atlanta, GA.</div>
         <div class="expandable-more" id="pres-more" hidden>
-        <div class="presentation-item">*<strong>Bassil, Y.</strong>, Kanukolanu, A., Cui, E., &amp; Borich, M. (2024). "Reference frame utilization as a potential marker of aging-related deficits in human spatial navigation." Poster, <em>Arab Conference at Harvard</em>, Boston, MA.</div>
-        <div class="presentation-item">*Arunkumar, A., <strong>Bassil, Y.</strong>, Funderburg, E., Pelton, A., Cui, E., &amp; Borich, M. (2024). "Aging-related effects on individual spatial navigation performance." Poster, <em>Georgia Tech Neuroscience Undergraduate Research Symposium</em>, Atlanta, GA.</div>
-        <div class="presentation-item">*Cui, E., <strong>Bassil, Y.</strong>, &amp; Borich, M. (2024). "Exploring effects of reference frame classification and aging in a traditional Y-maze spatial navigation task." Poster, <em>American Society for Neurorehabilitation Annual Meeting</em>, San Antonio, TX.</div>
-        <div class="presentation-item">*<strong>Bassil, Y.</strong>, Kanukolanu, A., Cui, E., &amp; Borich, M. (2024). "Reference frame utilization as a potential marker of aging-related deficits in human spatial navigation." Poster, <em>Annual Graduate Division of Biological &amp; Biomedical Sciences (GDBBS) Research Symposium</em>, Emory University, Atlanta, GA. <span class="award">(3rd Place Poster)</span></div>
-        <div class="presentation-item">*Adams, A., *Tran, V., Costlow, A., <strong>Bassil, Y.</strong>, Kanukolanu, A., Cui, E., &amp; Borich, M. (2024). "Interactions between navigation, balance, and higher-order cognition in the aging brain." Oral platform presentation, <em>American Physical Therapy Association (APTA) Combined Sections Meeting</em>, Boston, MA.</div>
-        <div class="presentation-item">*<strong>Bassil, Y.</strong>, &amp; Borich, M. (2023). "Testing circuit-based mechanisms of aging effects on human spatial navigation with TMS-fMRI." Oral presentation, <em>2nd International Workshop on Concurrent TMS-fMRI</em>, Evia, Greece.</div>
-        <div class="presentation-item">*<strong>Bassil, Y.</strong>, Kanukolanu, A., Cui, E., &amp; Borich, M. (2023). "Reference frame utilization as a potential marker of aging-related deficits in human spatial navigation." Poster, <em>Society for Neuroscience</em>, Washington, D.C.</div>
-        <div class="presentation-item">*<strong>Bassil, Y.</strong>, Kanukolanu, A., Cui, E., &amp; Borich, M. (2023). "Interactions between spatial navigation ability and cognitive function in the aging brain." Poster, <em>American Society for Neurorehabilitation (ASNR) Annual Conference</em>, Charleston, SC.</div>
-        <div class="presentation-item">*Kanukolanu, A., <strong>Bassil, Y.</strong>, &amp; Borich, M. (2023). "Aging-related effects on reference frame utilization during spatial navigation in a novel virtual reality environment." Poster, <em>ASNR Annual Conference</em>, Charleston, SC.</div>
-        <div class="presentation-item">*Saad, M., <strong>Bassil, Y.</strong>, &amp; Borich, M. (2023). "Effects of demographics and lifestyle choices on spatial navigation in the aging brain." Poster, <em>Laney Graduate School Summer Opportunity for Academic Research (SOAR) Poster Session</em>, Atlanta, GA.</div>
-        <div class="presentation-item">Carter, K., Ferrer, M., Hilten, E., <strong>Bassil, Y.</strong>, Kanukolanu, A., &amp; *Borich, M. (2023). "Interactions between balance, navigation, &amp; cognition in the aging brain." Poster, <em>APTA Combined Sections Meeting</em>, San Diego, CA.</div>
-        <div class="presentation-item">*Kanukolanu, A., <strong>Bassil, Y.</strong>, Hilten, E., Carter, K., Ferrer, M., &amp; Borich, M. (2022). "Aging effects on spatial navigation &amp; cognitive function." Poster, <em>16th Annual Georgia Tech Undergraduate Research Symposium</em>, Atlanta, GA. <span class="award">(1st Place Poster, College of Sciences)</span></div>
-        <div class="presentation-item">*Kanukolanu, A., <strong>Bassil, Y.</strong>, Hilten, E., Carter, K., Ferrer, M., &amp; Borich, M. (2022). "Aging effects on spatial navigation &amp; cognitive function." Poster, <em>1st Annual Psychology Research Conference</em>, Atlanta, GA. <span class="award">(2nd Place Poster)</span></div>
-        <div class="presentation-item">*Kanukolanu, A., <strong>Bassil, Y.</strong>, Hilten, E., Carter, K., Ferrer, M., &amp; Borich, M. (2022). "Aging effects on spatial navigation &amp; cognitive function." Poster, <em>Georgia Tech Neuroscience Research Symposium</em>, Atlanta, GA. <span class="award">(Faculty Award for Best Abstract)</span></div>
-        <div class="presentation-item"><strong>Bassil, Y.</strong> (2019). "Actionable items to promote inclusivity in scientific workspaces." Poster, <em>Inclusive SciComm Conference</em>, South Kingstown, RI.</div>
-        <div class="presentation-item">Abbas, A., <strong>Bassil, Y.</strong>, &amp; Keilholz, S. (2018). "Quasi-periodic patterns contribute to functional connectivity differences in individuals with ADHD." Poster, <em>Organization for Human Brain Mapping (OHBM) Conference</em>, Singapore.</div>
-        <div class="presentation-item">Abbas, A., <strong>Bassil, Y.</strong>, &amp; Keilholz, S. (2018). "Quasi-periodic patterns contribute to functional connectivity differences between adolescents &amp; adults." Poster, <em>OHBM Conference</em>, Singapore.</div>
-        <div class="presentation-item">Abbas, A., <strong>Bassil, Y.</strong>, &amp; Keilholz, S. (2018). "Quasi-periodic patterns contribute to functional connectivity differences in individuals with ADHD." Poster, <em>Nu Rho Psi Atlanta Neuroscience Symposium</em>, Georgia.</div>
+        <div class="presentation-item"><span class="presenter">Funderburg, E.</span>, <strong>Bassil, Y.</strong>, Cui, E., Arunkumar, A., Pelton, A., &amp; Borich, M. (2024). "Effects of demographic factors on spatial navigation ability in aging: a gender analysis." Poster, <em>Society for Neuroscience</em>, Chicago, IL.</div>
+        <div class="presentation-item"><span class="presenter">Funderburg, E.</span>, <strong>Bassil, Y.</strong>, Cui, E., Arunkumar, A., Pelton, A., &amp; Borich, M. (2024). "Effects of demographic factors on spatial navigation ability in aging." Poster, <em>Emory Undergraduate Bio/NBB Research Symposium</em>, Emory University, Atlanta, GA.</div>
+        <div class="presentation-item"><span class="presenter"><strong>Bassil, Y.</strong></span>, Kanukolanu, A., Cui, E., &amp; Borich, M. (2024). "Reference frame utilization as a potential marker of aging-related deficits in human spatial navigation." Poster, <em>Arab Conference at Harvard</em>, Boston, MA.</div>
+        <div class="presentation-item"><span class="presenter">Arunkumar, A.</span>, <strong>Bassil, Y.</strong>, Funderburg, E., Pelton, A., Cui, E., &amp; Borich, M. (2024). "Aging-related effects on individual spatial navigation performance." Poster, <em>Georgia Tech Neuroscience Undergraduate Research Symposium</em>, Atlanta, GA.</div>
+        <div class="presentation-item"><span class="presenter">Cui, E.</span>, <strong>Bassil, Y.</strong>, &amp; Borich, M. (2024). "Exploring effects of reference frame classification and aging in a traditional Y-maze spatial navigation task." Poster, <em>American Society for Neurorehabilitation Annual Meeting</em>, San Antonio, TX.</div>
+        <div class="presentation-item"><span class="presenter"><strong>Bassil, Y.</strong></span>, Kanukolanu, A., Cui, E., &amp; Borich, M. (2024). "Reference frame utilization as a potential marker of aging-related deficits in human spatial navigation." Poster, <em>Annual Graduate Division of Biological &amp; Biomedical Sciences (GDBBS) Research Symposium</em>, Emory University, Atlanta, GA. <span class="award">(3rd Place Poster)</span></div>
+        <div class="presentation-item"><span class="presenter">Adams, A.</span>, <span class="presenter">Tran, V.</span>, Costlow, A., <strong>Bassil, Y.</strong>, Kanukolanu, A., Cui, E., &amp; Borich, M. (2024). "Interactions between navigation, balance, and higher-order cognition in the aging brain." Oral platform presentation, <em>American Physical Therapy Association (APTA) Combined Sections Meeting</em>, Boston, MA.</div>
+        <div class="presentation-item"><span class="presenter"><strong>Bassil, Y.</strong></span>, &amp; Borich, M. (2023). "Testing circuit-based mechanisms of aging effects on human spatial navigation with TMS-fMRI." Oral presentation, <em>2nd International Workshop on Concurrent TMS-fMRI</em>, Evia, Greece.</div>
+        <div class="presentation-item"><span class="presenter"><strong>Bassil, Y.</strong></span>, Kanukolanu, A., Cui, E., &amp; Borich, M. (2023). "Reference frame utilization as a potential marker of aging-related deficits in human spatial navigation." Poster, <em>Society for Neuroscience</em>, Washington, D.C.</div>
+        <div class="presentation-item"><span class="presenter"><strong>Bassil, Y.</strong></span>, Kanukolanu, A., Cui, E., &amp; Borich, M. (2023). "Interactions between spatial navigation ability and cognitive function in the aging brain." Poster, <em>American Society for Neurorehabilitation (ASNR) Annual Conference</em>, Charleston, SC.</div>
+        <div class="presentation-item"><span class="presenter">Kanukolanu, A.</span>, <strong>Bassil, Y.</strong>, &amp; Borich, M. (2023). "Aging-related effects on reference frame utilization during spatial navigation in a novel virtual reality environment." Poster, <em>ASNR Annual Conference</em>, Charleston, SC.</div>
+        <div class="presentation-item"><span class="presenter">Saad, M.</span>, <strong>Bassil, Y.</strong>, &amp; Borich, M. (2023). "Effects of demographics and lifestyle choices on spatial navigation in the aging brain." Poster, <em>Laney Graduate School Summer Opportunity for Academic Research (SOAR) Poster Session</em>, Atlanta, GA.</div>
+        <div class="presentation-item">Carter, K., Ferrer, M., Hilten, E., <strong>Bassil, Y.</strong>, Kanukolanu, A., &amp; <span class="presenter">Borich, M.</span> (2023). "Interactions between balance, navigation, &amp; cognition in the aging brain." Poster, <em>APTA Combined Sections Meeting</em>, San Diego, CA.</div>
+        <div class="presentation-item"><span class="presenter">Kanukolanu, A.</span>, <strong>Bassil, Y.</strong>, Hilten, E., Carter, K., Ferrer, M., &amp; Borich, M. (2022). "Aging effects on spatial navigation &amp; cognitive function." Poster, <em>16th Annual Georgia Tech Undergraduate Research Symposium</em>, Atlanta, GA. <span class="award">(1st Place Poster, College of Sciences)</span></div>
+        <div class="presentation-item"><span class="presenter">Kanukolanu, A.</span>, <strong>Bassil, Y.</strong>, Hilten, E., Carter, K., Ferrer, M., &amp; Borich, M. (2022). "Aging effects on spatial navigation &amp; cognitive function." Poster, <em>1st Annual Psychology Research Conference</em>, Atlanta, GA. <span class="award">(2nd Place Poster)</span></div>
+        <div class="presentation-item"><span class="presenter">Kanukolanu, A.</span>, <strong>Bassil, Y.</strong>, Hilten, E., Carter, K., Ferrer, M., &amp; Borich, M. (2022). "Aging effects on spatial navigation &amp; cognitive function." Poster, <em>Georgia Tech Neuroscience Research Symposium</em>, Atlanta, GA. <span class="award">(Faculty Award for Best Abstract)</span></div>
+        <div class="presentation-item"><span class="presenter"><strong>Bassil, Y.</strong></span> (2019). "Actionable items to promote inclusivity in scientific workspaces." Poster, <em>Inclusive SciComm Conference</em>, South Kingstown, RI.</div>
+        <div class="presentation-item">Abbas, A., <span class="presenter"><strong>Bassil, Y.</strong></span>, &amp; Keilholz, S. (2018). "Quasi-periodic patterns contribute to functional connectivity differences in individuals with ADHD." Poster, <em>Organization for Human Brain Mapping (OHBM) Conference</em>, Singapore.</div>
+        <div class="presentation-item">Abbas, A., <span class="presenter"><strong>Bassil, Y.</strong></span>, &amp; Keilholz, S. (2018). "Quasi-periodic patterns contribute to functional connectivity differences between adolescents &amp; adults." Poster, <em>OHBM Conference</em>, Singapore.</div>
+        <div class="presentation-item">Abbas, A., <span class="presenter"><strong>Bassil, Y.</strong></span>, &amp; Keilholz, S. (2018). "Quasi-periodic patterns contribute to functional connectivity differences in individuals with ADHD." Poster, <em>Nu Rho Psi Atlanta Neuroscience Symposium</em>, Georgia.</div>
         </div>
         <button class="expand-toggle" data-target="pres-more" data-more="Show all ({total}) ↓" data-less="Show less ↑">Show all ↓</button>
 
@@ -1579,6 +1621,18 @@
         </div>
 
         <h2 id="certificates">Certificates</h2>
+        <div class="cv-item cert-item">
+            <div class="item-header">
+                <span class="item-title">CITI Human Subjects Research: Biomedical Focus</span>
+            </div>
+            <div class="item-description">CITI Program certification</div>
+        </div>
+        <div class="cv-item cert-item">
+            <div class="item-header">
+                <span class="item-title">CITI Good Clinical Practice (GCP) &amp; ICH Guidelines</span>
+            </div>
+            <div class="item-description">CITI Program certification</div>
+        </div>
         <div class="cv-item cert-item">
             <div class="item-header">
                 <span class="item-title">NeuroMatch Academy: Computational Neuroscience Course</span>
