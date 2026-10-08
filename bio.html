@@ -144,7 +144,15 @@
 
         /* The author card: no box. The name is a bilingual lockup, English over Arabic at equal
            weight, joined by a rule that carries the title; tagline and status sit to the side. */
-        .author { max-width: 46rem; margin: 2.2rem 0 2.3rem; }
+        .author { max-width: 46rem; margin: 1.6rem 0 2.3rem; }
+        /* the name tag: a small line under the headline whose last word changes every few seconds */
+        .nametag { display: inline-flex; align-items: baseline; gap: 0.5rem; padding: 0.28rem 0.85rem 0.34rem; border: 1px solid var(--rule); border-radius: 999px; margin-bottom: 1.5rem; white-space: nowrap; }
+        .nametag-k { font-family: var(--meta); font-size: 0.64rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+        .nametag-v { font-family: 'Fraunces', var(--display); font-optical-sizing: auto; font-variation-settings: 'SOFT' 45, 'WONK' 1; font-style: italic; font-weight: 500; font-size: 0.98rem; color: var(--mulberry); transition: opacity 0.3s ease; }
+        .nametag-v.out { opacity: 0; }
+        .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+        .author-head .num-label { margin-bottom: 0.7rem; }
+        @media (prefers-reduced-motion: reduce) { .nametag-v { transition: none; } }
         .author-card {
             position: relative;
             display: inline-flex;
@@ -459,7 +467,9 @@
         @media (min-width: 1420px) {
             .author { display: flex; align-items: flex-end; justify-content: space-between; max-width: none; margin: -4.3rem 0 2rem; }
             /* the label takes the gap beside the tucked card */
-            .author > .num-label { margin-bottom: -0.6rem; }
+            .author-head { display: flex; flex-direction: column; align-items: flex-start; }
+            .author-head .nametag { margin-bottom: 1.1rem; }
+            .author-head .num-label { margin-bottom: -0.9rem; }
             .author-card { gap: 1.25rem; padding: 0.7rem 1.2rem 0.7rem 0.9rem; background: var(--paper); }
             .author-photo { width: 94px; height: 94px; }
             .name-en { font-size: 1.5rem; }
@@ -547,7 +557,10 @@
                     <h1 class="hero-headline">Building the <em>structures and systems</em> that support neuroscience research.</h1>
 
                     <div class="author">
-                        <span class="num-label"><span class="num">00</span> The Author</span>
+                        <div class="author-head">
+                            <p class="nametag"><span class="nametag-k">also a</span> <span class="nametag-v" aria-hidden="true">pianist</span><span class="sr-only">pianist, lead vocalist, potter, dabke line leader, plant parent, block printer, home cook, and color-coder</span></p>
+                            <span class="num-label"><span class="num">00</span> The Author</span>
+                        </div>
                         <div class="author-card">
                             <img src="img/profile.jpg" alt="Yasmine Bassil" class="author-photo">
                             <div class="lockup">
@@ -818,6 +831,22 @@
                     if (e.target.tagName === 'A') links.classList.remove('open');
                 });
             }
+        })();
+
+        // the name tag under the headline: swap its last word every few seconds
+        (function () {
+            var el = document.querySelector('.nametag-v');
+            if (!el) return;
+            var words = ['pianist', 'lead vocalist', 'potter', 'dabke line leader', 'plant parent', 'block printer', 'home cook', 'color-coder'];
+            var i = 0;
+            setInterval(function () {
+                el.classList.add('out');
+                setTimeout(function () {
+                    i = (i + 1) % words.length;
+                    el.textContent = words[i];
+                    el.classList.remove('out');
+                }, 300);
+            }, 2800);
         })();
     </script>
 </body>
