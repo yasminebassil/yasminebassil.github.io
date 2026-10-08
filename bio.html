@@ -147,7 +147,7 @@
         /* The author card: no box. The name is a bilingual lockup, English over Arabic at equal
            weight, joined by a rule that carries the title; tagline and status sit to the side. */
         .author { max-width: 46rem; margin: 2.2rem 0 2.3rem; }
-        /* off the clock: a tiny player. It plays by itself; the buttons pause it or skip to the next word. */
+        /* off the clock: a tiny player. It plays by itself; the buttons pause it or step forward and back. */
         .player { display: flex; align-items: center; gap: 0.4rem; }
         .player-btn { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; padding: 0; border: 1px solid var(--rule); border-radius: 50%; background: none; color: var(--muted); cursor: pointer; transition: color 0.2s ease, border-color 0.2s ease; }
         .player-btn:hover { color: var(--mulberry); border-color: var(--mulberry); }
@@ -628,6 +628,9 @@
                     <div class="rail-item">
                         <span class="num-label">Off The Clock</span>
                         <div class="player">
+                            <button type="button" class="player-btn player-back" aria-label="Back to the previous one">
+                                <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M12.6 3.6v8.8a.5.5 0 0 1-.77.42l-6.4-4.4a.5.5 0 0 1 0-.84l6.4-4.4a.5.5 0 0 1 .77.42z"/><rect x="3" y="3.5" width="1.8" height="9" rx="0.6"/></svg>
+                            </button>
                             <button type="button" class="player-btn player-toggle" aria-label="Pause">
                                 <svg class="i-pause" viewBox="0 0 16 16" aria-hidden="true"><rect x="4" y="3.5" width="2.6" height="9" rx="0.6"/><rect x="9.4" y="3.5" width="2.6" height="9" rx="0.6"/></svg>
                                 <svg class="i-play" viewBox="0 0 16 16" aria-hidden="true"><path d="M5.2 3.4v9.2a.5.5 0 0 0 .76.43l7.4-4.6a.5.5 0 0 0 0-.86l-7.4-4.6a.5.5 0 0 0-.76.43z"/></svg>
@@ -854,7 +857,7 @@
             }
         })();
 
-        // off the clock: the word changes every few seconds; pause stops it, skip moves on at once
+        // off the clock: the word changes every few seconds; pause stops it, skip and back move at once
         (function () {
             var player = document.querySelector('.player');
             if (!player) return;
@@ -862,10 +865,11 @@
             var toggle = player.querySelector('.player-toggle');
             var words = ['pianist', 'vocalist', 'potter', 'dabke line leader', 'plant parent', 'block printer', 'home cook', 'color-coder', 'thrifter', 'record hunter'];
             var i = 0, timer = null;
-            function next() {
+            function next(step) {
+                step = step === -1 ? -1 : 1;
                 word.classList.add('out');
                 setTimeout(function () {
-                    i = (i + 1) % words.length;
+                    i = (i + step + words.length) % words.length;
                     word.textContent = words[i];
                     word.classList.remove('out');
                 }, 300);
@@ -873,10 +877,12 @@
             function play() { timer = setInterval(next, 2800); player.classList.remove('paused'); toggle.setAttribute('aria-label', 'Pause'); }
             function pause() { clearInterval(timer); timer = null; player.classList.add('paused'); toggle.setAttribute('aria-label', 'Play'); }
             toggle.addEventListener('click', function () { timer ? pause() : play(); });
-            player.querySelector('.player-skip').addEventListener('click', function () {
-                next();
+            function jump(step) {
+                next(step);
                 if (timer) { clearInterval(timer); timer = setInterval(next, 2800); }
-            });
+            }
+            player.querySelector('.player-skip').addEventListener('click', function () { jump(1); });
+            player.querySelector('.player-back').addEventListener('click', function () { jump(-1); });
             // starts playing, unless the visitor has asked their device for less motion
             if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) pause(); else play();
         })();
