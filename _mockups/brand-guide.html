@@ -25,7 +25,7 @@
         .swatches { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.1rem; }
         .swatch { border: 1px solid var(--rule); border-radius: 8px; overflow: hidden; background: var(--paper); }
         .swatch .chip { height: 5.2rem; }
-        .swatch .meta { padding: 0.8rem 0.95rem 0.95rem; }
+        .swatch .info { padding: 0.8rem 0.95rem 0.95rem; }
         .swatch h3 { font-family: 'Fraunces', serif; font-variation-settings: 'SOFT' 45, 'WONK' 1; font-weight: 600; font-size: 1.05rem; color: var(--oxblood); }
         .swatch .hex { font-family: var(--meta); font-size: 0.72rem; color: var(--muted); margin: 0.1rem 0 0.45rem; }
         .swatch p { font-size: 0.85rem; line-height: 1.45; color: var(--ink); }
@@ -74,15 +74,15 @@
         <div class="label"><span>01</span> Colours</div>
         <p class="note">Oxblood, mulberry, and sage on porcelain, with slate violet kept for blocks. Any text colour should keep at least 4.5:1 contrast against its background.</p>
         <div class="swatches">
-            <div class="swatch"><div class="chip" style="background:#44181D"></div><div class="meta"><h3>Oxblood</h3><div class="hex">#44181D &middot; --oxblood</div><p>Headlines, the wordmark, numbers on cards, the main filled blocks.</p></div></div>
-            <div class="swatch"><div class="chip" style="background:#6E3358"></div><div class="meta"><h3>Mulberry</h3><div class="hex">#6E3358 &middot; --mulberry</div><p>Links, buttons, section labels, and words picked out in a sentence. The one interactive colour.</p></div></div>
-            <div class="swatch"><div class="chip" style="background:#566B58"></div><div class="meta"><h3>Sage</h3><div class="hex">#566B58 &middot; --sage</div><p>The status badge, small secondary labels, and a block colour.</p></div></div>
-            <div class="swatch"><div class="chip" style="background:#4F5285"></div><div class="meta"><h3>Slate violet</h3><div class="hex">#4F5285 &middot; --slate</div><p>Blocks and illustration only. <span class="dont">Never text: it reads too close to mulberry.</span></p></div></div>
-            <div class="swatch"><div class="chip" style="background:#F3E6E3"></div><div class="meta"><h3>Blush</h3><div class="hex">#F3E6E3 &middot; --blush</div><p>Soft panels, the quote bubble, tags, and badges.</p></div></div>
-            <div class="swatch"><div class="chip" style="background:#FCFAF8; border-bottom:1px solid rgba(43,34,36,0.14)"></div><div class="meta"><h3>Porcelain</h3><div class="hex">#FCFAF8 &middot; --paper</div><p>The page, and the sheet a page's content sits on. Matches the sky in the homepage photo.</p></div></div>
-            <div class="swatch"><div class="chip" style="background:#F1EFEC"></div><div class="meta"><h3>Warm grey</h3><div class="hex">#F1EFEC &middot; --paper-warm</div><p>The &ldquo;desk&rdquo; behind a sheet, and quiet panels.</p></div></div>
-            <div class="swatch"><div class="chip" style="background:#2B2224"></div><div class="meta"><h3>Warm ink</h3><div class="hex">#2B2224 &middot; --ink</div><p>Body text that needs full strength: side-column facts, bold opening sentences.</p></div></div>
-            <div class="swatch"><div class="chip" style="background:#5E5557"></div><div class="meta"><h3>Warm grey text</h3><div class="hex">#5E5557 &middot; --muted</div><p>Running paragraphs, the menu, and secondary text.</p></div></div>
+            <div class="swatch"><div class="chip" style="background:#44181D"></div><div class="info"><h3>Oxblood</h3><div class="hex">#44181D &middot; --oxblood</div><p>Headlines, the wordmark, numbers on cards, the main filled blocks.</p></div></div>
+            <div class="swatch"><div class="chip" style="background:#6E3358"></div><div class="info"><h3>Mulberry</h3><div class="hex">#6E3358 &middot; --mulberry</div><p>Links, buttons, section labels, and words picked out in a sentence. The one interactive colour.</p></div></div>
+            <div class="swatch"><div class="chip" style="background:#566B58"></div><div class="info"><h3>Sage</h3><div class="hex">#566B58 &middot; --sage</div><p>The status badge, small secondary labels, and a block colour.</p></div></div>
+            <div class="swatch"><div class="chip" style="background:#4F5285"></div><div class="info"><h3>Slate violet</h3><div class="hex">#4F5285 &middot; --slate</div><p>Blocks and illustration only. <span class="dont">Never text: it reads too close to mulberry.</span></p></div></div>
+            <div class="swatch"><div class="chip" style="background:#F3E6E3"></div><div class="info"><h3>Blush</h3><div class="hex">#F3E6E3 &middot; --blush</div><p>Soft panels, the quote bubble, tags, and badges.</p></div></div>
+            <div class="swatch"><div class="chip" style="background:#FCFAF8; border-bottom:1px solid rgba(43,34,36,0.14)"></div><div class="info"><h3>Porcelain</h3><div class="hex">#FCFAF8 &middot; --paper</div><p>The page, and the sheet a page's content sits on. Matches the sky in the homepage photo.</p></div></div>
+            <div class="swatch"><div class="chip" style="background:#F1EFEC"></div><div class="info"><h3>Warm grey</h3><div class="hex">#F1EFEC &middot; --paper-warm</div><p>The &ldquo;desk&rdquo; behind a sheet, and quiet panels.</p></div></div>
+            <div class="swatch"><div class="chip" style="background:#2B2224"></div><div class="info"><h3>Warm ink</h3><div class="hex">#2B2224 &middot; --ink</div><p>Body text that needs full strength: side-column facts, bold opening sentences.</p></div></div>
+            <div class="swatch"><div class="chip" style="background:#5E5557"></div><div class="info"><h3>Warm grey text</h3><div class="hex">#5E5557 &middot; --muted</div><p>Running paragraphs, the menu, and secondary text.</p></div></div>
         </div>
         <p class="small">Hairlines: rgba(43, 34, 36, 0.14) as --rule, and 0.07 as --rule-soft. Status dot: #A9D6A4.</p>
 
