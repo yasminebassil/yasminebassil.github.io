@@ -145,18 +145,6 @@
         /* The author card: no box. The name is a bilingual lockup, English over Arabic at equal
            weight, joined by a rule that carries the title; tagline and status sit to the side. */
         .author { max-width: 46rem; margin-bottom: 2.3rem; }
-        /* a handwritten aside that fills the gap beside the card; only shown when the card is tucked */
-        .author-aside {
-            display: none;
-            font-family: var(--display);
-            font-style: italic;
-            font-size: 1.3rem;
-            line-height: 1.2;
-            color: var(--muted);
-            text-decoration: none;
-            transition: color 0.25s ease;
-        }
-        .author-aside:hover { color: var(--mulberry); }
         .author-card {
             position: relative;
             display: inline-flex;
@@ -229,10 +217,13 @@
 
         .prose p { font-size: 1.02rem; line-height: 1.65; color: var(--muted); }
         .prose p + p { margin-top: 0.85rem; }
-        /* now / previously / always: a line with three points under the intro, running across */
-        .timeline { display: grid; grid-template-columns: 1fr 1.35fr 0.65fr; margin-top: 2.1rem; border-top: 2px solid var(--mulberry); }
-        .timeline div { position: relative; padding: 1rem 1.6rem 0 0; }
-        .timeline div:last-child { padding-right: 0; }
+        /* the intro: its first sentence is the one line to take away, so it is set darker and heavier */
+        .prose p.opener { font-size: 1.1rem; }
+        .prose p.opener strong { font-weight: 500; color: var(--ink); }
+        /* previously / now / next: a line with three points under the intro; it turns dashed for what hasn't happened yet */
+        .timeline { display: grid; grid-template-columns: 1.35fr 0.8fr 1fr; margin-top: 2.1rem; }
+        .timeline div { position: relative; padding: 1rem 1.6rem 0 0; border-top: 2px solid var(--mulberry); }
+        .timeline div:last-child { padding-right: 0; border-top-style: dashed; }
         .timeline div::before { content: ''; position: absolute; left: 0; top: -7px; width: 12px; height: 12px; border-radius: 50%; background: var(--paper); border: 2px solid var(--mulberry); box-sizing: border-box; }
         .timeline div.on::before { background: var(--mulberry); }
         .timeline dt { font-family: 'Fraunces', var(--display); font-optical-sizing: auto; font-variation-settings: 'SOFT' 45, 'WONK' 1; font-weight: 600; font-size: 1.1rem; color: var(--oxblood); }
@@ -467,8 +458,8 @@
            wraps differently and the card goes back under it. */
         @media (min-width: 1420px) {
             .author { display: flex; align-items: flex-end; justify-content: space-between; max-width: none; margin: -4.3rem 0 2rem; }
-            .author-aside { display: block; padding-bottom: 0.15rem; }
-            .author > .num-label { display: none; }
+            /* the label takes the gap beside the tucked card */
+            .author > .num-label { margin-bottom: 0.15rem; }
             .author-card { gap: 1.25rem; padding: 0.7rem 1.2rem 0.7rem 0.9rem; background: var(--paper); }
             .author-photo { width: 94px; height: 94px; }
             .name-en { font-size: 1.5rem; }
@@ -504,9 +495,9 @@
         }
         @media (max-width: 600px) {
             /* on a phone the line turns to run down the side */
-            .timeline { display: block; margin: 1.8rem 0 0 0.4rem; border-top: none; border-left: 2px solid var(--mulberry); }
-            .timeline div { padding: 0 0 1.15rem 1.6rem; }
-            .timeline div:last-child { padding-bottom: 0; }
+            .timeline { display: block; margin: 1.8rem 0 0 0.4rem; }
+            .timeline div { padding: 0 0 1.15rem 1.6rem; border-top: none; border-left: 2px solid var(--mulberry); }
+            .timeline div:last-child { padding-bottom: 0; border-top: none; border-left-style: dashed; }
             .timeline div::before { left: -7px; top: 0.45rem; }
             .page-inner { width: 100%; padding: 5.5rem 0.75rem 3rem; }
             .sheet { padding: 1.75rem 1.25rem 2.25rem; }
@@ -556,8 +547,7 @@
                     <h1 class="hero-headline">Building the <em>structures and systems</em> that support neuroscience research.</h1>
 
                     <div class="author">
-                        <span class="num-label">The Author</span>
-                        <a class="author-aside" href="#bio-education">Read about me below <span aria-hidden="true">&darr;</span></a>
+                        <span class="num-label"><span class="num">00</span> The Author</span>
                         <div class="author-card">
                             <img src="img/profile.jpg" alt="Yasmine Bassil" class="author-photo">
                             <div class="lockup">
@@ -573,11 +563,11 @@
                     </div>
 
                     <div class="prose">
-                        <p>I'm a neuroscientist who builds the structures behind scientific research: programs, partnerships, tools, and teams. Along the way I realized that research only goes so far without a foundation built to last, so that's what I build.</p>
+                        <p class="opener"><strong>I'm a neuroscientist who builds the structures behind scientific research: programs, partnerships, tools, and teams.</strong> Along the way I realized that research only goes so far without a foundation built to last, so that's what I build.</p>
                         <dl class="timeline">
-                            <div class="on"><dt>now</dt><dd>Research Scientist at Emory, looking for a role leading scientific programs and partnerships.</dd></div>
                             <div><dt>previously</dt><dd>Built a navigation research program from scratch, co-led Emory's neuroscience graduate student organization, and chaired Brainhack ATL.</dd></div>
-                            <div><dt>always</dt><dd>A neuroscientist.</dd></div>
+                            <div class="on"><dt>now</dt><dd>Research Scientist at Emory University.</dd></div>
+                            <div><dt>next</dt><dd>Seeking a role leading scientific programs and partnerships.</dd></div>
                         </dl>
                     </div>
                 </div>
