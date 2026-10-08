@@ -158,6 +158,10 @@
             .card-grid { grid-template-columns: 1fr; }
             .page-lede { font-size: 1.3rem; }
         }
+        /* the menu tightens on narrower screens before it folds into the phone menu */
+        .logo { white-space: nowrap; }
+        @media (max-width: 1100px) { .nav-links { gap: 1.3rem; } }
+        @media (min-width: 901px) and (max-width: 990px) { nav { padding-left: 2rem; padding-right: 2rem; } .nav-links { gap: 1rem; } }
     </style>
 </head>
 <body>
@@ -168,6 +172,7 @@
             <li><a href="bio.html">bio</a></li>
             <li><a href="cv.html">cv</a></li>
             <li><a href="research.html" class="active">research</a></li>
+            <li><a href="programs.html">programs</a></li>
             <li><a href="thoughts.html">thoughts</a></li>
             <li><a href="music.html">creative</a></li>
             <li><a href="/defense" class="nav-past">defense</a></li>

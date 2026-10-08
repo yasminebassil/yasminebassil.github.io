@@ -337,6 +337,9 @@
         .program:nth-child(1) .program-top { background: var(--oxblood); }
         .program:nth-child(2) .program-top { background: var(--sage); }
         .program:nth-child(3) .program-top { background: var(--slate); }
+        .program:nth-child(4) .program-top { background: var(--mulberry); }
+        .program:nth-child(5) .program-top { background: var(--oxblood); }
+        .program:nth-child(6) .program-top { background: var(--sage); }
         .program-when {
             font-family: var(--meta);
             font-size: 0.66rem;
@@ -558,6 +561,10 @@
             .award { grid-template-columns: minmax(0, 1fr); gap: 0.2rem; }
             .place--light { grid-column: span 6; }
         }
+        /* the menu tightens on narrower screens before it folds into the phone menu */
+        .logo { white-space: nowrap; }
+        @media (max-width: 1100px) { .nav-links { gap: 1.3rem; } }
+        @media (min-width: 901px) and (max-width: 990px) { nav { padding-left: 2rem; padding-right: 2rem; } .nav-links { gap: 1rem; } }
     </style>
 </head>
 <body>
@@ -568,6 +575,7 @@
             <li><a href="bio.html" class="active">bio</a></li>
             <li><a href="cv.html">cv</a></li>
             <li><a href="research.html">research</a></li>
+            <li><a href="programs.html">programs</a></li>
             <li><a href="thoughts.html">thoughts</a></li>
             <li><a href="music.html">creative</a></li>
             <li><a href="/defense" class="nav-past">defense</a></li>
@@ -701,6 +709,23 @@
                             <li><span class="k">2016 &mdash; 2020</span>BS in Neuroscience<br>Georgia Institute of Technology</li>
                         </ul>
                     </div>
+                    <div class="rail-item" id="bio-awards">
+                        <span class="num-label">Funding &amp; Awards</span>
+                        <ul>
+                            <li><span class="k">2022 &mdash; 2025</span>NSF Graduate Research Fellowship<br>National Science Foundation ($170K+)</li>
+                            <li><span class="k">2021 &mdash; 2022</span>NIH T32 Training Grant<br>National Institutes of Health ($90K+)</li>
+                            <li><span class="k">2023 &mdash; 2026</span>Emory Neuroscience Awards<br>Scientific Achievement (2026) &middot; Teaching (2025) &middot; Leadership (2024) &middot; Excellence in Mentorship (2023)</li>
+                        </ul>
+                    </div>
+                    <div class="rail-item">
+                        <span class="num-label">Output</span>
+                        <ul>
+                            <li><span class="k">publications</span>7 peer-reviewed</li>
+                            <li><span class="k">presentations</span>20 conference</li>
+                            <li><span class="k">invited talks</span>17</li>
+                        </ul>
+                        <p style="margin-top:0.6rem;"><a href="cv.html">Full list on my cv &rarr;</a></p>
+                    </div>
                 </aside>
             </div>
 
@@ -733,6 +758,30 @@
                         <span class="program-role">Founder &amp; Organizing Committee Chair</span>
                     </div>
                     <div class="program-metrics"><div><b>$35K</b><span>raised</span></div><div><b>90+</b><span>applications</span></div><div><b>9</b><span>institutions</span></div></div>
+                </a>
+                <a class="program" href="programs.html#dei-committee">
+                    <div class="program-top">
+                        <span class="program-when">2021 &mdash; 2023</span>
+                        <h3>Diversity, Equity, &amp; Inclusion Committee</h3>
+                        <span class="program-role">Co-Chair</span>
+                    </div>
+                    <div class="program-metrics"><div><b>17</b><span>committee members</span></div><div><b>3</b><span>subcommittees</span></div><div><b>1</b><span>training launched</span></div></div>
+                </a>
+                <a class="program" href="programs.html#undergraduate-research-ambassadors">
+                    <div class="program-top">
+                        <span class="program-when">2017 &mdash; 2020</span>
+                        <h3>Undergraduate Research Ambassadors</h3>
+                        <span class="program-role">President</span>
+                    </div>
+                    <div class="program-metrics"><div><b>1,000+</b><span>students a semester</span></div><div><b>150+</b><span>placed with labs</span></div><div><b>22</b><span>members</span></div></div>
+                </a>
+                <a class="program" href="programs.html#international-ambassadors">
+                    <div class="program-top">
+                        <span class="program-when">2018 &mdash; 2019</span>
+                        <h3>International Ambassadors</h3>
+                        <span class="program-role">Vice President of External Affairs</span>
+                    </div>
+                    <div class="program-metrics"><div><b>2,000+</b><span>students reached</span></div><div><b>14</b><span>committee members</span></div><div><b>100+</b><span>at new gala</span></div></div>
                 </a>
             </div>
             <p class="programs-more"><a class="pill-link" href="programs.html">See the programs &rarr;</a></p>
@@ -790,40 +839,8 @@
                 <div class="now-item"><strong>time sink</strong>color-coding and organizing my digital and physical life</div>
             </div>
 
-            <!-- 07 Funding & awards -->
-            <div class="section-head num-label" id="bio-awards"><span class="num">07</span> Funding &amp; Awards</div>
-            <div class="split">
-                <div>
-                    <div class="awards">
-                        <div class="award">
-                            <span class="award-when">2022 &mdash; 2025</span>
-                            <span><span class="award-what">NSF Graduate Research Fellowship</span><span class="award-who">National Science Foundation ($170K+)</span></span>
-                        </div>
-                        <div class="award">
-                            <span class="award-when">2021 &mdash; 2022</span>
-                            <span><span class="award-what">NIH T32 Training Grant</span><span class="award-who">National Institutes of Health ($90K+)</span></span>
-                        </div>
-                        <div class="award">
-                            <span class="award-when">2023 &mdash; 2026</span>
-                            <span><span class="award-what">Emory Neuroscience Awards</span><span class="award-who">Scientific Achievement (2026) &middot; Teaching (2025) &middot; Leadership (2024) &middot; Excellence in Mentorship (2023)</span></span>
-                        </div>
-                    </div>
-                    <div class="prose" style="margin-top:1.25rem;"><p>The full list of publications, presentations, and invited talks lives on my <a href="cv.html">cv</a>.</p></div>
-                </div>
-                <aside class="rail">
-                    <div class="rail-item">
-                        <span class="num-label">Output</span>
-                        <ul>
-                            <li><span class="k">publications</span>7 peer-reviewed</li>
-                            <li><span class="k">presentations</span>20 conference</li>
-                            <li><span class="k">invited talks</span>17</li>
-                        </ul>
-                    </div>
-                </aside>
-            </div>
-
-            <!-- 08 Places you can find me -->
-            <div class="section-head num-label" id="bio-contact"><span class="num">08</span> Places You Can Find Me</div>
+            <!-- 07 Places you can find me -->
+            <div class="section-head num-label" id="bio-contact"><span class="num">07</span> Places You Can Find Me</div>
             <div class="places">
                 <a href="cv.html" class="place place--wide place--cv">
                     <h3>CV</h3>
