@@ -121,8 +121,8 @@
             border-top: 1px solid var(--rule);
             scroll-margin-top: 5rem;
         }
-        /* the intro block ends on the timeline, which carries its own air; the first divider sits closer */
-        #bio-aside { margin-top: 2.2rem; }
+        /* the first two dividers sit a little closer to what comes before them than the rest */
+        #bio-aside, #bio-education { margin-top: 2.2rem; }
 
         /* ---------- Hero: headline + author on the left, facts rail on the right ---------- */
         .hero {
@@ -149,15 +149,15 @@
         .author { max-width: 46rem; margin: 2.2rem 0 2.3rem; }
         /* now playing: a small boxed player, like a music app's. It plays by itself; the buttons pause it or step forward and back. */
         .rail-item.np { padding: 0; border-bottom: none; }
-        .player { border: 1px solid var(--rule); border-radius: 14px; padding: 0.95rem 1rem 0.9rem; }
-        .player-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.9rem; }
+        .player { display: flex; flex-direction: column; justify-content: space-between; border: 1px solid var(--rule); border-radius: 14px; padding: 0.75rem 1rem 0.7rem; }
+        .player-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.55rem; }
         .player .num-label { margin-bottom: 0; }
         .player-title { display: flex; flex-direction: column; align-items: center; text-align: center; min-width: 0; }
         .player-word { font-family: 'Fraunces', var(--display); font-optical-sizing: auto; font-variation-settings: 'SOFT' 45, 'WONK' 1; font-style: italic; font-weight: 300; font-size: 1.12rem; line-height: 1.2; color: var(--mulberry); white-space: nowrap; transition: opacity 0.3s ease; }
         .player-word.out { opacity: 0; }
         .player-artist { margin-top: 0.15rem; font-family: var(--meta); font-size: 0.62rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
         /* the bar fills once per word */
-        .player-bar { height: 2px; margin: 0.85rem 0 0.7rem; background: var(--rule); border-radius: 2px; overflow: hidden; }
+        .player-bar { height: 2px; margin: 0.6rem 0 0.55rem; background: var(--rule); border-radius: 2px; overflow: hidden; }
         .player-bar i { display: block; height: 100%; width: 0; background: var(--mulberry); }
         .player-bar i.run { animation: player-fill 2.8s linear forwards; }
         .player.paused .player-bar i { animation-play-state: paused; }
@@ -914,6 +914,17 @@
             }
             player.querySelector('.player-skip').addEventListener('click', function () { jump(1); });
             player.querySelector('.player-back').addEventListener('click', function () { jump(-1); });
+            // the box takes the height of the quote bubble beside it, so their top and bottom edges line up
+            var bubble = document.querySelector('.bubble');
+            function matchBubble() {
+                player.style.minHeight = '';
+                if (!bubble) return;
+                var sideBySide = Math.abs(bubble.getBoundingClientRect().top - player.getBoundingClientRect().top) < 6;
+                if (sideBySide) player.style.minHeight = bubble.offsetHeight + 'px';
+            }
+            matchBubble();
+            window.addEventListener('resize', matchBubble);
+            if (document.fonts && document.fonts.ready) document.fonts.ready.then(matchBubble);
             // starts playing, unless the visitor has asked their device for less motion
             if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) pause(); else play();
         })();
