@@ -361,8 +361,8 @@
             margin-top: 0.35rem;
             opacity: 0.9;
         }
-        /* the section's intro sits left and runs the full width of the sheet, like the cards under it */
-        .programs-intro { margin-bottom: 1.9rem; }
+        /* the section opens like the ones above it: headline and intro on the left, a rail of totals on the right */
+        .programs-intro { margin-bottom: 2.1rem; }
         /* each card carries three numbers; the story lives on the programs page */
         .program-metrics { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.6rem; padding: 0.95rem 1.25rem 1.05rem; }
         .program-metrics b { display: block; font-family: 'Fraunces', var(--display); font-optical-sizing: auto; font-variation-settings: 'SOFT' 45, 'WONK' 1; font-weight: 600; font-size: 1.3rem; line-height: 1.15; color: var(--oxblood); }
@@ -726,9 +726,21 @@
 
             <!-- 03 Projects & Programs -->
             <div class="section-head num-label" id="bio-programs"><span class="num">03</span> Projects &amp; Programs</div>
-            <div class="prose programs-intro">
-                <p class="pull">Program builder by design, with leadership across academic programs, nonprofits, hackathons, and student communities.</p>
-                <p>I take on leadership roles to build what's missing. I tend to leave things more efficient, better documented, and easier to hand over than I found them. These are a few of the places I've done that.</p>
+            <div class="split programs-intro">
+                <div class="prose">
+                    <p class="pull">Program builder by design, with leadership across academic programs, nonprofits, hackathons, and student communities.</p>
+                    <p>I take on leadership roles to build what's missing. I tend to leave things more efficient, better documented, and easier to hand over than I found them. These are a few of the places I've done that.</p>
+                </div>
+                <aside class="rail">
+                    <div class="rail-item">
+                        <span class="num-label">By The Numbers</span>
+                        <ul>
+                            <li><span class="k">organizations</span>7 academic &amp; nonprofit</li>
+                            <li><span class="k">teams led</span>16 researchers &middot; 22-member board &middot; 13-member committee</li>
+                            <li><span class="k">communities served</span>100+ PhD students &middot; 116+ participants</li>
+                        </ul>
+                    </div>
+                </aside>
             </div>
             <div class="programs">
                 <article class="program">
@@ -745,7 +757,7 @@
                         <h3>Graduates in Neuroscience</h3>
                         <span class="program-role">Co-President</span>
                     </div>
-                    <div class="program-metrics"><div><b>120+</b><span>PhD students</span></div><div><b>22</b><span>board members</span></div><div><b>10+</b><span>events a year</span></div></div>
+                    <div class="program-metrics"><div><b>100+</b><span>PhD students</span></div><div><b>22</b><span>board members</span></div><div><b>10+</b><span>events a year</span></div></div>
                 </article>
                 <article class="program">
                     <div class="program-top">
@@ -769,7 +781,7 @@
                         <h3>Undergraduate Research Ambassadors</h3>
                         <span class="program-role">President</span>
                     </div>
-                    <div class="program-metrics"><div><b>1,000+</b><span>students reached a year</span></div><div><b>150+</b><span>placed with labs</span></div><div><b>22</b><span>members</span></div></div>
+                    <div class="program-metrics"><div><b>1,000+</b><span>students a year</span></div><div><b>150+</b><span>placed with labs</span></div><div><b>22</b><span>members</span></div></div>
                 </article>
                 <article class="program">
                     <div class="program-top">
@@ -781,10 +793,6 @@
                 </article>
             </div>
             <p class="programs-more"><a class="pill-link" href="programs.html">See the programs &rarr;</a></p>
-            <div class="receipts">
-                <div class="receipt"><span class="k">teams led</span><span class="v">15+ researchers &middot; 22-member board &middot; 13-member committee</span></div>
-                <div class="receipt"><span class="k">communities served</span><span class="v">120+ PhD students &middot; 110+ participants</span></div>
-            </div>
 
             <!-- 04 In my own words -->
             <div class="section-head num-label"><span class="num">04</span> In My Own Words</div>
