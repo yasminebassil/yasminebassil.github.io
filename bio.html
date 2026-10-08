@@ -415,6 +415,16 @@
             line-height: 1;
             color: var(--rule);
         }
+        /* several quotes, one at a time: an arrow on each side flips between them */
+        .quotes { display: flex; align-items: center; justify-content: center; gap: 1.5rem; max-width: 54rem; margin: 3.5rem auto 0; }
+        .quotes .quote { flex: 1; margin: 0; display: flex; align-items: center; justify-content: center; }
+        .quotes .quote p { transition: opacity 0.3s ease; text-wrap: balance; }
+        .quotes .quote p.out { opacity: 0; }
+        .quotes-btn { flex: none; display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; padding: 0; border: 1px solid var(--rule); border-radius: 50%; background: none; color: var(--muted); cursor: pointer; transition: color 0.2s ease, border-color 0.2s ease; }
+        .quotes-btn:hover { color: var(--mulberry); border-color: var(--mulberry); }
+        .quotes-btn svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+        .quotes-count { margin: 2.4rem 0 3rem; text-align: center; font-family: var(--meta); font-size: 0.66rem; font-weight: 500; letter-spacing: 0.08em; color: var(--muted); }
+        @media (prefers-reduced-motion: reduce) { .quotes .quote p { transition: none; } }
         .quote::before { content: '\201C'; left: 0; top: -0.6rem; }
         .quote::after  { content: '\201D'; right: 0; bottom: -1.8rem; }
 
@@ -564,6 +574,8 @@
             .author-role { max-width: none; }
             .quote-pair { grid-template-columns: minmax(0, 1fr); gap: 1.25rem; }
             .quote { padding: 0 1.5rem; }
+            .quotes { gap: 0.6rem; }
+            .quotes-btn { width: 30px; height: 30px; }
             .quote p { font-size: 1.5rem; }
             .now-grid { grid-template-columns: minmax(0, 1fr); }
             .award { grid-template-columns: minmax(0, 1fr); gap: 0.2rem; }
@@ -801,9 +813,14 @@
 
             <!-- 04 In my own words -->
             <div class="section-head num-label"><span class="num">04</span> In My Own Words</div>
-            <blockquote class="quote">
-                <p>We, as a scientific community, cannot achieve our highest aspirations without the contribution of every one of its members.</p>
-            </blockquote>
+            <div class="quotes">
+                <button type="button" class="quotes-btn quotes-prev" aria-label="Previous quote"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3 5 8l5 5"/></svg></button>
+                <blockquote class="quote" aria-live="polite">
+                    <p>We, as a scientific community, cannot achieve our highest aspirations without the contribution of every one of its members.</p>
+                </blockquote>
+                <button type="button" class="quotes-btn quotes-next" aria-label="Next quote"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></button>
+            </div>
+            <p class="quotes-count" aria-hidden="true">1/4</p>
 
             <!-- 05 Personal -->
             <div class="section-head num-label" id="bio-personal"><span class="num">05</span> Personal</div>
@@ -968,6 +985,43 @@
             if (document.fonts && document.fonts.ready) document.fonts.ready.then(matchBubble);
             // starts playing, unless the visitor has asked their device for less motion
             if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) pause(); else play();
+        })();
+
+        // in my own words: the arrows flip between a few quotes; the block holds the height of the longest one
+        (function () {
+            var wrap = document.querySelector('.quotes');
+            if (!wrap) return;
+            var box = wrap.querySelector('.quote');
+            var p = box.querySelector('p');
+            var count = document.querySelector('.quotes-count');
+            var quotes = [
+                'We, as a scientific community, cannot achieve our highest aspirations without the contribution of every one of its members.',
+                'Science celebrates the unknown, embraces uncertainty, and continuously questions what is thought to be true.',
+                'To understand the human brain is to understand the human experience.',
+                'Scientific research is not simply a series of actions to acquire experimental results; it is a mindset and a lens through which we perceive the world.'
+            ];
+            var i = 0;
+            function fit() {
+                var tallest = 0;
+                box.style.minHeight = '';
+                quotes.forEach(function (q) { p.textContent = q; tallest = Math.max(tallest, p.offsetHeight); });
+                p.textContent = quotes[i];
+                box.style.minHeight = tallest + 'px';
+            }
+            function show(step) {
+                p.classList.add('out');
+                setTimeout(function () {
+                    i = (i + step + quotes.length) % quotes.length;
+                    p.textContent = quotes[i];
+                    count.textContent = (i + 1) + '/' + quotes.length;
+                    p.classList.remove('out');
+                }, 300);
+            }
+            wrap.querySelector('.quotes-prev').addEventListener('click', function () { show(-1); });
+            wrap.querySelector('.quotes-next').addEventListener('click', function () { show(1); });
+            fit();
+            window.addEventListener('resize', fit);
+            if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
         })();
     </script>
 </body>
