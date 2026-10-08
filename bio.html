@@ -147,18 +147,30 @@
         /* The author card: no box. The name is a bilingual lockup, English over Arabic at equal
            weight, joined by a rule that carries the title; tagline and status sit to the side. */
         .author { max-width: 46rem; margin: 2.2rem 0 2.3rem; }
-        /* now playing: a tiny player. It plays by itself; the buttons pause it or step forward and back. */
-        .player { display: flex; flex-direction: column; align-items: flex-start; gap: 0.55rem; }
+        /* now playing: a small boxed player, like a music app's. It plays by itself; the buttons pause it or step forward and back. */
+        .rail-item.np { padding: 0; border-bottom: none; }
+        .player { background: var(--paper-warm); border: 1px solid var(--rule); border-radius: 14px; padding: 0.95rem 1rem 0.9rem; }
+        .player .num-label { margin-bottom: 0.75rem; }
+        .player-track { display: flex; align-items: center; gap: 0.7rem; }
+        .player-track img { width: 42px; height: 42px; border-radius: 8px; object-fit: cover; flex: none; }
+        .player-title { display: flex; flex-direction: column; min-width: 0; }
+        .player-word { font-family: 'Fraunces', var(--display); font-optical-sizing: auto; font-variation-settings: 'SOFT' 45, 'WONK' 1; font-style: italic; font-weight: 300; font-size: 1.12rem; line-height: 1.2; color: var(--mulberry); white-space: nowrap; transition: opacity 0.3s ease; }
+        .player-word.out { opacity: 0; }
+        .player-artist { margin-top: 0.15rem; font-family: var(--meta); font-size: 0.62rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+        /* the bar fills once per word */
+        .player-bar { height: 2px; margin: 0.85rem 0 0.7rem; background: var(--rule); border-radius: 2px; overflow: hidden; }
+        .player-bar i { display: block; height: 100%; width: 0; background: var(--mulberry); }
+        .player-bar i.run { animation: player-fill 2.8s linear forwards; }
+        .player.paused .player-bar i { animation-play-state: paused; }
+        @keyframes player-fill { to { width: 100%; } }
         .player-controls { display: flex; align-items: center; gap: 0.4rem; }
-        .player-btn { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; padding: 0; border: 1px solid var(--rule); border-radius: 50%; background: none; color: var(--muted); cursor: pointer; transition: color 0.2s ease, border-color 0.2s ease; }
+        .player-btn { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; padding: 0; border: 1px solid var(--rule); border-radius: 50%; background: var(--paper); color: var(--muted); cursor: pointer; transition: color 0.2s ease, border-color 0.2s ease; }
         .player-btn:hover { color: var(--mulberry); border-color: var(--mulberry); }
         .player-btn svg { width: 12px; height: 12px; fill: currentColor; }
         .player-toggle .i-play, .player.paused .player-toggle .i-pause { display: none; }
         .player.paused .player-toggle .i-play { display: block; }
-        .player-word { font-family: 'Fraunces', var(--display); font-optical-sizing: auto; font-variation-settings: 'SOFT' 45, 'WONK' 1; font-style: italic; font-weight: 300; font-size: 1.15rem; line-height: 1.2; color: var(--mulberry); white-space: nowrap; transition: opacity 0.3s ease; }
-        .player-word.out { opacity: 0; }
-        .player-count { margin-left: 0.35rem; font-family: var(--meta); font-size: 0.66rem; font-weight: 500; letter-spacing: 0.08em; color: var(--muted); }
-        @media (prefers-reduced-motion: reduce) { .player-word { transition: none; } }
+        .player-count { margin-left: auto; font-family: var(--meta); font-size: 0.66rem; font-weight: 500; letter-spacing: 0.08em; color: var(--muted); }
+        @media (prefers-reduced-motion: reduce) { .player-word { transition: none; } .player-bar { display: none; } }
         .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
         .author-card {
             position: relative;
@@ -627,11 +639,18 @@
                     </div>
                 </div>
                 <aside class="rail">
-                    <div class="rail-item">
-                        <span class="num-label">Now Playing</span>
+                    <div class="rail-item np">
                         <div class="player">
-                            <span class="player-word" aria-hidden="true">neuroscientist</span>
-                            <span class="sr-only">neuroscientist, musician, program builder, organizer, mentor, plant parent, partnerships developer, research leader, science communicator, pianist, amateur chef, beginner potter, tool creator, community builder, color-coder, vocalist, dabke line leader, and oxford comma enthusiast</span>
+                            <span class="num-label">Now Playing</span>
+                            <div class="player-track">
+                                <img src="img/profile.jpg" alt="">
+                                <div class="player-title">
+                                    <span class="player-word" aria-hidden="true">neuroscientist</span>
+                                    <span class="sr-only">neuroscientist, musician, program builder, organizer, mentor, plant parent, partnerships developer, research leader, science communicator, pianist, amateur chef, beginner potter, tool creator, community builder, color-coder, vocalist, dabke line leader, and oxford comma enthusiast</span>
+                                    <span class="player-artist">yasmine bassil</span>
+                                </div>
+                            </div>
+                            <div class="player-bar"><i></i></div>
                             <div class="player-controls">
                                 <button type="button" class="player-btn player-back" aria-label="Back to the previous one">
                                     <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M12.6 3.6v8.8a.5.5 0 0 1-.77.42l-6.4-4.4a.5.5 0 0 1 0-.84l6.4-4.4a.5.5 0 0 1 .77.42z"/><rect x="3" y="3.5" width="1.8" height="9" rx="0.6"/></svg>
@@ -872,9 +891,12 @@
             var i = 0, timer = null;
             var count = player.querySelector('.player-count');
             function showCount() { count.textContent = (i + 1) + '/' + words.length; }
+            var bar = player.querySelector('.player-bar i');
+            function restartBar() { bar.classList.remove('run'); void bar.offsetWidth; bar.classList.add('run'); }
             showCount();
             function next(step) {
                 step = step === -1 ? -1 : 1;
+                if (timer) restartBar();
                 word.classList.add('out');
                 setTimeout(function () {
                     i = (i + step + words.length) % words.length;
@@ -883,7 +905,7 @@
                     word.classList.remove('out');
                 }, 300);
             }
-            function play() { timer = setInterval(next, 2800); player.classList.remove('paused'); toggle.setAttribute('aria-label', 'Pause'); }
+            function play() { timer = setInterval(next, 2800); restartBar(); player.classList.remove('paused'); toggle.setAttribute('aria-label', 'Pause'); }
             function pause() { clearInterval(timer); timer = null; player.classList.add('paused'); toggle.setAttribute('aria-label', 'Play'); }
             toggle.addEventListener('click', function () { timer ? pause() : play(); });
             function jump(step) {
