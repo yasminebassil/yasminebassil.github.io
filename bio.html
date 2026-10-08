@@ -150,7 +150,7 @@
         /* the name tag: a small pill under the aside paragraph whose last word changes every few seconds */
         .nametag { display: inline-flex; align-items: baseline; gap: 0.5rem; padding: 0.28rem 0.85rem 0.34rem; border: 1px solid var(--rule); border-radius: 999px; white-space: nowrap; }
         .nametag-k { font-family: var(--meta); font-size: 0.64rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
-        .nametag-v { font-family: 'Fraunces', var(--display); font-optical-sizing: auto; font-variation-settings: 'SOFT' 45, 'WONK' 1; font-style: italic; font-weight: 500; font-size: 0.98rem; color: var(--mulberry); transition: opacity 0.3s ease; }
+        .nametag-v { display: inline-block; font-family: 'Fraunces', var(--display); font-optical-sizing: auto; font-variation-settings: 'SOFT' 45, 'WONK' 1; font-style: italic; font-weight: 500; font-size: 0.98rem; color: var(--mulberry); transition: opacity 0.3s ease; }
         .nametag-v.out { opacity: 0; }
         .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
         /* section 01 has no rail: the quote and paragraph sit centred, with the name tag under the paragraph */
@@ -844,6 +844,16 @@
             if (!el) return;
             var words = ['pianist', 'lead vocalist', 'potter', 'dabke line leader', 'plant parent', 'block printer', 'home cook', 'color-coder'];
             var i = 0;
+            // hold the pill at the width of its longest word, so it doesn't resize as the word changes
+            function fit() {
+                var widest = 0;
+                el.style.minWidth = '';
+                words.forEach(function (w) { el.textContent = w; widest = Math.max(widest, el.offsetWidth); });
+                el.textContent = words[i];
+                el.style.minWidth = widest + 'px';
+            }
+            fit();
+            if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
             setInterval(function () {
                 el.classList.add('out');
                 setTimeout(function () {
